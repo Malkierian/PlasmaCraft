@@ -6,7 +6,7 @@ import java.util.*;
 
 public class mod_PlasmaCraft extends BaseModMp
 {
-    public String Version()
+    public String getVersion()
     {
 		return "1.8.1/0.2.3";
 	}
