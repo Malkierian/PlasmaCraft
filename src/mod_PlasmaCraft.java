@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+
 import net.minecraft.client.Minecraft;
 import java.io.File;
 import java.util.*;
@@ -8,10 +9,10 @@ public class mod_PlasmaCraft extends BaseModMp
 {
     public String getVersion()
     {
-		return "1.8.1/0.2.3";
+		return "1.0.0/0.2.3";
 	}
     
-    public void ModsLoaded()
+    public void load()
     {
         ModLoaderMp.Init();
     }
@@ -538,19 +539,19 @@ public class mod_PlasmaCraft extends BaseModMp
         hazmatBootsID = props.getInt("hazmatBootsID");
 
         //int renderIndex = ModLoader.AddArmor("hazmat");
-    	helmetHazmat = (new ItemArmor(props.getInt("hazmatHoodID"), 2, ModLoader.AddArmor("hazmat"), 0))
+    	helmetHazmat = (new ItemArmor(props.getInt("hazmatHoodID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 0))
     	.setIconIndex(helmetIndex)
     	.setItemName("helmetHazmat");
 
-    	plateHazmat = (new ItemArmor(props.getInt("hazmatJacketID"), 2, ModLoader.AddArmor("hazmat"), 1))
+    	plateHazmat = (new ItemArmor(props.getInt("hazmatJacketID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 1))
     	.setIconIndex(plateIndex)
     	.setItemName("plateHazmat");
 
-    	legsHazmat = (new ItemArmor(props.getInt("hazmatPantsID"), 2, ModLoader.AddArmor("hazmat"), 2))
+    	legsHazmat = (new ItemArmor(props.getInt("hazmatPantsID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 2))
     	.setIconIndex(legsIndex)
     	.setItemName("legsHazmat");
 
-    	bootsHazmat = (new ItemArmor(props.getInt("hazmatBootsID"), 2, ModLoader.AddArmor("hazmat"), 3))
+    	bootsHazmat = (new ItemArmor(props.getInt("hazmatBootsID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 3))
     	.setIconIndex(bootsIndex)
     	.setItemName("bootsHazmat");
 

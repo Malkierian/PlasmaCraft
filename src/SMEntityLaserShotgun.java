@@ -1,7 +1,5 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode 
+
 
 import java.util.List;
 import java.util.Random;
@@ -176,7 +174,7 @@ public class SMEntityLaserShotgun extends Entity
                 	int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
                 	int k = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                 	worldObj.setBlockWithNotify(i, j, k, Block.fire.blockID);
-                	entity.fire = 20;
+                	entity.func_40046_d(1);
                     setEntityDead();
                 }
 

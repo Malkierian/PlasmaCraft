@@ -1,7 +1,5 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode
+
 
 import java.util.Random;
 
@@ -20,7 +18,7 @@ public class SMEntityAcidFX extends EntityFX
         lavaParticleScale = particleScale;
         particleMaxAge = (int)(32D / (Math.random() * 0.8D + 0.2D));
         noClip = false;
-        particleTextureIndex = 34;
+        super.func_40099_c(34);
         ease_out = 1.0f;
     }
 

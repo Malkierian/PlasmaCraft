@@ -1,7 +1,5 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode
+
 
 import java.util.*;
 
@@ -154,7 +152,7 @@ label0:
 
             if(i1 > 0)
             {
-                Block.blocksList[i1].dropBlockAsItemWithChance(worldObj, j, k, l, worldObj.getBlockMetadata(j, k, l), 0.3F);
+                Block.blocksList[i1].dropBlockAsItemWithChance(worldObj, j, k, l, worldObj.getBlockMetadata(j, k, l), 0.3F, i1);
                 worldObj.setBlockWithNotify(j, k, l, 0);
                 Block.blocksList[i1].onBlockDestroyedByExplosion(worldObj, j, k, l);
                	if(worldObj.getBlockId(j, k, l) == 0 && Block.fire.canPlaceBlockAt(worldObj, j, k, l))

@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+
 import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.GL11;
 
@@ -21,7 +22,7 @@ public class SMGuiPlasmaBench extends GuiContainer
         fontRenderer.drawString("Inventory", 10, 106, 0x008000);
     }
 
-    protected void drawGuiContainerBackgroundLayer(float f)
+    protected void drawGuiContainerBackgroundLayer(float f, int m, int n)
     {
         int i = mc.renderEngine.getTexture("/gui/plasmabench.png");
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);

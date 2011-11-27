@@ -1,12 +1,15 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode
+
 
 
 public class SMTileEntityPlasmaBench extends TileEntity
     implements IInventory
 {
+
+    private ItemStack furnaceItemStacks[];
+    public int furnaceBurnTime;
+    public int currentItemBurnTime;
+    public int furnaceCookTime;
 
     public SMTileEntityPlasmaBench()
     {
@@ -333,7 +336,7 @@ public class SMTileEntityPlasmaBench extends TileEntity
         return 0;
     }
 
-    public boolean canInteractWith(EntityPlayer entityplayer)
+    public boolean isUseableByPlayer(EntityPlayer entityplayer)
     {
         if(worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this)
         {
@@ -342,18 +345,11 @@ public class SMTileEntityPlasmaBench extends TileEntity
         return entityplayer.getDistanceSq((double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D) <= 64D;
     }
 
-    private ItemStack furnaceItemStacks[];
-    public int furnaceBurnTime;
-    public int currentItemBurnTime;
-    public int furnaceCookTime;
-
 	public void openChest() 
 	{
-		return;
 	}
 
 	public void closeChest() 
 	{
-		return;
 	}
 }

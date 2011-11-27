@@ -1,7 +1,5 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode
+
 
 import java.util.Random;
 
@@ -138,7 +136,7 @@ public class SMBlockCausticFlowing extends SMBlockCausticFluids
             int i1 = world.getBlockId(i, j, k);
             if(i1 > 0)
             {
-				Block.blocksList[i1].dropBlockAsItem(world, i, j, k, world.getBlockMetadata(i, j, k));
+				Block.blocksList[i1].dropBlockAsItem(world, i, j, k, world.getBlockMetadata(i, j, k), i1);
             }
             world.setBlockAndMetadataWithNotify(i, j, k, blockID, l);
         }

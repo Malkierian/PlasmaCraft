@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+
 import java.util.Random;
 
 public class SMBlockAcidHot extends Block
@@ -27,7 +28,7 @@ public class SMBlockAcidHot extends Block
 
     public void onEntityWalking(World world, int i,int j, int k, Entity entity)
     {
-		entity.fire = 400;
+		entity.func_40046_d(20);
 		entity.attackEntityFrom(DamageSource.cactus, 50);
     }
 

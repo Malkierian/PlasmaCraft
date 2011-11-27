@@ -1,7 +1,5 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode
+
 
 import java.util.Random;
 
@@ -443,7 +441,7 @@ public abstract class SMBlockCausticFluids extends Block
 				}
 				else
 				{
-					player.fire = 400;
+					player.func_40046_d(20);
 					player.attackEntityFrom(DamageSource.lava, 3);
 				}
 			}
@@ -455,12 +453,12 @@ public abstract class SMBlockCausticFluids extends Block
 			{
 				return;
 			}
-			living.fire = 400;
+			living.func_40046_d(20);
 			living.attackEntityFrom(DamageSource.lava, 3);
 		}
 		else if(!(entity instanceof SMEntityCausticBoat))
 		{
-			entity.fire = 400;
+			entity.func_40046_d(20);
 			entity.attackEntityFrom(DamageSource.lava, 10);
 		}
     }

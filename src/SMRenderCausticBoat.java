@@ -1,7 +1,5 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode
+
 
 import org.lwjgl.opengl.GL11;
 
@@ -20,15 +18,15 @@ public class SMRenderCausticBoat extends Render
         GL11.glPushMatrix();
         GL11.glTranslatef((float)d, (float)d1, (float)d2);
         GL11.glRotatef(180F - f, 0.0F, 1.0F, 0.0F);
-        float f2 = (float)boat.timeSinceHit - f1;
-        float f3 = (float)boat.damageTaken - f1;
+        float f2 = (float)boat.func_41018_h() - f1;
+        float f3 = (float)boat.func_41020_g() - f1;
         if(f3 < 0.0F)
         {
             f3 = 0.0F;
         }
         if(f2 > 0.0F)
         {
-            GL11.glRotatef(((MathHelper.sin(f2) * f2 * f3) / 10F) * (float)boat.forwardDirection, 1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(((MathHelper.sin(f2) * f2 * f3) / 10F) * (float)boat.func_41016_i(), 1.0F, 0.0F, 0.0F);
         }
         loadTexture("/terrain.png");
         float f4 = 0.75F;

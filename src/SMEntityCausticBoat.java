@@ -1,7 +1,5 @@
 package net.minecraft.src;
-// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
-// Jad home page: http://www.kpdus.com/jad.html
-// Decompiler options: packimports(3) braces deadcode
+
 
 import java.util.List;
 import java.util.Random;
@@ -25,11 +23,11 @@ public class SMEntityCausticBoat extends EntityBoat
         {
             return true;
         }
-        forwardDirection = -forwardDirection;
-        timeSinceHit = 10;
-        damageTaken += i * 10;
+        func_41017_d(-func_41016_i());
+        func_41019_c(10);
+        func_41015_b(func_41020_g() + i * 10);
         setBeenAttacked();
-        if(damageTaken > 40)
+        if(func_41020_g() > 40)
         {
             for(int j = 0; j < 2; j++)
             {
@@ -65,13 +63,13 @@ public class SMEntityCausticBoat extends EntityBoat
     public void onUpdate()
     {
 		onEntityUpdate();
-        if(timeSinceHit > 0)
+        if(func_41018_h() > 0)
         {
-            timeSinceHit--;
+            func_41019_c(func_41018_h() - 1);
         }
-        if(damageTaken > 0)
+        if(func_41020_g() > 0)
         {
-            damageTaken--;
+            func_41015_b(func_41020_g() - 1);
         }
         prevPosX = posX;
         prevPosY = posY;

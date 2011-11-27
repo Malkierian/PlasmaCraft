@@ -1,8 +1,9 @@
+package net.minecraft.src;
 // Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
 // Jad home page: http://www.kpdus.com/jad.html
 // Decompiler options: packimports(3) braces deadcode 
 
-package net.minecraft.src;
+
 
 
 // Referenced classes of package net.minecraft.src:
@@ -18,6 +19,11 @@ public class SMEntityMutantCow extends EntityAnimal
         texture = "/plasmacraft/mutantcow.png";
         setSize(0.9F, 1.3F);
     }
+
+	public int getMaxHealth()
+	{
+		return 15;
+	}
 
     public void writeEntityToNBT(NBTTagCompound nbttagcompound)
     {
@@ -63,7 +69,12 @@ public class SMEntityMutantCow extends EntityAnimal
             return true;
         } else
         {
-            return false;
+            return super.interact(entityplayer);
         }
     }
+
+	protected EntityAnimal func_40145_a(EntityAnimal entityanimal)
+	{
+		return new SMEntityMutantCow(worldObj);
+	}
 }
