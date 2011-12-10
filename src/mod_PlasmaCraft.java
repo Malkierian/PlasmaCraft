@@ -1189,7 +1189,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		bootsIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/hazmat/hazmat_boots.png");
 	}
 	
-    private float func_1224_a(IBlockAccess blockAccess, int i, int j, int k)
+    private float getFluidHeight(IBlockAccess blockAccess, int i, int j, int k)
     {
         int l = 0;
         float f = 0.0F;
@@ -1277,10 +1277,10 @@ public class mod_PlasmaCraft extends BaseModMp
         double d1 = 1.0D;
         Material material = block.blockMaterial;
         int l = blockAccess.getBlockMetadata(i, j, k);
-        float f4 = func_1224_a(blockAccess, i, j, k);
-        float f5 = func_1224_a(blockAccess, i, j, k + 1);
-        float f6 = func_1224_a(blockAccess, i + 1, j, k + 1);
-        float f7 = func_1224_a(blockAccess, i + 1, j, k);
+        float f4 = getFluidHeight(blockAccess, i, j, k);
+        float f5 = getFluidHeight(blockAccess, i, j, k + 1);
+        float f6 = getFluidHeight(blockAccess, i + 1, j, k + 1);
+        float f7 = getFluidHeight(blockAccess, i + 1, j, k);
         if(flag)
         {
             flag2 = true;

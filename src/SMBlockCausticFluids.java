@@ -441,7 +441,7 @@ public abstract class SMBlockCausticFluids extends Block
 				}
 				else
 				{
-					player.func_40046_d(20);
+					player.setFire(20);
 					player.attackEntityFrom(DamageSource.lava, 3);
 				}
 			}
@@ -453,12 +453,12 @@ public abstract class SMBlockCausticFluids extends Block
 			{
 				return;
 			}
-			living.func_40046_d(20);
+			living.setFire(20);
 			living.attackEntityFrom(DamageSource.lava, 3);
 		}
 		else if(!(entity instanceof SMEntityCausticBoat))
 		{
-			entity.func_40046_d(20);
+			entity.setFire(20);
 			entity.attackEntityFrom(DamageSource.lava, 10);
 		}
     }

@@ -70,7 +70,7 @@ public class SMEntityMutantCow extends EntityAnimal
         }
     }
 
-	protected EntityAnimal func_40145_a(EntityAnimal entityanimal)
+	protected EntityAnimal spawnBabyAnimal(EntityAnimal entityanimal)
 	{
 		return new SMEntityMutantCow(worldObj);
 	}

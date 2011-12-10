@@ -18,7 +18,7 @@ public class SMEntityAcidFX extends EntityFX
         lavaParticleScale = particleScale;
         particleMaxAge = (int)(32D / (Math.random() * 0.8D + 0.2D));
         noClip = false;
-        super.func_40099_c(34);
+        super.setParticleTextureIndex(34);
         ease_out = 1.0f;
     }
 
