@@ -1,4 +1,4 @@
-
+package net.minecraft.src;
 
 
 import org.lwjgl.opengl.GL11;

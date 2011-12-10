@@ -1,4 +1,7 @@
-
+package net.minecraft.src;
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) braces deadcode 
 
 
 
@@ -70,7 +73,7 @@ public class SMEntityMutantCow extends EntityAnimal
         }
     }
 
-	protected EntityAnimal spawnBabyAnimal(EntityAnimal entityanimal)
+	protected EntityAnimal func_40145_a(EntityAnimal entityanimal)
 	{
 		return new SMEntityMutantCow(worldObj);
 	}

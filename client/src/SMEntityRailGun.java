@@ -1,4 +1,4 @@
-
+package net.minecraft.src;
 
 
 import java.util.List;
@@ -177,7 +177,7 @@ public class SMEntityRailGun extends Entity
                 	int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
                 	int k = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                 	worldObj.setBlockWithNotify(i, j, k, Block.fire.blockID);
-                	entity.setFire(5);
+                	entity.func_40046_d(5);
                 }
 
             	

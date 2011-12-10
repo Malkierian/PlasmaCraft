@@ -1,4 +1,4 @@
-
+package net.minecraft.src;
 
 
 import org.lwjgl.opengl.GL11;
@@ -18,15 +18,15 @@ public class SMRenderCausticBoat extends Render
         GL11.glPushMatrix();
         GL11.glTranslatef((float)d, (float)d1, (float)d2);
         GL11.glRotatef(180F - f, 0.0F, 1.0F, 0.0F);
-        float f2 = (float)boat.getTimeSinceHit() - f1;
-        float f3 = (float)boat.getDamageTaken() - f1;
+        float f2 = (float)boat.func_41018_h() - f1;
+        float f3 = (float)boat.func_41020_g() - f1;
         if(f3 < 0.0F)
         {
             f3 = 0.0F;
         }
         if(f2 > 0.0F)
         {
-            GL11.glRotatef(((MathHelper.sin(f2) * f2 * f3) / 10F) * (float)boat.getForwardDirection(), 1.0F, 0.0F, 0.0F);
+            GL11.glRotatef(((MathHelper.sin(f2) * f2 * f3) / 10F) * (float)boat.func_41016_i(), 1.0F, 0.0F, 0.0F);
         }
         loadTexture("/terrain.png");
         float f4 = 0.75F;

@@ -1,4 +1,4 @@
-
+package net.minecraft.src;
 
 
 import java.util.List;
@@ -173,7 +173,7 @@ public class SMEntityLaser extends Entity
                 	int i = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
                 	int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
                 	int k = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-                	entity.setFire(1);
+                	entity.func_40046_d(1);
                     setEntityDead();
                     worldObj.setBlockWithNotify(i, j, k, Block.fire.blockID);
                 }

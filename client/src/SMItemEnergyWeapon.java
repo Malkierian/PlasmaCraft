@@ -1,4 +1,4 @@
-
+package net.minecraft.src;
 
 import java.util.Random;
 
@@ -142,7 +142,7 @@ public class SMItemEnergyWeapon extends Item
             }
     	}
     	
-    	if (shiftedIndex == mod_PlasmaCraft.cryoblaster.shiftedIndex)
+    	/*if (shiftedIndex == mod_PlasmaCraft.cryoblaster.shiftedIndex)
     	{
             if(entityplayer.inventory.consumeInventoryItem(mod_PlasmaCraft.energyCell.shiftedIndex))
             {                	
@@ -154,7 +154,7 @@ public class SMItemEnergyWeapon extends Item
                 	}
             	
             }
-    	}
+    	}*/ //TODO
         return itemstack;
     }
 }

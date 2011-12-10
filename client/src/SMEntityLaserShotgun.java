@@ -1,4 +1,4 @@
-
+package net.minecraft.src;
 
 
 import java.util.List;
@@ -174,7 +174,7 @@ public class SMEntityLaserShotgun extends Entity
                 	int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
                 	int k = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                 	worldObj.setBlockWithNotify(i, j, k, Block.fire.blockID);
-                	entity.setFire(1);
+                	entity.func_40046_d(1);
                     setEntityDead();
                 }
 

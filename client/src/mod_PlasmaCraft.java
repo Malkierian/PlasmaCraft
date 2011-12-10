@@ -1,4 +1,4 @@
-
+package net.minecraft.src;
 
 
 import net.minecraft.client.Minecraft;
@@ -43,37 +43,37 @@ public class mod_PlasmaCraft extends BaseModMp
 		props.getInt("texturePackTileWidth", 16);
 		props.getInt("texturePackTileHeight", 16);
 
-		props.getInt("frozenCryoniteID", 131);
-		props.getInt("cryoniteStillID", 130);
-		props.getInt("cryoniteFlowingID", 129);
-		props.getInt("oreUraniumID", 128);
-		props.getInt("acidStillID", 127);
-		props.getInt("acidFlowingID", 126);
-		props.getInt("reinforcedGlassID", 125);
-		props.getInt("plasmificatorIdleID", 124);
-		props.getInt("plasmificatorActiveID", 123);
-		props.getInt("acidBarrierID", 122);
-		props.getInt("acidTntID", 121);
-		props.getInt("oreNeptuniumID", 120);
-		props.getInt("oreObsidiumID", 119);
-		props.getInt("greenGlowClothID", 118);
-		props.getInt("pinkGlowClothID", 117);
-		props.getInt("orePlutoniumID", 116);
-		props.getInt("oreRadioniteID", 115);
-		props.getInt("oreNeptuniumID", 114);
-		props.getInt("oreObsidiumID", 113);
-		props.getInt("radioniteStillID", 143);
-		props.getInt("radioniteFlowingID", 142);
-		props.getInt("plutoniumStillID", 141);
-		props.getInt("plutoniumFlowingID", 140);
-		props.getInt("neptuniumStillID", 139);
-		props.getInt("neptuniumFlowingID", 138);
-		props.getInt("uraniumStillID", 137);
-		props.getInt("uraniumFlowingID", 136);
-		props.getInt("obsidiumStillID", 135);
-		props.getInt("obsidiumFlowingID", 134);
-		props.getInt("netherflowStillID", 133);
-		props.getInt("netherflowFlowingID", 132);
+		props.getInt("frozenCryoniteID", 138);
+		props.getInt("cryoniteStillID", 137);
+		props.getInt("cryoniteFlowingID", 136);
+		props.getInt("oreUraniumID", 135);
+		props.getInt("acidStillID", 134);
+		props.getInt("acidFlowingID", 133);
+		props.getInt("reinforcedGlassID", 132);
+		props.getInt("plasmificatorIdleID", 131);
+		props.getInt("plasmificatorActiveID", 130);
+		props.getInt("acidBarrierID", 129);
+		props.getInt("acidTntID", 128);
+		props.getInt("oreNeptuniumID", 127);
+		props.getInt("oreObsidiumID", 126);
+		props.getInt("greenGlowClothID", 125);
+		props.getInt("pinkGlowClothID", 124);
+		props.getInt("orePlutoniumID", 154);
+		props.getInt("oreRadioniteID", 153);
+		props.getInt("oreNeptuniumID", 152);
+		props.getInt("oreObsidiumID", 151);
+		props.getInt("radioniteStillID", 150);
+		props.getInt("radioniteFlowingID", 149);
+		props.getInt("plutoniumStillID", 148);
+		props.getInt("plutoniumFlowingID", 147);
+		props.getInt("neptuniumStillID", 146);
+		props.getInt("neptuniumFlowingID", 145);
+		props.getInt("uraniumStillID", 144);
+		props.getInt("uraniumFlowingID", 143);
+		props.getInt("obsidiumStillID", 142);
+		props.getInt("obsidiumFlowingID", 141);
+		props.getInt("netherflowStillID", 140);
+		props.getInt("netherflowFlowingID", 139);
 
 		props.getInt("ingotPlutoniumID", 2048);
 		props.getInt("ingotRadioniteID", 2049);
@@ -121,8 +121,8 @@ public class mod_PlasmaCraft extends BaseModMp
 		props.getInt("cryoniteVialID", 2093);
 		props.getInt("goopCryoniteID", 2094);
 		props.getInt("ingotCryoniteID", 2095);
-		props.getInt("cryoblasterID", 2096);
-		props.getInt("batterycryoID", 2099);
+		//props.getInt("cryoblasterID", 2096);
+		//props.getInt("batterycryoID", 2047);
 		props.getInt("ThermoPelletID", 2098);
 
 		props.getInt("neptuniumOreYStart", 32);
@@ -227,11 +227,11 @@ public class mod_PlasmaCraft extends BaseModMp
 		ModLoaderMp.RegisterNetClientHandlerEntity(SMEntityAcid.class, 164);
 		ModLoaderMp.RegisterNetClientHandlerEntity(SMEntityAcidTNTPrimed.class, 165);
 		ModLoaderMp.RegisterNetClientHandlerEntity(SMEntityAcidGrenade.class, 166);
-		ModLoaderMp.RegisterNetClientHandlerEntity(SMEntityCryoBlast.class, 167);
+		//ModLoaderMp.RegisterNetClientHandlerEntity(SMEntityCryoBlast.class, 167);
 
 		causticID = ModLoader.getUniqueBlockModelID(this, true);
         
-		inst1 = this;
+		
     	//caustic = new MaterialLiquid(MapColor.waterColor);
 
  		ModLoader.RegisterTileEntity(SMTileEntityPlasmaBench.class, "plasmaBench");
@@ -367,9 +367,9 @@ public class mod_PlasmaCraft extends BaseModMp
     	.setIconIndex(ThermoPelletIndex)
     	.setItemName("thermpellet");
     	
-    	BatteryCryo = (new Item(props.getInt("BatteryCryoID")))
-    	.setIconIndex(BatteryCryoIndex)
-    	.setItemName("batteryCryo");
+    	//BatteryCryo = (new Item(props.getInt("BatteryCryoID")))
+    	//.setIconIndex(BatteryCryoIndex)
+    	//.setItemName("batteryCryo");
     	
     	BatteryCharged = (new Item(props.getInt("BatteryChargedID")))
     	.setIconIndex(BatteryChargedIndex)
@@ -524,9 +524,9 @@ public class mod_PlasmaCraft extends BaseModMp
     	.setIconIndex(railgunIndex)
     	.setItemName("railGun");
     	
-    	cryoblaster = (new SMItemEnergyWeapon(props.getInt("cryoblasterID"), 100))
-    	.setIconIndex(cryoblasterIndex)
-    	.setItemName("cryoBlaster");
+    	//cryoblaster = (new SMItemEnergyWeapon(props.getInt("cryoblasterID"), 100))
+    	//.setIconIndex(cryoblasterIndex)
+    	//.setItemName("cryoBlaster"); TODO
     	
     	lasershotgun = (new SMItemEnergyWeapon(props.getInt("lasershotgunID"), 100))
     	.setIconIndex(lasershotgunIndex)
@@ -605,7 +605,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		ModLoader.AddName(obsidiumMoving, "Obsidium (Moving)");
 		ModLoader.AddName(obsidiumStill, "Obsidium (Still)");
 
-		//ModLoader.AddName(shockBlock, "Shock Block");
+		//ModLoader.AddName(shockBlock, "Shock Block"); TODO
 		ModLoader.AddName(oreUranium, "Uranium Ore");
 		ModLoader.AddName(frozenCryonite, "Frozen Cryonite");
 		ModLoader.AddName(glowCloth1, "Green Glowcloth");
@@ -626,7 +626,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		ModLoader.AddName(beamSplitter, "Rifle Beam Splitter");
 		ModLoader.AddName(BatteryEmpty, "Caustic Battery: Empty");
 		ModLoader.AddName(ThermoPellet, "Thermonuclear Pellet");
-		ModLoader.AddName(BatteryCryo, "Cryo Battery");
+		//ModLoader.AddName(BatteryCryo, "Cryo Battery"); TODO
 		ModLoader.AddName(BatteryCharged, "Caustic Battery: Charged");
 		ModLoader.AddName(BatteryOvercharged, "Caustic Battery: Overcharged");
 		ModLoader.AddName(BatteryPlasma, "Caustic Battery: Plasma");
@@ -661,7 +661,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		ModLoader.AddName(lasergunsplit, "Laser Rifle + Beam Splitter");
 		ModLoader.AddName(acidgun, "Acid Launcher");
 		ModLoader.AddName(railgun, "Rail Gun");
-		ModLoader.AddName(cryoblaster, "Cryo Blaster");
+		//ModLoader.AddName(cryoblaster, "Cryo Blaster"); TODO
 		ModLoader.AddName(lasershotgun, "Laser Shotgun");
 		ModLoader.AddName(causticBoat, "Radionite Boat");
 		ModLoader.AddName(helmetHazmat, "Hazmat Hood");
@@ -780,7 +780,7 @@ public class mod_PlasmaCraft extends BaseModMp
 			Character.valueOf('Y'), ingotPlutonium
 		});
 		
-		ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[]{
+		/*ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[]{
 			"  A", 
 			"CBX",
 			" DE",
@@ -790,7 +790,7 @@ public class mod_PlasmaCraft extends BaseModMp
 			Character.valueOf('D'), ingotObsidium,
 			Character.valueOf('X'), BatteryCryo,
 			Character.valueOf('E'), ingotPlutonium
-		});
+		});*/ //TODO
 		
 		ModLoader.AddRecipe(new ItemStack(lasershotgun, 1), new Object[]{
 			"  Z", 
@@ -875,12 +875,12 @@ public class mod_PlasmaCraft extends BaseModMp
             Character.valueOf('I'), goopUranium
         });
         
-        ModLoader.AddRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
+        /*ModLoader.AddRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
             "R", 
             "X",
             Character.valueOf('R'), goopCryonite,
             Character.valueOf('X'), BatteryEmpty
-        });
+        });*/ //TODO
         
         ModLoader.AddRecipe(new ItemStack(BatteryPlasma, 1), new Object[] {
             "R", 
@@ -1173,12 +1173,12 @@ public class mod_PlasmaCraft extends BaseModMp
 		lasergunsplitIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/lasergunsplit.png");
 		acidgunIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/acidgun.png");
 		railgunIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/railgun.png");
-		cryoblasterIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/cryoblaster.png");
+		//cryoblasterIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/cryoblaster.png"); TODO
 		lasershotgunIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/lasershotgun.png");
 		energyCellIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/energycell.png");
 		BatteryEmptyIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/emptybat.png");
 		ThermoPelletIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/thermopellet.png");
-		BatteryCryoIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/cryobat.png");
+		//BatteryCryoIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/cryobat.png"); TODO
 		BatteryChargedIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/chargedbat.png");
 		BatteryOverchargedIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/overchargedbat.png");
 		BatteryPlasmaIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/items/plasmabat.png");
@@ -1189,7 +1189,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		bootsIndex = ModLoader.addOverride("/gui/items.png", "/plasmacraft/hazmat/hazmat_boots.png");
 	}
 	
-    private float getFluidHeight(IBlockAccess blockAccess, int i, int j, int k)
+    private float func_1224_a(IBlockAccess blockAccess, int i, int j, int k)
     {
         int l = 0;
         float f = 0.0F;
@@ -1277,10 +1277,10 @@ public class mod_PlasmaCraft extends BaseModMp
         double d1 = 1.0D;
         Material material = block.blockMaterial;
         int l = blockAccess.getBlockMetadata(i, j, k);
-        float f4 = getFluidHeight(blockAccess, i, j, k);
-        float f5 = getFluidHeight(blockAccess, i, j, k + 1);
-        float f6 = getFluidHeight(blockAccess, i + 1, j, k + 1);
-        float f7 = getFluidHeight(blockAccess, i + 1, j, k);
+        float f4 = func_1224_a(blockAccess, i, j, k);
+        float f5 = func_1224_a(blockAccess, i, j, k + 1);
+        float f6 = func_1224_a(blockAccess, i + 1, j, k + 1);
+        float f7 = func_1224_a(blockAccess, i + 1, j, k);
         if(flag)
         {
             flag2 = true;
@@ -1637,7 +1637,7 @@ public class mod_PlasmaCraft extends BaseModMp
 	public static Item beamSplitter;
 	public static Item BatteryEmpty;
 	public static Item ThermoPellet;
-	public static Item BatteryCryo;
+	//public static Item BatteryCryo;
 	public static Item BatteryCharged;
 	public static Item BatteryOvercharged;
 	public static Item BatteryPlasma;
@@ -1673,7 +1673,7 @@ public class mod_PlasmaCraft extends BaseModMp
     public static Item lasergunsplit;
     public static Item acidgun;
     public static Item railgun;
-    public static Item cryoblaster;
+    //public static Item cryoblaster;
     public static Item lasershotgun;
 
     public static Item helmetHazmat;
@@ -1727,7 +1727,7 @@ public class mod_PlasmaCraft extends BaseModMp
 	public static int beamSplitterIndex;
 	public static int BatteryEmptyIndex;
 	public static int ThermoPelletIndex;
-	public static int BatteryCryoIndex;
+	//public static int BatteryCryoIndex;
 	public static int BatteryChargedIndex;
 	public static int BatteryOverchargedIndex;
 	public static int BatteryPlasmaIndex;
@@ -1750,7 +1750,7 @@ public class mod_PlasmaCraft extends BaseModMp
     public static int lasergunsplitIndex;
     public static int acidgunIndex;
     public static int railgunIndex;
-    public static int cryoblasterIndex;
+    //public static int cryoblasterIndex;
     public static int lasershotgunIndex;
     
     //public static int shockBlockIndex;
