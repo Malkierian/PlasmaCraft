@@ -27,7 +27,7 @@ public class SMBlockPlasmaOre extends BlockOre
     {
     	if (blockID == mod_PlasmaCraft.oreUranium.blockID)
     	{
-    		entity.attackEntityFrom(null, 5);
+    		entity.attackEntityFrom(DamageSource.cactus, 5);
     	}
     }
 
@@ -35,7 +35,7 @@ public class SMBlockPlasmaOre extends BlockOre
     {
     	if (blockID == mod_PlasmaCraft.oreUranium.blockID)
     	{
-    			entity.attackEntityFrom(null, 5);
+    			entity.attackEntityFrom(DamageSource.cactus, 5);
         }
     }
 }

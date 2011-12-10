@@ -181,7 +181,7 @@ public class SMEntityRailGun extends Entity
                 	if (mod_PlasmaCraft.RailGunCreatesFire == 1){
                     	worldObj.setBlockWithNotify(i, j, k, Block.fire.blockID);
                 	}
-                	entity.fire = 100;
+                	movingobjectposition.entityHit.func_40034_j(20);
                 }
             	
             } else {

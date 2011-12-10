@@ -27,12 +27,12 @@ public class SMBlockAcidHot extends Block
 
     public void onEntityWalking(World world, int i,int j, int k, Entity entity)
     {
-		entity.fire = 400;
-		entity.attackEntityFrom(null, 50);
+		entity.setOnFireFromLava();
+		entity.attackEntityFrom(DamageSource.cactus, 50);
     }
 
     public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     {
-		entity.attackEntityFrom(null, 50);
+		entity.attackEntityFrom(DamageSource.cactus, 50);
     }
 }

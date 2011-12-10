@@ -138,7 +138,7 @@ public class SMBlockCausticFlowing extends SMBlockCausticFluids
             int i1 = world.getBlockId(i, j, k);
             if(i1 > 0)
             {
-				Block.blocksList[i1].dropBlockAsItem(world, i, j, k, world.getBlockMetadata(i, j, k));
+            	Block.blocksList[i1].dropBlockAsItem(world, i, j, k, world.getBlockMetadata(i, j, k), i1);
             }
             world.setBlockAndMetadataWithNotify(i, j, k, blockID, l);
         }

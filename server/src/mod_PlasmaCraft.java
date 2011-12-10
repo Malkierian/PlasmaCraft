@@ -9,7 +9,7 @@ public class mod_PlasmaCraft extends BaseModMp
 {
     public String Version()
     {
-    	return "1.8.1/0.2.3";
+    	return "1.0.0/0.2.3";
 	}
     
     // PC == ChunkProviderGenerate
@@ -52,7 +52,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		ModLoaderMp.RegisterEntityTrackerEntry(SMEntityAcid.class, 164);
 		ModLoaderMp.RegisterEntityTrackerEntry(SMEntityAcidTNTPrimed.class, 165);
 		ModLoaderMp.RegisterEntityTrackerEntry(SMEntityAcidGrenade.class, 166);
-		ModLoaderMp.RegisterEntityTrackerEntry(SMEntityCryoBlast.class, 167);
+		//ModLoaderMp.RegisterEntityTrackerEntry(SMEntityCryoBlast.class, 167);TODO
 
 		
 		ModLoaderMp.RegisterEntityTracker(SMEntityLaser.class, 160, 3);
@@ -62,7 +62,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		ModLoaderMp.RegisterEntityTracker(SMEntityAcid.class, 160 , 3);
 		ModLoaderMp.RegisterEntityTracker(SMEntityAcidTNTPrimed.class, 160 , 3);
 		ModLoaderMp.RegisterEntityTracker(SMEntityAcidGrenade.class, 160, 3);
-		ModLoaderMp.RegisterEntityTracker(SMEntityCryoBlast.class, 160, 3);
+		//ModLoaderMp.RegisterEntityTracker(SMEntityCryoBlast.class, 160, 3);TODO
 
 		
 		causticID = ModLoader.getUniqueBlockModelID(this, true);
@@ -253,9 +253,9 @@ public class mod_PlasmaCraft extends BaseModMp
         	.setBlockName("acidTnt");
 		}
 		
-    	BatteryCryo = (new Item(props.getInt("BatteryCryoID")))
-    	.setIconIndex(BatteryCryoIndex)
-    	.setItemName("batteryCryo");
+    	//BatteryCryo = (new Item(props.getInt("BatteryCryoID")))
+    	//.setIconIndex(BatteryCryoIndex)
+    	//.setItemName("batteryCryo");
     	
     	ingotCryonite = (new Item(props.getInt("ingotCryoniteID")))
     	.setIconIndex(ingotCryoniteIndex)
@@ -270,9 +270,9 @@ public class mod_PlasmaCraft extends BaseModMp
         .setItemName("cryoniteVial")
         .setContainerItem(acidVial);
         
-    	cryoblaster = (new SMItemEnergyWeapon(props.getInt("cryoblasterID"), 100))
-    	.setIconIndex(cryoblasterIndex)
-    	.setItemName("cryoBlaster");
+    	//cryoblaster = (new SMItemEnergyWeapon(props.getInt("cryoblasterID"), 100))
+    	//.setIconIndex(cryoblasterIndex)
+    	//.setItemName("cryoBlaster");
 
     	ingotPlutonium = (new Item(props.getInt("ingotPlutoniumID")))
     	.setIconIndex(ingotPlutoniumIndex)
@@ -434,9 +434,9 @@ public class mod_PlasmaCraft extends BaseModMp
     	.setIconIndex(railgunIndex)
     	.setItemName("railGun");
     	
-    	cryoblaster = (new SMItemEnergyWeapon(props.getInt("cryoblasterID"), 100))
-    	.setIconIndex(cryoblasterIndex)
-    	.setItemName("cryoBlaster");
+    	//cryoblaster = (new SMItemEnergyWeapon(props.getInt("cryoblasterID"), 100))
+    	//.setIconIndex(cryoblasterIndex)
+    	//.setItemName("cryoBlaster");
     	
     	lasershotgun = (new SMItemEnergyWeapon(props.getInt("lasershotgunID"), 100))
     	.setIconIndex(lasershotgunIndex)
@@ -449,19 +449,20 @@ public class mod_PlasmaCraft extends BaseModMp
         hazmatBootsID = props.getInt("hazmatBootsID");
 
         int renderIndex = ModLoader.AddArmor("hazmat");
-    	helmetHazmat = (new ItemArmor(props.getInt("hazmatHoodID"), 2, renderIndex, 0))
+    	//helmetHazmat = (new ItemArmor(props.getInt("hazmatHoodID"), 2, renderIndex, 0))
+    	helmetHazmat = (new ItemArmor(props.getInt("hazmatHoodID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 0))
     	.setIconIndex(helmetIndex)
     	.setItemName("helmetHazmat");
 
-    	plateHazmat = (new ItemArmor(props.getInt("hazmatJacketID"), 2, renderIndex, 1))
+    	plateHazmat = (new ItemArmor(props.getInt("hazmatJacketID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 1))
     	.setIconIndex(plateIndex)
     	.setItemName("plateHazmat");
 
-    	legsHazmat = (new ItemArmor(props.getInt("hazmatPantsID"), 2, renderIndex, 2))
+    	legsHazmat = (new ItemArmor(props.getInt("hazmatPantsID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 2))
     	.setIconIndex(legsIndex)
     	.setItemName("legsHazmat");
 
-    	bootsHazmat = (new ItemArmor(props.getInt("hazmatBootsID"), 2, renderIndex, 3))
+    	bootsHazmat = (new ItemArmor(props.getInt("hazmatBootsID"), EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 3))
     	.setIconIndex(bootsIndex)
     	.setItemName("bootsHazmat");
 
@@ -703,7 +704,7 @@ public class mod_PlasmaCraft extends BaseModMp
             Character.valueOf('X'), BatteryEmpty
         });
         
-		ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[]{
+		/*ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[]{
 			"  A", 
 			"CBX",
 			" DE",
@@ -713,14 +714,14 @@ public class mod_PlasmaCraft extends BaseModMp
 			Character.valueOf('D'), ingotObsidium,
 			Character.valueOf('X'), BatteryCryo,
 			Character.valueOf('E'), ingotPlutonium
-		});
+		});*/
 		
-        ModLoader.AddRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
+        /*ModLoader.AddRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
             "R", 
             "X",
             Character.valueOf('R'), goopCryonite,
             Character.valueOf('X'), BatteryEmpty
-        });
+        });*/
         
         ModLoader.AddRecipe(new ItemStack(cryoniteVial, 1), new Object[] {
             "Q", "J",
@@ -944,9 +945,7 @@ public class mod_PlasmaCraft extends BaseModMp
 		serverprops.getBoolean("LiquidSourceExplodesAfterCausticExplosion", false);
 		//
 	    	
-		props.getInt("frozenCryoniteID", 131);
-		props.getInt("cryoniteStillID", 130);
-		props.getInt("cryoniteFlowingID", 129);
+
 		props.getInt("cryoniteVialID", 2093);
 		props.getInt("goopCryoniteID", 2094);
 		props.getInt("ingotCryoniteID", 2095);
@@ -956,34 +955,37 @@ public class mod_PlasmaCraft extends BaseModMp
 		props.getInt("texturePackTileWidth", 16);
 		props.getInt("texturePackTileHeight", 16);
 
-		props.getInt("oreUraniumID", 128);
-		props.getInt("acidStillID", 127);
-		props.getInt("acidFlowingID", 126);
-		props.getInt("reinforcedGlassID", 125);
-		props.getInt("plasmificatorIdleID", 124);
-		props.getInt("plasmificatorActiveID", 123);
-		props.getInt("acidBarrierID", 122);
-		props.getInt("acidTntID", 121);
-		props.getInt("oreNeptuniumID", 120);
-		props.getInt("oreObsidiumID", 119);
-		props.getInt("greenGlowClothID", 118);
-		props.getInt("pinkGlowClothID", 117);
-		props.getInt("orePlutoniumID", 116);
-		props.getInt("oreRadioniteID", 115);
-		props.getInt("oreNeptuniumID", 114);
-		props.getInt("oreObsidiumID", 113);
-		props.getInt("radioniteStillID", 143);
-		props.getInt("radioniteFlowingID", 142);
-		props.getInt("plutoniumStillID", 141);
-		props.getInt("plutoniumFlowingID", 140);
-		props.getInt("neptuniumStillID", 139);
-		props.getInt("neptuniumFlowingID", 138);
-		props.getInt("uraniumStillID", 137);
-		props.getInt("uraniumFlowingID", 136);
-		props.getInt("obsidiumStillID", 135);
-		props.getInt("obsidiumFlowingID", 134);
-		props.getInt("netherflowStillID", 133);
-		props.getInt("netherflowFlowingID", 132);
+		props.getInt("frozenCryoniteID", 138);
+		props.getInt("cryoniteStillID", 137);
+		props.getInt("cryoniteFlowingID", 136);
+		props.getInt("oreUraniumID", 135);
+		props.getInt("acidStillID", 134);
+		props.getInt("acidFlowingID", 133);
+		props.getInt("reinforcedGlassID", 132);
+		props.getInt("plasmificatorIdleID", 131);
+		props.getInt("plasmificatorActiveID", 130);
+		props.getInt("acidBarrierID", 129);
+		props.getInt("acidTntID", 128);
+		props.getInt("oreNeptuniumID", 127);
+		props.getInt("oreObsidiumID", 126);
+		props.getInt("greenGlowClothID", 125);
+		props.getInt("pinkGlowClothID", 124);
+		props.getInt("orePlutoniumID", 154);
+		props.getInt("oreRadioniteID", 153);
+		props.getInt("oreNeptuniumID", 152);
+		props.getInt("oreObsidiumID", 151);
+		props.getInt("radioniteStillID", 150);
+		props.getInt("radioniteFlowingID", 149);
+		props.getInt("plutoniumStillID", 148);
+		props.getInt("plutoniumFlowingID", 147);
+		props.getInt("neptuniumStillID", 146);
+		props.getInt("neptuniumFlowingID", 145);
+		props.getInt("uraniumStillID", 144);
+		props.getInt("uraniumFlowingID", 143);
+		props.getInt("obsidiumStillID", 142);
+		props.getInt("obsidiumFlowingID", 141);
+		props.getInt("netherflowStillID", 140);
+		props.getInt("netherflowFlowingID", 139);
 
 		props.getInt("ingotPlutoniumID", 2048);
 		props.getInt("ingotRadioniteID", 2049);
@@ -1167,11 +1169,11 @@ public class mod_PlasmaCraft extends BaseModMp
     public static Block cryoniteStill;
     public static Block cryoniteMoving;
     public static Block frozenCryonite;
-    public static Item BatteryCryo;
+    //public static Item BatteryCryo;
     public static Item ingotCryonite;
     public static Item goopCryonite;
     public static Item cryoniteVial;
-    public static Item cryoblaster;
+    //public static Item cryoblaster;
     public static int frozenCryoniteIndex;
     public static int cryoniteStillIndex;
     public static int cryoniteMovingIndex;

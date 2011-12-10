@@ -170,7 +170,7 @@ label0:
 
             if(i1 > 0)
             {
-                Block.blocksList[i1].dropBlockAsItemWithChance(worldObj, j, k, l, worldObj.getBlockMetadata(j, k, l), 0.3F);
+            	Block.blocksList[i1].dropBlockAsItemWithChance(worldObj, j, k, l, worldObj.getBlockMetadata(j, k, l), 0.3F, i1);
                 worldObj.setBlockWithNotify(j, k, l, 0);
                 Block.blocksList[i1].onBlockDestroyedByExplosion(worldObj, j, k, l);
             }

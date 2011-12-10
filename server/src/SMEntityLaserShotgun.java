@@ -177,7 +177,7 @@ public class SMEntityLaserShotgun extends Entity
                 	int k = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                 	if (mod_PlasmaCraft.LaserRifleCreatesFire == 1){
                 	worldObj.setBlockWithNotify(i, j, k, Block.fire.blockID);
-                	entity.fire = 20;
+                	movingobjectposition.entityHit.func_40034_j(20);
                 	}
                     setEntityDead();
                 }

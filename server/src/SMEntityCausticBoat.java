@@ -25,11 +25,11 @@ public class SMEntityCausticBoat extends EntityBoat
         {
             return true;
         }
-        forwardDirection = -forwardDirection;
-        damageTaken = 10;
-        damageTaken += i * 10;
+        func_41026_d(-func_41029_m());
+        func_41027_c(10);
+        func_41024_b(func_41025_i() + i * 10);
         setBeenAttacked();
-        if(damageTaken > 40)
+        if(func_41025_i() > 40)
         {
             for(int j = 0; j < 2; j++)
             {
@@ -64,14 +64,14 @@ public class SMEntityCausticBoat extends EntityBoat
 
     public void onUpdate()
     {
-		onEntityUpdate();
-        if(damageTaken > 0)
+        super.onUpdate();
+        if(func_41028_k() > 0)
         {
-        	damageTaken--;
+            func_41027_c(func_41028_k() - 1);
         }
-        if(damageTaken > 0)
+        if(func_41025_i() > 0)
         {
-        	damageTaken--;
+            func_41024_b(func_41025_i() - 1);
         }
         prevPosX = posX;
         prevPosY = posY;

@@ -177,7 +177,7 @@ public class SMEntityLaser extends Entity
                 	int k = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                 	if (mod_PlasmaCraft.LaserRifleCreatesFire == 1)
                 	{
-                		entity.fire = 20;
+                		movingobjectposition.entityHit.func_40034_j(20);
                     	worldObj.setBlockWithNotify(i, j, k, Block.fire.blockID);
                 	}
                     setEntityDead();
@@ -186,26 +186,26 @@ public class SMEntityLaser extends Entity
             	int i = movingobjectposition.blockX;
             	int j = movingobjectposition.blockY;
             	int k = movingobjectposition.blockZ;
-            	int willplacefire = 1;
+            	boolean willplacefire = true;
             	if (!worldObj.singleplayerWorld)
             	{
             		if(worldObj.getBlockId(i, j, k) == mod_PlasmaCraft.frozenCryonite.blockID)
                     {
                         worldObj.setBlockWithNotify(i, j, k, 0);
                         worldObj.setBlockWithNotify(i, j, k, mod_PlasmaCraft.cryoniteMoving.blockID);
-                        willplacefire = 0;
+                        willplacefire = false;
                     }
                 	if(worldObj.getBlockId(i, j, k) == Block.oreIron.blockID)
                     {
                         worldObj.setBlockWithNotify(i, j, k, 0);
                         dropItem(Item.ingotIron.shiftedIndex,1);
-                        willplacefire = 0;
+                        willplacefire = false;
                     }
                 	if(worldObj.getBlockId(i, j, k) == Block.oreGold.blockID)
                     {
                         worldObj.setBlockWithNotify(i, j, k, 0);
                         dropItem(Item.ingotGold.shiftedIndex,1);
-                        willplacefire = 0;
+                        willplacefire = false;
                     }
                 	/*if(worldObj.getBlockId(i, j, k) == mod_PlasmaCraft.oreNeptunium.blockID)
                     {
@@ -217,19 +217,19 @@ public class SMEntityLaser extends Entity
                     {
                         worldObj.setBlockWithNotify(i, j, k, 0);
                         dropItem(mod_PlasmaCraft.goopRadionite.shiftedIndex,1);
-                        willplacefire = 0;
+                        willplacefire = false;
                     }
                 	if(worldObj.getBlockId(i, j, k) == mod_PlasmaCraft.orePlutonium.blockID)
                     {
                         worldObj.setBlockWithNotify(i, j, k, 0);
                         dropItem(mod_PlasmaCraft.goopPlutonium.shiftedIndex,1);
-                        willplacefire = 0;
+                        willplacefire = false;
                     }
                 	if(worldObj.getBlockId(i, j, k) == mod_PlasmaCraft.oreUranium.blockID)
                     {
                         worldObj.setBlockWithNotify(i, j, k, 0);
                         dropItem(mod_PlasmaCraft.goopUranium.shiftedIndex,1);
-                        willplacefire = 0;
+                        willplacefire = false;
                     }
                    	/*if(worldObj.getBlockId(i, j, k) == mod_PlasmaCraft.oreObsidium.blockID)
                     {
@@ -239,35 +239,35 @@ public class SMEntityLaser extends Entity
                     }*/
                    	if(worldObj.getBlockId(i, j + 1, k) == 0 && Block.fire.canPlaceBlockAt(worldObj, i, j, k))
                     {
-                   		if (willplacefire == 1)
+                   		if (willplacefire == true)
                    		{
                         worldObj.setBlockWithNotify(i, j + 1, k, Block.fire.blockID);
                    		}
                     }
                    	if(worldObj.getBlockId(i, j, k + 1) == 0 && Block.fire.canPlaceBlockAt(worldObj, i, j, k))
                     {
-                   		if (willplacefire == 1)
+                   		if (willplacefire == true)
                    		{
                         worldObj.setBlockWithNotify(i, j, k + 1, Block.fire.blockID);
                    		}
                     }
                    	if(worldObj.getBlockId(i, j, k - 1) == 0 && Block.fire.canPlaceBlockAt(worldObj, i, j, k))
                     {
-                   		if (willplacefire == 1)
+                   		if (willplacefire == true)
                    		{
                         worldObj.setBlockWithNotify(i, j, k - 1, Block.fire.blockID);
                    		}
                     }
                    	if(worldObj.getBlockId(i + 1, j, k) == 0 && Block.fire.canPlaceBlockAt(worldObj, i, j, k))
                     {
-                   		if (willplacefire == 1)
+                   		if (willplacefire == true)
                    		{
                         worldObj.setBlockWithNotify(i + 1, j, k, Block.fire.blockID);
                    		}
                     }
                    	if(worldObj.getBlockId(i - 1, j, k) == 0 && Block.fire.canPlaceBlockAt(worldObj, i, j, k))
                     {
-                   		if (willplacefire == 1)
+                   		if (willplacefire == true)
                    		{
                         worldObj.setBlockWithNotify(i - 1, j, k, Block.fire.blockID);
                    		}

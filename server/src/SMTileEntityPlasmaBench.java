@@ -357,4 +357,10 @@ public class SMTileEntityPlasmaBench extends TileEntity
 		return;
 	}
 
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer entityplayer) 
+	{
+		return true;
+	}
+
 }
