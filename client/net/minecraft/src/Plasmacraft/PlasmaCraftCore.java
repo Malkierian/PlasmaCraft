@@ -110,7 +110,7 @@ public class PlasmaCraftCore
 	public static int plasmificatorSidesIndex = 12;
 	public static int plasmificatorFrontIdleIndex = 11;
 	public static int plasmificatorFrontActiveIndex = 10;
-	public static int acidHotIndex = 0;
+	public static int acidHotIndex = 16;
 	public static int acidTntSideIndex = 1;
 	public static int acidTntTopIndex = 3;
 	public static int acidTntBottomIndex = 2;

@@ -2,6 +2,7 @@ package net.minecraft.src.Plasmacraft;
 
 import java.util.Random;
 
+import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.Entity;
@@ -47,6 +48,14 @@ public class BlockAcidHot extends Block implements ITextureProvider
     {
         entity.attackEntityFrom(DamageSource.cactus, 50);
     }
+    
+    @Override
+	public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int x, int y, int z)
+	{
+    	float shrinkAmount = 0.125F;
+    	return AxisAlignedBB.getBoundingBoxFromPool(x + shrinkAmount, y + shrinkAmount, z + shrinkAmount,
+    			x + 1 - shrinkAmount, y + 1 - shrinkAmount, z + 1 - shrinkAmount);
+	}
 
 	@Override
 	public String getTextureFile()

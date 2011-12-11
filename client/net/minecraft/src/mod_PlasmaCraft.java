@@ -16,11 +16,10 @@ public class mod_PlasmaCraft extends BaseModMp
     {
         return "1.0.0R0.3.0";
     }
-
-    public void load()
+    
+    public mod_PlasmaCraft()
     {
         instance = this;
-        ModLoaderMp.Init();
         causticRenderID = ModLoader.getUniqueBlockModelID(instance, false);
         PlasmaCraftCore.init(causticRenderID);
 
@@ -51,6 +50,8 @@ public class mod_PlasmaCraft extends BaseModMp
         ModLoader.AddName(PlasmaCraftCore.neptuniumStill, "Neptunium (Still)");
         ModLoader.AddName(PlasmaCraftCore.obsidiumMoving, "Obsidium (Moving)");
         ModLoader.AddName(PlasmaCraftCore.obsidiumStill, "Obsidium (Still)");
+        ModLoader.AddName(PlasmaCraftCore.uraniumMoving, "Uranium (Moving)");
+        ModLoader.AddName(PlasmaCraftCore.uraniumStill, "Uranium (Still)");
         ModLoader.AddName(PlasmaCraftCore.oreUranium, "Uranium Ore");
         ModLoader.AddName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
         ModLoader.AddName(PlasmaCraftCore.glowCloth1, "Green Glowcloth");
@@ -115,6 +116,11 @@ public class mod_PlasmaCraft extends BaseModMp
         
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.itemTexture);
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.terrainTexture);
+    }
+
+    public void load()
+    {
+        ModLoaderMp.Init();
     }
 
     public static int floatColorsToDamage(float f, float f1, float f2)
