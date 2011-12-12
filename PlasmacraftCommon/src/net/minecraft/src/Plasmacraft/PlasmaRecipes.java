@@ -33,6 +33,7 @@ public class PlasmaRecipes
         addPlasmaRecipe(PlasmaCraftCore.goopObsidium.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotObsidium));
         addPlasmaRecipe(PlasmaCraftCore.goopUranium.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotUranium));
         addPlasmaRecipe(PlasmaCraftCore.goopCryonite.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotCryonite));
+        addPlasmaRecipe(PlasmaCraftCore.fullAcidVial.shiftedIndex, new ItemStack(PlasmaCraftCore.plasmaGel));
         addPlasmaRecipe(PlasmaCraftCore.netherflowVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopNetherflow));
         addPlasmaRecipe(PlasmaCraftCore.plutoniumVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopPlutonium));
         addPlasmaRecipe(PlasmaCraftCore.radioniteVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopRadionite));

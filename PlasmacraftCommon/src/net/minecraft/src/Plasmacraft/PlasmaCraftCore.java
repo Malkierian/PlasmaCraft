@@ -369,15 +369,15 @@ public class PlasmaCraftCore
         goopObsidium = (new ItemPlasma(goopObsidiumID)).setIconIndex(goopObsidiumIndex).setItemName("goopObsidium");
         goopCryonite = (new ItemPlasma(goopCryoniteID)).setIconIndex(goopCryoniteIndex).setItemName("goopCryonite");
         goopUranium = (new ItemPlasma(goopUraniumID)).setIconIndex(goopUraniumIndex).setItemName("goopUranium");
-        acidVial = (new ItemAcidVial(emptyVialID, 0)).setIconIndex(acidVialIndex).setItemName("acidVial");
-        fullAcidVial = (new ItemAcidVial(acidVialID, acidMoving.blockID)).setIconIndex(fullAcidVialIndex).setItemName("fullAcidVial").setContainerItem(acidVial);
-        plutoniumVial = (new ItemAcidVial(plutoniumViaID, plutoniumMoving.blockID)).setIconIndex(plutoniumVialIndex).setItemName("plutoniumVial").setContainerItem(acidVial);
-        radioniteVial = (new ItemAcidVial(radioniteVialID, radioniteMoving.blockID)).setIconIndex(radioniteVialIndex).setItemName("radioniteVial").setContainerItem(acidVial);
-        uraniumVial = (new ItemAcidVial(uraniumViaID, uraniumMoving.blockID)).setIconIndex(uraniumVialIndex).setItemName("uraniumVial").setContainerItem(acidVial);
-        neptuniumVial = (new ItemAcidVial(neptuniumVialID, neptuniumMoving.blockID)).setIconIndex(neptuniumVialIndex).setItemName("neptuniumVial").setContainerItem(acidVial);
-        netherflowVial = (new ItemAcidVial(netherflowVialID, netherflowMoving.blockID)).setIconIndex(netherflowVialIndex).setItemName("netherflowVial").setContainerItem(acidVial);
-        obsidiumVial = (new ItemAcidVial(obsidiumVialID, obsidiumMoving.blockID)).setIconIndex(obsidiumVialIndex).setItemName("obsidiumVial").setContainerItem(acidVial);
-        cryoniteVial = (new ItemAcidVial(cryoniteVialID, cryoniteMoving.blockID)).setIconIndex(cryoniteVialIndex).setItemName("cryoniteVial").setContainerItem(acidVial);
+        acidVial = (new ItemVial(emptyVialID, 0, EnumVialLiquid.EMPTY)).setIconIndex(acidVialIndex).setItemName("acidVial");
+        fullAcidVial = (new ItemVial(acidVialID, acidMoving.blockID, EnumVialLiquid.ACID)).setIconIndex(fullAcidVialIndex).setItemName("fullAcidVial");
+        plutoniumVial = (new ItemVial(plutoniumViaID, plutoniumMoving.blockID, EnumVialLiquid.PLUTONIUM)).setIconIndex(plutoniumVialIndex).setItemName("plutoniumVial");
+        radioniteVial = (new ItemVial(radioniteVialID, radioniteMoving.blockID, EnumVialLiquid.RADIONITE)).setIconIndex(radioniteVialIndex).setItemName("radioniteVial");
+        uraniumVial = (new ItemVial(uraniumViaID, uraniumMoving.blockID, EnumVialLiquid.URANIUM)).setIconIndex(uraniumVialIndex).setItemName("uraniumVial");
+        neptuniumVial = (new ItemVial(neptuniumVialID, neptuniumMoving.blockID, EnumVialLiquid.NEPTUNIUM)).setIconIndex(neptuniumVialIndex).setItemName("neptuniumVial");
+        netherflowVial = (new ItemVial(netherflowVialID, netherflowMoving.blockID, EnumVialLiquid.NETHERFLOW)).setIconIndex(netherflowVialIndex).setItemName("netherflowVial");
+        obsidiumVial = (new ItemVial(obsidiumVialID, obsidiumMoving.blockID, EnumVialLiquid.OBSIDIUM)).setIconIndex(obsidiumVialIndex).setItemName("obsidiumVial");
+        cryoniteVial = (new ItemVial(cryoniteVialID, cryoniteMoving.blockID, EnumVialLiquid.CRYONITE)).setIconIndex(cryoniteVialIndex).setItemName("cryoniteVial");
         plasmaGel = (new ItemPlasma(plasmaGelID)).setIconIndex(plasmaGelIndex).setItemName("plasmaGel");
         plasmaLeather = (new ItemPlasma(plasmaLeatherID)).setIconIndex(plasmaLeatherIndex).setItemName("plasmaLeather");
         plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");
@@ -466,16 +466,16 @@ public class PlasmaCraftCore
         acidStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidStill", 127));
         acidFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidFlowing", 126));
         reinforcedGlassBlockID = getInt(c.getOrCreateBlockIdProperty("ID.ReinforcedGlass", 125));
-        plasmificatorIdleBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorIdle", 124));
-        plasmificatorActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 123));
-        acidBarrierBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidBarrier", 122));
-        acidTNTBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidTNT", 121));
-        oreNeptuniumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreNeptunium", 120));
-        oreObsidiumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreObsidium", 119));
-        greenGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.GreenGlowCloth", 118));
-        pinkGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PinkGlowCloth", 117));
-        orePlutoniumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OrePlutonium", 116));
-        oreRadioniteBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreRadionite", 115));
+        plasmificatorIdleBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorIdle", 153));
+        plasmificatorActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 152));
+        acidBarrierBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidBarrier", 151));
+        acidTNTBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidTNT", 150));
+        oreNeptuniumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreNeptunium", 149));
+        oreObsidiumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreObsidium", 148));
+        greenGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.GreenGlowCloth", 147));
+        pinkGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PinkGlowCloth", 146));
+        orePlutoniumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OrePlutonium", 145));
+        oreRadioniteBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreRadionite", 144));
         
         ingotPlutoniumID = getInt(c.getOrCreateIntProperty("ingotPlutoniumID", Configuration.ITEM_PROPERTY, 2048));
         ingotRadioniteID = getInt(c.getOrCreateIntProperty("ingotRadioniteID", Configuration.ITEM_PROPERTY, 2049));
@@ -598,12 +598,6 @@ public class PlasmaCraftCore
         });
         ModLoader.AddRecipe(new ItemStack(BatteryCharged, 1), new Object[] {
             "R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), BatteryEmpty
-        });
-        ModLoader.AddRecipe(new ItemStack(plasmaGel, 2), new Object[] {
-            "JJJ", Character.valueOf('J'), fullAcidVial
-        });
-        ModLoader.AddRecipe(new ItemStack(plasmaGel, 6), new Object[] {
-            "JJJ", "JJJ", "JJJ", Character.valueOf('J'), fullAcidVial
         });
         ModLoader.AddRecipe(new ItemStack(fullAcidVial, 1), new Object[] {
             "JKL", Character.valueOf('J'), Block.dirt, Character.valueOf('K'), Block.sand, Character.valueOf('L'), Block.planks

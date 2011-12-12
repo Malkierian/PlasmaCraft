@@ -2,6 +2,7 @@ package net.minecraft.src.Plasmacraft;
 
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
@@ -250,6 +251,7 @@ public class TileEntityPlasmaBench extends TileEntity
         {
             int k = ai[j];
             ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex);
+            Item item = furnaceItemStacks[k].getItem();
             int l = getAvailableDestIndex(itemstack);
             if(l != -1)
             {
@@ -305,6 +307,32 @@ public class TileEntityPlasmaBench extends TileEntity
         {
             furnaceItemStacks[k] = null;
         }
+        j = 0;
+        k = 0;
+        l = 0;
+        do
+        {
+            if(l >= i)
+            {
+                break;
+            }
+            ItemStack itemstack1 = new ItemStack(PlasmaCraftCore.acidVial);
+            j = getAvailableDestIndex(itemstack1);
+            if(j != -1)
+            {
+                break;
+            }
+            l++;
+        } while(true);
+        ItemStack itemstack2 = new ItemStack(PlasmaCraftCore.acidVial);
+        if(furnaceItemStacks[j] == null)
+        {
+            furnaceItemStacks[j] = itemstack2.copy();
+        } else
+        if(furnaceItemStacks[j].itemID == itemstack2.itemID)
+        {
+            furnaceItemStacks[j].stackSize++;
+        }
     }
 
     private int getItemBurnTime(ItemStack itemstack)
@@ -314,6 +342,10 @@ public class TileEntityPlasmaBench extends TileEntity
             return 0;
         }
         int i = itemstack.getItem().shiftedIndex;
+        if(i == Item.redstone.shiftedIndex)
+        {
+        	return 250;
+        }
         if(i == PlasmaCraftCore.plasmaGel.shiftedIndex)
         {
             return 1000;

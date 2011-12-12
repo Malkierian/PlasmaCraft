@@ -9,16 +9,18 @@ import net.minecraft.src.MovingObjectPosition;
 import net.minecraft.src.Vec3D;
 import net.minecraft.src.World;
 
-public class ItemAcidVial extends ItemPlasma
+public class ItemVial extends ItemPlasma
 {
 
     private int isFull;
+    public EnumVialLiquid contents;
 
-    public ItemAcidVial(int i, int j)
+    public ItemVial(int i, int j, EnumVialLiquid liquid)
     {
         super(i);
         maxStackSize = 8;
         isFull = j;
+        contents = liquid;
     }
 
     public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)

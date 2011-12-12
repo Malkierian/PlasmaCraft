@@ -47,7 +47,7 @@ public class PCClientProxy implements IPCProxy
 	public String getMinecraftDirectory()
 	{
 		File dir = Minecraft.getAppDir("minecraft");
-		return dir.getAbsolutePath();
+		return dir.getAbsolutePath() + "/";
 	}
 
 	@Override
