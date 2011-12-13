@@ -40,6 +40,7 @@ public class ItemVial extends ItemPlasma
         float f8 = f6;
         float f9 = f3 * f5;
         double d3 = 5D;
+        ItemStack returnStack = null;
         Vec3D vec3d1 = vec3d.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
         MovingObjectPosition movingobjectposition = world.rayTraceBlocks_do(vec3d, vec3d1, isFull == 0);
         if(movingobjectposition == null)
@@ -62,7 +63,7 @@ public class ItemVial extends ItemPlasma
                 {
                     if(world.setBlockWithNotify(i, j, k, 0))
                     {
-                        return new ItemStack(PlasmaCraftCore.fullAcidVial);
+                    	returnStack = new ItemStack(PlasmaCraftCore.fullAcidVial);
                     }
                 }
                 else
@@ -70,38 +71,47 @@ public class ItemVial extends ItemPlasma
                     if(l == PlasmaCraftCore.plutoniumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
                     {
                         world.setBlockWithNotify(i, j, k, 0);
-                        return new ItemStack(PlasmaCraftCore.plutoniumVial);
+                        returnStack = new ItemStack(PlasmaCraftCore.plutoniumVial);
                     }
                     if(l == PlasmaCraftCore.radioniteStill.blockID && world.getBlockMetadata(i, j, k) == 0)
                     {
                         world.setBlockWithNotify(i, j, k, 0);
-                        return new ItemStack(PlasmaCraftCore.radioniteVial);
+                        returnStack = new ItemStack(PlasmaCraftCore.radioniteVial);
                     }
                     if(l == PlasmaCraftCore.uraniumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
                     {
                         world.setBlockWithNotify(i, j, k, 0);
-                        return new ItemStack(PlasmaCraftCore.uraniumVial);
+                        returnStack = new ItemStack(PlasmaCraftCore.uraniumVial);
                     }
                     if(l == PlasmaCraftCore.neptuniumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
                     {
                         world.setBlockWithNotify(i, j, k, 0);
-                        return new ItemStack(PlasmaCraftCore.neptuniumVial);
+                        returnStack = new ItemStack(PlasmaCraftCore.neptuniumVial);
                     }
                     if(l == PlasmaCraftCore.netherflowStill.blockID && world.getBlockMetadata(i, j, k) == 0)
                     {
                         world.setBlockWithNotify(i, j, k, 0);
-                        return new ItemStack(PlasmaCraftCore.netherflowVial);
+                        returnStack = new ItemStack(PlasmaCraftCore.netherflowVial);
                     }
                     if(l == PlasmaCraftCore.obsidiumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
                     {
                         world.setBlockWithNotify(i, j, k, 0);
-                        return new ItemStack(PlasmaCraftCore.obsidiumVial);
+                        returnStack = new ItemStack(PlasmaCraftCore.obsidiumVial);
                     }
                     if(l == PlasmaCraftCore.cryoniteStill.blockID && world.getBlockMetadata(i, j, k) == 0)
                     {
                         world.setBlockWithNotify(i, j, k, 0);
-                        return new ItemStack(PlasmaCraftCore.cryoniteVial);
+                        returnStack = new ItemStack(PlasmaCraftCore.cryoniteVial);
                     }
+                }
+                if(itemstack.stackSize > 1)
+                {
+                	if(returnStack != null)
+                	{
+	                	itemstack.stackSize--;
+	                	entityplayer.inventory.addItemStackToInventory(returnStack);
+	                	return itemstack;
+                	}
                 }
             } else
             {
@@ -132,13 +142,31 @@ public class ItemVial extends ItemPlasma
                 if(world.isAirBlock(i, j, k) || !world.getBlockMaterial(i, j, k).isSolid())
                 {
                     world.setBlockAndMetadataWithNotify(i, j, k, isFull, 0);
-                    return new ItemStack(PlasmaCraftCore.acidVial);
+                    if(itemstack.stackSize > 1)
+                    {
+                    	itemstack.stackSize--;
+                    	entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.acidVial));
+                    	return itemstack;
+                    }
+                    else
+                    {
+                    	return new ItemStack(PlasmaCraftCore.acidVial);
+                    }
                 }
             }
         }
         if(isFull == 0 && (movingobjectposition.entityHit instanceof EntityMutantCow))
         {
-            return new ItemStack(PlasmaCraftCore.fullAcidVial);
+        	if(itemstack.stackSize > 1)
+        	{
+        		itemstack.stackSize--;
+        		entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.fullAcidVial));
+        		return itemstack;
+        	}
+        	else
+        	{
+        		return new ItemStack(PlasmaCraftCore.fullAcidVial);
+        	}
         } else
         {
             return itemstack;
