@@ -24,7 +24,7 @@ import net.minecraft.src.Plasmacraft.EntityMutantCow;
 import net.minecraft.src.Plasmacraft.EntityPlasma;
 import net.minecraft.src.Plasmacraft.EntityRailGun;
 import net.minecraft.src.Plasmacraft.ItemAcidGrenade;
-import net.minecraft.src.Plasmacraft.ItemAcidVial;
+import net.minecraft.src.Plasmacraft.ItemVial;
 import net.minecraft.src.Plasmacraft.ItemCausticBoat;
 import net.minecraft.src.Plasmacraft.ItemCausticSupportBlock;
 import net.minecraft.src.Plasmacraft.ItemEnergyWeapon;
