@@ -104,15 +104,19 @@ public class ItemVial extends ItemPlasma
                         returnStack = new ItemStack(PlasmaCraftCore.cryoniteVial);
                     }
                 }
-                if(itemstack.stackSize > 1)
-                {
-                	if(returnStack != null)
-                	{
+                //if(itemstack.stackSize > 1)
+                //{
+                //	if(returnStack != null)
+                //	{
 	                	itemstack.stackSize--;
 	                	entityplayer.inventory.addItemStackToInventory(returnStack);
 	                	return itemstack;
-                	}
-                }
+                //	}
+                //}
+                //else
+                //{
+                //	return returnStack;
+                //}
             } else
             {
                 if(movingobjectposition.sideHit == 0)
@@ -142,31 +146,31 @@ public class ItemVial extends ItemPlasma
                 if(world.isAirBlock(i, j, k) || !world.getBlockMaterial(i, j, k).isSolid())
                 {
                     world.setBlockAndMetadataWithNotify(i, j, k, isFull, 0);
-                    if(itemstack.stackSize > 1)
-                    {
+                    //if(itemstack.stackSize > 1)
+                    //{
                     	itemstack.stackSize--;
                     	entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.acidVial));
                     	return itemstack;
-                    }
-                    else
-                    {
-                    	return new ItemStack(PlasmaCraftCore.acidVial);
-                    }
+                    //}
+                    //else
+                    //{
+                    //	return new ItemStack(PlasmaCraftCore.acidVial);
+                    //}
                 }
             }
         }
         if(isFull == 0 && (movingobjectposition.entityHit instanceof EntityMutantCow))
         {
-        	if(itemstack.stackSize > 1)
-        	{
+        	//if(itemstack.stackSize > 1)
+        	//{
         		itemstack.stackSize--;
         		entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.fullAcidVial));
         		return itemstack;
-        	}
-        	else
-        	{
-        		return new ItemStack(PlasmaCraftCore.fullAcidVial);
-        	}
+        	//}
+        	//else
+        	//{
+        	//	return new ItemStack(PlasmaCraftCore.fullAcidVial);
+        	//}
         } else
         {
             return itemstack;

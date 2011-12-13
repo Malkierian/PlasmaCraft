@@ -389,7 +389,7 @@ public class PlasmaCraftCore
         lasergunsplit = (new ItemEnergyWeapon(lasergunsplitID, 75)).setIconIndex(lasergunsplitIndex).setItemName("laserGunSplit");
         acidgun = (new ItemEnergyWeapon(acidgunID, 100)).setIconIndex(acidgunIndex).setItemName("acidGun");
         railgun = (new ItemEnergyWeapon(railgunID, 100)).setIconIndex(railgunIndex).setItemName("railGun");
-        cryoblaster = (new ItemEnergyWeapon(cryoblasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
+        //cryoblaster = (new ItemEnergyWeapon(cryoblasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
         lasershotgun = (new ItemEnergyWeapon(lasershotgunID, 100)).setIconIndex(lasershotgunIndex).setItemName("lasershotgunGun");
 
         helmetHazmat = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 0)).setIconIndex(helmetIndex).setItemName("helmetHazmat");
@@ -551,10 +551,10 @@ public class PlasmaCraftCore
             "XYZ", " BC", "XY ", Character.valueOf('Z'), BatteryPlasma, Character.valueOf('X'), ingotObsidium, Character.valueOf('B'), goopPlutonium, Character.valueOf('C'), 
             Item.ingotGold, Character.valueOf('Y'), ingotPlutonium
         });
-        ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[] {
-            "  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
-            ingotObsidium, Character.valueOf('X'), BatteryCryo, Character.valueOf('E'), ingotPlutonium
-        });
+        //ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[] {
+        //    "  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
+        //    ingotObsidium, Character.valueOf('X'), BatteryCryo, Character.valueOf('E'), ingotPlutonium
+        //});
         ModLoader.AddRecipe(new ItemStack(lasershotgun, 1), new Object[] {
             "  Z", "XBQ", " UP", Character.valueOf('Z'), Item.redstoneRepeater, Character.valueOf('X'), beamSplitter, Character.valueOf('B'), ingotNetherflow, Character.valueOf('Q'), 
             BatteryCharged, Character.valueOf('P'), ingotPlutonium, Character.valueOf('U'), ingotRadionite

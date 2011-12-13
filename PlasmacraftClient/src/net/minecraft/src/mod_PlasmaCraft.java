@@ -137,7 +137,7 @@ public class mod_PlasmaCraft extends BaseModMp
         ModLoader.AddName(PlasmaCraftCore.lasergunsplit, "Laser Rifle + Beam Splitter");
         ModLoader.AddName(PlasmaCraftCore.acidgun, "Acid Launcher");
         ModLoader.AddName(PlasmaCraftCore.railgun, "Rail Gun");
-        ModLoader.AddName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
+        //ModLoader.AddName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
         ModLoader.AddName(PlasmaCraftCore.lasershotgun, "Laser Shotgun");
         ModLoader.AddName(PlasmaCraftCore.causticBoat, "Radionite Boat");
         ModLoader.AddName(PlasmaCraftCore.helmetHazmat, "Hazmat Hood");
@@ -197,11 +197,11 @@ public class mod_PlasmaCraft extends BaseModMp
         registerLiquidFX(PlasmaCraftCore.cryoniteStillIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F);
         registerLiquidFX(PlasmaCraftCore.acidStillIndex, 0.5F, 1.0F, 0.5F, 1.0F, 32F, 255F, 50F, 146F, 32F, 64F, 64F, 50F);
         registerLiquidFX(PlasmaCraftCore.plutoniumStillIndex, 0.5F, 0.9F, 1.0F, 1.0F, 32F, 64F, 64F, 255F, 32F, 64F, 64F, 75F);
-        registerLiquidFX(PlasmaCraftCore.radioniteStillIndex, 0.9F, 0.4F, 1.0F, 1.0F, 64F, 64F, 64F, 255F, 64F, 32F, 64F, 75F);
+        registerLiquidFX(PlasmaCraftCore.radioniteStillIndex, 0.7F, 0.75F, 1.0F, 1.0F, 64F, 64F, 64F, 255F, 64F, 48F, 64F, 75F);
         registerLiquidFX(PlasmaCraftCore.uraniumStillIndex, 0.9F, 0.9F, 0.3F, 1.0F, 255F, 255F, 64F, 160F, 64F, 64F, 32F, 50F);
         registerLiquidFX(PlasmaCraftCore.neptuniumStillIndex, 1.0F, 0.75F, 0.5F, 1.0F, 255F, 128F, 64F, 180F, 64F, 50F, 36F, 55F);
         registerLiquidFX(PlasmaCraftCore.netherflowStillIndex, 1.0F, 0.4F, 0.4F, 1.0F, 255F, 32F, 32F, 200F, 64F, 32F, 32F, 60F);
-        registerLiquidFX(PlasmaCraftCore.obsidiumStillIndex, 0.15F, 0.1F, 0.15F, 1.0F, 72F, 64F, 72F, 220F, 40F, 32F, 40F, 70F);
+        registerLiquidFX(PlasmaCraftCore.obsidiumStillIndex, 0.35F, 0.1F, 0.35F, 1.0F, 72F, 64F, 72F, 250F, 40F, 32F, 40F, 10F);
         /*ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.cryoniteStillIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F, 16, 16));
         ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.cryoniteMovingIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F, 16, 16));
         ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.acidStillIndex, 0.5F, 1.0F, 0.5F, 1.0F, 32F, 255F, 50F, 146F, 32F, 64F, 64F, 50F, 16, 16));
