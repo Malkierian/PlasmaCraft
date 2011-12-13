@@ -111,6 +111,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             }
 
         }
+        /*
         if(shiftedIndex == PlasmaCraftCore.cryoblaster.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryCryo.shiftedIndex))
         {
             world.playSoundAtEntity(entityplayer, "plasmacraft.railgun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
@@ -120,6 +121,7 @@ public class ItemEnergyWeapon extends ItemPlasma
                 world.entityJoinedWorld(new EntityCryoBlast(world, entityplayer));
             }
         }
+        *///TODO
         return itemstack;
     }
 }

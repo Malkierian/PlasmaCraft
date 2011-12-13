@@ -383,14 +383,14 @@ public class PlasmaCraftCore
         plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");
         causticBoat = (new ItemCausticBoat(causticBoatID)).setIconIndex(causticBoatIndex).setItemName("causticBoat");
         acidGrenade = (new ItemAcidGrenade(acidNadeID)).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
-        lasergun = (new ItemEnergyWeapon(lasergunID, 100)).setIconIndex(lasergunIndex).setItemName("laserGun");
-        plasmagun = (new ItemEnergyWeapon(plasmagunID, 100)).setIconIndex(plasmagunIndex).setItemName("plasmaGun");
-        plasmagunsplit = (new ItemEnergyWeapon(plasmagunsplitID, 75)).setIconIndex(plasmagunsplitIndex).setItemName("plasmaGunSplit");
-        lasergunsplit = (new ItemEnergyWeapon(lasergunsplitID, 75)).setIconIndex(lasergunsplitIndex).setItemName("laserGunSplit");
-        acidgun = (new ItemEnergyWeapon(acidgunID, 100)).setIconIndex(acidgunIndex).setItemName("acidGun");
-        railgun = (new ItemEnergyWeapon(railgunID, 100)).setIconIndex(railgunIndex).setItemName("railGun");
+        lasergun = (new ItemEnergyWeapon(lasergunID, 200)).setIconIndex(lasergunIndex).setItemName("laserGun");
+        plasmagun = (new ItemEnergyWeapon(plasmagunID, 200)).setIconIndex(plasmagunIndex).setItemName("plasmaGun");
+        plasmagunsplit = (new ItemEnergyWeapon(plasmagunsplitID, 300)).setIconIndex(plasmagunsplitIndex).setItemName("plasmaGunSplit");
+        lasergunsplit = (new ItemEnergyWeapon(lasergunsplitID, 300)).setIconIndex(lasergunsplitIndex).setItemName("laserGunSplit");
+        acidgun = (new ItemEnergyWeapon(acidgunID, 200)).setIconIndex(acidgunIndex).setItemName("acidGun");
+        railgun = (new ItemEnergyWeapon(railgunID, 200)).setIconIndex(railgunIndex).setItemName("railGun");
         //cryoblaster = (new ItemEnergyWeapon(cryoblasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
-        lasershotgun = (new ItemEnergyWeapon(lasershotgunID, 100)).setIconIndex(lasershotgunIndex).setItemName("lasershotgunGun");
+        lasershotgun = (new ItemEnergyWeapon(lasershotgunID, 200)).setIconIndex(lasershotgunIndex).setItemName("lasershotgunGun");
 
         helmetHazmat = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 0)).setIconIndex(helmetIndex).setItemName("helmetHazmat");
         plateHazmat = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 1)).setIconIndex(plateIndex).setItemName("plateHazmat");

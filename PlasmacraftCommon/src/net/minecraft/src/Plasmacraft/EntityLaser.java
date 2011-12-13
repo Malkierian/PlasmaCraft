@@ -209,36 +209,42 @@ public class EntityLaser extends Entity
                     if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.frozenCryonite.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
+                        setEntityDead();
                         worldObj.setBlockWithNotify(k, i1, k1, PlasmaCraftCore.cryoniteMoving.blockID);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == Block.oreIron.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
+                        setEntityDead();
                         dropItem(Item.ingotIron.shiftedIndex, 1);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == Block.oreGold.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
+                        setEntityDead();
                         dropItem(Item.ingotGold.shiftedIndex, 1);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.oreRadionite.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
+                        setEntityDead();
                         dropItem(PlasmaCraftCore.goopRadionite.shiftedIndex, 1);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.orePlutonium.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
+                        setEntityDead();
                         dropItem(PlasmaCraftCore.goopPlutonium.shiftedIndex, 1);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.oreUranium.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
+                        setEntityDead();
                         dropItem(PlasmaCraftCore.goopUranium.shiftedIndex, 1);
                         flag = false;
                     }
