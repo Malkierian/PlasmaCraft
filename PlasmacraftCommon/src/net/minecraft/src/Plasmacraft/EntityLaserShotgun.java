@@ -202,23 +202,49 @@ public class EntityLaserShotgun extends Entity
                 int k = movingobjectposition.blockX;
                 int i1 = movingobjectposition.blockY;
                 int k1 = movingobjectposition.blockZ;
-                if(worldObj.isAirBlock(k, i1 + 1, k1))
+                boolean flag = true;
+                if(worldObj.getBlockId(k, i1, k1) == Block.ice.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.waterMoving.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.tallGrass.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.snow.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.plantRed.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.plantYellow.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.isAirBlock(k, i1 + 1, k1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k, i1 + 1, k1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k, i1, k1 + 1))
+                if(worldObj.isAirBlock(k, i1, k1 + 1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k, i1, k1 + 1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k, i1, k1 - 1))
+                if(worldObj.isAirBlock(k, i1, k1 - 1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k, i1, k1 - 1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k + 1, i1, k1))
+                if(worldObj.isAirBlock(k + 1, i1, k1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k + 1, i1, k1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k - 1, i1, k1))
+                if(worldObj.isAirBlock(k - 1, i1, k1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k - 1, i1, k1, Block.fire.blockID);
                 }

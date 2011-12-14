@@ -26,8 +26,8 @@ public class EntityLaser extends Entity
     public int arrowShake;
     public EntityLiving owner;
     private int ticksInAir;
-
-    public EntityLaser(World world)
+    int damg;
+    public EntityLaser(World world, EntityPlayer entityplayer)
     {
         super(world);
         xTile = -1;
@@ -55,9 +55,10 @@ public class EntityLaser extends Entity
         yOffset = 0.0F;
     }
 
-    public EntityLaser(World world, EntityLiving entityliving)
+    public EntityLaser(World world, EntityLiving entityliving, int dmg)
     {
         super(world);
+        damg = dmg;
         xTile = -1;
         yTile = -1;
         zTile = -1;
@@ -125,6 +126,7 @@ public class EntityLaser extends Entity
     public void onUpdate()
     {
         super.onUpdate();
+        
         if(prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
         {
             float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
@@ -188,7 +190,7 @@ public class EntityLaser extends Entity
                 {
                     return;
                 }
-                if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 6))
+                if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), damg))
                 {
                     int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
                     int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
@@ -246,6 +248,31 @@ public class EntityLaser extends Entity
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
                         setEntityDead();
                         dropItem(PlasmaCraftCore.goopUranium.shiftedIndex, 1);
+                        flag = false;
+                    }
+                    if(worldObj.getBlockId(k, i1, k1) == Block.ice.blockID)
+                    {
+                        worldObj.setBlockWithNotify(k, i1, k1, Block.waterMoving.blockID);
+                        flag = false;
+                    }
+                    if(worldObj.getBlockId(k, i1, k1) == Block.tallGrass.blockID)
+                    {
+                        worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                        flag = false;
+                    }
+                    if(worldObj.getBlockId(k, i1, k1) == Block.snow.blockID)
+                    {
+                        worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                        flag = false;
+                    }
+                    if(worldObj.getBlockId(k, i1, k1) == Block.plantRed.blockID)
+                    {
+                        worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                        flag = false;
+                    }
+                    if(worldObj.getBlockId(k, i1, k1) == Block.plantYellow.blockID)
+                    {
+                        worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1 + 1, k1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)

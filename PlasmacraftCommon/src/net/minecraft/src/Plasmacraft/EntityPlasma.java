@@ -27,7 +27,7 @@ public class EntityPlasma extends Entity
     public int arrowShake;
     public EntityLiving owner;
     private int ticksInAir;
-
+    int damg;
     public EntityPlasma(World world)
     {
         super(world);
@@ -56,9 +56,10 @@ public class EntityPlasma extends Entity
         yOffset = 0.0F;
     }
 
-    public EntityPlasma(World world, EntityLiving entityliving)
+    public EntityPlasma(World world, EntityLiving entityliving, int dmg)
     {
         super(world);
+        damg = dmg;
         xTile = -1;
         yTile = -1;
         zTile = -1;
@@ -189,7 +190,7 @@ public class EntityPlasma extends Entity
                 {
                     return;
                 }
-                if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 8))
+                if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), damg))
                 {
                     int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
                     int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
@@ -212,23 +213,49 @@ public class EntityPlasma extends Entity
                 int k = movingobjectposition.blockX;
                 int i1 = movingobjectposition.blockY;
                 int k1 = movingobjectposition.blockZ;
-                if(worldObj.isAirBlock(k, i1 + 1, k1))
+                boolean flag = true;
+                if(worldObj.getBlockId(k, i1, k1) == Block.ice.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.waterMoving.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.tallGrass.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.snow.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.plantRed.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.getBlockId(k, i1, k1) == Block.plantYellow.blockID)
+                {
+                    worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+                    flag = false;
+                }
+                if(worldObj.isAirBlock(k, i1 + 1, k1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k, i1 + 1, k1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k, i1, k1 + 1))
+                if(worldObj.isAirBlock(k, i1, k1 + 1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k, i1, k1 + 1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k, i1, k1 - 1))
+                if(worldObj.isAirBlock(k, i1, k1 - 1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k, i1, k1 - 1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k + 1, i1, k1))
+                if(worldObj.isAirBlock(k + 1, i1, k1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k + 1, i1, k1, Block.fire.blockID);
                 }
-                if(worldObj.isAirBlock(k - 1, i1, k1))
+                if(worldObj.isAirBlock(k - 1, i1, k1)&& flag)
                 {
                     worldObj.setBlockWithNotify(k - 1, i1, k1, Block.fire.blockID);
                 }
