@@ -8,13 +8,14 @@ import net.minecraft.src.World;
 
 public class BlockCausticStationary extends BlockCausticFluids
 {
-    protected BlockCausticStationary(int i, int j, int k, int l, int i1, int j1)
+    protected BlockCausticStationary(int i, int j, int k, int l, int i1, int j1, float lightvalue)
     {
         super(i, j, k, l, i1, j1);
         setTickOnLoad(false);
         setHardness(5F);
         setLightOpacity(3);
-        setLightValue(1.0F);
+        setLightValue(lightvalue);
+        
     }
 
     public int getBlockTextureFromSide(int i)

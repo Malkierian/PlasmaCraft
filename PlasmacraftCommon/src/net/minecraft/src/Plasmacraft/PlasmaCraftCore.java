@@ -11,6 +11,9 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraft.src.World;
+import net.minecraft.src.WorldGenCaustics;
+import net.minecraft.src.WorldGenFrozenCryonite;
+import net.minecraft.src.WorldGenLakes;
 import net.minecraft.src.WorldGenMinable;
 import net.minecraft.src.forge.Configuration;
 import net.minecraft.src.forge.Property;
@@ -324,21 +327,21 @@ public class PlasmaCraftCore
         
         glowCloth1 = (new BlockGlowCloth(greenGlowClothBlockID, glowCloth1Index)).setBlockName("glowcloth1");
         glowCloth2 = (new BlockGlowCloth(pinkGlowClothBlockID, glowCloth2Index)).setBlockName("glowcloth2");
-        cryoniteStill = (new BlockCausticStationary(cryoniteStillBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID)).setBlockName("cryoniteStill");
+        cryoniteStill = (new BlockCausticStationary(cryoniteStillBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID, 0.0F)).setBlockName("cryoniteStill");
         cryoniteMoving = (new BlockCausticFlowing(cryoniteFlowingBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID)).setBlockName("cryoniteMoving");
-        acidStill = (new BlockCausticStationary(acidStillBlockID, acidStillIndex, acidMovingIndex, causticID, acidStillBlockID, acidFlowingBlockID)).setBlockName("acidStill");
+        acidStill = (new BlockCausticStationary(acidStillBlockID, acidStillIndex, acidMovingIndex, causticID, acidStillBlockID, acidFlowingBlockID, 1.0F)).setBlockName("acidStill");
         acidMoving = (new BlockCausticFlowing(acidFlowingBlockID, acidStillIndex, acidMovingIndex, causticID, acidStillBlockID, acidFlowingBlockID)).setBlockName("acidMoving");
-        radioniteStill = (new BlockCausticStationary(radioniteStillBlockID, radioniteStillIndex, radioniteMovingIndex, causticID, radioniteStillBlockID, radioniteFlowingBlockID)).setBlockName("radioniteStill");
+        radioniteStill = (new BlockCausticStationary(radioniteStillBlockID, radioniteStillIndex, radioniteMovingIndex, causticID, radioniteStillBlockID, radioniteFlowingBlockID, 1.0F)).setBlockName("radioniteStill");
         radioniteMoving = (new BlockCausticFlowing(radioniteFlowingBlockID, radioniteStillIndex, radioniteMovingIndex, causticID, radioniteStillBlockID, radioniteFlowingBlockID)).setBlockName("radioniteMoving");
-        plutoniumStill = (new BlockCausticStationary(plutoniumStillBlockID, plutoniumStillIndex, plutoniumMovingIndex, causticID, plutoniumStillBlockID, plutoniumFlowingBlockID)).setBlockName("plutoniumStill");
+        plutoniumStill = (new BlockCausticStationary(plutoniumStillBlockID, plutoniumStillIndex, plutoniumMovingIndex, causticID, plutoniumStillBlockID, plutoniumFlowingBlockID, 1.0F)).setBlockName("plutoniumStill");
         plutoniumMoving = (new BlockCausticFlowing(plutoniumFlowingBlockID, plutoniumStillIndex, plutoniumMovingIndex, causticID, plutoniumStillBlockID, plutoniumFlowingBlockID)).setBlockName("plutoniumMoving");
-        netherflowStill = (new BlockCausticStationary(netherflowStillBlockID, netherflowStillIndex, netherflowMovingIndex, causticID, netherflowStillBlockID, netherflowFlowingBlockID)).setBlockName("netherflowStill");
+        netherflowStill = (new BlockCausticStationary(netherflowStillBlockID, netherflowStillIndex, netherflowMovingIndex, causticID, netherflowStillBlockID, netherflowFlowingBlockID, 1.0F)).setBlockName("netherflowStill");
         netherflowMoving = (new BlockCausticFlowing(netherflowFlowingBlockID, netherflowStillIndex, netherflowMovingIndex, causticID, netherflowStillBlockID, netherflowFlowingBlockID)).setBlockName("netherflowMoving");
-        neptuniumStill = (new BlockCausticStationary(neptuniumStillBlockID, neptuniumStillIndex, neptuniumMovingIndex, causticID, neptuniumStillBlockID, neptuniumFlowingBlockID)).setBlockName("neptuniumStill");
+        neptuniumStill = (new BlockCausticStationary(neptuniumStillBlockID, neptuniumStillIndex, neptuniumMovingIndex, causticID, neptuniumStillBlockID, neptuniumFlowingBlockID, 1.0F)).setBlockName("neptuniumStill");
         neptuniumMoving = (new BlockCausticFlowing(neptuniumFlowingBlockID, neptuniumStillIndex, neptuniumMovingIndex, causticID, neptuniumStillBlockID, neptuniumFlowingBlockID)).setBlockName("neptuniumMoving");
-        uraniumStill = (new BlockCausticStationary(uraniumStillBlockID, uraniumStillIndex, uraniumMovingIndex, causticID, uraniumStillBlockID, uraniumFlowingBlockID)).setBlockName("uraniumStill");
+        uraniumStill = (new BlockCausticStationary(uraniumStillBlockID, uraniumStillIndex, uraniumMovingIndex, causticID, uraniumStillBlockID, uraniumFlowingBlockID, 1.0F)).setBlockName("uraniumStill");
         uraniumMoving = (new BlockCausticFlowing(uraniumFlowingBlockID, uraniumStillIndex, uraniumMovingIndex, causticID, uraniumStillBlockID, uraniumFlowingBlockID)).setBlockName("uraniumMoving");
-        obsidiumStill = (new BlockCausticStationary(obsidiumStillBlockID, obsidiumStillIndex, obsidiumMovingIndex, causticID, obsidiumStillBlockID, obsidiumFlowingBlockID)).setBlockName("obsidiumStill");
+        obsidiumStill = (new BlockCausticStationary(obsidiumStillBlockID, obsidiumStillIndex, obsidiumMovingIndex, causticID, obsidiumStillBlockID, obsidiumFlowingBlockID, 1.0F)).setBlockName("obsidiumStill");
         obsidiumMoving = (new BlockCausticFlowing(obsidiumFlowingBlockID, obsidiumStillIndex, obsidiumMovingIndex, causticID, obsidiumStillBlockID, obsidiumFlowingBlockID)).setBlockName("obsidiumMoving");
         reinforcedGlass = (new BlockReinforcedGlass(reinforcedGlassBlockID, reinforcedGlassIndex, Material.glass, false, 500.0F)).setBlockName("reinforcedGlass");
         frozenCryonite = (new BlockReinforcedGlass(cryoniteFrozenBlockID, frozenCryoniteIndex, Material.glass, false, 1.0F)).setBlockName("frozenCryonite");
@@ -445,7 +448,7 @@ public class PlasmaCraftCore
     	Configuration c = new Configuration(new File(proxy.getMinecraftDirectory() + "config/PlasmaCraft.cfg"));
     	c.load();
     	
-        LiquidSourceExplodesAfterCausticExplosion = getBool(c.getOrCreateBooleanProperty("LiquidSourceExplodesAfterCausticExplosion", Configuration.GENERAL_PROPERTY, false));
+        LiquidSourceExplodesAfterCausticExplosion = getBool(c.getOrCreateBooleanProperty("LiquidSourceExplodesAfterCausticExplosion", Configuration.GENERAL_PROPERTY, true));
 
         radioniteStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.RadioniteStill", 143));
         radioniteFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.RadioniteFlowing", 142));
@@ -726,17 +729,20 @@ public class PlasmaCraftCore
             int k5 = j + random.nextInt(16);
             (new WorldGenMinable(oreRadioniteBlockID, radioniteOreVeinSize)).generate(world, random, k2, i4, k5);
         }
-
+        for(int i1 = 0; i1 < radioniteOreVeinCount; i1++)
+        {
+            int k2 = i + random.nextInt(16);
+            int i4 = random.nextInt(radioniteOreYRange) + radioniteOreYStart;
+            int k5 = j + random.nextInt(16);
+            (new WorldGenMinable(oreRadioniteBlockID, radioniteOreVeinSize)).generate(world, random, k2, i4, k5);
+        }
         if(random.nextInt(acidLakeChance) == 0)
         {
-            int j1 = random.nextInt(16) + 8;
-            int l2 = random.nextInt(random.nextInt(10) + 60);
+            int i1 = random.nextInt(16) + 8;
+            int l2 = random.nextInt(world.worldYMax);
             int j4 = random.nextInt(16) + 8;
-            if(l2 < acidLakeYCutoff)
-            {
-                (new WorldGenCausticLakes(acidMoving.blockID)).generate(world, random, j1, l2, j4);
-            }
-        }
+            (new WorldGenLakes(acidMoving.blockID)).generate(world, random, i1, l2, j4);
+        }       
         for(int k1 = 0; k1 < acidSpoutCount; k1++)
         {
             int i3 = i + random.nextInt(16) + 8;
@@ -744,14 +750,17 @@ public class PlasmaCraftCore
             int l5 = j + random.nextInt(16) + 8;
             (new WorldGenCaustics(acidMoving.blockID)).generate(world, random, i3, k4, l5);
         }
-
         if(random.nextInt(acidLakeChance) == 0)
         {
             int l1 = i + random.nextInt(16) + 8;
-            int j3 = random.nextInt(random.nextInt(10) + 60);
+            int j3 = random.nextInt(world.worldYMax);
             int l4 = j + random.nextInt(16) + 8;
             BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(l1, l4);
-            if((biomegenbase == BiomeGenBase.taiga) | (biomegenbase == BiomeGenBase.taiga) | (biomegenbase == PlasmaCraftCore.proxy.getHillBiome()))
+            if((biomegenbase == BiomeGenBase.taiga) 
+            		| (biomegenbase == BiomeGenBase.frozenOcean) 
+            		| (biomegenbase == BiomeGenBase.iceMountains) 
+            		| (biomegenbase == BiomeGenBase.frozenRiver) 
+            		| (biomegenbase == BiomeGenBase.icePlains))
             {
                 (new WorldGenFrozenCryonite(frozenCryonite.blockID)).generate(world, random, l1, j3, l4);
             }
