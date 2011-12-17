@@ -1,5 +1,6 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.Block;
@@ -36,6 +37,11 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
         setHardness(3F);
         setStepSound(Block.soundStoneFootstep);
         setLightValue(lightValue);
+    }
+    
+    public void addCreativeItems(ArrayList itemList)
+    {    	
+    	itemList.add(new ItemStack(this, 1));
     }
 
     public int idDropped(int i, Random random)
@@ -182,7 +188,7 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
     {
         if(!keepPlasmificatorInventory)
         {
-            TileEntityFurnace tileentityfurnace = (TileEntityFurnace)world.getBlockTileEntity(i, j, k);
+            TileEntityPlasmaBench tileentityfurnace = (TileEntityPlasmaBench)world.getBlockTileEntity(i, j, k);
             if(tileentityfurnace != null)
             {
 label0:

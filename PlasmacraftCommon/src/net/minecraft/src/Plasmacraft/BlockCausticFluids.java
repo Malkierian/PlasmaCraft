@@ -1,5 +1,6 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.AxisAlignedBB;
@@ -37,6 +38,11 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
         setBlockBounds(0.0F + f1, 0.0F + f, 0.0F + f1, 1.0F + f1, 1.0F + f, 1.0F + f1);
         setTickOnLoad(true);
         armorTick = 0;
+    }
+    
+    public void addCreativeItems(ArrayList itemList)
+    {    	
+    	itemList.add(new ItemStack(this, 1));
     }
 
     public boolean isBlockReplaceable(World world, int i, int j, int k)

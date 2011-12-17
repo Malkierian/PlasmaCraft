@@ -123,7 +123,7 @@ label0:
                 if(entity instanceof EntityLiving)
                 {
                 	EntityLiving el = (EntityLiving)entity;
-                	el.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 10 * 20, 4));
+                	el.addPotionEffect(new PotionEffect(PlasmaCraftCore.proxy.slowdown(), 10 * 20, 4));
                 }
                 double d14 = d13;
                 entity.motionX += d6 * d14;

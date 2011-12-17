@@ -1,7 +1,10 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.util.ArrayList;
+
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockTNT;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import net.minecraft.src.forge.ITextureProvider;
 
@@ -18,6 +21,11 @@ public class BlockAcidTNT extends BlockTNT implements ITextureProvider
         bottomTextureIndex = l;
         setHardness(0.0F);
         setStepSound(Block.soundGrassFootstep);
+    }
+    
+    public void addCreativeItems(ArrayList itemList)
+    {    	
+    	itemList.add(new ItemStack(this, 1));
     }
 
     public int getBlockTextureFromSide(int i)

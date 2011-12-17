@@ -1,11 +1,13 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockOre;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.Entity;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 import net.minecraft.src.forge.ITextureProvider;
 
@@ -18,6 +20,11 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
         setHardness(3F);
         setResistance(5F);
         setStepSound(Block.soundStoneFootstep);
+    }
+    
+    public void addCreativeItems(ArrayList itemList)
+    {    	
+    	itemList.add(new ItemStack(this, 1));
     }
 
     public int idDropped(int i, Random random)

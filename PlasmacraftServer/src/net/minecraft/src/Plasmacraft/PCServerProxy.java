@@ -97,5 +97,10 @@ public class PCServerProxy implements IPCProxy
 			TileEntityPlasmaBench tileentityplasmabench) {
 		ModLoader.OpenGUI(entityplayer, 159, (IInventory)entityplayer.inventory, new ContainerPlasmaBench((IInventory)entityplayer.inventory, tileentityplasmabench));
 	}
+
+	@Override
+	public int slowdown() {
+		return Potion.moveSlowdown.potionId;
+	}
 	
 }
