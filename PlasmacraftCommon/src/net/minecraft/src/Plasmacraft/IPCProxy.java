@@ -45,6 +45,4 @@ public interface IPCProxy
 	public void OpenGUI(EntityPlayer entityplayer,
 			TileEntityPlasmaBench tileentityplasmabench);
 	
-	public int slowdown();
-	
 }
