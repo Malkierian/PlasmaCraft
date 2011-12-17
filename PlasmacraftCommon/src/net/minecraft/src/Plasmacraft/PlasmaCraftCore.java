@@ -125,7 +125,7 @@ public class PlasmaCraftCore
 	public static int blockUraniumIndex = 4;
 	public static int frozenCryoniteIndex = 5;
 	
-	public static int cryoniteStillIndex = 0;
+	public static int cryoniteStillIndex = 1;
 	public static int cryoniteMovingIndex = cryoniteStillIndex + 1;
 	public static int acidStillIndex = 32;
 	public static int acidMovingIndex = acidStillIndex + 1;

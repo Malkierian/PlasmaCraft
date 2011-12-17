@@ -431,7 +431,7 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
             }
             else
             {
-            	PlasmaCraftCore.proxy.setFire(entity, 20);
+            	entity.setFire(20);
                 entityplayer.attackEntityFrom(DamageSource.lava, 3);
             }
         }
@@ -442,12 +442,12 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
             {
                 return;
             }
-            PlasmaCraftCore.proxy.setFire(entity, 20);
+            entity.setFire(20);
             entityliving.attackEntityFrom(DamageSource.lava, 3);
         } 
         else if(!(entity instanceof EntityCausticBoat))
         {
-        	PlasmaCraftCore.proxy.setFire(entity, 20);
+        	entity.setFire(20);
             entity.attackEntityFrom(DamageSource.lava, 10);
         }
     }

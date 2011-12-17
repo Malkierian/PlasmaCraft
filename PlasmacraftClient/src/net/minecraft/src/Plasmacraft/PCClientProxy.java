@@ -36,12 +36,6 @@ public class PCClientProxy implements IPCProxy
 	{
 		return (world.multiplayerWorld);
 	}
-
-	@Override
-	public void setFire(Entity entity, int i)
-	{
-		entity.setFire(i);
-	}
 	
 	@Override
 	public String getMinecraftDirectory()
@@ -82,12 +76,6 @@ public class PCClientProxy implements IPCProxy
 
 	{
         return world.getBlockMaterial(i, j, k).getCanBurn();
-	}
-	
-
-	@Override
-	public int getPotionId(Potion moveslowdown) {
-		return moveslowdown.id;
 	}
 
 	@Override

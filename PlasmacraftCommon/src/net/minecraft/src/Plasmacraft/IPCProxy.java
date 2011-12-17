@@ -19,8 +19,6 @@ public interface IPCProxy
 	
 	public boolean isMultiplayerWorld(World world);
 	
-	public void setFire(Entity entity, int i);
-	
 	public String getMinecraftDirectory();
 	
 	public BiomeGenBase getHillBiome();
@@ -36,8 +34,6 @@ public interface IPCProxy
 	public ItemStack armorItemInSlot(EntityPlayer entityplayer, int i);
 
 	public boolean getCanBurn(World world, int i, int j, int k);
-
-	public int getPotionId(Potion moveslowdown);
 
 	public MovingObjectPosition callAxisAlignedMethodA(
 			AxisAlignedBB axisalignedbb, Vec3D vec3d, Vec3D vec3d1);

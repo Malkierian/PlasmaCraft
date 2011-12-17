@@ -40,7 +40,7 @@ public class BlockAcidHot extends Block implements ITextureProvider
 
     public void onEntityWalking(World world, int i, int j, int k, Entity entity)
     {
-        PlasmaCraftCore.proxy.setFire(entity, 20);
+    	entity.setFire(20);
         entity.attackEntityFrom(DamageSource.cactus, 50);
     }
 

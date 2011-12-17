@@ -106,12 +106,12 @@ public class ItemVial extends ItemPlasma
                 }
                 //if(itemstack.stackSize > 1)
                 //{
-                //	if(returnStack != null)
-                //	{
+                	if(returnStack != null)
+                	{
 	                	itemstack.stackSize--;
 	                	entityplayer.inventory.addItemStackToInventory(returnStack);
 	                	return itemstack;
-                //	}
+                	}
                 //}
                 //else
                 //{

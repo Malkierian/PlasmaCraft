@@ -194,7 +194,7 @@ public class EntityLaserShotgun extends Entity
                     int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
                     int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                     worldObj.setBlockWithNotify(j, l, j1, Block.fire.blockID);
-                    PlasmaCraftCore.proxy.setFire(entity, 1);
+                    entity.setFire(1);
                     setEntityDead();
                 }
             } else

@@ -195,7 +195,7 @@ public class EntityLaser extends Entity
                     int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
                     int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
                     int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-                    PlasmaCraftCore.proxy.setFire(entity, 1);
+                    entity.setFire(1);
                     setEntityDead();
                     worldObj.setBlockWithNotify(j, l, j1, Block.fire.blockID);
                 }
