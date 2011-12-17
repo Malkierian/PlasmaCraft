@@ -9,6 +9,7 @@ import net.minecraft.src.Slot;
 
 public class ContainerPlasmaBench extends Container
 {
+	
     private TileEntityPlasmaBench bench;
     private int cookTime;
     private int burnTime;
@@ -85,6 +86,11 @@ public class ContainerPlasmaBench extends Container
         }
     }
 
+    public boolean canInteractWith(EntityPlayer entityplayer)
+    {
+        return bench.isUseableByPlayer(entityplayer);
+    }
+
     public ItemStack transferStackInSlot(int i)
     {
         ItemStack itemstack = null;
@@ -134,15 +140,5 @@ public class ContainerPlasmaBench extends Container
             }
         }
         return itemstack;
-    }
-
-    public boolean isUsableByPlayer(EntityPlayer entityplayer)
-    {
-        return bench.isUseableByPlayer(entityplayer);
-    }
-
-    public boolean canInteractWith(EntityPlayer entityplayer)
-    {
-        return true;
     }
 }

@@ -30,6 +30,12 @@ public class TileEntityPlasmaBench extends TileEntity
         return furnaceItemStacks.length;
     }
 
+    public int getStartInventorySide(int side) {
+	    if(side==0) return 1;
+	    if(side==1) return 0;
+	    return 2;
+    }
+
     public ItemStack getStackInSlot(int i)
     {
         return furnaceItemStacks[i];
