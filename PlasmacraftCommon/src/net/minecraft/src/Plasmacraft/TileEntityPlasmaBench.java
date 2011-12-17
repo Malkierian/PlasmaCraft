@@ -309,35 +309,39 @@ public class TileEntityPlasmaBench extends TileEntity
             furnaceItemStacks[j].stackSize++;
         }
         furnaceItemStacks[k].stackSize--;
+        boolean smeltVial = (furnaceItemStacks[k].getItem() instanceof ItemVial);
         if(furnaceItemStacks[k].stackSize <= 0)
         {
             furnaceItemStacks[k] = null;
         }
-        j = 0;
-        k = 0;
-        l = 0;
-        do
+        if(smeltVial)
         {
-            if(l >= i)
-            {
-                break;
-            }
-            ItemStack itemstack1 = new ItemStack(PlasmaCraftCore.acidVial);
-            j = getAvailableDestIndex(itemstack1);
-            if(j != -1)
-            {
-                break;
-            }
-            l++;
-        } while(true);
-        ItemStack itemstack2 = new ItemStack(PlasmaCraftCore.acidVial);
-        if(furnaceItemStacks[j] == null)
-        {
-            furnaceItemStacks[j] = itemstack2.copy();
-        } else
-        if(furnaceItemStacks[j].itemID == itemstack2.itemID)
-        {
-            furnaceItemStacks[j].stackSize++;
+	        j = 0;
+	        k = 0;
+	        l = 0;
+	        do
+	        {
+	            if(l >= i)
+	            {
+	                break;
+	            }
+	            ItemStack itemstack1 = new ItemStack(PlasmaCraftCore.acidVial);
+	            j = getAvailableDestIndex(itemstack1);
+	            if(j != -1)
+	            {
+	                break;
+	            }
+	            l++;
+	        } while(true);
+	        ItemStack itemstack2 = new ItemStack(PlasmaCraftCore.acidVial);
+	        if(furnaceItemStacks[j] == null)
+	        {
+	            furnaceItemStacks[j] = itemstack2.copy();
+	        } else
+	        if(furnaceItemStacks[j].itemID == itemstack2.itemID)
+	        {
+	            furnaceItemStacks[j].stackSize++;
+	        }
         }
     }
 
