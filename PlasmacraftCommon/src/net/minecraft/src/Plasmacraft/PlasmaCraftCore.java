@@ -27,7 +27,7 @@ public class PlasmaCraftCore
 	
 	public static String Version()
 	{
-		return "1.0.0/0.2.4";
+		return "1.0.0/0.2.5";
 	}
 	
 	public static IPCProxy proxy;
