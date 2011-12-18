@@ -1,5 +1,8 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.util.Random;
+
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IInventory;
 import net.minecraft.src.Item;
@@ -308,8 +311,8 @@ public class TileEntityPlasmaBench extends TileEntity
         {
             furnaceItemStacks[j].stackSize++;
         }
-        furnaceItemStacks[k].stackSize--;
         boolean smeltVial = (furnaceItemStacks[k].getItem() instanceof ItemVial);
+        furnaceItemStacks[k].stackSize--;
         if(furnaceItemStacks[k].stackSize <= 0)
         {
             furnaceItemStacks[k] = null;
@@ -334,6 +337,19 @@ public class TileEntityPlasmaBench extends TileEntity
 	            l++;
 	        } while(true);
 	        ItemStack itemstack2 = new ItemStack(PlasmaCraftCore.acidVial);
+	        if(j == -1)
+	        {
+	        	Random rand = new Random();
+	            float f = rand.nextFloat() * 0.8F + 0.1F;
+	            float f1 = rand.nextFloat() * 0.8F + 0.1F;
+	            float f2 = rand.nextFloat() * 0.8F + 0.1F;
+	            float f3 = 0.05F;
+	            EntityItem entityitem = new EntityItem(worldObj, (float)xCoord + f, (float)yCoord + f1, (float)zCoord + f2, new ItemStack(PlasmaCraftCore.acidVial));
+	            entityitem.motionX = (float)rand.nextGaussian() * f3;
+	            entityitem.motionY = (float)rand.nextGaussian() * f3 + 0.2F;
+	            entityitem.motionZ = (float)rand.nextGaussian() * f3;
+	            worldObj.entityJoinedWorld(entityitem);
+	        } else
 	        if(furnaceItemStacks[j] == null)
 	        {
 	            furnaceItemStacks[j] = itemstack2.copy();

@@ -1,6 +1,6 @@
 package net.minecraft.src.Plasmacraft;
 
-public enum EnumVialLiquid
+public enum EnumPlasmaLiquid
 {
 	EMPTY("EMPTY"),
 	ACID("ACID"),
@@ -12,7 +12,7 @@ public enum EnumVialLiquid
 	OBSIDIUM("OBSIDIUM"),
 	CRYONITE("CRYONITE");
 	
-	private EnumVialLiquid(String name)
+	private EnumPlasmaLiquid(String name)
 	{
 	}
 }

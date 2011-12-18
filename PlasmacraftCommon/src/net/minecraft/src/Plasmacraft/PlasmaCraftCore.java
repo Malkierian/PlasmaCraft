@@ -16,6 +16,7 @@ import net.minecraft.src.Plasmacraft.WorldGenFrozenCryonite;
 import net.minecraft.src.WorldGenLakes;
 import net.minecraft.src.WorldGenMinable;
 import net.minecraft.src.forge.Configuration;
+import net.minecraft.src.forge.MinecraftForge;
 import net.minecraft.src.forge.Property;
 
 public class PlasmaCraftCore 
@@ -312,9 +313,14 @@ public class PlasmaCraftCore
 	private static int neptuniumSpoutYRange = 64;
 	private static int neptuniumSpoutYStart = 8;
 	
+	public static PCBucketHandler handler;
+	
 	public static void init(int causticID)
 	{
 		loadConfig();
+		
+		handler = new PCBucketHandler();
+		MinecraftForge.registerCustomBucketHandler(handler);
         
         ModLoader.RegisterTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
         ModLoader.RegisterTileEntity(TileEntityCaustic.class, "causticTile");
@@ -372,15 +378,15 @@ public class PlasmaCraftCore
         goopObsidium = (new ItemPlasma(goopObsidiumID)).setIconIndex(goopObsidiumIndex).setItemName("goopObsidium");
         goopCryonite = (new ItemPlasma(goopCryoniteID)).setIconIndex(goopCryoniteIndex).setItemName("goopCryonite");
         goopUranium = (new ItemPlasma(goopUraniumID)).setIconIndex(goopUraniumIndex).setItemName("goopUranium");
-        acidVial = (new ItemVial(emptyVialID, 0, EnumVialLiquid.EMPTY)).setIconIndex(acidVialIndex).setItemName("acidVial");
-        fullAcidVial = (new ItemVial(acidVialID, acidMoving.blockID, EnumVialLiquid.ACID)).setIconIndex(fullAcidVialIndex).setItemName("fullAcidVial");
-        plutoniumVial = (new ItemVial(plutoniumViaID, plutoniumMoving.blockID, EnumVialLiquid.PLUTONIUM)).setIconIndex(plutoniumVialIndex).setItemName("plutoniumVial");
-        radioniteVial = (new ItemVial(radioniteVialID, radioniteMoving.blockID, EnumVialLiquid.RADIONITE)).setIconIndex(radioniteVialIndex).setItemName("radioniteVial");
-        uraniumVial = (new ItemVial(uraniumViaID, uraniumMoving.blockID, EnumVialLiquid.URANIUM)).setIconIndex(uraniumVialIndex).setItemName("uraniumVial");
-        neptuniumVial = (new ItemVial(neptuniumVialID, neptuniumMoving.blockID, EnumVialLiquid.NEPTUNIUM)).setIconIndex(neptuniumVialIndex).setItemName("neptuniumVial");
-        netherflowVial = (new ItemVial(netherflowVialID, netherflowMoving.blockID, EnumVialLiquid.NETHERFLOW)).setIconIndex(netherflowVialIndex).setItemName("netherflowVial");
-        obsidiumVial = (new ItemVial(obsidiumVialID, obsidiumMoving.blockID, EnumVialLiquid.OBSIDIUM)).setIconIndex(obsidiumVialIndex).setItemName("obsidiumVial");
-        cryoniteVial = (new ItemVial(cryoniteVialID, cryoniteMoving.blockID, EnumVialLiquid.CRYONITE)).setIconIndex(cryoniteVialIndex).setItemName("cryoniteVial");
+        acidVial = (new ItemVial(emptyVialID, 0, EnumPlasmaLiquid.EMPTY)).setIconIndex(acidVialIndex).setItemName("acidVial");
+        fullAcidVial = (new ItemVial(acidVialID, acidMoving.blockID, EnumPlasmaLiquid.ACID)).setIconIndex(fullAcidVialIndex).setItemName("fullAcidVial");
+        plutoniumVial = (new ItemVial(plutoniumViaID, plutoniumMoving.blockID, EnumPlasmaLiquid.PLUTONIUM)).setIconIndex(plutoniumVialIndex).setItemName("plutoniumVial");
+        radioniteVial = (new ItemVial(radioniteVialID, radioniteMoving.blockID, EnumPlasmaLiquid.RADIONITE)).setIconIndex(radioniteVialIndex).setItemName("radioniteVial");
+        uraniumVial = (new ItemVial(uraniumViaID, uraniumMoving.blockID, EnumPlasmaLiquid.URANIUM)).setIconIndex(uraniumVialIndex).setItemName("uraniumVial");
+        neptuniumVial = (new ItemVial(neptuniumVialID, neptuniumMoving.blockID, EnumPlasmaLiquid.NEPTUNIUM)).setIconIndex(neptuniumVialIndex).setItemName("neptuniumVial");
+        netherflowVial = (new ItemVial(netherflowVialID, netherflowMoving.blockID, EnumPlasmaLiquid.NETHERFLOW)).setIconIndex(netherflowVialIndex).setItemName("netherflowVial");
+        obsidiumVial = (new ItemVial(obsidiumVialID, obsidiumMoving.blockID, EnumPlasmaLiquid.OBSIDIUM)).setIconIndex(obsidiumVialIndex).setItemName("obsidiumVial");
+        cryoniteVial = (new ItemVial(cryoniteVialID, cryoniteMoving.blockID, EnumPlasmaLiquid.CRYONITE)).setIconIndex(cryoniteVialIndex).setItemName("cryoniteVial");
         plasmaGel = (new ItemPlasma(plasmaGelID)).setIconIndex(plasmaGelIndex).setItemName("plasmaGel");
         plasmaLeather = (new ItemPlasma(plasmaLeatherID)).setIconIndex(plasmaLeatherIndex).setItemName("plasmaLeather");
         plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");

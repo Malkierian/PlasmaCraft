@@ -13,9 +13,9 @@ public class ItemVial extends ItemPlasma
 {
 
     private int isFull;
-    public EnumVialLiquid contents;
+    public EnumPlasmaLiquid contents;
 
-    public ItemVial(int i, int j, EnumVialLiquid liquid)
+    public ItemVial(int i, int j, EnumPlasmaLiquid liquid)
     {
         super(i);
         maxStackSize = 8;
