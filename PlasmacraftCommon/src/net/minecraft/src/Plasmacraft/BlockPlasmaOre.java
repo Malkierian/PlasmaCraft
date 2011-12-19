@@ -18,7 +18,10 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
         super(i, j);
         setTickOnLoad(true);
         setHardness(3F);
-        setResistance(5F);
+        if(blockID == PlasmaCraftCore.oreObsidiumBlockID)
+        	setResistance(2000F);
+        else
+        	setResistance(5F);
         setStepSound(Block.soundStoneFootstep);
     }
     
