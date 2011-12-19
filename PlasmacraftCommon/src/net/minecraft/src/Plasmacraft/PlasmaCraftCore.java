@@ -288,7 +288,7 @@ public class PlasmaCraftCore
 	private static int radioniteOreVeinCount = 2;
 	private static int radioniteOreYRange = 24;
 	private static int radioniteOreYStart = 4;
-	private static int radioniteOreVeinSize = 2;
+	private static int radioniteOreVeinSize = 6;
 	private static int acidLakeChance = 32;
 	private static int acidLakeYCutoff = 96;
 	private static int acidSpoutCount = 20;
@@ -435,7 +435,12 @@ public class PlasmaCraftCore
         ModLoader.RegisterBlock(plasmificatorActive);
         ModLoader.RegisterBlock(acidHot);
         ModLoader.RegisterBlock(acidTnt);
-        
+        MinecraftForge.setBlockHarvestLevel(oreObsidium,"pickaxe",3);
+        MinecraftForge.setBlockHarvestLevel(oreUranium,"pickaxe",2);
+        MinecraftForge.setBlockHarvestLevel(oreRadionite,"pickaxe",2);
+        MinecraftForge.setBlockHarvestLevel(orePlutonium,"pickaxe",2);
+        MinecraftForge.setBlockHarvestLevel(oreNeptunium,"pickaxe",1);
+        MinecraftForge.setBlockHarvestLevel(frozenCryonite,"pickaxe",1);
         AddRecipes();
 	}
 	
@@ -726,14 +731,6 @@ public class PlasmaCraftCore
             int l3 = random.nextInt(uraniumOreYRange) + uraniumOreYStart;
             int j5 = j + random.nextInt(16);
             (new WorldGenMinable(oreUraniumBlockID, uraniumOreVeinSize)).generate(world, random, j2, l3, j5);
-        }
-
-        for(int i1 = 0; i1 < radioniteOreVeinCount; i1++)
-        {
-            int k2 = i + random.nextInt(16);
-            int i4 = random.nextInt(radioniteOreYRange) + radioniteOreYStart;
-            int k5 = j + random.nextInt(16);
-            (new WorldGenMinable(oreRadioniteBlockID, radioniteOreVeinSize)).generate(world, random, k2, i4, k5);
         }
         for(int i1 = 0; i1 < radioniteOreVeinCount; i1++)
         {
