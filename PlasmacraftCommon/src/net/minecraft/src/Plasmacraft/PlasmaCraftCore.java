@@ -333,6 +333,7 @@ public class PlasmaCraftCore
         
         glowCloth1 = (new BlockGlowCloth(greenGlowClothBlockID, glowCloth1Index)).setBlockName("glowcloth1");
         glowCloth2 = (new BlockGlowCloth(pinkGlowClothBlockID, glowCloth2Index)).setBlockName("glowcloth2");
+        
         cryoniteStill = (new BlockCausticStationary(cryoniteStillBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID, 0.0F)).setBlockName("cryoniteStill");
         cryoniteMoving = (new BlockCausticFlowing(cryoniteFlowingBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID)).setBlockName("cryoniteMoving");
         acidStill = (new BlockCausticStationary(acidStillBlockID, acidStillIndex, acidMovingIndex, causticID, acidStillBlockID, acidFlowingBlockID, 1.0F)).setBlockName("acidStill");
@@ -349,11 +350,15 @@ public class PlasmaCraftCore
         uraniumMoving = (new BlockCausticFlowing(uraniumFlowingBlockID, uraniumStillIndex, uraniumMovingIndex, causticID, uraniumStillBlockID, uraniumFlowingBlockID)).setBlockName("uraniumMoving");
         obsidiumStill = (new BlockCausticStationary(obsidiumStillBlockID, obsidiumStillIndex, obsidiumMovingIndex, causticID, obsidiumStillBlockID, obsidiumFlowingBlockID, 1.0F)).setBlockName("obsidiumStill");
         obsidiumMoving = (new BlockCausticFlowing(obsidiumFlowingBlockID, obsidiumStillIndex, obsidiumMovingIndex, causticID, obsidiumStillBlockID, obsidiumFlowingBlockID)).setBlockName("obsidiumMoving");
+        
         reinforcedGlass = (new BlockReinforcedGlass(reinforcedGlassBlockID, reinforcedGlassIndex, Material.glass, false, 500.0F)).setBlockName("reinforcedGlass");
         frozenCryonite = (new BlockReinforcedGlass(cryoniteFrozenBlockID, frozenCryoniteIndex, Material.glass, false, 1.0F)).setBlockName("frozenCryonite");
+        
         plasmificatorIdle = (new BlockPlasmificator(plasmificatorIdleBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, false, 0.0F)).setBlockName("plasmificatorIdle");
         plasmificatorActive = (new BlockPlasmificator(plasmificatorActiveBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, true, 1.0F)).setBlockName("plasmificatorActive");
+        
         acidHot = (new BlockAcidHot(acidBarrierBlockID, acidHotIndex)).setBlockName("acidHot");
+        
         acidTnt = (new BlockAcidTNT(acidTNTBlockID, acidTntSideIndex, acidTntTopIndex, acidTntBottomIndex)).setBlockName("acidTnt");
         
         ingotPlutonium = (new ItemPlasma(ingotPlutoniumID)).setIconIndex(ingotPlutoniumIndex).setItemName("ingotPlutonium");
@@ -576,9 +581,9 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
             "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), fullAcidVial, Character.valueOf('Z'), plasma
         });
-        ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
-            "D", "C", "D", Character.valueOf('D'), Block.planks, Character.valueOf('C'), Block.dirt
-        });
+        //ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
+        //    "D", "C", "D", Character.valueOf('D'), Block.planks, Character.valueOf('C'), Block.dirt
+        //});
         ModLoader.AddRecipe(new ItemStack(reinforcedGlass, 1), new Object[] {
             "X", "#", Character.valueOf('#'), Block.glass, Character.valueOf('X'), Item.ingotIron
         });
@@ -613,9 +618,9 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(BatteryCharged, 1), new Object[] {
             "R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), BatteryEmpty
         });
-        ModLoader.AddRecipe(new ItemStack(fullAcidVial, 1), new Object[] {
-            "JKL", Character.valueOf('J'), Block.dirt, Character.valueOf('K'), Block.sand, Character.valueOf('L'), Block.planks
-        });
+        //ModLoader.AddRecipe(new ItemStack(fullAcidVial, 1), new Object[] {
+        //    "JKL", Character.valueOf('J'), Block.dirt, Character.valueOf('K'), Block.sand, Character.valueOf('L'), Block.planks
+        //});
         ModLoader.AddRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
             "N", "J", Character.valueOf('N'), plasmaGel, Character.valueOf('J'), Item.leather
         });
@@ -658,9 +663,9 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(acidTnt, 4), new Object[] {
             "APA", "GAG", "APA", Character.valueOf('A'), fullAcidVial, Character.valueOf('G'), Item.gunpowder, Character.valueOf('P'), plasma
         });
-        ModLoader.AddRecipe(new ItemStack(Item.gunpowder, 4), new Object[] {
-            "AVG", Character.valueOf('A'), fullAcidVial, Character.valueOf('V'), acidVial, Character.valueOf('G'), plasmaGel
-        });
+        //ModLoader.AddRecipe(new ItemStack(Item.gunpowder, 4), new Object[] {
+        //    "AVG", Character.valueOf('A'), fullAcidVial, Character.valueOf('V'), acidVial, Character.valueOf('G'), plasmaGel
+        //});
         ModLoader.AddRecipe(new ItemStack(glowCloth1, 1), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), fullAcidVial
         });
