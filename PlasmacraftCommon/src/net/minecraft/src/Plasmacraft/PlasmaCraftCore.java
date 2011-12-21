@@ -48,15 +48,16 @@ public class PlasmaCraftCore
 	public static Block obsidiumMoving;
 	public static Block uraniumStill;
 	public static Block uraniumMoving;
-	public static Block orePlasma;
-	public static Block glowCloth1;
-	public static Block glowCloth2;
 	public static Block frozenCryonite;
 	public static Block reinforcedGlass;
 	public static Block plasmificatorIdle;
 	public static Block plasmificatorActive;
 	public static Block acidHot;
 	public static Block acidTnt;
+
+	public static Block orePlasma;
+	public static Block glowCloth;
+	
 	public static Item causticBoat;
 	public static Item ingotPlutonium;
 	public static Item ingotRadionite;
@@ -120,10 +121,17 @@ public class PlasmaCraftCore
 	public static int acidTntSideIndex = 1;
 	public static int acidTntTopIndex = 3;
 	public static int acidTntBottomIndex = 2;
-	public static int glowCloth1Index = 6;
-	public static int glowCloth2Index = 7;
 	public static int blockUraniumIndex = 4;
 	public static int frozenCryoniteIndex = 5;
+
+	public static int glowClothAcidIndex = 6;
+	public static int glowClothRadioniteIndex = 7;
+	public static int glowClothNetherflowIndex = 17;
+	public static int glowClothNeptuniumIndex = 18;
+	public static int glowClothUraniumIndex = 19;
+	public static int glowClothPlutoniumIndex = 20;
+	public static int glowClothCryoniteIndex = 21;
+	public static int glowClothObsidiumIndex = 22;
 	
 	public static int cryoniteStillIndex = 1;
 	public static int cryoniteMovingIndex = cryoniteStillIndex + 1;
@@ -213,6 +221,15 @@ public class PlasmaCraftCore
 	public static final int neptuniumMeta = 2;
     public static final int obsidiumMeta = 3; 
     public static final int uraniumMeta = 4;
+    
+    public static final int glowClothAcidMeta = 0;
+    public static final int glowClothRadioniteMeta = 1;
+    public static final int glowClothNetherflowMeta = 2;
+    public static final int glowClothNeptuniumMeta = 3;
+    public static final int glowClothUraniumMeta = 4;
+    public static final int glowClothPlutoniumMeta = 5;
+    public static final int glowClothCryoniteMeta = 6;
+    public static final int glowClothObsidiumMeta = 7;
 	
 	public static int hazmatHoodID;
 	public static int hazmatJacketID;
@@ -222,9 +239,6 @@ public class PlasmaCraftCore
 	
 	public static boolean LiquidSourceExplodesAfterCausticExplosion;
 	public static int cryoniteFrozenBlockID;
-	public static int oreBlockID;
-	public static int pinkGlowClothBlockID;
-	public static int greenGlowClothBlockID;
 	public static int acidTNTBlockID;
 	public static int acidBarrierBlockID;
 	public static int plasmificatorActiveBlockID;
@@ -275,6 +289,9 @@ public class PlasmaCraftCore
 	public static int batterycryoID;
 	public static int ThermoPelletID;
 
+	public static int oreBlockID;
+	public static int glowClothBlockID;
+
 	private static int plutoniumOreVeinCount = 2;
 	private static int plutoniumOreYRange = 16;
 	private static int plutoniumOreYStart = 4;
@@ -317,16 +334,15 @@ public class PlasmaCraftCore
 	{
 		loadConfig();
 		
-		orePlasma = (new BlockPlasmaOre(oreBlockID, orePlutoniumIndex)).setBlockName("orePlasma");
-		
 		handler = new PCBucketHandler();
 		MinecraftForge.registerCustomBucketHandler(handler);
         
         ModLoader.RegisterTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
         ModLoader.RegisterTileEntity(TileEntityCaustic.class, "causticTile");
 		
-        glowCloth1 = (new BlockGlowCloth(greenGlowClothBlockID, glowCloth1Index)).setBlockName("glowcloth1");
-        glowCloth2 = (new BlockGlowCloth(pinkGlowClothBlockID, glowCloth2Index)).setBlockName("glowcloth2");
+        orePlasma = (new BlockPlasmaOre(oreBlockID, orePlutoniumIndex)).setBlockName("orePlasma");
+		
+        glowCloth = (new BlockGlowCloth(glowClothBlockID, glowClothAcidIndex)).setBlockName("glowcloth");
         
         cryoniteStill = (new BlockCausticStationary(cryoniteStillBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID, 0.0F)).setBlockName("cryoniteStill");
         cryoniteMoving = (new BlockCausticFlowing(cryoniteFlowingBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID)).setBlockName("cryoniteMoving");
@@ -405,8 +421,6 @@ public class PlasmaCraftCore
         legsHazmat = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 2)).setIconIndex(legsIndex).setItemName("legsHazmat");
         bootsHazmat = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 3)).setIconIndex(bootsIndex).setItemName("bootsHazmat");
         
-        ModLoader.RegisterBlock(glowCloth1);
-        ModLoader.RegisterBlock(glowCloth2);
         ModLoader.RegisterBlock(cryoniteStill);
         ModLoader.RegisterBlock(cryoniteMoving);
         ModLoader.RegisterBlock(acidStill);
@@ -423,13 +437,17 @@ public class PlasmaCraftCore
         ModLoader.RegisterBlock(uraniumMoving);
         ModLoader.RegisterBlock(obsidiumStill);
         ModLoader.RegisterBlock(obsidiumMoving);
-        ModLoader.RegisterBlock(orePlasma);
         ModLoader.RegisterBlock(frozenCryonite);
         ModLoader.RegisterBlock(reinforcedGlass);
         ModLoader.RegisterBlock(plasmificatorIdle);
         ModLoader.RegisterBlock(plasmificatorActive);
         ModLoader.RegisterBlock(acidHot);
         ModLoader.RegisterBlock(acidTnt);
+        
+        ModLoader.RegisterBlock(glowCloth);
+
+        ModLoader.RegisterBlock(orePlasma);
+        
         MinecraftForge.setBlockHarvestLevel(orePlasma, obsidiumMeta, "pickaxe", 3);
         MinecraftForge.setBlockHarvestLevel(orePlasma, uraniumMeta, "pickaxe", 2);
         MinecraftForge.setBlockHarvestLevel(orePlasma, radioniteMeta, "pickaxe", 2);
@@ -438,6 +456,8 @@ public class PlasmaCraftCore
         MinecraftForge.setBlockHarvestLevel(frozenCryonite, "pickaxe", 1);
         
         Item.itemsList[oreBlockID] = new ItemPlasmaOre(oreBlockID - 256).setItemName("OreBlock");
+        
+        Item.itemsList[glowClothBlockID] = new ItemGlowCloth(glowClothBlockID - 256).setItemName("GlowCloth");
         
         AddRecipes();
 	}
@@ -474,7 +494,6 @@ public class PlasmaCraftCore
         cryoniteFrozenBlockID = getInt(c.getOrCreateBlockIdProperty("ID.CryoniteFrozen", 131));
         cryoniteStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.CryoniteStill", 130));
         cryoniteFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.CryoniteFlowing", 129));
-        oreBlockID = getInt(c.getOrCreateBlockIdProperty("ID.Ore", 128));
         acidStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidStill", 127));
         acidFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidFlowing", 126));
         reinforcedGlassBlockID = getInt(c.getOrCreateBlockIdProperty("ID.ReinforcedGlass", 125));
@@ -482,8 +501,10 @@ public class PlasmaCraftCore
         plasmificatorActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 152));
         acidBarrierBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidBarrier", 151));
         acidTNTBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidTNT", 150));
-        greenGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.GreenGlowCloth", 147));
-        pinkGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PinkGlowCloth", 146));
+        
+        glowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.GlowCloth", 146));
+
+        oreBlockID = getInt(c.getOrCreateBlockIdProperty("ID.Ore", 128));
         
         ingotPlutoniumID = getInt(c.getOrCreateIntProperty("ingotPlutoniumID", Configuration.ITEM_PROPERTY, 2048));
         ingotRadioniteID = getInt(c.getOrCreateIntProperty("ingotRadioniteID", Configuration.ITEM_PROPERTY, 2049));
@@ -655,30 +676,29 @@ public class PlasmaCraftCore
         //ModLoader.AddRecipe(new ItemStack(Item.gunpowder, 4), new Object[] {
         //    "AVG", Character.valueOf('A'), fullAcidVial, Character.valueOf('V'), acidVial, Character.valueOf('G'), plasmaGel
         //});
-        ModLoader.AddRecipe(new ItemStack(glowCloth1, 1), new Object[] {
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothAcidMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), fullAcidVial
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth2, 1), new Object[] {
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothRadioniteMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopRadionite
         });
-        
-        
-        
-        
-        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.obsidiumMeta), new Object[]{
-        	"x", Character.valueOf('x'), Block.dirt
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothNetherflowMeta), new Object[] {
+            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopNetherflow
         });
-        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.neptuniumMeta), new Object[]{
-        	"xx", Character.valueOf('x'), Block.dirt
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothNeptuniumMeta), new Object[] {
+            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopNeptunium
         });
-        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.plutoniumMeta), new Object[]{
-        	"xxx", Character.valueOf('x'), Block.dirt
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothUraniumMeta), new Object[] {
+            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopUranium
         });
-        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.radioniteMeta), new Object[]{
-        	"x", Character.valueOf('x'), Block.cobblestone
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta), new Object[] {
+            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopPlutonium
         });
-        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.uraniumMeta), new Object[]{
-        	"xx", Character.valueOf('x'), Block.cobblestone
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothCryoniteMeta), new Object[] {
+            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopCryonite
+        });
+        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothObsidiumMeta), new Object[] {
+            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopObsidium
         });
     }
 

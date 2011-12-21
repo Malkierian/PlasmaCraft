@@ -20,11 +20,15 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
         setHardness(3F);
         setResistance(5F);
         setStepSound(Block.soundStoneFootstep);
+        setLightValue(0.54F);
     }
     
     public void addCreativeItems(ArrayList itemList)
-    {    	
-    	itemList.add(new ItemStack(this, 1));
+    {
+    	for(int i = 0; i < 5; i++)
+    	{
+    		itemList.add(new ItemStack(this, 1, i));
+    	}
     }
 
     public int idDropped(int i, Random random)
@@ -70,7 +74,8 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
     public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     {
     	int meta = world.getBlockMetadata(i, j, k);
-        if(meta == PlasmaCraftCore.uraniumMeta)
+    	int blockID = world.getBlockId(i, j, k);
+        if(blockID == this.blockID && meta == PlasmaCraftCore.uraniumMeta)
         {
             entity.attackEntityFrom(DamageSource.cactus, 5);
             return;

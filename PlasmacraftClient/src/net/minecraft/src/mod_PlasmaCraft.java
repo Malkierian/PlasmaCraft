@@ -84,8 +84,6 @@ public class mod_PlasmaCraft extends BaseModMp
         ModLoader.AddName(PlasmaCraftCore.uraniumMoving, "Uranium (Moving)");
         ModLoader.AddName(PlasmaCraftCore.uraniumStill, "Uranium (Still)");
         ModLoader.AddName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
-        ModLoader.AddName(PlasmaCraftCore.glowCloth1, "Green Glowcloth");
-        ModLoader.AddName(PlasmaCraftCore.glowCloth2, "Purple Glowcloth");
         ModLoader.AddName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
         ModLoader.AddName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
         ModLoader.AddName(PlasmaCraftCore.plasmificatorIdle, "Plasmificator");
@@ -139,6 +137,15 @@ public class mod_PlasmaCraft extends BaseModMp
         ModLoader.AddName(PlasmaCraftCore.plateHazmat, "Hazmat Jacket");
         ModLoader.AddName(PlasmaCraftCore.legsHazmat, "Hazmat Pants");
         ModLoader.AddName(PlasmaCraftCore.bootsHazmat, "Hazmat Boots");
+
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothAcidMeta), "Acid Glowcloth");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothRadioniteMeta), "Radionite Glowcloth");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothNetherflowMeta), "Netherflow Glowcloth");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothNeptuniumMeta), "Neptunium Glowcloth");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothUraniumMeta), "Uranium Glowcloth");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothPlutoniumMeta), "Plutonium Glowcloth");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothCryoniteMeta), "Cryonite Glowcloth");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothObsidiumMeta), "Obsidium Glowcloth");
 
         ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.obsidiumMeta), "Obsidium Ore");
         ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.neptuniumMeta), "Neptunium Ore");
