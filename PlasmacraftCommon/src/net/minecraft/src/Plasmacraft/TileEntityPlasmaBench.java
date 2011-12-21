@@ -208,7 +208,7 @@ public class TileEntityPlasmaBench extends TileEntity
             {
                 continue;
             }
-            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex);
+            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex, furnaceItemStacks[k].getItemDamage());
             if(itemstack != null)
             {
                 ai[i] = k;
@@ -259,7 +259,7 @@ public class TileEntityPlasmaBench extends TileEntity
         for(int j = 0; j < i; j++)
         {
             int k = ai[j];
-            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex);
+            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex, furnaceItemStacks[k].getItemDamage());
             Item item = furnaceItemStacks[k].getItem();
             int l = getAvailableDestIndex(itemstack);
             if(l != -1)
@@ -293,7 +293,7 @@ public class TileEntityPlasmaBench extends TileEntity
                 break;
             }
             int i1 = ai[l];
-            ItemStack itemstack1 = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[i1].getItem().shiftedIndex);
+            ItemStack itemstack1 = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[i1].getItem().shiftedIndex, furnaceItemStacks[i1].getItemDamage());
             j = getAvailableDestIndex(itemstack1);
             if(j != -1)
             {
@@ -302,7 +302,7 @@ public class TileEntityPlasmaBench extends TileEntity
             }
             l++;
         } while(true);
-        ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex);
+        ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex, furnaceItemStacks[k].getItemDamage());
         if(furnaceItemStacks[j] == null)
         {
             furnaceItemStacks[j] = itemstack.copy();

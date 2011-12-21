@@ -48,13 +48,9 @@ public class PlasmaCraftCore
 	public static Block obsidiumMoving;
 	public static Block uraniumStill;
 	public static Block uraniumMoving;
+	public static Block orePlasma;
 	public static Block glowCloth1;
 	public static Block glowCloth2;
-	public static Block orePlutonium;
-	public static Block oreRadionite;
-	public static Block oreNeptunium;
-	public static Block oreObsidium;
-	public static Block oreUranium;
 	public static Block frozenCryonite;
 	public static Block reinforcedGlass;
 	public static Block plasmificatorIdle;
@@ -212,6 +208,12 @@ public class PlasmaCraftCore
 	public static int obsidiumStillBlockID;
 	public static int obsidiumFlowingBlockID;
 	
+	public static final int plutoniumMeta = 0;
+	public static final int radioniteMeta = 1;
+	public static final int neptuniumMeta = 2;
+    public static final int obsidiumMeta = 3; 
+    public static final int uraniumMeta = 4;
+	
 	public static int hazmatHoodID;
 	public static int hazmatJacketID;
 	public static int hazmatPantsID;
@@ -220,11 +222,7 @@ public class PlasmaCraftCore
 	
 	public static boolean LiquidSourceExplodesAfterCausticExplosion;
 	public static int cryoniteFrozenBlockID;
-	public static int oreUraniumBlockID;
-	public static int oreObsidiumBlockID;
-	public static int oreNeptuniumBlockID;
-	public static int oreRadioniteBlockID;
-	public static int orePlutoniumBlockID;
+	public static int oreBlockID;
 	public static int pinkGlowClothBlockID;
 	public static int greenGlowClothBlockID;
 	public static int acidTNTBlockID;
@@ -319,18 +317,14 @@ public class PlasmaCraftCore
 	{
 		loadConfig();
 		
+		orePlasma = (new BlockPlasmaOre(oreBlockID, orePlutoniumIndex)).setBlockName("orePlasma");
+		
 		handler = new PCBucketHandler();
 		MinecraftForge.registerCustomBucketHandler(handler);
         
         ModLoader.RegisterTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
         ModLoader.RegisterTileEntity(TileEntityCaustic.class, "causticTile");
 		
-        orePlutonium = (new BlockPlasmaOre(orePlutoniumBlockID, orePlutoniumIndex)).setBlockName("orePlutonium");
-        oreRadionite = (new BlockPlasmaOre(oreRadioniteBlockID, oreRadioniteIndex)).setBlockName("oreRadionite");
-        oreNeptunium = (new BlockPlasmaOre(oreNeptuniumBlockID, oreNeptuniumIndex)).setBlockName("oreNeptunium");
-        oreObsidium = (new BlockPlasmaOre(oreObsidiumBlockID, oreObsidiumIndex)).setBlockName("oreObsidium");
-        oreUranium = (new BlockPlasmaOre(oreUraniumBlockID, blockUraniumIndex)).setBlockName("oreUranium");
-        
         glowCloth1 = (new BlockGlowCloth(greenGlowClothBlockID, glowCloth1Index)).setBlockName("glowcloth1");
         glowCloth2 = (new BlockGlowCloth(pinkGlowClothBlockID, glowCloth2Index)).setBlockName("glowcloth2");
         
@@ -429,23 +423,22 @@ public class PlasmaCraftCore
         ModLoader.RegisterBlock(uraniumMoving);
         ModLoader.RegisterBlock(obsidiumStill);
         ModLoader.RegisterBlock(obsidiumMoving);
-        ModLoader.RegisterBlock(orePlutonium);
-        ModLoader.RegisterBlock(oreRadionite);
-        ModLoader.RegisterBlock(oreNeptunium);
-        ModLoader.RegisterBlock(oreObsidium);
-        ModLoader.RegisterBlock(oreUranium);
+        ModLoader.RegisterBlock(orePlasma);
         ModLoader.RegisterBlock(frozenCryonite);
         ModLoader.RegisterBlock(reinforcedGlass);
         ModLoader.RegisterBlock(plasmificatorIdle);
         ModLoader.RegisterBlock(plasmificatorActive);
         ModLoader.RegisterBlock(acidHot);
         ModLoader.RegisterBlock(acidTnt);
-        MinecraftForge.setBlockHarvestLevel(oreObsidium,"pickaxe",3);
-        MinecraftForge.setBlockHarvestLevel(oreUranium,"pickaxe",2);
-        MinecraftForge.setBlockHarvestLevel(oreRadionite,"pickaxe",2);
-        MinecraftForge.setBlockHarvestLevel(orePlutonium,"pickaxe",2);
-        MinecraftForge.setBlockHarvestLevel(oreNeptunium,"pickaxe",1);
-        MinecraftForge.setBlockHarvestLevel(frozenCryonite,"pickaxe",1);
+        MinecraftForge.setBlockHarvestLevel(orePlasma, obsidiumMeta, "pickaxe", 3);
+        MinecraftForge.setBlockHarvestLevel(orePlasma, uraniumMeta, "pickaxe", 2);
+        MinecraftForge.setBlockHarvestLevel(orePlasma, radioniteMeta, "pickaxe", 2);
+        MinecraftForge.setBlockHarvestLevel(orePlasma, plutoniumMeta, "pickaxe", 2);
+        MinecraftForge.setBlockHarvestLevel(orePlasma, neptuniumMeta, "pickaxe", 1);
+        MinecraftForge.setBlockHarvestLevel(frozenCryonite, "pickaxe", 1);
+        
+        Item.itemsList[oreBlockID] = new ItemPlasmaOre(oreBlockID - 256).setItemName("OreBlock");
+        
         AddRecipes();
 	}
 	
@@ -481,7 +474,7 @@ public class PlasmaCraftCore
         cryoniteFrozenBlockID = getInt(c.getOrCreateBlockIdProperty("ID.CryoniteFrozen", 131));
         cryoniteStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.CryoniteStill", 130));
         cryoniteFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.CryoniteFlowing", 129));
-        oreUraniumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreUranium", 128));
+        oreBlockID = getInt(c.getOrCreateBlockIdProperty("ID.Ore", 128));
         acidStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidStill", 127));
         acidFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidFlowing", 126));
         reinforcedGlassBlockID = getInt(c.getOrCreateBlockIdProperty("ID.ReinforcedGlass", 125));
@@ -489,12 +482,8 @@ public class PlasmaCraftCore
         plasmificatorActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 152));
         acidBarrierBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidBarrier", 151));
         acidTNTBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidTNT", 150));
-        oreNeptuniumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreNeptunium", 149));
-        oreObsidiumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreObsidium", 148));
         greenGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.GreenGlowCloth", 147));
         pinkGlowClothBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PinkGlowCloth", 146));
-        orePlutoniumBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OrePlutonium", 145));
-        oreRadioniteBlockID = getInt(c.getOrCreateBlockIdProperty("ID.OreRadionite", 144));
         
         ingotPlutoniumID = getInt(c.getOrCreateIntProperty("ingotPlutoniumID", Configuration.ITEM_PROPERTY, 2048));
         ingotRadioniteID = getInt(c.getOrCreateIntProperty("ingotRadioniteID", Configuration.ITEM_PROPERTY, 2049));
@@ -672,6 +661,25 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(glowCloth2, 1), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopRadionite
         });
+        
+        
+        
+        
+        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.obsidiumMeta), new Object[]{
+        	"x", Character.valueOf('x'), Block.dirt
+        });
+        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.neptuniumMeta), new Object[]{
+        	"xx", Character.valueOf('x'), Block.dirt
+        });
+        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.plutoniumMeta), new Object[]{
+        	"xxx", Character.valueOf('x'), Block.dirt
+        });
+        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.radioniteMeta), new Object[]{
+        	"x", Character.valueOf('x'), Block.cobblestone
+        });
+        ModLoader.AddRecipe(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.uraniumMeta), new Object[]{
+        	"xx", Character.valueOf('x'), Block.cobblestone
+        });
     }
 
     public static void GenerateNether(World world, Random random, int i, int j)
@@ -681,7 +689,7 @@ public class PlasmaCraftCore
             int l1 = i + random.nextInt(16);
             int i3 = random.nextInt(neptuniumOreYRange) + neptuniumOreYStart;
             int j4 = j + random.nextInt(16);
-            (new WorldGenNetherMinable(oreNeptunium.blockID, neptuniumOreVeinSize)).generate(world, random, l1, i3, j4);
+            (new WorldGenNetherMinable(oreBlockID, neptuniumOreVeinSize, neptuniumMeta)).generate(world, random, l1, i3, j4);
         }
 
         for(int l = 0; l < obsidiumOreVeinCount; l++)
@@ -689,7 +697,7 @@ public class PlasmaCraftCore
             int i2 = i + random.nextInt(16);
             int j3 = random.nextInt(obsidiumOreYRange) + obsidiumOreYStart;
             int k4 = j + random.nextInt(16);
-            (new WorldGenNetherMinable(oreObsidium.blockID, obsidiumOreVeinSize)).generate(world, random, i2, j3, k4);
+            (new WorldGenNetherMinable(oreBlockID, obsidiumOreVeinSize, obsidiumMeta)).generate(world, random, i2, j3, k4);
         }
 
         if(random.nextInt(netherflowLakeChance) == 0)
@@ -727,7 +735,7 @@ public class PlasmaCraftCore
             int i2 = i + random.nextInt(16);
             int k3 = random.nextInt(plutoniumOreYRange) + plutoniumOreYStart;
             int i5 = j + random.nextInt(16);
-            (new WorldGenMinable(orePlutoniumBlockID, plutoniumOreVeinSize)).generate(world, random, i2, k3, i5);
+            (new WorldGenMulti(oreBlockID, plutoniumOreVeinSize, plutoniumMeta)).generate(world, random, i2, k3, i5);
         }
 
         for(int l = 0; l < uraniumOreVeinCount; l++)
@@ -735,14 +743,14 @@ public class PlasmaCraftCore
             int j2 = i + random.nextInt(16);
             int l3 = random.nextInt(uraniumOreYRange) + uraniumOreYStart;
             int j5 = j + random.nextInt(16);
-            (new WorldGenMinable(oreUraniumBlockID, uraniumOreVeinSize)).generate(world, random, j2, l3, j5);
+            (new WorldGenMulti(oreBlockID, uraniumOreVeinSize, uraniumMeta)).generate(world, random, j2, l3, j5);
         }
         for(int i1 = 0; i1 < radioniteOreVeinCount; i1++)
         {
             int k2 = i + random.nextInt(16);
             int i4 = random.nextInt(radioniteOreYRange) + radioniteOreYStart;
             int k5 = j + random.nextInt(16);
-            (new WorldGenMinable(oreRadioniteBlockID, radioniteOreVeinSize)).generate(world, random, k2, i4, k5);
+            (new WorldGenMulti(oreBlockID, radioniteOreVeinSize, radioniteMeta)).generate(world, random, k2, i4, k5);
         }
         if(random.nextInt(acidLakeChance) == 0)
         {

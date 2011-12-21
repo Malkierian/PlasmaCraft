@@ -229,25 +229,24 @@ public class EntityLaser extends Entity
                         dropItem(Item.ingotGold.shiftedIndex, 1);
                         flag = false;
                     }
-                    if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.oreRadionite.blockID)
+                    if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.orePlasma.blockID)
                     {
+                    	int meta = worldObj.getBlockMetadata(k, i1, k1);
+                    	int index;
+                    	switch(meta)
+                    	{
+                    	case PlasmaCraftCore.radioniteMeta:
+                    		index = PlasmaCraftCore.goopRadionite.shiftedIndex;
+                    	case PlasmaCraftCore.plutoniumMeta:
+                    		index = PlasmaCraftCore.goopPlutonium.shiftedIndex;
+                    	case PlasmaCraftCore.uraniumMeta:
+                    		index = PlasmaCraftCore.goopUranium.shiftedIndex;
+                    	default:
+                    		index = PlasmaCraftCore.goopPlutonium.shiftedIndex;
+                    	}
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
                         setEntityDead();
-                        dropItem(PlasmaCraftCore.goopRadionite.shiftedIndex, 1);
-                        flag = false;
-                    }
-                    if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.orePlutonium.blockID)
-                    {
-                        worldObj.setBlockWithNotify(k, i1, k1, 0);
-                        setEntityDead();
-                        dropItem(PlasmaCraftCore.goopPlutonium.shiftedIndex, 1);
-                        flag = false;
-                    }
-                    if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.oreUranium.blockID)
-                    {
-                        worldObj.setBlockWithNotify(k, i1, k1, 0);
-                        setEntityDead();
-                        dropItem(PlasmaCraftCore.goopUranium.shiftedIndex, 1);
+                        dropItem(index, 1);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == Block.ice.blockID)

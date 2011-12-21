@@ -83,15 +83,10 @@ public class mod_PlasmaCraft extends BaseModMp
         ModLoader.AddName(PlasmaCraftCore.obsidiumStill, "Obsidium (Still)");
         ModLoader.AddName(PlasmaCraftCore.uraniumMoving, "Uranium (Moving)");
         ModLoader.AddName(PlasmaCraftCore.uraniumStill, "Uranium (Still)");
-        ModLoader.AddName(PlasmaCraftCore.oreUranium, "Uranium Ore");
         ModLoader.AddName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
         ModLoader.AddName(PlasmaCraftCore.glowCloth1, "Green Glowcloth");
         ModLoader.AddName(PlasmaCraftCore.glowCloth2, "Purple Glowcloth");
         ModLoader.AddName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
-        ModLoader.AddName(PlasmaCraftCore.orePlutonium, "Plutonium Ore");
-        ModLoader.AddName(PlasmaCraftCore.oreRadionite, "Radionite Ore");
-        ModLoader.AddName(PlasmaCraftCore.oreNeptunium, "Neptunium Ore");
-        ModLoader.AddName(PlasmaCraftCore.oreObsidium, "Obsidium Ore");
         ModLoader.AddName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
         ModLoader.AddName(PlasmaCraftCore.plasmificatorIdle, "Plasmificator");
         ModLoader.AddName(PlasmaCraftCore.plasmificatorActive, "Plasmificator");
@@ -144,6 +139,12 @@ public class mod_PlasmaCraft extends BaseModMp
         ModLoader.AddName(PlasmaCraftCore.plateHazmat, "Hazmat Jacket");
         ModLoader.AddName(PlasmaCraftCore.legsHazmat, "Hazmat Pants");
         ModLoader.AddName(PlasmaCraftCore.bootsHazmat, "Hazmat Boots");
+
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.obsidiumMeta), "Obsidium Ore");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.neptuniumMeta), "Neptunium Ore");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.plutoniumMeta), "Plutonium Ore");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.radioniteMeta), "Radionite Ore");
+        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.uraniumMeta), "Uranium Ore");
         
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.itemTexture);
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.terrainTexture);

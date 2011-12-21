@@ -20,11 +20,11 @@ public class PlasmaRecipes
     private PlasmaRecipes()
     {
         recipeDictionary = new HashMap<Integer, ItemStack>();
-        addPlasmaRecipe(PlasmaCraftCore.orePlutonium.blockID, new ItemStack(PlasmaCraftCore.goopPlutonium));
-        addPlasmaRecipe(PlasmaCraftCore.oreRadionite.blockID, new ItemStack(PlasmaCraftCore.goopRadionite));
-        addPlasmaRecipe(PlasmaCraftCore.oreNeptunium.blockID, new ItemStack(PlasmaCraftCore.goopNeptunium));
-        addPlasmaRecipe(PlasmaCraftCore.oreObsidium.blockID, new ItemStack(PlasmaCraftCore.goopObsidium));
-        addPlasmaRecipe(PlasmaCraftCore.oreUranium.blockID, new ItemStack(PlasmaCraftCore.goopUranium));
+        addPlasmaRecipe(PlasmaCraftCore.plutoniumMeta, new ItemStack(PlasmaCraftCore.goopPlutonium));
+        addPlasmaRecipe(PlasmaCraftCore.radioniteMeta, new ItemStack(PlasmaCraftCore.goopRadionite));
+        addPlasmaRecipe(PlasmaCraftCore.neptuniumMeta, new ItemStack(PlasmaCraftCore.goopNeptunium));
+        addPlasmaRecipe(PlasmaCraftCore.obsidiumMeta, new ItemStack(PlasmaCraftCore.goopObsidium));
+        addPlasmaRecipe(PlasmaCraftCore.uraniumMeta, new ItemStack(PlasmaCraftCore.goopUranium));
         addPlasmaRecipe(PlasmaCraftCore.frozenCryonite.blockID, new ItemStack(PlasmaCraftCore.goopCryonite));
         addPlasmaRecipe(PlasmaCraftCore.goopNetherflow.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotNetherflow));
         addPlasmaRecipe(PlasmaCraftCore.goopPlutonium.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotPlutonium));
@@ -52,9 +52,14 @@ public class PlasmaRecipes
         recipeDictionary.put(Integer.valueOf(i), itemstack);
     }
 
-    public ItemStack getPlasmaRecipe(int i)
+    public ItemStack getPlasmaRecipe(int i, int meta)
     {
-        return (ItemStack)recipeDictionary.get(Integer.valueOf(i));
+    	if(i == PlasmaCraftCore.orePlasma.blockID)
+    	{
+    		return (ItemStack)recipeDictionary.get(Integer.valueOf(meta));
+    	}
+    	else
+    		return (ItemStack)recipeDictionary.get(Integer.valueOf(i));
     }
 
 }

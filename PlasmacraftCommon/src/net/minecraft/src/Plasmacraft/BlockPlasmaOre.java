@@ -18,10 +18,7 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
         super(i, j);
         setTickOnLoad(true);
         setHardness(3F);
-        if(blockID == PlasmaCraftCore.oreObsidiumBlockID)
-        	setResistance(2000F);
-        else
-        	setResistance(5F);
+        setResistance(5F);
         setStepSound(Block.soundStoneFootstep);
     }
     
@@ -33,6 +30,31 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
     public int idDropped(int i, Random random)
     {
         return blockID;
+    }
+    
+    protected int damageDropped(int i)
+    {
+    	return i;
+    }
+    
+    public int getBlockTextureFromSideAndMetadata(int i, int j)
+    {
+    	switch (j)
+    	{
+    	case 0:
+    		return PlasmaCraftCore.orePlutoniumIndex;
+    	case 1:
+    		return PlasmaCraftCore.oreRadioniteIndex;
+    	case 2:
+    		return PlasmaCraftCore.oreNeptuniumIndex;
+    	case 3:
+    		return PlasmaCraftCore.oreObsidiumIndex;
+    	case 4:
+    		return PlasmaCraftCore.blockUraniumIndex;
+    	default:
+    		return PlasmaCraftCore.orePlutoniumIndex;
+    	}
+    	
     }
 
     public int quantityDropped(Random random)
@@ -47,7 +69,8 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
 
     public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     {
-        if(blockID == PlasmaCraftCore.oreUranium.blockID)
+    	int meta = world.getBlockMetadata(i, j, k);
+        if(meta == PlasmaCraftCore.uraniumMeta)
         {
             entity.attackEntityFrom(DamageSource.cactus, 5);
             return;
