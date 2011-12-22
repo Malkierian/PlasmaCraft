@@ -328,6 +328,9 @@ public class PlasmaCraftCore
 	private static int neptuniumSpoutYRange = 64;
 	private static int neptuniumSpoutYStart = 8;
 	
+	private static boolean generateUranium;
+	private static boolean generatePlutonium;
+	
 	public static PCBucketHandler handler;
 	
 	public static void init(int causticID)
@@ -555,6 +558,9 @@ public class PlasmaCraftCore
         batterycryoID = getInt(c.getOrCreateIntProperty("batterycryoID", Configuration.ITEM_PROPERTY, 2099));
         ThermoPelletID = getInt(c.getOrCreateIntProperty("ThermoPelletID", Configuration.ITEM_PROPERTY, 2098));
         
+        generateUranium = getBool(c.getOrCreateBooleanProperty("GenerateUranium", Configuration.GENERAL_PROPERTY, true));
+        generatePlutonium = getBool(c.getOrCreateBooleanProperty("GeneratePlutonium", Configuration.GENERAL_PROPERTY, true));
+        
         c.save();
     }
     
@@ -750,21 +756,28 @@ public class PlasmaCraftCore
 
     public static void GenerateSurface(World world, Random random, int i, int j)
     {
-        for(int k = 0; k < plutoniumOreVeinCount; k++)
-        {
-            int i2 = i + random.nextInt(16);
-            int k3 = random.nextInt(plutoniumOreYRange) + plutoniumOreYStart;
-            int i5 = j + random.nextInt(16);
-            (new WorldGenMulti(oreBlockID, plutoniumOreVeinSize, plutoniumMeta)).generate(world, random, i2, k3, i5);
-        }
+    	if(generatePlutonium)
+    	{
+	        for(int k = 0; k < plutoniumOreVeinCount; k++)
+	        {
+	            int i2 = i + random.nextInt(16);
+	            int k3 = random.nextInt(plutoniumOreYRange) + plutoniumOreYStart;
+	            int i5 = j + random.nextInt(16);
+	            (new WorldGenMulti(oreBlockID, plutoniumOreVeinSize, plutoniumMeta)).generate(world, random, i2, k3, i5);
+	        }
+    	}
 
-        for(int l = 0; l < uraniumOreVeinCount; l++)
-        {
-            int j2 = i + random.nextInt(16);
-            int l3 = random.nextInt(uraniumOreYRange) + uraniumOreYStart;
-            int j5 = j + random.nextInt(16);
-            (new WorldGenMulti(oreBlockID, uraniumOreVeinSize, uraniumMeta)).generate(world, random, j2, l3, j5);
-        }
+    	if(generateUranium)
+    	{
+	        for(int l = 0; l < uraniumOreVeinCount; l++)
+	        {
+	            int j2 = i + random.nextInt(16);
+	            int l3 = random.nextInt(uraniumOreYRange) + uraniumOreYStart;
+	            int j5 = j + random.nextInt(16);
+	            (new WorldGenMulti(oreBlockID, uraniumOreVeinSize, uraniumMeta)).generate(world, random, j2, l3, j5);
+	        }
+    	}
+    	
         for(int i1 = 0; i1 < radioniteOreVeinCount; i1++)
         {
             int k2 = i + random.nextInt(16);
