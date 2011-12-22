@@ -44,7 +44,6 @@ public class PlasmaRecipes
         addPlasmaRecipe(PlasmaCraftCore.plasmaGel.shiftedIndex, new ItemStack(PlasmaCraftCore.plasma));
         addPlasmaRecipe(PlasmaCraftCore.BatteryCharged.shiftedIndex, new ItemStack(PlasmaCraftCore.BatteryOvercharged));
         addPlasmaRecipe(Item.slimeBall.shiftedIndex, new ItemStack(PlasmaCraftCore.plasmaGel));
-        addPlasmaRecipe(Block.obsidian.blockID, new ItemStack(PlasmaCraftCore.goopObsidium));
     }
 
     public void addPlasmaRecipe(int i, ItemStack itemstack)
