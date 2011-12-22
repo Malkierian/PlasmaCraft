@@ -20,11 +20,11 @@ public class PlasmaRecipes
     private PlasmaRecipes()
     {
         recipeDictionary = new HashMap<Integer, ItemStack>();
-        addPlasmaRecipe(PlasmaCraftCore.plutoniumMeta, new ItemStack(PlasmaCraftCore.goopPlutonium));
+        //addPlasmaRecipe(PlasmaCraftCore.plutoniumMeta, new ItemStack(PlasmaCraftCore.goopPlutonium));
         addPlasmaRecipe(PlasmaCraftCore.radioniteMeta, new ItemStack(PlasmaCraftCore.goopRadionite));
         addPlasmaRecipe(PlasmaCraftCore.neptuniumMeta, new ItemStack(PlasmaCraftCore.goopNeptunium));
         addPlasmaRecipe(PlasmaCraftCore.obsidiumMeta, new ItemStack(PlasmaCraftCore.goopObsidium));
-        addPlasmaRecipe(PlasmaCraftCore.uraniumMeta, new ItemStack(PlasmaCraftCore.goopUranium));
+        //addPlasmaRecipe(PlasmaCraftCore.uraniumMeta, new ItemStack(PlasmaCraftCore.goopUranium));
         addPlasmaRecipe(PlasmaCraftCore.frozenCryonite.blockID, new ItemStack(PlasmaCraftCore.goopCryonite));
         addPlasmaRecipe(PlasmaCraftCore.goopNetherflow.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotNetherflow));
         addPlasmaRecipe(PlasmaCraftCore.goopPlutonium.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotPlutonium));

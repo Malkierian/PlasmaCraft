@@ -332,6 +332,7 @@ public class PlasmaCraftCore
 	private static boolean generatePlutonium;
 	
 	public static PCBucketHandler handler;
+	public static PCOreHandler oHandler;
 	
 	public static void init(int causticID)
 	{
@@ -339,6 +340,9 @@ public class PlasmaCraftCore
 		
 		handler = new PCBucketHandler();
 		MinecraftForge.registerCustomBucketHandler(handler);
+		
+		oHandler = new PCOreHandler();
+		MinecraftForge.registerOreHandler(oHandler);
         
         ModLoader.RegisterTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
         ModLoader.RegisterTileEntity(TileEntityCaustic.class, "causticTile");
@@ -458,6 +462,12 @@ public class PlasmaCraftCore
         MinecraftForge.setBlockHarvestLevel(orePlasma, neptuniumMeta, "pickaxe", 1);
         MinecraftForge.setBlockHarvestLevel(frozenCryonite, "pickaxe", 1);
         
+        MinecraftForge.registerOre("orePlutonium", new ItemStack(orePlasma, 1, plutoniumMeta));
+        MinecraftForge.registerOre("oreUranium", new ItemStack(orePlasma, 1, uraniumMeta));
+        
+        MinecraftForge.registerOre("ingotPlutonium", new ItemStack(ingotPlutonium, 1));
+        MinecraftForge.registerOre("ingotUranium", new ItemStack(ingotUranium, 1));
+        
         Item.itemsList[oreBlockID] = new ItemPlasmaOre(oreBlockID - 256).setItemName("OreBlock");
         
         Item.itemsList[glowClothBlockID] = new ItemGlowCloth(glowClothBlockID - 256).setItemName("GlowCloth");
@@ -566,34 +576,16 @@ public class PlasmaCraftCore
     
     public static void AddRecipes()
     {
-        ModLoader.AddRecipe(new ItemStack(lasergun, 1), new Object[] {
-            "XYZ", " YQ", Character.valueOf('X'), ingotNetherflow, Character.valueOf('Y'), ingotObsidium, Character.valueOf('Z'), goopNetherflow, Character.valueOf('Q'), ingotPlutonium
-        });
-        ModLoader.AddRecipe(new ItemStack(plasmagun, 1), new Object[] {
-            "XBZ", " YZ", Character.valueOf('X'), Item.diamond, Character.valueOf('B'), plasma, Character.valueOf('Z'), ingotPlutonium, Character.valueOf('Y'), ingotObsidium
-        });
         ModLoader.AddRecipe(new ItemStack(plasmagunsplit, 1), new Object[] {
             "YB", Character.valueOf('B'), plasmagun, Character.valueOf('Y'), beamSplitter
         });
         ModLoader.AddRecipe(new ItemStack(lasergunsplit, 1), new Object[] {
             "YB", Character.valueOf('B'), lasergun, Character.valueOf('Y'), beamSplitter
         });
-        ModLoader.AddRecipe(new ItemStack(acidgun, 1), new Object[] {
-            "  Z", "ABC", " MN", Character.valueOf('Z'), acidVial, Character.valueOf('A'), ingotObsidium, Character.valueOf('B'), ingotUranium, Character.valueOf('C'), 
-            reinforcedGlass, Character.valueOf('M'), BatteryPlasma, Character.valueOf('N'), Item.ingotIron
-        });
-        ModLoader.AddRecipe(new ItemStack(railgun, 1), new Object[] {
-            "XYZ", " BC", "XY ", Character.valueOf('Z'), BatteryPlasma, Character.valueOf('X'), ingotObsidium, Character.valueOf('B'), goopPlutonium, Character.valueOf('C'), 
-            Item.ingotGold, Character.valueOf('Y'), ingotPlutonium
-        });
         //ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[] {
         //    "  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
         //    ingotObsidium, Character.valueOf('X'), BatteryCryo, Character.valueOf('E'), ingotPlutonium
         //});
-        ModLoader.AddRecipe(new ItemStack(lasershotgun, 1), new Object[] {
-            "  Z", "XBQ", " UP", Character.valueOf('Z'), Item.redstoneRepeater, Character.valueOf('X'), beamSplitter, Character.valueOf('B'), ingotNetherflow, Character.valueOf('Q'), 
-            BatteryCharged, Character.valueOf('P'), ingotPlutonium, Character.valueOf('U'), ingotRadionite
-        });
         ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
             "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), fullAcidVial, Character.valueOf('Z'), plasma
         });
@@ -615,15 +607,8 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(energyCell, 5), new Object[] {
             " R ", "RXR", " R ", Character.valueOf('R'), ingotNeptunium, Character.valueOf('X'), plasmaGel
         });
-        ModLoader.AddRecipe(new ItemStack(beamSplitter, 1), new Object[] {
-            " N ", "BXQ", " N ", Character.valueOf('N'), ingotNetherflow, Character.valueOf('X'), BatteryPlasma, Character.valueOf('Q'), ingotUranium, Character.valueOf('B'), 
-            Item.diamond
-        });
         ModLoader.AddRecipe(new ItemStack(BatteryEmpty, 8), new Object[] {
             "IRI", "I I", "IRI", Character.valueOf('R'), ingotRadionite, Character.valueOf('I'), Item.ingotIron
-        });
-        ModLoader.AddRecipe(new ItemStack(ThermoPellet, 1), new Object[] {
-            "III", "IXI", "III", Character.valueOf('X'), ingotPlutonium, Character.valueOf('I'), goopUranium
         });
         ModLoader.AddRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
             "R", "X", Character.valueOf('R'), goopCryonite, Character.valueOf('X'), BatteryEmpty
