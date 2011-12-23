@@ -420,7 +420,7 @@ public class PlasmaCraftCore
         lasergunsplit = (new ItemEnergyWeapon(lasergunsplitID, 300)).setIconIndex(lasergunsplitIndex).setItemName("laserGunSplit");
         acidgun = (new ItemEnergyWeapon(acidgunID, 200)).setIconIndex(acidgunIndex).setItemName("acidGun");
         railgun = (new ItemEnergyWeapon(railgunID, 200)).setIconIndex(railgunIndex).setItemName("railGun");
-        //cryoblaster = (new ItemEnergyWeapon(cryoblasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
+        cryoblaster = (new ItemEnergyWeapon(cryoblasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
         lasershotgun = (new ItemEnergyWeapon(lasershotgunID, 200)).setIconIndex(lasershotgunIndex).setItemName("lasershotgunGun");
 
         helmetHazmat = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 0)).setIconIndex(helmetIndex).setItemName("helmetHazmat");
@@ -582,10 +582,10 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(lasergunsplit, 1), new Object[] {
             "YB", Character.valueOf('B'), lasergun, Character.valueOf('Y'), beamSplitter
         });
-        //ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[] {
-        //    "  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
-        //    ingotObsidium, Character.valueOf('X'), BatteryCryo, Character.valueOf('E'), ingotPlutonium
-        //});
+        ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[] {
+            "  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
+            ingotObsidium, Character.valueOf('X'), BatteryCryo, Character.valueOf('E'), ingotPlutonium
+        });
         ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
             "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), fullAcidVial, Character.valueOf('Z'), plasma
         });

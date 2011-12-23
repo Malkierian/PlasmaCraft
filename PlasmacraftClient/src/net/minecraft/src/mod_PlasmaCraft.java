@@ -130,7 +130,7 @@ public class mod_PlasmaCraft extends BaseModMp
         ModLoader.AddName(PlasmaCraftCore.lasergunsplit, "Laser Rifle + Beam Splitter");
         ModLoader.AddName(PlasmaCraftCore.acidgun, "Acid Launcher");
         ModLoader.AddName(PlasmaCraftCore.railgun, "Rail Gun");
-        //ModLoader.AddName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
+        ModLoader.AddName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
         ModLoader.AddName(PlasmaCraftCore.lasershotgun, "Laser Shotgun");
         ModLoader.AddName(PlasmaCraftCore.causticBoat, "Radionite Boat");
         ModLoader.AddName(PlasmaCraftCore.helmetHazmat, "Hazmat Hood");
