@@ -47,7 +47,7 @@ public class BlockAcidTNT extends BlockTNT implements ITextureProvider
     {
         EntityAcidTNTPrimed entityacidtntprimed = new EntityAcidTNTPrimed(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
         entityacidtntprimed.fuse = world.rand.nextInt(entityacidtntprimed.fuse / 4) + entityacidtntprimed.fuse / 8;
-        world.entityJoinedWorld(entityacidtntprimed);
+        world.spawnEntityInWorld(entityacidtntprimed);
     }
 
     public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l)
@@ -58,7 +58,7 @@ public class BlockAcidTNT extends BlockTNT implements ITextureProvider
         } else
         {
             EntityAcidTNTPrimed entityacidtntprimed = new EntityAcidTNTPrimed(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
-            world.entityJoinedWorld(entityacidtntprimed);
+            world.spawnEntityInWorld(entityacidtntprimed);
             world.playSoundAtEntity(entityacidtntprimed, "random.fuse", 1.0F, 1.0F);
             return;
         }

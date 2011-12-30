@@ -47,7 +47,7 @@ public class ItemCausticBoat extends ItemBoat implements ITextureProvider
             int k = movingobjectposition.blockZ;
             if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
             {
-                world.entityJoinedWorld(new EntityCausticBoat(world, (float)i + 0.5F, (float)j + 1.5F, (float)k + 0.5F));
+                world.spawnEntityInWorld(new EntityCausticBoat(world, (float)i + 0.5F, (float)j + 1.5F, (float)k + 0.5F));
             }
             itemstack.stackSize--;
         }

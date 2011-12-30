@@ -26,7 +26,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
             {
                 itemstack.damageItem(1, entityplayer);
-                world.entityJoinedWorld(new EntityLaser(world, entityplayer, 9));
+                world.spawnEntityInWorld(new EntityLaser(world, entityplayer, 9));
             }
         }
         if(shiftedIndex == PlasmaCraftCore.lasergunsplit.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.energyCell.shiftedIndex))
@@ -37,7 +37,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             {
                 if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
                 {
-                    world.entityJoinedWorld(new EntityLaser(world, entityplayer, 11));
+                    world.spawnEntityInWorld(new EntityLaser(world, entityplayer, 11));
                 }
             }
 
@@ -53,7 +53,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
             {
                 itemstack.damageItem(1, entityplayer);
-                world.entityJoinedWorld(new EntityPlasma(world, entityplayer, 12));
+                world.spawnEntityInWorld(new EntityPlasma(world, entityplayer, 12));
             }
         }
         if(shiftedIndex == PlasmaCraftCore.plasmagunsplit.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryPlasma.shiftedIndex))
@@ -69,7 +69,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             {
                 if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
                 {
-                    world.entityJoinedWorld(new EntityPlasma(world, entityplayer, 14));
+                    world.spawnEntityInWorld(new EntityPlasma(world, entityplayer, 14));
                 }
             }
 
@@ -81,7 +81,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
             {
                 itemstack.damageItem(1, entityplayer);
-                world.entityJoinedWorld(new EntityAcid(world, entityplayer));
+                world.spawnEntityInWorld(new EntityAcid(world, entityplayer));
             }
         }
         if(shiftedIndex == PlasmaCraftCore.railgun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryOvercharged.shiftedIndex))
@@ -95,7 +95,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
             {
                 itemstack.damageItem(1, entityplayer);
-                world.entityJoinedWorld(new EntityRailGun(world, entityplayer));
+                world.spawnEntityInWorld(new EntityRailGun(world, entityplayer));
             }
         }
         if(shiftedIndex == PlasmaCraftCore.lasershotgun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.energyCell.shiftedIndex))
@@ -106,7 +106,7 @@ public class ItemEnergyWeapon extends ItemPlasma
                 if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
                 {
                     itemstack.damageItem(1, entityplayer);
-                    world.entityJoinedWorld(new EntityLaserShotgun(world, entityplayer));
+                    world.spawnEntityInWorld(new EntityLaserShotgun(world, entityplayer));
                 }
             }
 
@@ -117,7 +117,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
             {
                 itemstack.damageItem(1, entityplayer);
-                world.entityJoinedWorld(new EntityCryoBlast(world, entityplayer));
+                world.spawnEntityInWorld(new EntityCryoBlast(world, entityplayer));
             }
         }
         return itemstack;

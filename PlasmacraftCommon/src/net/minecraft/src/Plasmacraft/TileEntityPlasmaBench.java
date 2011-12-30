@@ -348,7 +348,7 @@ public class TileEntityPlasmaBench extends TileEntity
 	            entityitem.motionX = (float)rand.nextGaussian() * f3;
 	            entityitem.motionY = (float)rand.nextGaussian() * f3 + 0.2F;
 	            entityitem.motionZ = (float)rand.nextGaussian() * f3;
-	            worldObj.entityJoinedWorld(entityitem);
+	            worldObj.spawnEntityInWorld(entityitem);
 	        } else
 	        if(furnaceItemStacks[j] == null)
 	        {

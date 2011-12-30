@@ -773,7 +773,7 @@ public class PlasmaCraftCore
         if(random.nextInt(acidLakeChance) == 0)
         {
             int i1 = random.nextInt(16) + 8;
-            int l2 = random.nextInt(world.worldYMax);
+            int l2 = random.nextInt(world.worldHeight);
             int j4 = random.nextInt(16) + 8;
             (new WorldGenLakes(acidMoving.blockID)).generate(world, random, i1, l2, j4);
         }       
@@ -787,7 +787,7 @@ public class PlasmaCraftCore
         if(random.nextInt(acidLakeChance) == 0)
         {
             int l1 = i + random.nextInt(16) + 8;
-            int j3 = random.nextInt(world.worldYMax);
+            int j3 = random.nextInt(world.worldHeight);
             int l4 = j + random.nextInt(16) + 8;
             BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(l1, l4);
             if((biomegenbase == BiomeGenBase.taiga) 
