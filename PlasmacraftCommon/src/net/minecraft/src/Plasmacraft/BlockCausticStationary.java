@@ -62,7 +62,7 @@ public class BlockCausticStationary extends BlockCausticFluids
                 int j1 = world.getBlockId(i, j, k);
                 if(j1 == 0)
                 {
-                    if(func_301_k(world, i - 1, j, k) || func_301_k(world, i + 1, j, k) || func_301_k(world, i, j, k - 1) || func_301_k(world, i, j, k + 1) || func_301_k(world, i, j - 1, k) || func_301_k(world, i, j + 1, k))
+                    if(isFlammable(world, i - 1, j, k) || isFlammable(world, i + 1, j, k) || isFlammable(world, i, j, k - 1) || isFlammable(world, i, j, k + 1) || isFlammable(world, i, j - 1, k) || isFlammable(world, i, j + 1, k))
                     {
                         world.setBlockWithNotify(i, j, k, Block.fire.blockID);
                         return;
@@ -78,8 +78,8 @@ public class BlockCausticStationary extends BlockCausticFluids
         }
     }
 
-    private boolean func_301_k(World world, int i, int j, int k)
+    private boolean isFlammable(World world, int i, int j, int k)
     {
-        return PlasmaCraftCore.proxy.getCanBurn(world, i, j, k);
+        return world.getBlockMaterial(i, j, k).getCanBurn();
     }
 }

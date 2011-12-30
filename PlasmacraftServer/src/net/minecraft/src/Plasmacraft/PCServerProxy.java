@@ -43,11 +43,6 @@ public class PCServerProxy implements IPCProxy
 	}
 
 	@Override
-	public BiomeGenBase getHillBiome() {
-		return BiomeGenBase.extremeHills;
-	}
-
-	@Override
 	public boolean getEntityInstanceOf(Entity entity) {
 		return entity instanceof EntityPlayerMP;
 	}
@@ -69,12 +64,6 @@ public class PCServerProxy implements IPCProxy
 	@Override
 	public ItemStack armorItemInSlot(EntityPlayer entityplayer, int i) {
 		return entityplayer.inventory.getStackInSlot(i + entityplayer.inventory.mainInventory.length);
-	}
-	
-	@Override
-	public boolean getCanBurn(World world, int i, int j, int k)
-	{
-        return world.getBlockMaterial(i, j, k).getBurning();
 	}
 	
 	@Override

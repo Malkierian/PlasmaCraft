@@ -21,8 +21,6 @@ public interface IPCProxy
 	
 	public String getMinecraftDirectory();
 	
-	public BiomeGenBase getHillBiome();
-	
 	public boolean getEntityInstanceOf(Entity entity);
 
 	public int getLightBrightnessForSkyBlocks(IBlockAccess iblockaccess, int i,
@@ -32,8 +30,6 @@ public interface IPCProxy
 			int k);
 
 	public ItemStack armorItemInSlot(EntityPlayer entityplayer, int i);
-
-	public boolean getCanBurn(World world, int i, int j, int k);
 
 	public MovingObjectPosition callAxisAlignedMethodA(
 			AxisAlignedBB axisalignedbb, Vec3D vec3d, Vec3D vec3d1);
