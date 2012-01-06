@@ -27,7 +27,7 @@ public class PlasmaCraftCore
 	
 	public static String Version()
 	{
-		return "1.0.0/0.2.5";
+		return "1.0.0/0.2.6";
 	}
 	
 	public static IPCProxy proxy;
@@ -340,9 +340,6 @@ public class PlasmaCraftCore
 		
 		handler = new PCBucketHandler();
 		MinecraftForge.registerCustomBucketHandler(handler);
-		
-		oHandler = new PCOreHandler();
-		MinecraftForge.registerOreHandler(oHandler);
         
         ModLoader.RegisterTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
         ModLoader.RegisterTileEntity(TileEntityCaustic.class, "causticTile");
@@ -461,6 +458,9 @@ public class PlasmaCraftCore
         MinecraftForge.setBlockHarvestLevel(orePlasma, plutoniumMeta, "pickaxe", 2);
         MinecraftForge.setBlockHarvestLevel(orePlasma, neptuniumMeta, "pickaxe", 1);
         MinecraftForge.setBlockHarvestLevel(frozenCryonite, "pickaxe", 1);
+		
+		oHandler = new PCOreHandler();
+		MinecraftForge.registerOreHandler(oHandler);
         
         MinecraftForge.registerOre("orePlutonium", new ItemStack(orePlasma, 1, plutoniumMeta));
         MinecraftForge.registerOre("oreUranium", new ItemStack(orePlasma, 1, uraniumMeta));
@@ -468,9 +468,9 @@ public class PlasmaCraftCore
         MinecraftForge.registerOre("ingotPlutonium", new ItemStack(ingotPlutonium, 1));
         MinecraftForge.registerOre("ingotUranium", new ItemStack(ingotUranium, 1));
         
-        Item.itemsList[oreBlockID] = new ItemPlasmaOre(oreBlockID - 256).setItemName("OreBlock");
+        Item.itemsList[oreBlockID] = new ItemPlasmaOre(oreBlockID - Block.blocksList.length).setItemName("OreBlock");
         
-        Item.itemsList[glowClothBlockID] = new ItemGlowCloth(glowClothBlockID - 256).setItemName("GlowCloth");
+        Item.itemsList[glowClothBlockID] = new ItemGlowCloth(glowClothBlockID - Block.blocksList.length).setItemName("GlowCloth");
         
         AddRecipes();
 	}
