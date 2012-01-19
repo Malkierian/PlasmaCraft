@@ -31,9 +31,6 @@ public interface IPCProxy
 
 	public ItemStack armorItemInSlot(EntityPlayer entityplayer, int i);
 
-	public MovingObjectPosition callAxisAlignedMethodA(
-			AxisAlignedBB axisalignedbb, Vec3D vec3d, Vec3D vec3d1);
-
 	public void playSoundEffect(World world, int i, int j, int k, Block block);
 
 	public double getAverageEdgeLength(AxisAlignedBB boundingBox);

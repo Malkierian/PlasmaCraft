@@ -26,8 +26,9 @@ public class ItemPlasmaOre extends ItemBlock
         return PlasmaCraftCore.orePlasma.getBlockTextureFromSideAndMetadata(0, i);
     }
     
-    public int getPlacedBlockMetadata(int damage) {
-            return damage;
+    public int getMetadata(int damage)
+    {
+    	return damage;
     }
     
     public String getItemNameIS(ItemStack itemstack) {

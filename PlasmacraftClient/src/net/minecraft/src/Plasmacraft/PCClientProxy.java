@@ -67,12 +67,6 @@ public class PCClientProxy implements IPCProxy
 	}
 
 	@Override
-	public MovingObjectPosition callAxisAlignedMethodA(
-			AxisAlignedBB axisalignedbb, Vec3D vec3d, Vec3D vec3d1) {
-		return axisalignedbb.func_1169_a(vec3d, vec3d1);
-	}
-
-	@Override
 	public void playSoundEffect(World world, int i, int j, int k, Block block) {
 		world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, block.stepSound.stepSoundDir2(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
 	}

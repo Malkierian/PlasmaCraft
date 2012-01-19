@@ -163,7 +163,7 @@ public class EntityAcid extends Entity
             }
             float f3 = 0.3F;
             AxisAlignedBB axisalignedbb = entity1.boundingBox.expand(f3, f3, f3);
-            MovingObjectPosition movingobjectposition1 = PlasmaCraftCore.proxy.callAxisAlignedMethodA(axisalignedbb, vec3d, vec3d1);
+            MovingObjectPosition movingobjectposition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
             if(movingobjectposition1 == null)
             {
                 continue;

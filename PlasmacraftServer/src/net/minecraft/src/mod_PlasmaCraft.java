@@ -41,7 +41,7 @@ import net.minecraft.src.Plasmacraft.WorldGenNetherMinable;
 public class mod_PlasmaCraft extends BaseModMp
 {
 	public int causticRenderID;
-    public String Version()
+    public String getVersion()
     {
     	return PlasmaCraftCore.Version();
 	}
@@ -132,6 +132,10 @@ public class mod_PlasmaCraft extends BaseModMp
 	}
     
 	static mod_PlasmaCraft inst1;
+	@Override
+	public void load()
+	{
+	}
 
     
 }

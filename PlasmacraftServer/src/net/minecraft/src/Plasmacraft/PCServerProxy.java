@@ -65,12 +65,6 @@ public class PCServerProxy implements IPCProxy
 	public ItemStack armorItemInSlot(EntityPlayer entityplayer, int i) {
 		return entityplayer.inventory.getStackInSlot(i + entityplayer.inventory.mainInventory.length);
 	}
-	
-	@Override
-	public MovingObjectPosition callAxisAlignedMethodA(
-			AxisAlignedBB axisalignedbb, Vec3D vec3d, Vec3D vec3d1) {
-		return axisalignedbb.func_706_a(vec3d, vec3d1);
-	}
 
 	@Override
 	public void playSoundEffect(World world, int i, int j, int k, Block block) {

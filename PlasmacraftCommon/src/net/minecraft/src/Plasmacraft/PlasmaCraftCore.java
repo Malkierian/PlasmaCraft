@@ -27,7 +27,7 @@ public class PlasmaCraftCore
 	
 	public static String Version()
 	{
-		return "1.0.0/0.2.6";
+		return "1.1.0/0.2.6";
 	}
 	
 	public static IPCProxy proxy;
@@ -448,9 +448,9 @@ public class PlasmaCraftCore
         ModLoader.RegisterBlock(acidHot);
         ModLoader.RegisterBlock(acidTnt);
         
-        ModLoader.RegisterBlock(glowCloth);
+        ModLoader.RegisterBlock(glowCloth, net.minecraft.src.Plasmacraft.ItemGlowCloth.class);
 
-        ModLoader.RegisterBlock(orePlasma);
+        ModLoader.RegisterBlock(orePlasma, net.minecraft.src.Plasmacraft.ItemPlasmaOre.class);
         
         MinecraftForge.setBlockHarvestLevel(orePlasma, obsidiumMeta, "pickaxe", 3);
         MinecraftForge.setBlockHarvestLevel(orePlasma, uraniumMeta, "pickaxe", 2);

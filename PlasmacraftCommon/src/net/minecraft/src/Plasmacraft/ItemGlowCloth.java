@@ -29,7 +29,7 @@ public class ItemGlowCloth extends ItemBlock
         return PlasmaCraftCore.glowCloth.getBlockTextureFromSideAndMetadata(0, i);
     }
     
-    public int getPlacedBlockMetadata(int damage) {
+    public int getMetadata(int damage) {
             return damage;
     }
     
