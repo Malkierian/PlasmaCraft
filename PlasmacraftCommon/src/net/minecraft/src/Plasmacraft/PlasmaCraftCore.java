@@ -589,9 +589,6 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
             "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), fullAcidVial, Character.valueOf('Z'), plasma
         });
-        //ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
-        //    "D", "C", "D", Character.valueOf('D'), Block.planks, Character.valueOf('C'), Block.dirt
-        //});
         ModLoader.AddRecipe(new ItemStack(reinforcedGlass, 1), new Object[] {
             "X", "#", Character.valueOf('#'), Block.glass, Character.valueOf('X'), Item.ingotIron
         });
@@ -619,9 +616,6 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(BatteryCharged, 1), new Object[] {
             "R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), BatteryEmpty
         });
-        //ModLoader.AddRecipe(new ItemStack(fullAcidVial, 1), new Object[] {
-        //    "JKL", Character.valueOf('J'), Block.dirt, Character.valueOf('K'), Block.sand, Character.valueOf('L'), Block.planks
-        //});
         ModLoader.AddRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
             "N", "J", Character.valueOf('N'), plasmaGel, Character.valueOf('J'), Item.leather
         });
@@ -664,9 +658,6 @@ public class PlasmaCraftCore
         ModLoader.AddRecipe(new ItemStack(acidTnt, 4), new Object[] {
             "APA", "GAG", "APA", Character.valueOf('A'), fullAcidVial, Character.valueOf('G'), Item.gunpowder, Character.valueOf('P'), plasma
         });
-        //ModLoader.AddRecipe(new ItemStack(Item.gunpowder, 4), new Object[] {
-        //    "AVG", Character.valueOf('A'), fullAcidVial, Character.valueOf('V'), acidVial, Character.valueOf('G'), plasmaGel
-        //});
         ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothAcidMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), fullAcidVial
         });
