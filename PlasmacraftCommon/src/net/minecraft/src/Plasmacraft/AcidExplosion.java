@@ -10,6 +10,7 @@ import net.minecraft.src.Entity;
 import net.minecraft.src.MathHelper;
 import net.minecraft.src.Vec3D;
 import net.minecraft.src.World;
+import net.minecraft.src.forge.ISpecialResistance;
 
 public class AcidExplosion
 {
@@ -76,7 +77,15 @@ label0:
                         int i5 = worldObj.getBlockId(j4, k4, l4);
                         if(i5 > 0)
                         {
-                            f1 -= (Block.blocksList[i5].getExplosionResistance(exploder) + 0.3F) * f2;
+                        	if (Block.blocksList[i5] instanceof ISpecialResistance)
+                            {
+                            	ISpecialResistance isr = (ISpecialResistance)Block.blocksList[i5];
+                            	f1 -= (isr.getSpecialExplosionResistance(worldObj, j4, k4, l4, posX, posY, posZ, exploder) + 0.3F) * f2;
+                            } 
+                            else 
+                            {
+                                f1 -= (Block.blocksList[i5].getExplosionResistance(exploder) + 0.3F) * f2;
+                            }
                         }
                         if(f1 > 0.0F)
                         {

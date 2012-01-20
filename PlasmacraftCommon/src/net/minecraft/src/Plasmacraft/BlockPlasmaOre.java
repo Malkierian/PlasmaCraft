@@ -9,16 +9,15 @@ import net.minecraft.src.DamageSource;
 import net.minecraft.src.Entity;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
+import net.minecraft.src.forge.ISpecialResistance;
 import net.minecraft.src.forge.ITextureProvider;
 
-public class BlockPlasmaOre extends BlockOre implements ITextureProvider
+public class BlockPlasmaOre extends BlockOre implements ITextureProvider, ISpecialResistance
 {
     public BlockPlasmaOre(int i, int j)
     {
         super(i, j);
         setTickOnLoad(true);
-        setHardness(3F);
-        setResistance(5F);
         setStepSound(Block.soundStoneFootstep);
         setLightValue(0.54F);
     }
@@ -90,5 +89,36 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider
 	public String getTextureFile()
 	{
 		return PlasmaCraftCore.terrainTexture;
+	}
+
+	@Override
+	public float getSpecialExplosionResistance(World world, int i, int j,
+			int k, double src_x, double src_y, double src_z, Entity exploder) {
+		switch(world.getBlockMetadata(i, j, k))
+		{
+		case PlasmaCraftCore.obsidiumMeta:
+			return 1200F;
+		case PlasmaCraftCore.uraniumMeta:
+			return 6F;
+		case PlasmaCraftCore.plutoniumMeta:
+			return 8F;
+		default:
+			return 3F;
+		}
+	}
+	
+	@Override
+	public float getHardness(int md)
+	{
+		switch(md)
+		{
+		case PlasmaCraftCore.obsidiumMeta:
+			return 15F;
+		case PlasmaCraftCore.uraniumMeta:
+		case PlasmaCraftCore.plutoniumMeta:
+			return 5F;
+		default:
+			return 3F;
+		}
 	}
 }
