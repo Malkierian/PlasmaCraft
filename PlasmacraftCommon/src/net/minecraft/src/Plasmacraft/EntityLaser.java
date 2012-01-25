@@ -206,7 +206,7 @@ public class EntityLaser extends Entity
                 int i1 = movingobjectposition.blockY;
                 int k1 = movingobjectposition.blockZ;
                 boolean flag = true;
-                if(!PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj))
+                if(!worldObj.isRemote)
                 {
                     if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.frozenCryonite.blockID)
                     {
@@ -361,7 +361,7 @@ public class EntityLaser extends Entity
 
     public void onCollideWithPlayer(EntityPlayer entityplayer)
     {
-        if(!PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj))
+        if(!worldObj.isRemote)
         {
             return;
         }

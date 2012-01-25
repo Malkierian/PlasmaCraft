@@ -52,7 +52,7 @@ public class BlockAcidTNT extends BlockTNT implements ITextureProvider
 
     public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l)
     {
-        if(PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+        if(world.isRemote)
         {
             return;
         } else

@@ -80,7 +80,7 @@ public class EntityCausticBoat extends Entity
 
     public boolean attackEntityFrom(DamageSource damagesource, int i)
     {
-        if(PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj) || isDead)
+        if(worldObj.isRemote || isDead)
         {
             return true;
         }
@@ -189,7 +189,7 @@ public class EntityCausticBoat extends Entity
             }
 
         }
-        if(PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj))
+        if(worldObj.isRemote)
         {
             if(my_boatPosRotationIncrements > 0)
             {
@@ -265,7 +265,7 @@ public class EntityCausticBoat extends Entity
         moveEntity(motionX, motionY, motionZ);
         if(isCollidedHorizontally && d1 > 0.20000000000000001D)
         {
-            if(!PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj))
+            if(!worldObj.isRemote)
             {
                 setEntityDead();
                 for(int j = 0; j < 2; j++)
@@ -364,7 +364,7 @@ public class EntityCausticBoat extends Entity
         {
             return true;
         }
-        if(!PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj))
+        if(!worldObj.isRemote)
         {
             entityplayer.mountEntity(this);
         }

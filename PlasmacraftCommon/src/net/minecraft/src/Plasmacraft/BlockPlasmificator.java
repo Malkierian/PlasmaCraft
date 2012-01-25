@@ -57,7 +57,7 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
 
     private void setDefaultDirection(World world, int i, int j, int k)
     {
-        if(PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+        if(world.isRemote)
         {
             return;
         }
@@ -125,7 +125,7 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
 
     public boolean blockActivated(World world, int i, int j, int k, EntityPlayer entityplayer)
     {
-    	if(PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+    	if(world.isRemote)
     	{
     		return true;
     	}

@@ -29,12 +29,6 @@ public class PCServerProxy implements IPCProxy
 	{
 		return worldObj.func_494_a(vec3d, axisalignedbb);
 	}
-
-	@Override
-	public boolean isMultiplayerWorld(World world)
-	{
-		return (world.singleplayerWorld);
-	}
 	
 	@Override
 	public String getMinecraftDirectory()

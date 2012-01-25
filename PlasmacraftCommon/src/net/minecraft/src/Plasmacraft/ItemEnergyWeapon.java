@@ -23,7 +23,7 @@ public class ItemEnergyWeapon extends ItemPlasma
         if(shiftedIndex == PlasmaCraftCore.lasergun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.energyCell.shiftedIndex))
         {
             world.playSoundAtEntity(entityplayer, "plasmacraft.lasergun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
-            if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+            if(!world.isRemote)
             {
                 itemstack.damageItem(1, entityplayer);
                 world.spawnEntityInWorld(new EntityLaser(world, entityplayer, 9));
@@ -35,7 +35,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             world.playSoundAtEntity(entityplayer, "plasmacraft.lasergun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
             for(int i = 0; i < 3; i++)
             {
-                if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+                if(!world.isRemote)
                 {
                     world.spawnEntityInWorld(new EntityLaser(world, entityplayer, 11));
                 }
@@ -50,7 +50,7 @@ public class ItemEnergyWeapon extends ItemPlasma
                 entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.BatteryEmpty, 1));
             }
             world.playSoundAtEntity(entityplayer, "plasmacraft.lasergun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
-            if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+            if(!world.isRemote)
             {
                 itemstack.damageItem(1, entityplayer);
                 world.spawnEntityInWorld(new EntityPlasma(world, entityplayer, 12));
@@ -67,7 +67,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             }
             for(int j1 = 0; j1 < 3; j1++)
             {
-                if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+                if(!world.isRemote)
                 {
                     world.spawnEntityInWorld(new EntityPlasma(world, entityplayer, 14));
                 }
@@ -78,7 +78,7 @@ public class ItemEnergyWeapon extends ItemPlasma
         {
             entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.acidVial, 1));
             world.playSoundAtEntity(entityplayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
-            if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+            if(!world.isRemote)
             {
                 itemstack.damageItem(1, entityplayer);
                 world.spawnEntityInWorld(new EntityAcid(world, entityplayer));
@@ -92,7 +92,7 @@ public class ItemEnergyWeapon extends ItemPlasma
                 entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.BatteryEmpty, 1));
             }
             world.playSoundAtEntity(entityplayer, "plasmacraft.railgun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
-            if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+            if(!world.isRemote)
             {
                 itemstack.damageItem(1, entityplayer);
                 world.spawnEntityInWorld(new EntityRailGun(world, entityplayer));
@@ -103,7 +103,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             world.playSoundAtEntity(entityplayer, "plasmacraft.lasergun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
             for(int i1 = 0; i1 < 7; i1++)
             {
-                if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+                if(!world.isRemote)
                 {
                     itemstack.damageItem(1, entityplayer);
                     world.spawnEntityInWorld(new EntityLaserShotgun(world, entityplayer));
@@ -114,7 +114,7 @@ public class ItemEnergyWeapon extends ItemPlasma
         if(shiftedIndex == PlasmaCraftCore.cryoblaster.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryCryo.shiftedIndex))
         {
             world.playSoundAtEntity(entityplayer, "plasmacraft.railgun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
-            if(!PlasmaCraftCore.proxy.isMultiplayerWorld(world))
+            if(!world.isRemote)
             {
                 itemstack.damageItem(1, entityplayer);
                 world.spawnEntityInWorld(new EntityCryoBlast(world, entityplayer));

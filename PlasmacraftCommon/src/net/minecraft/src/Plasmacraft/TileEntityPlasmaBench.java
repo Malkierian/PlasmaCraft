@@ -152,7 +152,7 @@ public class TileEntityPlasmaBench extends TileEntity
         {
             furnaceBurnTime--;
         }
-        if(!PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj))
+        if(!worldObj.isRemote)
         {
             if(furnaceBurnTime == 0 && canSmelt())
             {

@@ -334,7 +334,7 @@ public class EntityPlasma extends Entity
 
     public void onCollideWithPlayer(EntityPlayer entityplayer)
     {
-        if(PlasmaCraftCore.proxy.isMultiplayerWorld(worldObj))
+        if(worldObj.isRemote)
         {
             return;
         }
