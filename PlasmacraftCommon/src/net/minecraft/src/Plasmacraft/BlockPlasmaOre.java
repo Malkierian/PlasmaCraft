@@ -17,7 +17,7 @@ public class BlockPlasmaOre extends BlockOre implements ITextureProvider, ISpeci
     public BlockPlasmaOre(int i, int j)
     {
         super(i, j);
-        setTickOnLoad(true);
+        setTickRandomly(true);
         setStepSound(Block.soundStoneFootstep);
         setLightValue(0.54F);
     }

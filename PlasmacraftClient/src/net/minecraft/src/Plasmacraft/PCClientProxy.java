@@ -25,13 +25,6 @@ public class PCClientProxy implements IPCProxy
 	}
 	
 	@Override
-	public float callWorldMethodA(World worldObj, Vec3D vec3d,
-			AxisAlignedBB axisalignedbb)
-	{
-		return worldObj.func_675_a(vec3d, axisalignedbb);
-	}
-	
-	@Override
 	public String getMinecraftDirectory()
 	{
 		File dir = Minecraft.getAppDir("minecraft");
@@ -62,7 +55,7 @@ public class PCClientProxy implements IPCProxy
 
 	@Override
 	public void playSoundEffect(World world, int i, int j, int k, Block block) {
-		world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, block.stepSound.stepSoundDir2(), (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
+		world.playSoundEffect((float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F, block.stepSound.stepSoundName, (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
 	}
 
 	@Override
@@ -73,7 +66,7 @@ public class PCClientProxy implements IPCProxy
 	@Override
 	public void OpenGUI(EntityPlayer entityplayer,
 			TileEntityPlasmaBench tileentityplasmabench) {
-		ModLoader.OpenGUI(entityplayer, new GuiPlasmaBench(entityplayer.inventory, tileentityplasmabench));
+		ModLoader.openGUI(entityplayer, new GuiPlasmaBench(entityplayer.inventory, tileentityplasmabench));
 	}
 	
 }

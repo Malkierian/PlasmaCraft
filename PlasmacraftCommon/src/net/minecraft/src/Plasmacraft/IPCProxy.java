@@ -15,8 +15,6 @@ import net.minecraft.src.World;
 
 public interface IPCProxy
 {
-	public float callWorldMethodA(World worldObj, Vec3D vec3d, AxisAlignedBB axisalignedbb);
-	
 	public String getMinecraftDirectory();
 	
 	public boolean getEntityInstanceOf(Entity entity);

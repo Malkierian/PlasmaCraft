@@ -64,7 +64,7 @@ public class WorldGenCausticLakes extends WorldGenerator
                         continue;
                     }
                     Material material = world.getBlockMaterial(i + j1, j + j2, k + l1);
-                    if(j2 >= 4 && material.getIsLiquid())
+                    if(j2 >= 4 && material.isLiquid())
                     {
                         return false;
                     }

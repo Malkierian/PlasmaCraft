@@ -49,109 +49,109 @@ public class mod_PlasmaCraft extends BaseModMp
     public void load()
     {
         PlasmaCraftCore.proxy = new PCClientProxy();
-        ModLoaderMp.Init();
+        ModLoaderMp.initialize();
         instance = this;
         causticRenderID = ModLoader.getUniqueBlockModelID(instance, false);
         PlasmaCraftCore.init(causticRenderID);
 
-        ModLoaderMp.RegisterGUI(this, 159);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityLaser.class, 160);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityLaserShotgun.class, 161);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityPlasma.class, 162);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityRailGun.class, 163);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityAcid.class, 164);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityAcidTNTPrimed.class, 165);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityAcidGrenade.class, 166);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityCryoBlast.class, 167);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityCausticBoat.class, 168);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityAcidTNTPrimed.class, 169);
-        ModLoaderMp.RegisterNetClientHandlerEntity(EntityMutantCow.class, 170);
+        ModLoaderMp.registerGUI(this, 159);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityLaser.class, 160);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityLaserShotgun.class, 161);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityPlasma.class, 162);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityRailGun.class, 163);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityAcid.class, 164);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityAcidTNTPrimed.class, 165);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityAcidGrenade.class, 166);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityCryoBlast.class, 167);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityCausticBoat.class, 168);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityAcidTNTPrimed.class, 169);
+        ModLoaderMp.registerNetClientHandlerEntity(EntityMutantCow.class, 170);
 
-        ModLoader.AddName(PlasmaCraftCore.cryoniteStill, "Cryonite (Still)");
-        ModLoader.AddName(PlasmaCraftCore.cryoniteMoving, "Cryonite (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.acidMoving, "Acid (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.acidStill, "Acid (Still)");
-        ModLoader.AddName(PlasmaCraftCore.plutoniumMoving, "Plutonium (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.plutoniumStill, "Plutonium (Still)");
-        ModLoader.AddName(PlasmaCraftCore.radioniteMoving, "Radionite (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.radioniteStill, "Radionite (Still)");
-        ModLoader.AddName(PlasmaCraftCore.netherflowMoving, "Netherflow (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.netherflowStill, "Netherflow (Still)");
-        ModLoader.AddName(PlasmaCraftCore.neptuniumMoving, "Neptunium (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.neptuniumStill, "Neptunium (Still)");
-        ModLoader.AddName(PlasmaCraftCore.obsidiumMoving, "Obsidium (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.obsidiumStill, "Obsidium (Still)");
-        ModLoader.AddName(PlasmaCraftCore.uraniumMoving, "Uranium (Moving)");
-        ModLoader.AddName(PlasmaCraftCore.uraniumStill, "Uranium (Still)");
-        ModLoader.AddName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
-        ModLoader.AddName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
-        ModLoader.AddName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
-        ModLoader.AddName(PlasmaCraftCore.plasmificatorIdle, "Plasmificator");
-        ModLoader.AddName(PlasmaCraftCore.plasmificatorActive, "Plasmificator");
-        ModLoader.AddName(PlasmaCraftCore.acidHot, "Acidic Barrier");
-        ModLoader.AddName(PlasmaCraftCore.acidTnt, "Acidic TNT");
-        ModLoader.AddName(PlasmaCraftCore.ingotPlutonium, "Plutonium Ingot");
-        ModLoader.AddName(PlasmaCraftCore.ingotRadionite, "Radionite Ingot");
-        ModLoader.AddName(PlasmaCraftCore.energyCell, "Energy Cell");
-        ModLoader.AddName(PlasmaCraftCore.beamSplitter, "Rifle Beam Splitter");
-        ModLoader.AddName(PlasmaCraftCore.BatteryEmpty, "Caustic Battery: Empty");
-        ModLoader.AddName(PlasmaCraftCore.ThermoPellet, "Thermonuclear Pellet");
-        ModLoader.AddName(PlasmaCraftCore.BatteryCryo, "Cryo Battery");
-        ModLoader.AddName(PlasmaCraftCore.BatteryCharged, "Caustic Battery: Charged");
-        ModLoader.AddName(PlasmaCraftCore.BatteryOvercharged, "Caustic Battery: Overcharged");
-        ModLoader.AddName(PlasmaCraftCore.BatteryPlasma, "Caustic Battery: Plasma");
-        ModLoader.AddName(PlasmaCraftCore.ingotNeptunium, "Neptunium Ingot");
-        ModLoader.AddName(PlasmaCraftCore.ingotObsidium, "Obsidium Ingot");
-        ModLoader.AddName(PlasmaCraftCore.ingotCryonite, "Cryonite Ingot");
-        ModLoader.AddName(PlasmaCraftCore.ingotUranium, "Uranium Ingot");
-        ModLoader.AddName(PlasmaCraftCore.ingotNetherflow, "Netherflow Ingot");
-        ModLoader.AddName(PlasmaCraftCore.goopPlutonium, "Plutonium Goop");
-        ModLoader.AddName(PlasmaCraftCore.goopRadionite, "Radionite Goop");
-        ModLoader.AddName(PlasmaCraftCore.goopNeptunium, "Neptunium Goop");
-        ModLoader.AddName(PlasmaCraftCore.goopNetherflow, "Netherflow Goop");
-        ModLoader.AddName(PlasmaCraftCore.goopObsidium, "Obsidium Goop");
-        ModLoader.AddName(PlasmaCraftCore.goopCryonite, "Cryonite Goop");
-        ModLoader.AddName(PlasmaCraftCore.goopUranium, "Uranium Goop");
-        ModLoader.AddName(PlasmaCraftCore.acidVial, "Empty Vial");
-        ModLoader.AddName(PlasmaCraftCore.fullAcidVial, "Acid Vial");
-        ModLoader.AddName(PlasmaCraftCore.plutoniumVial, "Plutonium Vial");
-        ModLoader.AddName(PlasmaCraftCore.radioniteVial, "Radionite Vial");
-        ModLoader.AddName(PlasmaCraftCore.uraniumVial, "Uranium Vial");
-        ModLoader.AddName(PlasmaCraftCore.neptuniumVial, "Neptunium Vial");
-        ModLoader.AddName(PlasmaCraftCore.netherflowVial, "Netherflow Vial");
-        ModLoader.AddName(PlasmaCraftCore.obsidiumVial, "Obsidium Vial");
-        ModLoader.AddName(PlasmaCraftCore.cryoniteVial, "Cryonite Vial");
-        ModLoader.AddName(PlasmaCraftCore.plasmaGel, "Plasma Goop");
-        ModLoader.AddName(PlasmaCraftCore.plasmaLeather, "Plasma-Coated Leather");
-        ModLoader.AddName(PlasmaCraftCore.plasma, "Plasma");
-        ModLoader.AddName(PlasmaCraftCore.lasergun, "Laser Rifle");
-        ModLoader.AddName(PlasmaCraftCore.plasmagun, "Plasma Rifle");
-        ModLoader.AddName(PlasmaCraftCore.plasmagunsplit, "Plasma Rifle + Beam Splitter");
-        ModLoader.AddName(PlasmaCraftCore.lasergunsplit, "Laser Rifle + Beam Splitter");
-        ModLoader.AddName(PlasmaCraftCore.acidgun, "Acid Launcher");
-        ModLoader.AddName(PlasmaCraftCore.railgun, "Rail Gun");
-        ModLoader.AddName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
-        ModLoader.AddName(PlasmaCraftCore.lasershotgun, "Laser Shotgun");
-        ModLoader.AddName(PlasmaCraftCore.causticBoat, "Radionite Boat");
-        ModLoader.AddName(PlasmaCraftCore.helmetHazmat, "Hazmat Hood");
-        ModLoader.AddName(PlasmaCraftCore.plateHazmat, "Hazmat Jacket");
-        ModLoader.AddName(PlasmaCraftCore.legsHazmat, "Hazmat Pants");
-        ModLoader.AddName(PlasmaCraftCore.bootsHazmat, "Hazmat Boots");
+        ModLoader.addName(PlasmaCraftCore.cryoniteStill, "Cryonite (Still)");
+        ModLoader.addName(PlasmaCraftCore.cryoniteMoving, "Cryonite (Moving)");
+        ModLoader.addName(PlasmaCraftCore.acidMoving, "Acid (Moving)");
+        ModLoader.addName(PlasmaCraftCore.acidStill, "Acid (Still)");
+        ModLoader.addName(PlasmaCraftCore.plutoniumMoving, "Plutonium (Moving)");
+        ModLoader.addName(PlasmaCraftCore.plutoniumStill, "Plutonium (Still)");
+        ModLoader.addName(PlasmaCraftCore.radioniteMoving, "Radionite (Moving)");
+        ModLoader.addName(PlasmaCraftCore.radioniteStill, "Radionite (Still)");
+        ModLoader.addName(PlasmaCraftCore.netherflowMoving, "Netherflow (Moving)");
+        ModLoader.addName(PlasmaCraftCore.netherflowStill, "Netherflow (Still)");
+        ModLoader.addName(PlasmaCraftCore.neptuniumMoving, "Neptunium (Moving)");
+        ModLoader.addName(PlasmaCraftCore.neptuniumStill, "Neptunium (Still)");
+        ModLoader.addName(PlasmaCraftCore.obsidiumMoving, "Obsidium (Moving)");
+        ModLoader.addName(PlasmaCraftCore.obsidiumStill, "Obsidium (Still)");
+        ModLoader.addName(PlasmaCraftCore.uraniumMoving, "Uranium (Moving)");
+        ModLoader.addName(PlasmaCraftCore.uraniumStill, "Uranium (Still)");
+        ModLoader.addName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
+        ModLoader.addName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
+        ModLoader.addName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
+        ModLoader.addName(PlasmaCraftCore.plasmificatorIdle, "Plasmificator");
+        ModLoader.addName(PlasmaCraftCore.plasmificatorActive, "Plasmificator");
+        ModLoader.addName(PlasmaCraftCore.acidHot, "Acidic Barrier");
+        ModLoader.addName(PlasmaCraftCore.acidTnt, "Acidic TNT");
+        ModLoader.addName(PlasmaCraftCore.ingotPlutonium, "Plutonium Ingot");
+        ModLoader.addName(PlasmaCraftCore.ingotRadionite, "Radionite Ingot");
+        ModLoader.addName(PlasmaCraftCore.energyCell, "Energy Cell");
+        ModLoader.addName(PlasmaCraftCore.beamSplitter, "Rifle Beam Splitter");
+        ModLoader.addName(PlasmaCraftCore.BatteryEmpty, "Caustic Battery: Empty");
+        ModLoader.addName(PlasmaCraftCore.ThermoPellet, "Thermonuclear Pellet");
+        ModLoader.addName(PlasmaCraftCore.BatteryCryo, "Cryo Battery");
+        ModLoader.addName(PlasmaCraftCore.BatteryCharged, "Caustic Battery: Charged");
+        ModLoader.addName(PlasmaCraftCore.BatteryOvercharged, "Caustic Battery: Overcharged");
+        ModLoader.addName(PlasmaCraftCore.BatteryPlasma, "Caustic Battery: Plasma");
+        ModLoader.addName(PlasmaCraftCore.ingotNeptunium, "Neptunium Ingot");
+        ModLoader.addName(PlasmaCraftCore.ingotObsidium, "Obsidium Ingot");
+        ModLoader.addName(PlasmaCraftCore.ingotCryonite, "Cryonite Ingot");
+        ModLoader.addName(PlasmaCraftCore.ingotUranium, "Uranium Ingot");
+        ModLoader.addName(PlasmaCraftCore.ingotNetherflow, "Netherflow Ingot");
+        ModLoader.addName(PlasmaCraftCore.goopPlutonium, "Plutonium Goop");
+        ModLoader.addName(PlasmaCraftCore.goopRadionite, "Radionite Goop");
+        ModLoader.addName(PlasmaCraftCore.goopNeptunium, "Neptunium Goop");
+        ModLoader.addName(PlasmaCraftCore.goopNetherflow, "Netherflow Goop");
+        ModLoader.addName(PlasmaCraftCore.goopObsidium, "Obsidium Goop");
+        ModLoader.addName(PlasmaCraftCore.goopCryonite, "Cryonite Goop");
+        ModLoader.addName(PlasmaCraftCore.goopUranium, "Uranium Goop");
+        ModLoader.addName(PlasmaCraftCore.acidVial, "Empty Vial");
+        ModLoader.addName(PlasmaCraftCore.fullAcidVial, "Acid Vial");
+        ModLoader.addName(PlasmaCraftCore.plutoniumVial, "Plutonium Vial");
+        ModLoader.addName(PlasmaCraftCore.radioniteVial, "Radionite Vial");
+        ModLoader.addName(PlasmaCraftCore.uraniumVial, "Uranium Vial");
+        ModLoader.addName(PlasmaCraftCore.neptuniumVial, "Neptunium Vial");
+        ModLoader.addName(PlasmaCraftCore.netherflowVial, "Netherflow Vial");
+        ModLoader.addName(PlasmaCraftCore.obsidiumVial, "Obsidium Vial");
+        ModLoader.addName(PlasmaCraftCore.cryoniteVial, "Cryonite Vial");
+        ModLoader.addName(PlasmaCraftCore.plasmaGel, "Plasma Goop");
+        ModLoader.addName(PlasmaCraftCore.plasmaLeather, "Plasma-Coated Leather");
+        ModLoader.addName(PlasmaCraftCore.plasma, "Plasma");
+        ModLoader.addName(PlasmaCraftCore.lasergun, "Laser Rifle");
+        ModLoader.addName(PlasmaCraftCore.plasmagun, "Plasma Rifle");
+        ModLoader.addName(PlasmaCraftCore.plasmagunsplit, "Plasma Rifle + Beam Splitter");
+        ModLoader.addName(PlasmaCraftCore.lasergunsplit, "Laser Rifle + Beam Splitter");
+        ModLoader.addName(PlasmaCraftCore.acidgun, "Acid Launcher");
+        ModLoader.addName(PlasmaCraftCore.railgun, "Rail Gun");
+        ModLoader.addName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
+        ModLoader.addName(PlasmaCraftCore.lasershotgun, "Laser Shotgun");
+        ModLoader.addName(PlasmaCraftCore.causticBoat, "Radionite Boat");
+        ModLoader.addName(PlasmaCraftCore.helmetHazmat, "Hazmat Hood");
+        ModLoader.addName(PlasmaCraftCore.plateHazmat, "Hazmat Jacket");
+        ModLoader.addName(PlasmaCraftCore.legsHazmat, "Hazmat Pants");
+        ModLoader.addName(PlasmaCraftCore.bootsHazmat, "Hazmat Boots");
 
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothAcidMeta), "Acid Glowcloth");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothRadioniteMeta), "Radionite Glowcloth");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothNetherflowMeta), "Netherflow Glowcloth");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothNeptuniumMeta), "Neptunium Glowcloth");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothUraniumMeta), "Uranium Glowcloth");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothPlutoniumMeta), "Plutonium Glowcloth");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothCryoniteMeta), "Cryonite Glowcloth");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothObsidiumMeta), "Obsidium Glowcloth");
-
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.obsidiumMeta), "Obsidium Ore");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.neptuniumMeta), "Neptunium Ore");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.plutoniumMeta), "Plutonium Ore");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.radioniteMeta), "Radionite Ore");
-        ModLoader.AddName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.uraniumMeta), "Uranium Ore");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothAcidMeta), "Acid Glowcloth");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothRadioniteMeta), "Radionite Glowcloth");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothNetherflowMeta), "Netherflow Glowcloth");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothNeptuniumMeta), "Neptunium Glowcloth");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothUraniumMeta), "Uranium Glowcloth");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothPlutoniumMeta), "Plutonium Glowcloth");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothCryoniteMeta), "Cryonite Glowcloth");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothObsidiumMeta), "Obsidium Glowcloth");
+        
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.obsidiumMeta), "Obsidium Ore");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.neptuniumMeta), "Neptunium Ore");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.plutoniumMeta), "Plutonium Ore");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.radioniteMeta), "Radionite Ore");
+        ModLoader.addName(new ItemStack(PlasmaCraftCore.orePlasma, 1, PlasmaCraftCore.uraniumMeta), "Uranium Ore");
         
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.itemTexture);
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.terrainTexture);
@@ -189,8 +189,8 @@ public class mod_PlasmaCraft extends BaseModMp
         return i << 16 | j << 8 | k;
     }
 
-
-    public int AddFuel(int i)
+    @Override
+    public int addFuel(int i, int j)
     {
         if(i == PlasmaCraftCore.netherflowVial.shiftedIndex)
         {
@@ -199,7 +199,8 @@ public class mod_PlasmaCraft extends BaseModMp
         return i != PlasmaCraftCore.ThermoPellet.shiftedIndex ? 0 : 0xf4240;
     }
 
-    public void RegisterAnimation(Minecraft minecraft)
+    @Override
+    public void registerAnimation(Minecraft minecraft)
     {
         ModLoader.addAnimation(new TextureFrameAnimFX(PlasmaCraftCore.plasmificatorFront, "/PlasmaCraftSprites/animations/animatedplasmificator.png"));
         registerLiquidFX(PlasmaCraftCore.cryoniteStillIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F);
@@ -210,22 +211,6 @@ public class mod_PlasmaCraft extends BaseModMp
         registerLiquidFX(PlasmaCraftCore.neptuniumStillIndex, 1.0F, 0.75F, 0.5F, 1.0F, 255F, 128F, 64F, 180F, 64F, 50F, 36F, 55F);
         registerLiquidFX(PlasmaCraftCore.netherflowStillIndex, 1.0F, 0.4F, 0.4F, 1.0F, 255F, 32F, 32F, 200F, 64F, 32F, 32F, 60F);
         registerLiquidFX(PlasmaCraftCore.obsidiumStillIndex, 0.35F, 0.1F, 0.35F, 1.0F, 72F, 64F, 72F, 250F, 40F, 32F, 40F, 10F);
-        /*ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.cryoniteStillIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.cryoniteMovingIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.acidStillIndex, 0.5F, 1.0F, 0.5F, 1.0F, 32F, 255F, 50F, 146F, 32F, 64F, 64F, 50F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.acidMovingIndex, 0.5F, 1.0F, 0.5F, 1.0F, 32F, 255F, 50F, 146F, 32F, 64F, 64F, 50F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.plutoniumStillIndex, 0.5F, 0.9F, 1.0F, 1.0F, 32F, 64F, 64F, 255F, 32F, 64F, 64F, 75F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.plutoniumMovingIndex, 0.5F, 0.9F, 1.0F, 1.0F, 32F, 64F, 64F, 255F, 32F, 64F, 64F, 75F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.radioniteStillIndex, 0.9F, 0.4F, 1.0F, 1.0F, 64F, 64F, 64F, 255F, 64F, 32F, 64F, 75F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.radioniteMovingIndex, 0.9F, 0.4F, 1.0F, 1.0F, 64F, 32F, 64F, 255F, 64F, 32F, 64F, 75F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.uraniumStillIndex, 0.9F, 0.9F, 0.3F, 1.0F, 255F, 255F, 64F, 160F, 64F, 64F, 32F, 50F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.uraniumMovingIndex, 0.9F, 0.9F, 0.3F, 1.0F, 255F, 255F, 64F, 160F, 64F, 64F, 32F, 50F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.neptuniumStillIndex, 1.0F, 0.75F, 0.5F, 1.0F, 255F, 128F, 64F, 180F, 64F, 50F, 36F, 55F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.neptuniumMovingIndex, 1.0F, 0.75F, 0.5F, 1.0F, 255F, 128F, 64F, 180F, 64F, 50F, 36F, 55F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.netherflowStillIndex, 1.0F, 0.4F, 0.4F, 1.0F, 255F, 32F, 32F, 200F, 64F, 32F, 32F, 60F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.netherflowMovingIndex, 1.0F, 0.4F, 0.4F, 1.0F, 255F, 32F, 32F, 200F, 64F, 32F, 32F, 60F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedStillFX(PlasmaCraftCore.obsidiumStillIndex, 0.15F, 0.1F, 0.15F, 1.0F, 72F, 64F, 72F, 220F, 40F, 32F, 40F, 70F, 16, 16));
-        ModLoader.addAnimation(new TextureTintedFlowFX(PlasmaCraftCore.obsidiumMovingIndex, 0.15F, 0.1F, 0.15F, 1.0F, 72F, 64F, 72F, 220F, 40F, 32F, 40F, 70F, 16, 16));*/
     }
     
     private void registerLiquidFX(int stillIndex, float f1, float f2, float f3, float f4, float f5, float f6, float f7, float f8, float f9, float f10, float f11, float f12)
@@ -473,7 +458,8 @@ public class mod_PlasmaCraft extends BaseModMp
         return flag2;
     }
 
-    public boolean RenderWorldBlock(RenderBlocks renderblocks, IBlockAccess iblockaccess, int i, int j, int k, Block block, int l)
+    @Override
+    public boolean renderWorldBlock(RenderBlocks renderblocks, IBlockAccess iblockaccess, int i, int j, int k, Block block, int l)
     {
         if(l == causticRenderID)
         {
@@ -487,10 +473,11 @@ public class mod_PlasmaCraft extends BaseModMp
 
     public static void pressKey(int i)
     {
-        ModLoaderMp.SendKey(instance, i);
+        ModLoaderMp.sendKey(instance, i);
     }
 
-    public GuiScreen HandleGUI(int i)
+    @Override
+    public GuiScreen handleGUI(int i)
     {
         if(i == 159)
         {
@@ -502,8 +489,9 @@ public class mod_PlasmaCraft extends BaseModMp
         }
     }
 
+    @Override
     @SuppressWarnings({ "unchecked", "rawtypes" })
-	public void AddRenderer(Map map)
+	public void addRenderer(Map map)
     {
         map.put(EntityAcidTNTPrimed.class, new RenderAcidTNTPrimed());
         map.put(EntityCausticBoat.class, new RenderCausticBoat());
@@ -515,13 +503,15 @@ public class mod_PlasmaCraft extends BaseModMp
         map.put(EntityAcid.class, new RenderAcid());
         map.put(EntityCryoBlast.class, new RenderCryoBlast());
     }
-    
-    public void GenerateNether(World world, Random random, int i, int j)
+
+    @Override
+    public void generateNether(World world, Random random, int i, int j)
     {
     	PlasmaCraftCore.GenerateNether(world, random, i, j);
     }
 
-    public void GenerateSurface(World world, Random random, int i, int j)
+    @Override
+    public void generateSurface(World world, Random random, int i, int j)
     {
     	PlasmaCraftCore.GenerateSurface(world, random, i, j);
     }

@@ -75,12 +75,7 @@ public class EntityMutantCow extends EntityAnimal
         return new EntityMutantCow(worldObj);
     }
 
-	protected EntityAnimal spawnBabyAnimal(EntityAnimal entityanimal) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	protected EntityAnimal func_40133_a(EntityAnimal entityanimal) {
+	public EntityAnimal spawnBabyAnimal(EntityAnimal entityanimal) {
 		// TODO Auto-generated method stub
 		return null;
 	}

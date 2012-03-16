@@ -1,5 +1,7 @@
 package net.minecraft.src.Plasmacraft;
 
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.src.RenderEngine;
 import net.minecraft.src.TextureFX;
 import net.minecraft.src.forge.MinecraftForgeClient;
@@ -10,7 +12,7 @@ public class TextureTintedFlowFX extends TextureFX
     protected float field_1137_h[];
     protected float field_1136_i[];
     protected float field_1135_j[];
-    private int field_1134_k;
+    private int tickCounter = 0;
     private float rTint;
     private float gTint;
     private float bTint;
@@ -37,7 +39,7 @@ public class TextureTintedFlowFX extends TextureFX
         field_1137_h = new float[width * height];
         field_1136_i = new float[width * height];
         field_1135_j = new float[width * height];
-        field_1134_k = 0;
+        tickCounter = 0;
         tileSize = 1;
         rTint = f;
         gTint = f1;
@@ -55,7 +57,7 @@ public class TextureTintedFlowFX extends TextureFX
 
     public void onTick()
     {
-        field_1134_k++;
+        this.tickCounter++;
         for(int i = 0; i < width; i++)
         {
             for(int k = 0; k < height; k++)
@@ -96,7 +98,7 @@ public class TextureTintedFlowFX extends TextureFX
         field_1138_g = af;
         for(int i1 = 0; i1 < width * height; i1++)
         {
-            float f1 = field_1138_g[i1 - field_1134_k * width & width * height - 1];
+            float f1 = field_1138_g[i1 - tickCounter * width & width * height - 1];
             if(f1 > 1.0F)
             {
                 f1 = 1.0F;
@@ -165,6 +167,7 @@ public class TextureTintedFlowFX extends TextureFX
 
     public void bindImage(RenderEngine renderengine)
     {
-    	MinecraftForgeClient.bindTexture(PlasmaCraftCore.liquidTexture);
+    	GL11.glBindTexture(3553 /*GL_TEXTURE_2D*/ /* GL_TEXTURE_2D */,
+    			renderengine.getTexture(PlasmaCraftCore.liquidTexture));
     }
 }

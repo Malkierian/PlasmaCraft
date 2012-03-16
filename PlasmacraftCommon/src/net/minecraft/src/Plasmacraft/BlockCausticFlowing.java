@@ -5,15 +5,16 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
+import net.minecraft.src.forge.ITextureProvider;
 
-public class BlockCausticFlowing extends BlockCausticFluids
+public class BlockCausticFlowing extends BlockCausticFluids implements ITextureProvider
 {
 
     int numAdjacentSources;
     boolean isOptimalFlowDirection[];
     int flowCost[];
 
-    protected BlockCausticFlowing(int i, int j, int k, int l, int i1, int j1)
+    public BlockCausticFlowing(int i, int j, int k, int l, int i1, int j1)
     {
         super(i, j, k, l, i1, j1);
         numAdjacentSources = 0;
@@ -26,7 +27,7 @@ public class BlockCausticFlowing extends BlockCausticFluids
         return flowingTextureID;
     }
 
-    private void func_22034_j(World world, int i, int j, int k)
+    private void updateFlow(World world, int i, int j, int k)
     {
         int l = world.getBlockMetadata(i, j, k);
         world.setBlockAndMetadata(i, j, k, stillBlockID, l);
@@ -89,11 +90,11 @@ public class BlockCausticFlowing extends BlockCausticFluids
             } else
             if(flag)
             {
-                func_22034_j(world, i, j, k);
+                updateFlow(world, i, j, k);
             }
         } else
         {
-            func_22034_j(world, i, j, k);
+            updateFlow(world, i, j, k);
         }
         if(liquidCanDisplaceBlock(world, i, j - 1, k))
         {

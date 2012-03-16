@@ -41,13 +41,12 @@ import net.minecraft.src.Plasmacraft.WorldGenNetherMinable;
 public class mod_PlasmaCraft extends BaseModMp
 {
 	public int causticRenderID;
+	static mod_PlasmaCraft inst1;
+	
     public String getVersion()
     {
     	return PlasmaCraftCore.Version();
 	}
-    
-    // PC == ChunkProviderGenerate
-    // JX == ChunkProviderHell
 	
     public static void sendFlak(double x, double y, double z)
 	  {
@@ -59,7 +58,7 @@ public class mod_PlasmaCraft extends BaseModMp
 	    Packet230ModLoader packet = new Packet230ModLoader();
 	    packet.packetType = 1;
 	    packet.dataFloat = dataFloat;
-	    ModLoaderMp.SendPacketToAll(inst1, packet);
+	    ModLoaderMp.sendPacketToAll(inst1, packet);
 	  }
 	 
 	public static int floatColorsToDamage(float r, float g, float b)
@@ -79,35 +78,52 @@ public class mod_PlasmaCraft extends BaseModMp
 	
 	public mod_PlasmaCraft()
 	{
+	}
+
+    @Override
+    public void generateNether(World world, Random random, int i, int j)
+    {
+    	PlasmaCraftCore.GenerateNether(world, random, i, j);
+    }
+
+    @Override
+    public void generateSurface(World world, Random random, int i, int j)
+    {
+    	PlasmaCraftCore.GenerateSurface(world, random, i, j);
+    }
+	
+	@Override
+	public void load()
+	{
 		PlasmaCraftCore.proxy = new PCServerProxy();
         causticRenderID = ModLoader.getUniqueBlockModelID(this, false);
         PlasmaCraftCore.init(causticRenderID);
 
-		//ModLoader.RegisterEntityID(EntityCausticBoat.class, "RadioniteBoat", ModLoader.getUniqueEntityId());
-		//ModLoader.RegisterEntityID(EntityAcidTNTPrimed.class, "AcidTNTPrimed", ModLoader.getUniqueEntityId());
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityLaser.class, 160);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityLaserShotgun.class, 161);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityPlasma.class, 162);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityRailGun.class, 163);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityAcid.class, 164);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityAcidTNTPrimed.class, 165);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityAcidGrenade.class, 166);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityCryoBlast.class, 167);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityCausticBoat.class, 168);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityAcidTNTPrimed.class, 169);
-        ModLoaderMp.RegisterEntityTrackerEntry(EntityMutantCow.class, 170);
+		//ModLoader.registerEntityID(EntityCausticBoat.class, "RadioniteBoat", ModLoader.getUniqueEntityId());
+		//ModLoader.registerEntityID(EntityAcidTNTPrimed.class, "AcidTNTPrimed", ModLoader.getUniqueEntityId());
+        ModLoaderMp.registerEntityTrackerEntry(EntityLaser.class, 160);
+        ModLoaderMp.registerEntityTrackerEntry(EntityLaserShotgun.class, 161);
+        ModLoaderMp.registerEntityTrackerEntry(EntityPlasma.class, 162);
+        ModLoaderMp.registerEntityTrackerEntry(EntityRailGun.class, 163);
+        ModLoaderMp.registerEntityTrackerEntry(EntityAcid.class, 164);
+        ModLoaderMp.registerEntityTrackerEntry(EntityAcidTNTPrimed.class, 165);
+        ModLoaderMp.registerEntityTrackerEntry(EntityAcidGrenade.class, 166);
+        ModLoaderMp.registerEntityTrackerEntry(EntityCryoBlast.class, 167);
+        ModLoaderMp.registerEntityTrackerEntry(EntityCausticBoat.class, 168);
+        ModLoaderMp.registerEntityTrackerEntry(EntityAcidTNTPrimed.class, 169);
+        ModLoaderMp.registerEntityTrackerEntry(EntityMutantCow.class, 170);
 
-        ModLoaderMp.RegisterEntityTracker(EntityLaser.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityLaserShotgun.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityPlasma.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityRailGun.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityAcid.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityAcidTNTPrimed.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityAcidGrenade.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityCryoBlast.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityCausticBoat.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityAcidTNTPrimed.class, 160, 5);
-        ModLoaderMp.RegisterEntityTracker(EntityMutantCow.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityLaser.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityLaserShotgun.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityPlasma.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityRailGun.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityAcid.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityAcidTNTPrimed.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityAcidGrenade.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityCryoBlast.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityCausticBoat.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityAcidTNTPrimed.class, 160, 5);
+        ModLoaderMp.registerEntityTracker(EntityMutantCow.class, 160, 5);
 
 		// HACK around the fact that we can't edit the Item class directly
         for(int i = 0; i < 256; i++)
@@ -120,22 +136,15 @@ public class mod_PlasmaCraft extends BaseModMp
         }
 	}
 
-	public void GenerateNether(World world, Random random, int chunkX, int chunkZ)
-	{
-
-		PlasmaCraftCore.GenerateNether(world, random, chunkX, chunkZ);
-	}
-
-	public void GenerateSurface(World world, Random random, int chunkX, int chunkZ)
-	{
-		PlasmaCraftCore.GenerateSurface(world, random, chunkX, chunkZ);
-	}
-    
-	static mod_PlasmaCraft inst1;
-	@Override
-	public void load()
-	{
-	}
+    @Override
+    public int addFuel(int i, int j)
+    {
+        if(i == PlasmaCraftCore.netherflowVial.shiftedIndex)
+        {
+            return 0x7a120;
+        }
+        return i != PlasmaCraftCore.ThermoPellet.shiftedIndex ? 0 : 0xf4240;
+    }
 
     
 }

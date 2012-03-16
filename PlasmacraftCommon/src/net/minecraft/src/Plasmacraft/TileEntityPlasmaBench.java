@@ -113,7 +113,7 @@ public class TileEntityPlasmaBench extends TileEntity
                 NBTTagCompound nbttagcompound1 = new NBTTagCompound();
                 nbttagcompound1.setByte("Slot", (byte)i);
                 furnaceItemStacks[i].writeToNBT(nbttagcompound1);
-                nbttaglist.setTag(nbttagcompound1);
+                nbttaglist.appendTag(nbttagcompound1);
             }
         }
 
@@ -413,4 +413,10 @@ public class TileEntityPlasmaBench extends TileEntity
     public void closeChest()
     {
     }
+
+	@Override
+	public ItemStack getStackInSlotOnClosing(int var1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

@@ -36,7 +36,7 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
         flowingBlockID = flowingBlockId;
         renderID = stillTexture;
         setBlockBounds(0.0F + f1, 0.0F + f, 0.0F + f1, 1.0F + f1, 1.0F + f, 1.0F + f1);
-        setTickOnLoad(true);
+        setTickRandomly(true);
         armorTick = 0;
     }
     
@@ -144,7 +144,7 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
         }
         else
         {
-            return super.shouldSideBeRendered(iblockaccess, i, j, k, l);
+            return false;
         }
     }
 
@@ -196,7 +196,7 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
             int i2 = getEffectiveFlowDecay(iblockaccess, j1, k1, l1);
             if(i2 < 0)
             {
-                if(iblockaccess.getBlockMaterial(j1, k1, l1).getIsSolid())
+                if(iblockaccess.getBlockMaterial(j1, k1, l1).isSolid())
                 {
                     continue;
                 }

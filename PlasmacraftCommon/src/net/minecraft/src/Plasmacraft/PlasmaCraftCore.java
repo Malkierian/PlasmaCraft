@@ -3,6 +3,7 @@ package net.minecraft.src.Plasmacraft;
 import java.io.File;
 import java.util.Random;
 
+import net.minecraft.src.BaseMod;
 import net.minecraft.src.BiomeGenBase;
 import net.minecraft.src.Block;
 import net.minecraft.src.EnumArmorMaterial;
@@ -27,7 +28,7 @@ public class PlasmaCraftCore
 	
 	public static String Version()
 	{
-		return "1.1.0/0.2.6";
+		return "1.2.3/0.2.7";
 	}
 	
 	public static IPCProxy proxy;
@@ -292,24 +293,24 @@ public class PlasmaCraftCore
 	public static int oreBlockID;
 	public static int glowClothBlockID;
 
-	private static int plutoniumOreVeinCount = 2;
+	private static int plutoniumOreVeinCount = 4;
 	private static int plutoniumOreYRange = 16;
 	private static int plutoniumOreYStart = 4;
 	private static int plutoniumOreVeinSize = 6;
-	private static int uraniumOreVeinCount = 2;
+	private static int uraniumOreVeinCount = 4;
 	private static int uraniumOreYRange = 16;
 	private static int uraniumOreYStart = 4;
 	private static int uraniumOreVeinSize = 6;
-	private static int radioniteOreVeinCount = 2;
+	private static int radioniteOreVeinCount = 4;
 	private static int radioniteOreYRange = 24;
 	private static int radioniteOreYStart = 4;
 	private static int radioniteOreVeinSize = 6;
-	private static int acidLakeChance = 32;
-	private static int acidLakeYCutoff = 96;
+	private static int acidLakeChance = 16;
+	private static int acidLakeYCutoff = 48;
 	private static int acidSpoutCount = 20;
 	private static int acidSpoutYRange = 30;
 	private static int acidSpoutYStart = 8;
-	private static int neptuniumOreVeinCount = 4;
+	private static int neptuniumOreVeinCount = 6;
 	private static int neptuniumOreYRange = 64;
 	private static int neptuniumOreYStart = 32;
 	private static int neptuniumOreVeinSize = 10;
@@ -328,6 +329,7 @@ public class PlasmaCraftCore
 	private static int neptuniumSpoutYRange = 64;
 	private static int neptuniumSpoutYStart = 8;
 	
+	public static int liquidRes;	
 	private static boolean generateUranium;
 	private static boolean generatePlutonium;
 	
@@ -341,8 +343,8 @@ public class PlasmaCraftCore
 		handler = new PCBucketHandler();
 		MinecraftForge.registerCustomBucketHandler(handler);
         
-        ModLoader.RegisterTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
-        ModLoader.RegisterTileEntity(TileEntityCaustic.class, "causticTile");
+        ModLoader.registerTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
+        ModLoader.registerTileEntity(TileEntityCaustic.class, "causticTile");
 		
         orePlasma = (new BlockPlasmaOre(oreBlockID, orePlutoniumIndex)).setBlockName("orePlasma");
 		
@@ -420,37 +422,37 @@ public class PlasmaCraftCore
         cryoblaster = (new ItemEnergyWeapon(cryoblasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
         lasershotgun = (new ItemEnergyWeapon(lasershotgunID, 200)).setIconIndex(lasershotgunIndex).setItemName("lasershotgunGun");
 
-        helmetHazmat = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 0)).setIconIndex(helmetIndex).setItemName("helmetHazmat");
-        plateHazmat = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 1)).setIconIndex(plateIndex).setItemName("plateHazmat");
-        legsHazmat = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 2)).setIconIndex(legsIndex).setItemName("legsHazmat");
-        bootsHazmat = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.values()[2], ModLoader.AddArmor("hazmat"), 3)).setIconIndex(bootsIndex).setItemName("bootsHazmat");
+        helmetHazmat = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 0)).setIconIndex(helmetIndex).setItemName("helmetHazmat");
+        plateHazmat = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 1)).setIconIndex(plateIndex).setItemName("plateHazmat");
+        legsHazmat = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 2)).setIconIndex(legsIndex).setItemName("legsHazmat");
+        bootsHazmat = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 3)).setIconIndex(bootsIndex).setItemName("bootsHazmat");
         
-        ModLoader.RegisterBlock(cryoniteStill);
-        ModLoader.RegisterBlock(cryoniteMoving);
-        ModLoader.RegisterBlock(acidStill);
-        ModLoader.RegisterBlock(acidMoving);
-        ModLoader.RegisterBlock(radioniteStill);
-        ModLoader.RegisterBlock(radioniteMoving);
-        ModLoader.RegisterBlock(plutoniumStill);
-        ModLoader.RegisterBlock(plutoniumMoving);
-        ModLoader.RegisterBlock(netherflowStill);
-        ModLoader.RegisterBlock(netherflowMoving);
-        ModLoader.RegisterBlock(neptuniumStill);
-        ModLoader.RegisterBlock(neptuniumMoving);
-        ModLoader.RegisterBlock(uraniumStill);
-        ModLoader.RegisterBlock(uraniumMoving);
-        ModLoader.RegisterBlock(obsidiumStill);
-        ModLoader.RegisterBlock(obsidiumMoving);
-        ModLoader.RegisterBlock(frozenCryonite);
-        ModLoader.RegisterBlock(reinforcedGlass);
-        ModLoader.RegisterBlock(plasmificatorIdle);
-        ModLoader.RegisterBlock(plasmificatorActive);
-        ModLoader.RegisterBlock(acidHot);
-        ModLoader.RegisterBlock(acidTnt);
+        ModLoader.registerBlock(cryoniteStill);
+        ModLoader.registerBlock(cryoniteMoving);
+        ModLoader.registerBlock(acidStill);
+        ModLoader.registerBlock(acidMoving);
+        ModLoader.registerBlock(radioniteStill);
+        ModLoader.registerBlock(radioniteMoving);
+        ModLoader.registerBlock(plutoniumStill);
+        ModLoader.registerBlock(plutoniumMoving);
+        ModLoader.registerBlock(netherflowStill);
+        ModLoader.registerBlock(netherflowMoving);
+        ModLoader.registerBlock(neptuniumStill);
+        ModLoader.registerBlock(neptuniumMoving);
+        ModLoader.registerBlock(uraniumStill);
+        ModLoader.registerBlock(uraniumMoving);
+        ModLoader.registerBlock(obsidiumStill);
+        ModLoader.registerBlock(obsidiumMoving);
+        ModLoader.registerBlock(frozenCryonite);
+        ModLoader.registerBlock(reinforcedGlass);
+        ModLoader.registerBlock(plasmificatorIdle);
+        ModLoader.registerBlock(plasmificatorActive);
+        ModLoader.registerBlock(acidHot);
+        ModLoader.registerBlock(acidTnt);
         
-        ModLoader.RegisterBlock(glowCloth, net.minecraft.src.Plasmacraft.ItemGlowCloth.class);
+        ModLoader.registerBlock(glowCloth, net.minecraft.src.Plasmacraft.ItemGlowCloth.class);
 
-        ModLoader.RegisterBlock(orePlasma, net.minecraft.src.Plasmacraft.ItemPlasmaOre.class);
+        ModLoader.registerBlock(orePlasma, net.minecraft.src.Plasmacraft.ItemPlasmaOre.class);
         
         MinecraftForge.setBlockHarvestLevel(orePlasma, obsidiumMeta, "pickaxe", 3);
         MinecraftForge.setBlockHarvestLevel(orePlasma, uraniumMeta, "pickaxe", 2);
@@ -468,11 +470,11 @@ public class PlasmaCraftCore
         MinecraftForge.registerOre("ingotPlutonium", new ItemStack(ingotPlutonium, 1));
         MinecraftForge.registerOre("ingotUranium", new ItemStack(ingotUranium, 1));
         
-        Item.itemsList[oreBlockID] = new ItemPlasmaOre(oreBlockID - Block.blocksList.length).setItemName("OreBlock");
+        Item.itemsList[oreBlockID] = new ItemPlasmaOre(oreBlockID - 256).setItemName("OreBlock");
         
-        Item.itemsList[glowClothBlockID] = new ItemGlowCloth(glowClothBlockID - Block.blocksList.length).setItemName("GlowCloth");
+        Item.itemsList[glowClothBlockID] = new ItemGlowCloth(glowClothBlockID - 256).setItemName("GlowCloth");
         
-        AddRecipes();
+        addRecipes();
 	}
 	
 	public static int getInt(Property property)
@@ -568,118 +570,119 @@ public class PlasmaCraftCore
         batterycryoID = getInt(c.getOrCreateIntProperty("batterycryoID", Configuration.ITEM_PROPERTY, 2099));
         ThermoPelletID = getInt(c.getOrCreateIntProperty("ThermoPelletID", Configuration.ITEM_PROPERTY, 2098));
         
+        liquidRes = getInt(c.getOrCreateIntProperty("liquidResolution", Configuration.GENERAL_PROPERTY, 16));
         generateUranium = getBool(c.getOrCreateBooleanProperty("GenerateUranium", Configuration.GENERAL_PROPERTY, true));
         generatePlutonium = getBool(c.getOrCreateBooleanProperty("GeneratePlutonium", Configuration.GENERAL_PROPERTY, true));
         
         c.save();
     }
     
-    public static void AddRecipes()
+    public static void addRecipes()
     {
-        ModLoader.AddRecipe(new ItemStack(plasmagunsplit, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(plasmagunsplit, 1), new Object[] {
             "YB", Character.valueOf('B'), plasmagun, Character.valueOf('Y'), beamSplitter
         });
-        ModLoader.AddRecipe(new ItemStack(lasergunsplit, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(lasergunsplit, 1), new Object[] {
             "YB", Character.valueOf('B'), lasergun, Character.valueOf('Y'), beamSplitter
         });
-        ModLoader.AddRecipe(new ItemStack(cryoblaster, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(cryoblaster, 1), new Object[] {
             "  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
             ingotObsidium, Character.valueOf('X'), BatteryCryo, Character.valueOf('E'), ingotPlutonium
         });
-        ModLoader.AddRecipe(new ItemStack(acidGrenade, 4), new Object[] {
+        ModLoader.addRecipe(new ItemStack(acidGrenade, 4), new Object[] {
             "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), fullAcidVial, Character.valueOf('Z'), plasma
         });
-        ModLoader.AddRecipe(new ItemStack(reinforcedGlass, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(reinforcedGlass, 1), new Object[] {
             "X", "#", Character.valueOf('#'), Block.glass, Character.valueOf('X'), Item.ingotIron
         });
-        ModLoader.AddRecipe(new ItemStack(acidVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(acidVial, 1), new Object[] {
             "X#X", "Y Y", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Block.glass
         });
-        ModLoader.AddRecipe(new ItemStack(plasmificatorIdle, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(plasmificatorIdle, 1), new Object[] {
             "X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), fullAcidVial
         });
-        ModLoader.AddRecipe(new ItemStack(causticBoat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(causticBoat, 1), new Object[] {
             "R R", "RRR", Character.valueOf('R'), ingotRadionite
         });
-        ModLoader.AddRecipe(new ItemStack(energyCell, 5), new Object[] {
+        ModLoader.addRecipe(new ItemStack(energyCell, 5), new Object[] {
             " R ", "RXR", " R ", Character.valueOf('R'), ingotNeptunium, Character.valueOf('X'), plasmaGel
         });
-        ModLoader.AddRecipe(new ItemStack(BatteryEmpty, 8), new Object[] {
+        ModLoader.addRecipe(new ItemStack(BatteryEmpty, 8), new Object[] {
             "IRI", "I I", "IRI", Character.valueOf('R'), ingotRadionite, Character.valueOf('I'), Item.ingotIron
         });
-        ModLoader.AddRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
             "R", "X", Character.valueOf('R'), goopCryonite, Character.valueOf('X'), BatteryEmpty
         });
-        ModLoader.AddRecipe(new ItemStack(BatteryPlasma, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(BatteryPlasma, 1), new Object[] {
             "R", "X", Character.valueOf('R'), plasma, Character.valueOf('X'), BatteryEmpty
         });
-        ModLoader.AddRecipe(new ItemStack(BatteryCharged, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(BatteryCharged, 1), new Object[] {
             "R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), BatteryEmpty
         });
-        ModLoader.AddRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
             "N", "J", Character.valueOf('N'), plasmaGel, Character.valueOf('J'), Item.leather
         });
-        ModLoader.AddRecipe(new ItemStack(acidHot, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(acidHot, 1), new Object[] {
             "Z", "X", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), fullAcidVial
         });
-        ModLoader.AddRecipe(new ItemStack(plutoniumVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(plutoniumVial, 1), new Object[] {
             "Q", "E", Character.valueOf('Q'), goopPlutonium, Character.valueOf('E'), acidVial
         });
-        ModLoader.AddRecipe(new ItemStack(radioniteVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(radioniteVial, 1), new Object[] {
             "Q", "F", Character.valueOf('Q'), goopRadionite, Character.valueOf('F'), acidVial
         });
-        ModLoader.AddRecipe(new ItemStack(uraniumVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(uraniumVial, 1), new Object[] {
             "Q", "G", Character.valueOf('Q'), goopUranium, Character.valueOf('G'), acidVial
         });
-        ModLoader.AddRecipe(new ItemStack(neptuniumVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(neptuniumVial, 1), new Object[] {
             "Q", "H", Character.valueOf('Q'), goopNeptunium, Character.valueOf('H'), acidVial
         });
-        ModLoader.AddRecipe(new ItemStack(netherflowVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(netherflowVial, 1), new Object[] {
             "Q", "I", Character.valueOf('Q'), goopNetherflow, Character.valueOf('I'), acidVial
         });
-        ModLoader.AddRecipe(new ItemStack(obsidiumVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(obsidiumVial, 1), new Object[] {
             "Q", "J", Character.valueOf('Q'), goopObsidium, Character.valueOf('J'), acidVial
         });
-        ModLoader.AddRecipe(new ItemStack(cryoniteVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(cryoniteVial, 1), new Object[] {
             "Q", "J", Character.valueOf('Q'), goopCryonite, Character.valueOf('J'), acidVial
         });
-        ModLoader.AddRecipe(new ItemStack(helmetHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(helmetHazmat, 1), new Object[] {
             "LLL", "L L", Character.valueOf('L'), plasmaLeather
         });
-        ModLoader.AddRecipe(new ItemStack(plateHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(plateHazmat, 1), new Object[] {
             "L L", "LLL", "LLL", Character.valueOf('L'), plasmaLeather
         });
-        ModLoader.AddRecipe(new ItemStack(legsHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(legsHazmat, 1), new Object[] {
             "LLL", "L L", "L L", Character.valueOf('L'), plasmaLeather
         });
-        ModLoader.AddRecipe(new ItemStack(bootsHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(bootsHazmat, 1), new Object[] {
             "L L", "L L", Character.valueOf('L'), plasmaLeather
         });
-        ModLoader.AddRecipe(new ItemStack(acidTnt, 4), new Object[] {
+        ModLoader.addRecipe(new ItemStack(acidTnt, 4), new Object[] {
             "APA", "GAG", "APA", Character.valueOf('A'), fullAcidVial, Character.valueOf('G'), Item.gunpowder, Character.valueOf('P'), plasma
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothAcidMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothAcidMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), fullAcidVial
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothRadioniteMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothRadioniteMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopRadionite
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothNetherflowMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothNetherflowMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopNetherflow
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothNeptuniumMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothNeptuniumMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopNeptunium
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothUraniumMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothUraniumMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopUranium
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopPlutonium
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothCryoniteMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothCryoniteMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopCryonite
         });
-        ModLoader.AddRecipe(new ItemStack(glowCloth, 1, glowClothObsidiumMeta), new Object[] {
+        ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothObsidiumMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopObsidium
         });
     }
@@ -764,7 +767,7 @@ public class PlasmaCraftCore
         if(random.nextInt(acidLakeChance) == 0)
         {
             int i1 = random.nextInt(16) + 8;
-            int l2 = random.nextInt(world.worldHeight);
+            int l2 = random.nextInt(world.getWorldHeight());
             int j4 = random.nextInt(16) + 8;
             (new WorldGenLakes(acidMoving.blockID)).generate(world, random, i1, l2, j4);
         }       
@@ -778,7 +781,7 @@ public class PlasmaCraftCore
         if(random.nextInt(acidLakeChance) == 0)
         {
             int l1 = i + random.nextInt(16) + 8;
-            int j3 = random.nextInt(world.worldHeight);
+            int j3 = random.nextInt(world.getWorldHeight());
             int l4 = j + random.nextInt(16) + 8;
             BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(l1, l4);
             if((biomegenbase == BiomeGenBase.taiga) 

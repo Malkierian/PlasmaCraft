@@ -17,7 +17,7 @@ public class BlockReinforcedGlass extends BlockBreakable implements ITextureProv
         setHardness(1.0F);
         setResistance(resistance);
         setStepSound(Block.soundGlassFootstep);
-        setTickOnLoad(true);
+        setTickRandomly(true);
     }
     
     public void addCreativeItems(ArrayList itemList)

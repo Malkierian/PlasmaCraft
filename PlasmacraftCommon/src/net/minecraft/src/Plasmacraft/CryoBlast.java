@@ -117,7 +117,7 @@ label0:
                 d6 /= d11;
                 d8 /= d11;
                 d10 /= d11;
-                double d12 = PlasmaCraftCore.proxy.callWorldMethodA(worldObj, vec3d, entity.boundingBox);
+                double d12 = worldObj.getBlockDensity(vec3d, entity.boundingBox);
                 double d13 = (1.0D - d4) * d12;
                 entity.attackEntityFrom(DamageSource.explosion, (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
                 if(entity instanceof EntityLiving)

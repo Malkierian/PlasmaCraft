@@ -5,6 +5,7 @@ import net.minecraft.src.BlockCloth;
 import net.minecraft.src.ItemBlock;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.ModLoader;
+import net.minecraft.src.forge.ITextureProvider;
 
 public class ItemPlasmaOre extends ItemBlock
 {
@@ -26,17 +27,24 @@ public class ItemPlasmaOre extends ItemBlock
         return PlasmaCraftCore.orePlasma.getBlockTextureFromSideAndMetadata(0, i);
     }
     
+	@Override
     public int getMetadata(int damage)
     {
     	return damage;
     }
     
+	@Override
     public String getItemNameIS(ItemStack itemstack) {
         return (new StringBuilder())
                 .append(super.getItemName())
                 .append(".")
                 .append(blockNames[itemstack.getItemDamage()])
                 .toString();
+    }
+
+    public String getTextureFile() 
+    {
+		return PlasmaCraftCore.terrainTexture;
     }
 	
 }

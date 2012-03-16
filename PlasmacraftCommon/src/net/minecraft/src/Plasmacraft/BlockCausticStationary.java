@@ -5,13 +5,13 @@ import java.util.Random;
 import net.minecraft.src.Block;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
+import net.minecraft.src.forge.ITextureProvider;
 
-public class BlockCausticStationary extends BlockCausticFluids
+public class BlockCausticStationary extends BlockCausticFluids implements ITextureProvider
 {
-    protected BlockCausticStationary(int i, int j, int k, int l, int i1, int j1, float lightvalue)
+    public BlockCausticStationary(int i, int j, int k, int l, int i1, int j1, float lightvalue)
     {
         super(i, j, k, l, i1, j1);
-        setTickOnLoad(false);
         setHardness(5F);
         setLightOpacity(3);
         setLightValue(lightvalue);
@@ -69,7 +69,7 @@ public class BlockCausticStationary extends BlockCausticFluids
                     }
                     continue;
                 }
-                if(Block.blocksList[j1].blockMaterial.getIsSolid())
+                if(Block.blocksList[j1].blockMaterial.isSolid())
                 {
                     return;
                 }

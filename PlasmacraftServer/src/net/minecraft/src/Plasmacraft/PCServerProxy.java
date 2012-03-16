@@ -25,12 +25,6 @@ public class PCServerProxy implements IPCProxy
 	}
 	
 	@Override
-	public float callWorldMethodA(World worldObj, Vec3D vec3d, AxisAlignedBB axisalignedbb)
-	{
-		return worldObj.func_494_a(vec3d, axisalignedbb);
-	}
-	
-	@Override
 	public String getMinecraftDirectory()
 	{
 		return "";
@@ -72,7 +66,7 @@ public class PCServerProxy implements IPCProxy
 	@Override
 	public void OpenGUI(EntityPlayer entityplayer,
 			TileEntityPlasmaBench tileentityplasmabench) {
-		ModLoader.OpenGUI(entityplayer, 159, (IInventory)entityplayer.inventory, new ContainerPlasmaBench((IInventory)entityplayer.inventory, tileentityplasmabench));
+		ModLoader.openGUI(entityplayer, 159, (IInventory)entityplayer.inventory, new ContainerPlasmaBench((IInventory)entityplayer.inventory, tileentityplasmabench));
 	}
 	
 }

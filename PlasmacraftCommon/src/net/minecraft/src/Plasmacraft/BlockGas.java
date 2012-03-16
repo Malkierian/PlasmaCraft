@@ -23,7 +23,7 @@ public class BlockGas extends Block
         supplyBlock = flag;
         if(flag)
         {
-            setTickOnLoad(true);
+            setTickRandomly(true);
         }
     }
 
