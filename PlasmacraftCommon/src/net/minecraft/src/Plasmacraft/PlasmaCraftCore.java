@@ -195,6 +195,8 @@ public class PlasmaCraftCore
 	public static int plasmaLeatherIndex = 35;
 	public static int plasmaIndex = 33;
 	public static int causticBoatIndex = 5;
+	public static int causticBoatEntityID;
+	public static int causticBoatNetEntityID;
 	public static int helmetIndex = 16;
 	public static int plateIndex = 17;
 	public static int legsIndex = 18;
@@ -345,6 +347,8 @@ public class PlasmaCraftCore
         
         ModLoader.registerTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
         ModLoader.registerTileEntity(TileEntityCaustic.class, "causticTile");
+        ModLoader.registerEntityID(EntityCausticBoat.class, "RadioniteBoat", ModLoader.getUniqueEntityId());
+		ModLoader.registerEntityID(EntityAcidTNTPrimed.class, "AcidTNTPrimed", ModLoader.getUniqueEntityId());
 		
         orePlasma = (new BlockPlasmaOre(oreBlockID, orePlutoniumIndex)).setBlockName("orePlasma");
 		
@@ -530,6 +534,8 @@ public class PlasmaCraftCore
         plasmaGelID = getInt(c.getOrCreateIntProperty("plasmaGelID", Configuration.ITEM_PROPERTY, 2054));
         plasmaID = getInt(c.getOrCreateIntProperty("plasmaID", Configuration.ITEM_PROPERTY, 2055));
         causticBoatID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.ITEM_PROPERTY, 2056));
+        causticBoatEntityID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.ITEM_PROPERTY, 2056));
+        causticBoatNetEntityID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.ITEM_PROPERTY, 2056));
         hazmatHoodID = getInt(c.getOrCreateIntProperty("hazmatHoodID", Configuration.ITEM_PROPERTY, 2057));
         hazmatJacketID = getInt(c.getOrCreateIntProperty("hazmatJacketID", Configuration.ITEM_PROPERTY, 2058));
         hazmatPantsID = getInt(c.getOrCreateIntProperty("hazmatPantsID", Configuration.ITEM_PROPERTY, 2059));

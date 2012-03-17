@@ -99,8 +99,6 @@ public class mod_PlasmaCraft extends BaseModMp
         causticRenderID = ModLoader.getUniqueBlockModelID(this, false);
         PlasmaCraftCore.init(causticRenderID);
 
-		//ModLoader.registerEntityID(EntityCausticBoat.class, "RadioniteBoat", ModLoader.getUniqueEntityId());
-		//ModLoader.registerEntityID(EntityAcidTNTPrimed.class, "AcidTNTPrimed", ModLoader.getUniqueEntityId());
         ModLoaderMp.registerEntityTrackerEntry(EntityLaser.class, 160);
         ModLoaderMp.registerEntityTrackerEntry(EntityLaserShotgun.class, 161);
         ModLoaderMp.registerEntityTrackerEntry(EntityPlasma.class, 162);
