@@ -57,6 +57,8 @@ public class PlasmaRecipes
     	{
     		return (ItemStack)recipeDictionary.get(Integer.valueOf(meta));
     	}
+    	else if(i < 5)
+    		return null;
     	else
     		return (ItemStack)recipeDictionary.get(Integer.valueOf(i));
     }
