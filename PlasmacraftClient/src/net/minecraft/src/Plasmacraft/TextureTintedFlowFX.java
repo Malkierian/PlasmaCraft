@@ -25,20 +25,31 @@ public class TextureTintedFlowFX extends TextureFX
     private float gSpread;
     private float bSpread;
     private float aSpread;
-    private int width;
-    private int height;
+
+    private int int_numPixels = 256;
+    private int int_size = 16;
+    private int int_sizeMinus1 = 0xF;
 
     public TextureTintedFlowFX(int i, float f, float f1, float f2, float f3, float f4, float f5, 
-            float f6, float f7, float f8, float f9, float f10, float f11, int j, 
-            int k)
+            float f6, float f7, float f8, float f9, float f10, float f11)
     {
         super(i);
-        width = j;
-        height = k;
-        field_1138_g = new float[width * height];
-        field_1137_h = new float[width * height];
-        field_1136_i = new float[width * height];
-        field_1135_j = new float[width * height];
+//    	try
+//    	{
+//			Class<? extends Object> sizeClass = Class.forName("com.pclewis.mcpatcher.mod.TileSize");
+//			int_numPixels = sizeClass.getDeclaredField("int_numPixels").getInt(sizeClass);
+//			int_size = sizeClass.getDeclaredField("int_size").getInt(sizeClass);
+//			int_sizeMinus1 = sizeClass.getDeclaredField("int_sizeMinus1").getInt(sizeClass);
+//		}
+//    	catch (Throwable t)
+//    	{
+//
+//    	}
+    	imageData = new byte[int_numPixels * 4];
+        field_1138_g = new float[int_numPixels];
+        field_1137_h = new float[int_numPixels];
+        field_1136_i = new float[int_numPixels];
+        field_1135_j = new float[int_numPixels];
         tickCounter = 0;
         tileSize = 1;
         rTint = f;
@@ -58,36 +69,36 @@ public class TextureTintedFlowFX extends TextureFX
     public void onTick()
     {
         this.tickCounter++;
-        for(int i = 0; i < width; i++)
+        for(int i = 0; i < int_size; i++)
         {
-            for(int k = 0; k < height; k++)
+            for(int k = 0; k < int_size; k++)
             {
                 float f = 0.0F;
                 for(int j1 = k - 2; j1 <= k; j1++)
                 {
-                    int k1 = i & 0xf;
-                    int i2 = j1 & 0xf;
-                    f += field_1138_g[k1 + i2 * width];
+                    int k1 = i & int_sizeMinus1;
+                    int i2 = j1 & int_sizeMinus1;
+                    f += field_1138_g[k1 + i2 * int_size];
                 }
 
-                field_1137_h[i + k * width] = f / 3.2F + field_1136_i[i + k * width] * 0.8F;
+                field_1137_h[i + k * int_size] = f / 3.2F + field_1136_i[i + k * int_size] * 0.8F;
             }
 
         }
 
-        for(int j = 0; j < width; j++)
+        for(int j = 0; j < int_size; j++)
         {
-            for(int l = 0; l < height; l++)
+            for(int l = 0; l < int_size; l++)
             {
-                field_1136_i[j + l * width] += field_1135_j[j + l * width] * 0.05F;
-                if(field_1136_i[j + l * width] < 0.0F)
+                field_1136_i[j + l * int_size] += field_1135_j[j + l * int_size] * 0.05F;
+                if(field_1136_i[j + l * int_size] < 0.0F)
                 {
-                    field_1136_i[j + l * width] = 0.0F;
+                    field_1136_i[j + l * int_size] = 0.0F;
                 }
-                field_1135_j[j + l * width] -= 0.3F;
+                field_1135_j[j + l * int_size] -= 0.3F;
                 if(Math.random() < 0.20000000000000001D)
                 {
-                    field_1135_j[j + l * width] = 0.5F;
+                    field_1135_j[j + l * int_size] = 0.5F;
                 }
             }
 
@@ -96,9 +107,9 @@ public class TextureTintedFlowFX extends TextureFX
         float af[] = field_1137_h;
         field_1137_h = field_1138_g;
         field_1138_g = af;
-        for(int i1 = 0; i1 < width * height; i1++)
+        for(int i1 = 0; i1 < int_numPixels; i1++)
         {
-            float f1 = field_1138_g[i1 - tickCounter * width & width * height - 1];
+            float f1 = field_1138_g[i1 - tickCounter * int_size & int_size * int_size - 1];
             if(f1 > 1.0F)
             {
                 f1 = 1.0F;

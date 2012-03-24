@@ -7,6 +7,7 @@ import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.Entity;
+import net.minecraft.src.EntityItem;
 import net.minecraft.src.EntityLiving;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.IBlockAccess;
@@ -455,9 +456,17 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
             }
             entity.setFire(20);
             entityliving.attackEntityFrom(DamageSource.lava, 3);
-        } 
+        }
         else if(!(entity instanceof EntityCausticBoat))
         {
+        	if(entity instanceof EntityItem)
+        	{
+            	EntityItem ent = (EntityItem) entity;
+            	if(ent.item.itemID == PlasmaCraftCore.ingotRadioniteID + 256)
+            	{
+            		return;
+            	}
+        	}
         	entity.setFire(20);
             entity.attackEntityFrom(DamageSource.lava, 10);
         }

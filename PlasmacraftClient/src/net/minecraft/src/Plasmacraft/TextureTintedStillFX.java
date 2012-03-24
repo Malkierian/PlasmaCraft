@@ -1,5 +1,8 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.util.logging.Level;
+
+import net.minecraft.src.ModLoader;
 import net.minecraft.src.RenderEngine;
 import net.minecraft.src.TextureFX;
 import net.minecraft.src.forge.MinecraftForgeClient;
@@ -23,20 +26,31 @@ public class TextureTintedStillFX extends TextureFX
     private float gSpread;
     private float bSpread;
     private float aSpread;
-    private int width;
-    private int height;
+
+    private int int_numPixels = 256;
+    private int int_size = 16;
+    private int int_sizeMinus1 = 0xF;
 
     public TextureTintedStillFX(int i, float f, float f1, float f2, float f3, float f4, float f5, 
-            float f6, float f7, float f8, float f9, float f10, float f11, int j, 
-            int k)
+            float f6, float f7, float f8, float f9, float f10, float f11)
     {
         super(i);
-        width = j;
-        height = k;
-        field_1158_g = new float[width * height];
-        field_1157_h = new float[width * height];
-        field_1156_i = new float[width * height];
-        field_1155_j = new float[width * height];
+//    	try
+//    	{
+//			Class<? extends Object> sizeClass = Class.forName("com.pclewis.mcpatcher.mod.TileSize");
+//			int_numPixels = sizeClass.getDeclaredField("int_numPixels").getInt(sizeClass);
+//			int_size = sizeClass.getDeclaredField("int_size").getInt(sizeClass);
+//			int_sizeMinus1 = sizeClass.getDeclaredField("int_sizeMinus1").getInt(sizeClass);
+//		}
+//    	catch (Throwable t)
+//    	{
+//    		ModLoader.getLogger().log(Level.WARNING,"Error ");
+//    	}
+    	imageData = new byte[int_numPixels * 4];
+        field_1158_g = new float[int_numPixels];
+        field_1157_h = new float[int_numPixels];
+        field_1156_i = new float[int_numPixels];
+        field_1155_j = new float[int_numPixels];
         tickCounter = 0;
         rTint = f;
         gTint = f1;
@@ -55,36 +69,36 @@ public class TextureTintedStillFX extends TextureFX
     public void onTick()
     {
         tickCounter++;
-        for(int i = 0; i < width; i++)
+        for(int i = 0; i < int_size; i++)
         {
-            for(int k = 0; k < height; k++)
+            for(int k = 0; k < int_size; k++)
             {
                 float f = 0.0F;
                 for(int j1 = i - 1; j1 <= i + 1; j1++)
                 {
-                    int k1 = j1 & 0xf;
-                    int i2 = k & 0xf;
-                    f += field_1158_g[k1 + i2 * width];
+                    int k1 = j1 & int_sizeMinus1;
+                    int i2 = k & int_sizeMinus1;
+                    f += field_1158_g[k1 + i2 * int_size];
                 }
 
-                field_1157_h[i + k * width] = f / 3.3F + field_1156_i[i + k * width] * 0.8F;
+                field_1157_h[i + k * int_size] = f / 3.3F + field_1156_i[i + k * int_size] * 0.8F;
             }
 
         }
 
-        for(int j = 0; j < width; j++)
+        for(int j = 0; j < int_size; j++)
         {
-            for(int l = 0; l < height; l++)
+            for(int l = 0; l < int_size; l++)
             {
-                field_1156_i[j + l * width] += field_1155_j[j + l * width] * 0.05F;
-                if(field_1156_i[j + l * width] < 0.0F)
+                field_1156_i[j + l * int_size] += field_1155_j[j + l * int_size] * 0.05F;
+                if(field_1156_i[j + l * int_size] < 0.0F)
                 {
-                    field_1156_i[j + l * width] = 0.0F;
+                    field_1156_i[j + l * int_size] = 0.0F;
                 }
-                field_1155_j[j + l * width] -= 0.1F;
+                field_1155_j[j + l * int_size] -= 0.1F;
                 if(Math.random() < 0.050000000000000003D)
                 {
-                    field_1155_j[j + l * width] = 0.5F;
+                    field_1155_j[j + l * int_size] = 0.5F;
                 }
             }
 
@@ -93,7 +107,7 @@ public class TextureTintedStillFX extends TextureFX
         float af[] = field_1157_h;
         field_1157_h = field_1158_g;
         field_1158_g = af;
-        for(int i1 = 0; i1 < width * height; i1++)
+        for(int i1 = 0; i1 < int_numPixels; i1++)
         {
             float f1 = field_1158_g[i1];
             if(f1 > 1.0F)

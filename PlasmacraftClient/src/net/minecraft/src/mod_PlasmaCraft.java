@@ -215,13 +215,11 @@ public class mod_PlasmaCraft extends BaseModMp
     
     private void registerLiquidFX(int stillIndex, float f1, float f2, float f3, float f4, float f5, float f6, float f7, float f8, float f9, float f10, float f11, float f12)
     {
-    	int width = 16;
-    	int height = 16;
-    	ModLoader.addAnimation(new TextureTintedStillFX(stillIndex, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, width, height));
-    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 1, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, width, height));
-    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 2, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, width, height));
-    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 17, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, width, height));
-    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 18, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, width, height));
+    	ModLoader.addAnimation(new TextureTintedStillFX(stillIndex, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
+    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 1, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
+    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 2, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
+    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 17, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
+    	ModLoader.addAnimation(new TextureTintedFlowFX(stillIndex + 18, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
     }
 
     private float getFluidHeight(IBlockAccess iblockaccess, int i, int j, int k, Material mat)
