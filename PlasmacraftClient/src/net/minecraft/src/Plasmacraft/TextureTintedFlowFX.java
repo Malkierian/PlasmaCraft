@@ -1,5 +1,8 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+
 import org.lwjgl.opengl.GL11;
 
 import net.minecraft.src.RenderEngine;
@@ -27,6 +30,7 @@ public class TextureTintedFlowFX extends TextureFX
     private float aSpread;
 
     private int int_numPixels = 256;
+    private int int_numPixelsMinus1 = 0xFF;
     private int int_size = 16;
     private int int_sizeMinus1 = 0xF;
 
@@ -34,17 +38,32 @@ public class TextureTintedFlowFX extends TextureFX
             float f6, float f7, float f8, float f9, float f10, float f11)
     {
         super(i);
-//    	try
-//    	{
-//			Class<? extends Object> sizeClass = Class.forName("com.pclewis.mcpatcher.mod.TileSize");
-//			int_numPixels = sizeClass.getDeclaredField("int_numPixels").getInt(sizeClass);
-//			int_size = sizeClass.getDeclaredField("int_size").getInt(sizeClass);
-//			int_sizeMinus1 = sizeClass.getDeclaredField("int_sizeMinus1").getInt(sizeClass);
-//		}
-//    	catch (Throwable t)
-//    	{
-//
-//    	}
+    	try
+    	{
+			Class<? extends Object> sizeClass = Class.forName("com.pclewis.mcpatcher.mod.TileSize");
+			int_numPixels = sizeClass.getDeclaredField("int_numPixels").getInt(sizeClass);
+			int_numPixelsMinus1 = sizeClass.getDeclaredField("int_numPixelsMinus1").getInt(sizeClass);
+			int_size = sizeClass.getDeclaredField("int_size").getInt(sizeClass);
+			int_sizeMinus1 = sizeClass.getDeclaredField("int_sizeMinus1").getInt(sizeClass);
+		}
+    	catch (Throwable t)
+    	{
+
+    	}
+    	try
+    	{
+			Class<? extends Object> sizeClass = Class.forName("net.minecraft.src.Config");
+			Field int_size_return = sizeClass.getDeclaredField("iconWidthTerrain");
+			int_size_return.setAccessible(true);
+			int_size = int_size_return.getInt(sizeClass);
+			int_size_return.setAccessible(false);
+			int_numPixels = int_size * int_size;
+			int_sizeMinus1 = int_size - 1;
+		}
+    	catch (Throwable t)
+    	{
+
+    	}
     	imageData = new byte[int_numPixels * 4];
         field_1138_g = new float[int_numPixels];
         field_1137_h = new float[int_numPixels];
@@ -109,7 +128,7 @@ public class TextureTintedFlowFX extends TextureFX
         field_1138_g = af;
         for(int i1 = 0; i1 < int_numPixels; i1++)
         {
-            float f1 = field_1138_g[i1 - tickCounter * int_size & int_size * int_size - 1];
+            float f1 = field_1138_g[i1 - tickCounter * int_size & int_numPixelsMinus1];
             if(f1 > 1.0F)
             {
                 f1 = 1.0F;

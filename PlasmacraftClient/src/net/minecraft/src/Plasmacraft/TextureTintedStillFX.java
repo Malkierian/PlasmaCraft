@@ -1,5 +1,6 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.lang.reflect.Field;
 import java.util.logging.Level;
 
 import net.minecraft.src.ModLoader;
@@ -35,17 +36,31 @@ public class TextureTintedStillFX extends TextureFX
             float f6, float f7, float f8, float f9, float f10, float f11)
     {
         super(i);
-//    	try
-//    	{
-//			Class<? extends Object> sizeClass = Class.forName("com.pclewis.mcpatcher.mod.TileSize");
-//			int_numPixels = sizeClass.getDeclaredField("int_numPixels").getInt(sizeClass);
-//			int_size = sizeClass.getDeclaredField("int_size").getInt(sizeClass);
-//			int_sizeMinus1 = sizeClass.getDeclaredField("int_sizeMinus1").getInt(sizeClass);
-//		}
-//    	catch (Throwable t)
-//    	{
-//    		ModLoader.getLogger().log(Level.WARNING,"Error ");
-//    	}
+    	try
+    	{
+			Class<? extends Object> sizeClass = Class.forName("com.pclewis.mcpatcher.mod.TileSize");
+			int_numPixels = sizeClass.getDeclaredField("int_numPixels").getInt(sizeClass);
+			int_size = sizeClass.getDeclaredField("int_size").getInt(sizeClass);
+			int_sizeMinus1 = sizeClass.getDeclaredField("int_sizeMinus1").getInt(sizeClass);
+		}
+    	catch (Throwable t)
+    	{
+
+    	}
+    	try
+    	{
+			Class<? extends Object> sizeClass = Class.forName("net.minecraft.src.Config");
+			Field int_size_return = sizeClass.getDeclaredField("iconWidthTerrain");
+			int_size_return.setAccessible(true);
+			int_size = int_size_return.getInt(sizeClass);
+			int_size_return.setAccessible(false);
+			int_numPixels = int_size * int_size;
+			int_sizeMinus1 = int_size - 1;
+		}
+    	catch (Throwable t)
+    	{
+
+    	}
     	imageData = new byte[int_numPixels * 4];
         field_1158_g = new float[int_numPixels];
         field_1157_h = new float[int_numPixels];
