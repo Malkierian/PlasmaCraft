@@ -139,7 +139,7 @@ public class EntityLaser extends Entity
         }
         if(inGround)
         {
-            setEntityDead();
+            setDead();
         } else
         {
             ticksInAir++;
@@ -196,7 +196,7 @@ public class EntityLaser extends Entity
                     int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
                     int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                     entity.setFire(1);
-                    setEntityDead();
+                    setDead();
                     worldObj.setBlockWithNotify(j, l, j1, Block.fire.blockID);
                 }
             }
@@ -211,21 +211,21 @@ public class EntityLaser extends Entity
                     if(worldObj.getBlockId(k, i1, k1) == PlasmaCraftCore.frozenCryonite.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
-                        setEntityDead();
+                        setDead();
                         worldObj.setBlockWithNotify(k, i1, k1, PlasmaCraftCore.cryoniteMoving.blockID);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == Block.oreIron.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
-                        setEntityDead();
+                        setDead();
                         dropItem(Item.ingotIron.shiftedIndex, 1);
                         flag = false;
                     }
                     if(worldObj.getBlockId(k, i1, k1) == Block.oreGold.blockID)
                     {
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
-                        setEntityDead();
+                        setDead();
                         dropItem(Item.ingotGold.shiftedIndex, 1);
                         flag = false;
                     }
@@ -245,7 +245,7 @@ public class EntityLaser extends Entity
                     		index = PlasmaCraftCore.goopPlutonium.shiftedIndex;
                     	}
                         worldObj.setBlockWithNotify(k, i1, k1, 0);
-                        setEntityDead();
+                        setDead();
                         dropItem(index, 1);
                         flag = false;
                     }
@@ -367,7 +367,7 @@ public class EntityLaser extends Entity
         }
         if(inGround && owner == entityplayer && arrowShake <= 0 && entityplayer.inventory.addItemStackToInventory(new ItemStack(Item.arrow, 1)))
         {
-            setEntityDead();
+            setDead();
         }
     }
 

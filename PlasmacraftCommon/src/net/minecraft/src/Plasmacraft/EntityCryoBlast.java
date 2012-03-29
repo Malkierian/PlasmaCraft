@@ -136,7 +136,7 @@ public class EntityCryoBlast extends Entity
         }
         if(inGround)
         {
-            setEntityDead();
+            setDead();
         } else
         {
             ticksInAir++;
@@ -193,7 +193,7 @@ public class EntityCryoBlast extends Entity
                     smcryoblast.isFlaming = false;
                     smcryoblast.doExplosionA();
                     smcryoblast.doExplosionB();
-                    setEntityDead();
+                    setDead();
                 }
             }
             else
@@ -202,7 +202,7 @@ public class EntityCryoBlast extends Entity
                 smcryoblast1.isFlaming = false;
                 smcryoblast1.doExplosionA();
                 smcryoblast1.doExplosionB();
-                setEntityDead();
+                setDead();
                 xTile = movingobjectposition.blockX;
                 yTile = movingobjectposition.blockY;
                 zTile = movingobjectposition.blockZ;
@@ -275,7 +275,7 @@ public class EntityCryoBlast extends Entity
         }
         if(inGround && owner == entityplayer && arrowShake <= 0 && entityplayer.inventory.addItemStackToInventory(new ItemStack(Item.arrow, 1)))
         {
-            setEntityDead();
+            setDead();
         }
     }
 

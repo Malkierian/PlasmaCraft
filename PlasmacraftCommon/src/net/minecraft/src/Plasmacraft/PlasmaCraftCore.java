@@ -28,7 +28,7 @@ public class PlasmaCraftCore
 	
 	public static String Version()
 	{
-		return "1.2.3/0.2.7";
+		return "1.2.4/0.2.8";
 	}
 	
 	public static IPCProxy proxy;
@@ -496,7 +496,7 @@ public class PlasmaCraftCore
     	Configuration c = new Configuration(new File(proxy.getMinecraftDirectory() + "config/PlasmaCraft.cfg"));
     	c.load();
     	
-        LiquidSourceExplodesAfterCausticExplosion = getBool(c.getOrCreateBooleanProperty("LiquidSourceExplodesAfterCausticExplosion", Configuration.GENERAL_PROPERTY, true));
+        LiquidSourceExplodesAfterCausticExplosion = getBool(c.getOrCreateBooleanProperty("LiquidSourceExplodesAfterCausticExplosion", Configuration.CATEGORY_GENERAL, true));
 
         radioniteStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.RadioniteStill", 143));
         radioniteFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.RadioniteFlowing", 142));
@@ -525,60 +525,60 @@ public class PlasmaCraftCore
 
         oreBlockID = getInt(c.getOrCreateBlockIdProperty("ID.Ore", 128));
         
-        ingotPlutoniumID = getInt(c.getOrCreateIntProperty("ingotPlutoniumID", Configuration.ITEM_PROPERTY, 2048));
-        ingotRadioniteID = getInt(c.getOrCreateIntProperty("ingotRadioniteID", Configuration.ITEM_PROPERTY, 2049));
-        emptyVialID = getInt(c.getOrCreateIntProperty("emptyVialID", Configuration.ITEM_PROPERTY, 2050));
-        acidVialID = getInt(c.getOrCreateIntProperty("acidVialID", Configuration.ITEM_PROPERTY, 2051));
-        plutoniumViaID = getInt(c.getOrCreateIntProperty("plutoniumViaID", Configuration.ITEM_PROPERTY, 2052));
-        radioniteVialID = getInt(c.getOrCreateIntProperty("radioniteVialID", Configuration.ITEM_PROPERTY, 2053));
-        plasmaGelID = getInt(c.getOrCreateIntProperty("plasmaGelID", Configuration.ITEM_PROPERTY, 2054));
-        plasmaID = getInt(c.getOrCreateIntProperty("plasmaID", Configuration.ITEM_PROPERTY, 2055));
-        causticBoatID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.ITEM_PROPERTY, 2056));
-        causticBoatEntityID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.ITEM_PROPERTY, 2056));
-        causticBoatNetEntityID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.ITEM_PROPERTY, 2056));
-        hazmatHoodID = getInt(c.getOrCreateIntProperty("hazmatHoodID", Configuration.ITEM_PROPERTY, 2057));
-        hazmatJacketID = getInt(c.getOrCreateIntProperty("hazmatJacketID", Configuration.ITEM_PROPERTY, 2058));
-        hazmatPantsID = getInt(c.getOrCreateIntProperty("hazmatPantsID", Configuration.ITEM_PROPERTY, 2059));
-        hazmatBootsID = getInt(c.getOrCreateIntProperty("hazmatBootsID", Configuration.ITEM_PROPERTY, 2060));
-        uraniumViaID = getInt(c.getOrCreateIntProperty("uraniumViaID", Configuration.ITEM_PROPERTY, 2061));
-        neptuniumVialID = getInt(c.getOrCreateIntProperty("neptuniumVialID", Configuration.ITEM_PROPERTY, 2062));
-        netherflowVialID = getInt(c.getOrCreateIntProperty("netherflowVialID", Configuration.ITEM_PROPERTY, 2063));
-        obsidiumVialID = getInt(c.getOrCreateIntProperty("obsidiumVialID", Configuration.ITEM_PROPERTY, 2064));
-        acidNadeID = getInt(c.getOrCreateIntProperty("acidNadeID", Configuration.ITEM_PROPERTY, 2068));
-        ingotNeptuniumID = getInt(c.getOrCreateIntProperty("ingotNeptuniumID", Configuration.ITEM_PROPERTY, 2069));
-        ingotObsidiumID = getInt(c.getOrCreateIntProperty("ingotObsidiumID", Configuration.ITEM_PROPERTY, 2070));
-        goopPlutoniumID = getInt(c.getOrCreateIntProperty("goopPlutoniumID", Configuration.ITEM_PROPERTY, 2071));
-        goopRadioniteID = getInt(c.getOrCreateIntProperty("goopRadioniteID", Configuration.ITEM_PROPERTY, 2072));
-        goopNeptuniumID = getInt(c.getOrCreateIntProperty("goopNeptuniumID", Configuration.ITEM_PROPERTY, 2073));
-        goopObsidiumID = getInt(c.getOrCreateIntProperty("goopObsidiumID", Configuration.ITEM_PROPERTY, 2074));
-        goopNetherflowID = getInt(c.getOrCreateIntProperty("goopNetherflowID", Configuration.ITEM_PROPERTY, 2075));
-        plasmaLeatherID = getInt(c.getOrCreateIntProperty("plasmaLeatherID", Configuration.ITEM_PROPERTY, 2076));
-        goopUraniumID = getInt(c.getOrCreateIntProperty("goopUraniumID", Configuration.ITEM_PROPERTY, 2077));
-        ingotUraniumID = getInt(c.getOrCreateIntProperty("ingotUraniumID", Configuration.ITEM_PROPERTY, 2078));
-        ingotNetherflowID = getInt(c.getOrCreateIntProperty("ingotNetherflowID", Configuration.ITEM_PROPERTY, 2079));
-        lasergunID = getInt(c.getOrCreateIntProperty("lasergunID", Configuration.ITEM_PROPERTY, 2080));
-        energyCellID = getInt(c.getOrCreateIntProperty("energyCellID", Configuration.ITEM_PROPERTY, 2081));
-        plasmagunID = getInt(c.getOrCreateIntProperty("plasmagunID", Configuration.ITEM_PROPERTY, 2082));
-        BatteryEmptyID = getInt(c.getOrCreateIntProperty("BatteryEmptyID", Configuration.ITEM_PROPERTY, 2083));
-        BatteryPlasmaID = getInt(c.getOrCreateIntProperty("BatteryPlasmaID", Configuration.ITEM_PROPERTY, 2084));
-        acidgunID = getInt(c.getOrCreateIntProperty("acidgunID", Configuration.ITEM_PROPERTY, 2085));
-        beamSplitterID = getInt(c.getOrCreateIntProperty("beamSplitterID", Configuration.ITEM_PROPERTY, 2086));
-        plasmagunsplitID = getInt(c.getOrCreateIntProperty("plasmagunsplitID", Configuration.ITEM_PROPERTY, 2087));
-        lasergunsplitID = getInt(c.getOrCreateIntProperty("lasergunsplitID", Configuration.ITEM_PROPERTY, 2088));
-        railgunID = getInt(c.getOrCreateIntProperty("railgunID", Configuration.ITEM_PROPERTY, 2089));
-        BatteryChargedID = getInt(c.getOrCreateIntProperty("BatteryChargedID", Configuration.ITEM_PROPERTY, 2090));
-        BatteryOverchargedID = getInt(c.getOrCreateIntProperty("BatteryOverchargedID", Configuration.ITEM_PROPERTY, 2091));
-        lasershotgunID = getInt(c.getOrCreateIntProperty("lasershotgunID", Configuration.ITEM_PROPERTY, 2092));
-        cryoniteVialID = getInt(c.getOrCreateIntProperty("cryoniteVialID", Configuration.ITEM_PROPERTY, 2093));
-        goopCryoniteID = getInt(c.getOrCreateIntProperty("goopCryoniteID", Configuration.ITEM_PROPERTY, 2094));
-        ingotCryoniteID = getInt(c.getOrCreateIntProperty("ingotCryoniteID", Configuration.ITEM_PROPERTY, 2095));
-        cryoblasterID = getInt(c.getOrCreateIntProperty("cryoblasterID", Configuration.ITEM_PROPERTY, 2096));
-        batterycryoID = getInt(c.getOrCreateIntProperty("batterycryoID", Configuration.ITEM_PROPERTY, 2099));
-        ThermoPelletID = getInt(c.getOrCreateIntProperty("ThermoPelletID", Configuration.ITEM_PROPERTY, 2098));
+        ingotPlutoniumID = getInt(c.getOrCreateIntProperty("ingotPlutoniumID", Configuration.CATEGORY_ITEM, 2048));
+        ingotRadioniteID = getInt(c.getOrCreateIntProperty("ingotRadioniteID", Configuration.CATEGORY_ITEM, 2049));
+        emptyVialID = getInt(c.getOrCreateIntProperty("emptyVialID", Configuration.CATEGORY_ITEM, 2050));
+        acidVialID = getInt(c.getOrCreateIntProperty("acidVialID", Configuration.CATEGORY_ITEM, 2051));
+        plutoniumViaID = getInt(c.getOrCreateIntProperty("plutoniumViaID", Configuration.CATEGORY_ITEM, 2052));
+        radioniteVialID = getInt(c.getOrCreateIntProperty("radioniteVialID", Configuration.CATEGORY_ITEM, 2053));
+        plasmaGelID = getInt(c.getOrCreateIntProperty("plasmaGelID", Configuration.CATEGORY_ITEM, 2054));
+        plasmaID = getInt(c.getOrCreateIntProperty("plasmaID", Configuration.CATEGORY_ITEM, 2055));
+        causticBoatID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.CATEGORY_ITEM, 2056));
+        causticBoatEntityID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.CATEGORY_ITEM, 2056));
+        causticBoatNetEntityID = getInt(c.getOrCreateIntProperty("causticBoatID", Configuration.CATEGORY_ITEM, 2056));
+        hazmatHoodID = getInt(c.getOrCreateIntProperty("hazmatHoodID", Configuration.CATEGORY_ITEM, 2057));
+        hazmatJacketID = getInt(c.getOrCreateIntProperty("hazmatJacketID", Configuration.CATEGORY_ITEM, 2058));
+        hazmatPantsID = getInt(c.getOrCreateIntProperty("hazmatPantsID", Configuration.CATEGORY_ITEM, 2059));
+        hazmatBootsID = getInt(c.getOrCreateIntProperty("hazmatBootsID", Configuration.CATEGORY_ITEM, 2060));
+        uraniumViaID = getInt(c.getOrCreateIntProperty("uraniumViaID", Configuration.CATEGORY_ITEM, 2061));
+        neptuniumVialID = getInt(c.getOrCreateIntProperty("neptuniumVialID", Configuration.CATEGORY_ITEM, 2062));
+        netherflowVialID = getInt(c.getOrCreateIntProperty("netherflowVialID", Configuration.CATEGORY_ITEM, 2063));
+        obsidiumVialID = getInt(c.getOrCreateIntProperty("obsidiumVialID", Configuration.CATEGORY_ITEM, 2064));
+        acidNadeID = getInt(c.getOrCreateIntProperty("acidNadeID", Configuration.CATEGORY_ITEM, 2068));
+        ingotNeptuniumID = getInt(c.getOrCreateIntProperty("ingotNeptuniumID", Configuration.CATEGORY_ITEM, 2069));
+        ingotObsidiumID = getInt(c.getOrCreateIntProperty("ingotObsidiumID", Configuration.CATEGORY_ITEM, 2070));
+        goopPlutoniumID = getInt(c.getOrCreateIntProperty("goopPlutoniumID", Configuration.CATEGORY_ITEM, 2071));
+        goopRadioniteID = getInt(c.getOrCreateIntProperty("goopRadioniteID", Configuration.CATEGORY_ITEM, 2072));
+        goopNeptuniumID = getInt(c.getOrCreateIntProperty("goopNeptuniumID", Configuration.CATEGORY_ITEM, 2073));
+        goopObsidiumID = getInt(c.getOrCreateIntProperty("goopObsidiumID", Configuration.CATEGORY_ITEM, 2074));
+        goopNetherflowID = getInt(c.getOrCreateIntProperty("goopNetherflowID", Configuration.CATEGORY_ITEM, 2075));
+        plasmaLeatherID = getInt(c.getOrCreateIntProperty("plasmaLeatherID", Configuration.CATEGORY_ITEM, 2076));
+        goopUraniumID = getInt(c.getOrCreateIntProperty("goopUraniumID", Configuration.CATEGORY_ITEM, 2077));
+        ingotUraniumID = getInt(c.getOrCreateIntProperty("ingotUraniumID", Configuration.CATEGORY_ITEM, 2078));
+        ingotNetherflowID = getInt(c.getOrCreateIntProperty("ingotNetherflowID", Configuration.CATEGORY_ITEM, 2079));
+        lasergunID = getInt(c.getOrCreateIntProperty("lasergunID", Configuration.CATEGORY_ITEM, 2080));
+        energyCellID = getInt(c.getOrCreateIntProperty("energyCellID", Configuration.CATEGORY_ITEM, 2081));
+        plasmagunID = getInt(c.getOrCreateIntProperty("plasmagunID", Configuration.CATEGORY_ITEM, 2082));
+        BatteryEmptyID = getInt(c.getOrCreateIntProperty("BatteryEmptyID", Configuration.CATEGORY_ITEM, 2083));
+        BatteryPlasmaID = getInt(c.getOrCreateIntProperty("BatteryPlasmaID", Configuration.CATEGORY_ITEM, 2084));
+        acidgunID = getInt(c.getOrCreateIntProperty("acidgunID", Configuration.CATEGORY_ITEM, 2085));
+        beamSplitterID = getInt(c.getOrCreateIntProperty("beamSplitterID", Configuration.CATEGORY_ITEM, 2086));
+        plasmagunsplitID = getInt(c.getOrCreateIntProperty("plasmagunsplitID", Configuration.CATEGORY_ITEM, 2087));
+        lasergunsplitID = getInt(c.getOrCreateIntProperty("lasergunsplitID", Configuration.CATEGORY_ITEM, 2088));
+        railgunID = getInt(c.getOrCreateIntProperty("railgunID", Configuration.CATEGORY_ITEM, 2089));
+        BatteryChargedID = getInt(c.getOrCreateIntProperty("BatteryChargedID", Configuration.CATEGORY_ITEM, 2090));
+        BatteryOverchargedID = getInt(c.getOrCreateIntProperty("BatteryOverchargedID", Configuration.CATEGORY_ITEM, 2091));
+        lasershotgunID = getInt(c.getOrCreateIntProperty("lasershotgunID", Configuration.CATEGORY_ITEM, 2092));
+        cryoniteVialID = getInt(c.getOrCreateIntProperty("cryoniteVialID", Configuration.CATEGORY_ITEM, 2093));
+        goopCryoniteID = getInt(c.getOrCreateIntProperty("goopCryoniteID", Configuration.CATEGORY_ITEM, 2094));
+        ingotCryoniteID = getInt(c.getOrCreateIntProperty("ingotCryoniteID", Configuration.CATEGORY_ITEM, 2095));
+        cryoblasterID = getInt(c.getOrCreateIntProperty("cryoblasterID", Configuration.CATEGORY_ITEM, 2096));
+        batterycryoID = getInt(c.getOrCreateIntProperty("batterycryoID", Configuration.CATEGORY_ITEM, 2099));
+        ThermoPelletID = getInt(c.getOrCreateIntProperty("ThermoPelletID", Configuration.CATEGORY_ITEM, 2098));
         
-        liquidRes = getInt(c.getOrCreateIntProperty("liquidResolution", Configuration.GENERAL_PROPERTY, 16));
-        generateUranium = getBool(c.getOrCreateBooleanProperty("GenerateUranium", Configuration.GENERAL_PROPERTY, true));
-        generatePlutonium = getBool(c.getOrCreateBooleanProperty("GeneratePlutonium", Configuration.GENERAL_PROPERTY, true));
+        liquidRes = getInt(c.getOrCreateIntProperty("liquidResolution", Configuration.CATEGORY_GENERAL, 16));
+        generateUranium = getBool(c.getOrCreateBooleanProperty("GenerateUranium", Configuration.CATEGORY_GENERAL, true));
+        generatePlutonium = getBool(c.getOrCreateBooleanProperty("GeneratePlutonium", Configuration.CATEGORY_GENERAL, true));
         
         c.save();
     }
@@ -773,7 +773,7 @@ public class PlasmaCraftCore
         if(random.nextInt(acidLakeChance) == 0)
         {
             int i1 = random.nextInt(16) + 8;
-            int l2 = random.nextInt(world.getWorldHeight());
+            int l2 = random.nextInt(world.getHeight());
             int j4 = random.nextInt(16) + 8;
             (new WorldGenLakes(acidMoving.blockID)).generate(world, random, i1, l2, j4);
         }       
@@ -787,7 +787,7 @@ public class PlasmaCraftCore
         if(random.nextInt(acidLakeChance) == 0)
         {
             int l1 = i + random.nextInt(16) + 8;
-            int j3 = random.nextInt(world.getWorldHeight());
+            int j3 = random.nextInt(world.getHeight());
             int l4 = j + random.nextInt(16) + 8;
             BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(l1, l4);
             if((biomegenbase == BiomeGenBase.taiga) 

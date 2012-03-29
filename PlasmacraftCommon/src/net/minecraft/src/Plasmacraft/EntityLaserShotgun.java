@@ -137,7 +137,7 @@ public class EntityLaserShotgun extends Entity
         }
         if(inGround)
         {
-            setEntityDead();
+            setDead();
         } else
         {
             ticksInAir++;
@@ -195,7 +195,7 @@ public class EntityLaserShotgun extends Entity
                     int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
                     worldObj.setBlockWithNotify(j, l, j1, Block.fire.blockID);
                     entity.setFire(1);
-                    setEntityDead();
+                    setDead();
                 }
             } else
             {
@@ -320,7 +320,7 @@ public class EntityLaserShotgun extends Entity
         }
         if(inGround && owner == entityplayer && arrowShake <= 0 && entityplayer.inventory.addItemStackToInventory(new ItemStack(Item.arrow, 1)))
         {
-            setEntityDead();
+            setDead();
         }
     }
 

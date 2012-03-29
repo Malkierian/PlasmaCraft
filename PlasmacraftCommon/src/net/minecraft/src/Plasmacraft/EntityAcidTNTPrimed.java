@@ -60,7 +60,7 @@ public class EntityAcidTNTPrimed extends Entity
         }
         if(fuse-- <= 0)
         {
-            setEntityDead();
+            setDead();
             explode();
         } else
         {

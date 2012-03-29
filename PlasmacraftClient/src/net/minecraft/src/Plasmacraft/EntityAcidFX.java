@@ -49,7 +49,7 @@ public class EntityAcidFX extends EntityFX
         lifetime++;
         if(motionY <= 0.0D || lifetime > 180)
         {
-            setEntityDead();
+            setDead();
         }
         moveEntity(motionX, motionY, motionZ);
     }

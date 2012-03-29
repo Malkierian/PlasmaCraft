@@ -99,7 +99,7 @@ public class EntityCausticBoat extends Entity
                 dropItemWithOffset(PlasmaCraftCore.ingotRadionite.shiftedIndex, 1, 0.0F);
             }
 
-            setEntityDead();
+            setDead();
         }
         return true;
     }
@@ -267,7 +267,7 @@ public class EntityCausticBoat extends Entity
         {
             if(!worldObj.isRemote)
             {
-                setEntityDead();
+                setDead();
                 for(int j = 0; j < 2; j++)
                 {
                     dropItemWithOffset(PlasmaCraftCore.ingotRadionite.shiftedIndex, 1, 0.0F);

@@ -139,7 +139,7 @@ public class EntityPlasma extends Entity
         }
         if(inGround)
         {
-            setEntityDead();
+            setDead();
         } else
         {
             ticksInAir++;
@@ -204,9 +204,9 @@ public class EntityPlasma extends Entity
                         smacidexplosion1.isFlaming = false;
                         smacidexplosion1.doExplosionA();
                         smacidexplosion1.doExplosionB();
-                        setEntityDead();
+                        setDead();
                     }
-                    setEntityDead();
+                    setDead();
                 }
             } else
             {
@@ -266,7 +266,7 @@ public class EntityPlasma extends Entity
                     smacidexplosion.isFlaming = false;
                     smacidexplosion.doExplosionA();
                     smacidexplosion.doExplosionB();
-                    setEntityDead();
+                    setDead();
                 }
                 xTile = movingobjectposition.blockX;
                 yTile = movingobjectposition.blockY;
@@ -340,7 +340,7 @@ public class EntityPlasma extends Entity
         }
         if(inGround && owner == entityplayer && arrowShake <= 0 && entityplayer.inventory.addItemStackToInventory(new ItemStack(Item.arrow, 1)))
         {
-            setEntityDead();
+            setDead();
         }
     }
 

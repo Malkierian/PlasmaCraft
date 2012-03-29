@@ -140,7 +140,7 @@ public class EntityAcidGrenade extends Entity
         ticksInGroundSnowball++;
         if(ticksInGroundSnowball == 1200)
         {
-            setEntityDead();
+            setDead();
         }
         Vec3D vec3d = Vec3D.createVector(posX, posY, posZ);
         Vec3D vec3d1 = Vec3D.createVector(posX + motionX, posY + motionY, posZ + motionZ);
@@ -195,7 +195,7 @@ public class EntityAcidGrenade extends Entity
                 smacidexplosion.isFlaming = false;
                 smacidexplosion.doExplosionA();
                 smacidexplosion.doExplosionB();
-                setEntityDead();
+                setDead();
                 return;
             }
         }
@@ -255,7 +255,7 @@ public class EntityAcidGrenade extends Entity
         {
             worldObj.playSoundAtEntity(this, "random.pop", 0.2F, ((rand.nextFloat() - rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
             entityplayer.onItemPickup(this, 1);
-            setEntityDead();
+            setDead();
         }
     }
 
