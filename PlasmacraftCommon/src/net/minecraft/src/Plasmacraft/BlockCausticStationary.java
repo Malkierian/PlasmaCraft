@@ -33,13 +33,34 @@ public class BlockCausticStationary extends BlockCausticFluids implements ITextu
     public void onNeighborBlockChange(World world, int i, int j, int k, int l)
     {
         super.onNeighborBlockChange(world, i, j, k, l);
-        if(world.getBlockId(i, j, k) == blockID)
+        if(world.getBlockId(i, j, k) == blockID && neighborChangeDeservesCausticChange(world, i, j, k, l))// && (bordersAir(world, i, j, k) || bordersCaustic(world, i, j, k)))
         {
             func_27038_j(world, i, j, k);
         }
     }
 
-    private void func_27038_j(World world, int i, int j, int k)
+    private boolean neighborChangeDeservesCausticChange(World world, int i,
+			int j, int k, int l) {
+		if(l == flowingBlockID || l == stillBlockID)
+			return true;
+		return isBlockTrulyNeighbor(world, i, j, k, l);
+	}
+
+	private boolean isBlockTrulyNeighbor(World world, int i, int j, int k, int l) {
+		int leftX = 0, leftZ = 0, rightX = 0, rightZ = 0, topY = 0, bottomY = 0;
+		leftX = world.getBlockId(i - 1, j, k);
+		rightX = world.getBlockId(i + 1, j, k);
+		leftZ = world.getBlockId(i, j, k - 1);
+		rightZ = world.getBlockId(i, j, k + 1);
+		topY = world.getBlockId(i, j + 1, k);
+		bottomY = world.getBlockId(i, j - 1, k);
+		if(rightX == l || rightZ == l || leftX == l || leftZ == l || topY == l || bottomY == l)
+			return true;
+		else
+			return false;
+	}
+
+	private void func_27038_j(World world, int i, int j, int k)
     {
         int l = world.getBlockMetadata(i, j, k);
         world.editingBlocks = true;
