@@ -12,6 +12,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraft.src.World;
+import net.minecraft.src.mod_PlasmaCraft;
 import net.minecraft.src.Plasmacraft.WorldGenCaustics;
 import net.minecraft.src.Plasmacraft.WorldGenFrozenCryonite;
 import net.minecraft.src.WorldGenLakes;
@@ -26,9 +27,11 @@ public class PlasmaCraftCore
 	public static String terrainTexture = "/PlasmaCraftSprites/terrain0.png";
 	public static String liquidTexture = "/PlasmaCraftSprites/terrain1.png";
 	
+	private static mod_PlasmaCraft mod;
+	
 	public static String Version()
 	{
-		return "1.2.4/0.2.8";
+		return "1.2.5/0.2.9";
 	}
 	
 	public static IPCProxy proxy;
@@ -338,17 +341,40 @@ public class PlasmaCraftCore
 	public static PCBucketHandler handler;
 	public static PCOreHandler oHandler;
 	
-	public static void init(int causticID)
+	public static void init(int causticID, mod_PlasmaCraft mod2)
 	{
+		mod = mod2;
 		loadConfig();
 		
 		handler = new PCBucketHandler();
 		MinecraftForge.registerCustomBucketHandler(handler);
+
+        MinecraftForge.setGuiHandler(mod, mod);
         
         ModLoader.registerTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
         ModLoader.registerTileEntity(TileEntityCaustic.class, "causticTile");
-        ModLoader.registerEntityID(EntityCausticBoat.class, "RadioniteBoat", ModLoader.getUniqueEntityId());
+		ModLoader.registerEntityID(EntityAcid.class, "Acid", ModLoader.getUniqueEntityId());
+		ModLoader.registerEntityID(EntityAcidGrenade.class, "AcidGrenade", ModLoader.getUniqueEntityId());
 		ModLoader.registerEntityID(EntityAcidTNTPrimed.class, "AcidTNTPrimed", ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityCausticBoat.class, "RadioniteBoat", ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityCryoBlast.class, "CryoBlast", ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityLaser.class, "Laser", ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityLaserShotgun.class, "LaserShotgun", ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityMutantCow.class, "MutantCow", ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityPlasma.class, "Plasma", ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityRailGun.class, "RailGun", ModLoader.getUniqueEntityId());
+        
+        MinecraftForge.registerEntity(EntityLaser.class, mod, 160, 32, 100, true);
+        MinecraftForge.registerEntity(EntityLaserShotgun.class, mod, 161, 32, 100, true);
+        MinecraftForge.registerEntity(EntityPlasma.class, mod, 162, 32, 100, true);
+        MinecraftForge.registerEntity(EntityRailGun.class, mod, 163, 32, 100, true);
+        MinecraftForge.registerEntity(EntityAcid.class, mod, 164, 32, 100, true);
+        MinecraftForge.registerEntity(EntityAcidTNTPrimed.class, mod, 165, 32, 100, true);
+        MinecraftForge.registerEntity(EntityAcidGrenade.class, mod, 166, 32, 100, true);
+        MinecraftForge.registerEntity(EntityCryoBlast.class, mod, 167, 32, 100, true);
+        MinecraftForge.registerEntity(EntityCausticBoat.class, mod, 168, 32, 100, true);
+        MinecraftForge.registerEntity(EntityAcidTNTPrimed.class, mod, 169, 32, 100, true);
+        MinecraftForge.registerEntity(EntityMutantCow.class, mod, 170, 32, 100, true);
 		
         orePlasma = (new BlockPlasmaOre(oreBlockID, orePlutoniumIndex)).setBlockName("orePlasma");
 		

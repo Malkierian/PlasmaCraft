@@ -66,7 +66,7 @@ public class PCServerProxy implements IPCProxy
 	@Override
 	public void OpenGUI(EntityPlayer entityplayer,
 			TileEntityPlasmaBench tileentityplasmabench) {
-		ModLoader.openGUI(entityplayer, 159, (IInventory)entityplayer.inventory, new ContainerPlasmaBench((IInventory)entityplayer.inventory, tileentityplasmabench));
+		//ModLoader.openGUI(entityplayer, 159, (IInventory)entityplayer.inventory, new ContainerPlasmaBench((IInventory)entityplayer.inventory, tileentityplasmabench));
 	}
 	
 }

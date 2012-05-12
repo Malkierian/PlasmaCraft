@@ -13,6 +13,7 @@ import net.minecraft.src.Plasmacraft.BlockGlowCloth;
 import net.minecraft.src.Plasmacraft.BlockPlasmaOre;
 import net.minecraft.src.Plasmacraft.BlockPlasmificator;
 import net.minecraft.src.Plasmacraft.BlockReinforcedGlass;
+import net.minecraft.src.Plasmacraft.ContainerPlasmaBench;
 import net.minecraft.src.Plasmacraft.EntityAcid;
 import net.minecraft.src.Plasmacraft.EntityAcidGrenade;
 import net.minecraft.src.Plasmacraft.EntityAcidTNTPrimed;
@@ -37,8 +38,11 @@ import net.minecraft.src.Plasmacraft.WorldGenCausticLakes;
 import net.minecraft.src.Plasmacraft.WorldGenCaustics;
 import net.minecraft.src.Plasmacraft.WorldGenNetherCaustics;
 import net.minecraft.src.Plasmacraft.WorldGenNetherMinable;
+import net.minecraft.src.forge.IGuiHandler;
+import net.minecraft.src.forge.MinecraftForge;
+import net.minecraft.src.forge.NetworkMod;
 
-public class mod_PlasmaCraft extends BaseModMp
+public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
 {
 	public int causticRenderID;
 	static mod_PlasmaCraft inst1;
@@ -55,10 +59,10 @@ public class mod_PlasmaCraft extends BaseModMp
 	    dataFloat[1] = (float)y;
 	    dataFloat[2] = (float)z;
 
-	    Packet230ModLoader packet = new Packet230ModLoader();
-	    packet.packetType = 1;
-	    packet.dataFloat = dataFloat;
-	    ModLoaderMp.sendPacketToAll(inst1, packet);
+//	    Packet230ModLoader packet = new Packet230ModLoader();
+//	    packet.packetType = 1;
+//	    packet.dataFloat = dataFloat;
+//	    ModLoaderMp.sendPacketToAll(inst1, packet);
 	  }
 	 
 	public static int floatColorsToDamage(float r, float g, float b)
@@ -96,32 +100,8 @@ public class mod_PlasmaCraft extends BaseModMp
 	public void load()
 	{
 		PlasmaCraftCore.proxy = new PCServerProxy();
-        causticRenderID = ModLoader.getUniqueBlockModelID(this, false);
-        PlasmaCraftCore.init(causticRenderID);
-
-        ModLoaderMp.registerEntityTrackerEntry(EntityLaser.class, 160);
-        ModLoaderMp.registerEntityTrackerEntry(EntityLaserShotgun.class, 161);
-        ModLoaderMp.registerEntityTrackerEntry(EntityPlasma.class, 162);
-        ModLoaderMp.registerEntityTrackerEntry(EntityRailGun.class, 163);
-        ModLoaderMp.registerEntityTrackerEntry(EntityAcid.class, 164);
-        ModLoaderMp.registerEntityTrackerEntry(EntityAcidTNTPrimed.class, 165);
-        ModLoaderMp.registerEntityTrackerEntry(EntityAcidGrenade.class, 166);
-        ModLoaderMp.registerEntityTrackerEntry(EntityCryoBlast.class, 167);
-        ModLoaderMp.registerEntityTrackerEntry(EntityCausticBoat.class, 168);
-        ModLoaderMp.registerEntityTrackerEntry(EntityAcidTNTPrimed.class, 169);
-        ModLoaderMp.registerEntityTrackerEntry(EntityMutantCow.class, 170);
-
-        ModLoaderMp.registerEntityTracker(EntityLaser.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityLaserShotgun.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityPlasma.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityRailGun.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityAcid.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityAcidTNTPrimed.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityAcidGrenade.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityCryoBlast.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityCausticBoat.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityAcidTNTPrimed.class, 160, 5);
-        ModLoaderMp.registerEntityTracker(EntityMutantCow.class, 160, 5);
+        causticRenderID = 206;
+        PlasmaCraftCore.init(causticRenderID, this);
 
 		// HACK around the fact that we can't edit the Item class directly
         for(int i = 0; i < 256; i++)
@@ -143,6 +123,36 @@ public class mod_PlasmaCraft extends BaseModMp
         }
         return i != PlasmaCraftCore.ThermoPellet.shiftedIndex ? 0 : 0xf4240;
     }
+
+	@Override
+	public boolean clientSideRequired()
+	{
+		return true;
+	}
+
+	@Override
+	public boolean serverSideRequired()
+	{
+		return false;
+	}
+
+	@Override
+	public Object getGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		if(!world.blockExists(x, y, z))
+		        return null;
+		
+		TileEntity tile = world.getBlockTileEntity(x, y, z);
+		
+		if(ID == 159)
+		{
+			if(!(tile instanceof TileEntityPlasmaBench))
+				return null;
+			return new ContainerPlasmaBench(player.inventory, (TileEntityPlasmaBench)tile);
+		}
+		else
+			return null;
+	}
 
     
 }

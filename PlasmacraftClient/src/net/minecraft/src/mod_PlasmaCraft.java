@@ -30,9 +30,12 @@ import net.minecraft.src.Plasmacraft.TextureFrameAnimFX;
 import net.minecraft.src.Plasmacraft.TextureTintedFlowFX;
 import net.minecraft.src.Plasmacraft.TextureTintedStillFX;
 import net.minecraft.src.Plasmacraft.TileEntityPlasmaBench;
+import net.minecraft.src.forge.IGuiHandler;
+import net.minecraft.src.forge.MinecraftForge;
 import net.minecraft.src.forge.MinecraftForgeClient;
+import net.minecraft.src.forge.NetworkMod;
 
-public class mod_PlasmaCraft extends BaseModMp
+public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
 {
     private static mod_PlasmaCraft instance;
 	public int causticRenderID;
@@ -49,23 +52,10 @@ public class mod_PlasmaCraft extends BaseModMp
     public void load()
     {
         PlasmaCraftCore.proxy = new PCClientProxy();
-        ModLoaderMp.initialize();
+        //ModLoaderMp.initialize();
         instance = this;
         causticRenderID = ModLoader.getUniqueBlockModelID(instance, false);
-        PlasmaCraftCore.init(causticRenderID);
-
-        ModLoaderMp.registerGUI(this, 159);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityLaser.class, 160);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityLaserShotgun.class, 161);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityPlasma.class, 162);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityRailGun.class, 163);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityAcid.class, 164);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityAcidTNTPrimed.class, 165);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityAcidGrenade.class, 166);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityCryoBlast.class, 167);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityCausticBoat.class, 168);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityAcidTNTPrimed.class, 169);
-        ModLoaderMp.registerNetClientHandlerEntity(EntityMutantCow.class, 170);
+        PlasmaCraftCore.init(causticRenderID, this);
 
         ModLoader.addName(PlasmaCraftCore.cryoniteStill, "Cryonite (Still)");
         ModLoader.addName(PlasmaCraftCore.cryoniteMoving, "Cryonite (Moving)");
@@ -469,24 +459,6 @@ public class mod_PlasmaCraft extends BaseModMp
         }
     }
 
-    public static void pressKey(int i)
-    {
-        ModLoaderMp.sendKey(instance, i);
-    }
-
-    @Override
-    public GuiScreen handleGUI(int i)
-    {
-        if(i == 159)
-        {
-            return new GuiPlasmaBench(ModLoader.getMinecraftInstance().thePlayer.inventory, new TileEntityPlasmaBench());
-        }
-        else
-        {
-            return null;
-        }
-    }
-
     @Override
     @SuppressWarnings({ "unchecked", "rawtypes" })
 	public void addRenderer(Map map)
@@ -513,4 +485,34 @@ public class mod_PlasmaCraft extends BaseModMp
     {
     	PlasmaCraftCore.GenerateSurface(world, random, i, j);
     }
+
+	@Override
+	public boolean clientSideRequired()
+	{
+		return true;
+	}
+
+	@Override
+	public boolean serverSideRequired()
+	{
+		return false;
+	}
+
+	@Override
+	public Object getGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
+	{
+		if(!world.blockExists(x, y, z))
+		        return null;
+		
+		TileEntity tile = world.getBlockTileEntity(x, y, z);
+		
+		if(ID == 159)
+		{
+			if(!(tile instanceof TileEntityPlasmaBench))
+				return null;
+			return new GuiPlasmaBench(player.inventory, (TileEntityPlasmaBench)tile);
+		}
+		else
+			return null;
+	}
 }

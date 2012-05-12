@@ -16,6 +16,12 @@ public class EntityMutantCow extends EntityAnimal
         setSize(0.9F, 1.3F);
     }
 
+    public EntityMutantCow(World world, double d, double d1, double d2)
+    {
+        super(world);
+        setPosition(d, d1, d2);
+    }
+
     public int getMaxHealth()
     {
         return 15;
