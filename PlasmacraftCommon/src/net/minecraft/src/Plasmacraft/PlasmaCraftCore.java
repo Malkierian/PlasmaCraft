@@ -349,10 +349,9 @@ public class PlasmaCraftCore
 		handler = new PCBucketHandler();
 		MinecraftForge.registerCustomBucketHandler(handler);
 
-        MinecraftForge.setGuiHandler(mod, mod);
+        MinecraftForge.setGuiHandler(mod, new GuiHandler());
         
-        ModLoader.registerTileEntity(TileEntityPlasmaBench.class, "plasmaBench");
-        ModLoader.registerTileEntity(TileEntityCaustic.class, "causticTile");
+        ModLoader.registerTileEntity(TilePlasmaBench.class, "plasmaBench");
 		ModLoader.registerEntityID(EntityAcid.class, "Acid", ModLoader.getUniqueEntityId());
 		ModLoader.registerEntityID(EntityAcidGrenade.class, "AcidGrenade", ModLoader.getUniqueEntityId());
 		ModLoader.registerEntityID(EntityAcidTNTPrimed.class, "AcidTNTPrimed", ModLoader.getUniqueEntityId());
@@ -719,7 +718,7 @@ public class PlasmaCraftCore
         });
     }
 
-    public static void GenerateNether(World world, Random random, int i, int j)
+    public static void generateNether(World world, Random random, int i, int j)
     {
         for(int k = 0; k < neptuniumOreVeinCount; k++)
         {
@@ -765,7 +764,7 @@ public class PlasmaCraftCore
 
     }
 
-    public static void GenerateSurface(World world, Random random, int i, int j)
+    public static void generateSurface(World world, Random random, int i, int j)
     {
     	if(generatePlutonium)
     	{

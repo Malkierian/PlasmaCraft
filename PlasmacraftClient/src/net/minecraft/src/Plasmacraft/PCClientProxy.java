@@ -17,6 +17,7 @@ import net.minecraft.src.Potion;
 import net.minecraft.src.PotionEffect;
 import net.minecraft.src.Vec3D;
 import net.minecraft.src.World;
+import net.minecraft.src.WorldClient;
 
 public class PCClientProxy implements IPCProxy
 {
@@ -29,6 +30,10 @@ public class PCClientProxy implements IPCProxy
 	{
 		File dir = Minecraft.getAppDir("minecraft");
 		return dir.getAbsolutePath() + "/";
+	}
+
+	public boolean isClient (World world) {
+		return world instanceof WorldClient;
 	}
 
 	@Override
@@ -61,12 +66,6 @@ public class PCClientProxy implements IPCProxy
 	@Override
 	public double getAverageEdgeLength(AxisAlignedBB boundingBox) {
 		return boundingBox.getAverageEdgeLength();
-	}
-
-	@Override
-	public void OpenGUI(EntityPlayer entityplayer,
-			TileEntityPlasmaBench tileentityplasmabench) {
-		ModLoader.openGUI(entityplayer, new GuiPlasmaBench(entityplayer.inventory, tileentityplasmabench));
 	}
 	
 }

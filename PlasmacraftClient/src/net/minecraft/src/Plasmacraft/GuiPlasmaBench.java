@@ -8,12 +8,12 @@ import org.lwjgl.opengl.GL11;
 public class GuiPlasmaBench extends GuiContainer
 {
 
-    private TileEntityPlasmaBench bench;
+    private TilePlasmaBench bench;
 
-    public GuiPlasmaBench(InventoryPlayer inventoryplayer, TileEntityPlasmaBench smtileentityplasmabench)
+    public GuiPlasmaBench(InventoryPlayer inventory, TilePlasmaBench tileplasmabench)
     {
-        super(new ContainerPlasmaBench(inventoryplayer, smtileentityplasmabench));
-        bench = smtileentityplasmabench;
+        super(new ContainerPlasmaBench(inventory, tileplasmabench));
+        bench = tileplasmabench;
         xSize = 176;
         ySize = 200;
     }

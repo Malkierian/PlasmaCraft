@@ -11,7 +11,7 @@ import net.minecraft.src.NBTTagCompound;
 import net.minecraft.src.NBTTagList;
 import net.minecraft.src.TileEntity;
 
-public class TileEntityPlasmaBench extends TileEntity
+public class TilePlasmaBench extends TileEntity
     implements IInventory
 {
 
@@ -20,7 +20,7 @@ public class TileEntityPlasmaBench extends TileEntity
     public int currentItemBurnTime;
     public int furnaceCookTime;
 
-    public TileEntityPlasmaBench()
+    public TilePlasmaBench()
     {
         furnaceItemStacks = new ItemStack[12];
         furnaceBurnTime = 0;
@@ -28,6 +28,7 @@ public class TileEntityPlasmaBench extends TileEntity
         furnaceCookTime = 0;
     }
 
+    @Override
     public int getSizeInventory()
     {
         return furnaceItemStacks.length;
@@ -39,11 +40,13 @@ public class TileEntityPlasmaBench extends TileEntity
 	    return 2;
     }
 
+    @Override
     public ItemStack getStackInSlot(int i)
     {
         return furnaceItemStacks[i];
     }
 
+    @Override
     public ItemStack decrStackSize(int i, int j)
     {
         if(furnaceItemStacks[i] != null)
@@ -75,11 +78,13 @@ public class TileEntityPlasmaBench extends TileEntity
         }
     }
 
+    @Override
     public String getInvName()
     {
         return "Plasmificator";
     }
 
+    @Override
     public void readFromNBT(NBTTagCompound nbttagcompound)
     {
         super.readFromNBT(nbttagcompound);
@@ -100,6 +105,7 @@ public class TileEntityPlasmaBench extends TileEntity
         currentItemBurnTime = getItemBurnTime(furnaceItemStacks[1]);
     }
 
+    @Override
     public void writeToNBT(NBTTagCompound nbttagcompound)
     {
         super.writeToNBT(nbttagcompound);
@@ -120,6 +126,7 @@ public class TileEntityPlasmaBench extends TileEntity
         nbttagcompound.setTag("Items", nbttaglist);
     }
 
+    @Override
     public int getInventoryStackLimit()
     {
         return 64;
@@ -144,6 +151,7 @@ public class TileEntityPlasmaBench extends TileEntity
         return furnaceBurnTime > 0;
     }
 
+    @Override
     public void updateEntity()
     {
         boolean flag = furnaceBurnTime > 0;
@@ -395,21 +403,18 @@ public class TileEntityPlasmaBench extends TileEntity
         return i != PlasmaCraftCore.plutoniumVial.shiftedIndex ? 0 : 20000;
     }
 
+    @Override
     public boolean isUseableByPlayer(EntityPlayer entityplayer)
     {
-        if(worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) != this)
-        {
-            return false;
-        } else
-        {
-            return entityplayer.getDistanceSq((double)xCoord + 0.5D, (double)yCoord + 0.5D, (double)zCoord + 0.5D) <= 64D;
-        }
+		return worldObj.getBlockTileEntity(xCoord, yCoord, zCoord) == this;
     }
 
+    @Override
     public void openChest()
     {
     }
 
+    @Override
     public void closeChest()
     {
     }

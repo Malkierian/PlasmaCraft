@@ -14,6 +14,7 @@ import net.minecraft.src.Plasmacraft.EntityLaserShotgun;
 import net.minecraft.src.Plasmacraft.EntityMutantCow;
 import net.minecraft.src.Plasmacraft.EntityPlasma;
 import net.minecraft.src.Plasmacraft.EntityRailGun;
+import net.minecraft.src.Plasmacraft.GuiIds;
 import net.minecraft.src.Plasmacraft.GuiPlasmaBench;
 import net.minecraft.src.Plasmacraft.PCClientProxy;
 import net.minecraft.src.Plasmacraft.PlasmaCraftCore;
@@ -29,15 +30,15 @@ import net.minecraft.src.Plasmacraft.RenderRailGun;
 import net.minecraft.src.Plasmacraft.TextureFrameAnimFX;
 import net.minecraft.src.Plasmacraft.TextureTintedFlowFX;
 import net.minecraft.src.Plasmacraft.TextureTintedStillFX;
-import net.minecraft.src.Plasmacraft.TileEntityPlasmaBench;
+import net.minecraft.src.Plasmacraft.TilePlasmaBench;
 import net.minecraft.src.forge.IGuiHandler;
 import net.minecraft.src.forge.MinecraftForge;
 import net.minecraft.src.forge.MinecraftForgeClient;
 import net.minecraft.src.forge.NetworkMod;
 
-public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
+public class mod_PlasmaCraft extends NetworkMod
 {
-    private static mod_PlasmaCraft instance;
+    public static mod_PlasmaCraft instance;
 	public int causticRenderID;
 
     public String getVersion()
@@ -47,13 +48,12 @@ public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
     
     public mod_PlasmaCraft()
     {
+    	instance = this;
     }
 
     public void load()
     {
         PlasmaCraftCore.proxy = new PCClientProxy();
-        //ModLoaderMp.initialize();
-        instance = this;
         causticRenderID = ModLoader.getUniqueBlockModelID(instance, false);
         PlasmaCraftCore.init(causticRenderID, this);
 
@@ -77,7 +77,6 @@ public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
         ModLoader.addName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
         ModLoader.addName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
         ModLoader.addName(PlasmaCraftCore.plasmificatorIdle, "Plasmificator");
-        ModLoader.addName(PlasmaCraftCore.plasmificatorActive, "Plasmificator");
         ModLoader.addName(PlasmaCraftCore.acidHot, "Acidic Barrier");
         ModLoader.addName(PlasmaCraftCore.acidTnt, "Acidic TNT");
         ModLoader.addName(PlasmaCraftCore.ingotPlutonium, "Plutonium Ingot");
@@ -147,37 +146,37 @@ public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.terrainTexture);
     }
 
-    public static int floatColorsToDamage(float f, float f1, float f2)
-    {
-        int i = (int)(f * 255F);
-        int j = (int)(f1 * 255F);
-        int k = (int)(f2 * 255F);
-        if(i < 0)
-        {
-            i = 0;
-        }
-        if(j < 0)
-        {
-            j = 0;
-        }
-        if(k < 0)
-        {
-            k = 0;
-        }
-        if(i > 255)
-        {
-            i = 255;
-        }
-        if(j > 255)
-        {
-            j = 255;
-        }
-        if(k > 255)
-        {
-            k = 255;
-        }
-        return i << 16 | j << 8 | k;
-    }
+//    public static int floatColorsToDamage(float f, float f1, float f2)
+//    {
+//        int i = (int)(f * 255F);
+//        int j = (int)(f1 * 255F);
+//        int k = (int)(f2 * 255F);
+//        if(i < 0)
+//        {
+//            i = 0;
+//        }
+//        if(j < 0)
+//        {
+//            j = 0;
+//        }
+//        if(k < 0)
+//        {
+//            k = 0;
+//        }
+//        if(i > 255)
+//        {
+//            i = 255;
+//        }
+//        if(j > 255)
+//        {
+//            j = 255;
+//        }
+//        if(k > 255)
+//        {
+//            k = 255;
+//        }
+//        return i << 16 | j << 8 | k;
+//    }
 
     @Override
     public int addFuel(int i, int j)
@@ -477,13 +476,13 @@ public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
     @Override
     public void generateNether(World world, Random random, int i, int j)
     {
-    	PlasmaCraftCore.GenerateNether(world, random, i, j);
+    	PlasmaCraftCore.generateNether(world, random, i, j);
     }
 
     @Override
     public void generateSurface(World world, Random random, int i, int j)
     {
-    	PlasmaCraftCore.GenerateSurface(world, random, i, j);
+    	PlasmaCraftCore.generateSurface(world, random, i, j);
     }
 
 	@Override
@@ -496,23 +495,5 @@ public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
 	public boolean serverSideRequired()
 	{
 		return false;
-	}
-
-	@Override
-	public Object getGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-	{
-		if(!world.blockExists(x, y, z))
-		        return null;
-		
-		TileEntity tile = world.getBlockTileEntity(x, y, z);
-		
-		if(ID == 159)
-		{
-			if(!(tile instanceof TileEntityPlasmaBench))
-				return null;
-			return new GuiPlasmaBench(player.inventory, (TileEntityPlasmaBench)tile);
-		}
-		else
-			return null;
 	}
 }

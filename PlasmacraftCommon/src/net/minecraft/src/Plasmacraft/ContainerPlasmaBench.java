@@ -4,43 +4,44 @@ import net.minecraft.src.Container;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.ICrafting;
 import net.minecraft.src.IInventory;
+import net.minecraft.src.InventoryPlayer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Slot;
 
 public class ContainerPlasmaBench extends Container
 {
 	
-    private TileEntityPlasmaBench bench;
+    private TilePlasmaBench bench;
     private int cookTime;
     private int burnTime;
     private int currBurnTime;
 
-    public ContainerPlasmaBench(IInventory iinventory, TileEntityPlasmaBench smtileentityplasmabench)
+    public ContainerPlasmaBench(InventoryPlayer inventory, TilePlasmaBench tile)
     {
         cookTime = 0;
         burnTime = 0;
         currBurnTime = 0;
-        bench = smtileentityplasmabench;
-        addSlot(new Slot(smtileentityplasmabench, 0, 55, 24));
-        addSlot(new Slot(smtileentityplasmabench, 1, 81, 57));
-        addSlot(new Slot(smtileentityplasmabench, 2, 114, 24));
+        bench = tile;
+        addSlot(new Slot(tile, 0, 55, 24));
+        addSlot(new Slot(tile, 1, 81, 57));
+        addSlot(new Slot(tile, 2, 114, 24));
         for(int i = 0; i < 9; i++)
         {
-            addSlot(new Slot(smtileentityplasmabench, 3 + i, 9 + i * 18, 84));
+            addSlot(new Slot(tile, 3 + i, 9 + i * 18, 84));
         }
 
         for(int j = 0; j < 3; j++)
         {
             for(int l = 0; l < 9; l++)
             {
-                addSlot(new Slot(iinventory, l + j * 9 + 9, 9 + l * 18, 117 + j * 18));
+                addSlot(new Slot(inventory, l + j * 9 + 9, 9 + l * 18, 117 + j * 18));
             }
 
         }
 
         for(int k = 0; k < 9; k++)
         {
-            addSlot(new Slot(iinventory, k, 9 + k * 18, 173));
+            addSlot(new Slot(inventory, k, 9 + k * 18, 173));
         }
 
     }

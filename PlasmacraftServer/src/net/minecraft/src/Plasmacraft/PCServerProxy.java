@@ -24,6 +24,10 @@ public class PCServerProxy implements IPCProxy
 	{
 	}
 	
+	public boolean isClient (World world) {
+		return false;
+	}
+	
 	@Override
 	public String getMinecraftDirectory()
 	{
@@ -61,12 +65,6 @@ public class PCServerProxy implements IPCProxy
 	@Override
 	public double getAverageEdgeLength(AxisAlignedBB boundingBox) {
 		return 0;
-	}
-
-	@Override
-	public void OpenGUI(EntityPlayer entityplayer,
-			TileEntityPlasmaBench tileentityplasmabench) {
-		//ModLoader.openGUI(entityplayer, 159, (IInventory)entityplayer.inventory, new ContainerPlasmaBench((IInventory)entityplayer.inventory, tileentityplasmabench));
 	}
 	
 }

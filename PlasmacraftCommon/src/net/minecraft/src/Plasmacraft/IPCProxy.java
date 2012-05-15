@@ -16,6 +16,8 @@ import net.minecraft.src.World;
 public interface IPCProxy
 {
 	public String getMinecraftDirectory();
+
+	public boolean isClient (World world);
 	
 	public boolean getEntityInstanceOf(Entity entity);
 
@@ -30,8 +32,5 @@ public interface IPCProxy
 	public void playSoundEffect(World world, int i, int j, int k, Block block);
 
 	public double getAverageEdgeLength(AxisAlignedBB boundingBox);
-
-	public void OpenGUI(EntityPlayer entityplayer,
-			TileEntityPlasmaBench tileentityplasmabench);
 	
 }

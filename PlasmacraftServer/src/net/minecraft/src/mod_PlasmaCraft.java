@@ -24,6 +24,7 @@ import net.minecraft.src.Plasmacraft.EntityLaserShotgun;
 import net.minecraft.src.Plasmacraft.EntityMutantCow;
 import net.minecraft.src.Plasmacraft.EntityPlasma;
 import net.minecraft.src.Plasmacraft.EntityRailGun;
+import net.minecraft.src.Plasmacraft.GuiIds;
 import net.minecraft.src.Plasmacraft.ItemAcidGrenade;
 import net.minecraft.src.Plasmacraft.ItemVial;
 import net.minecraft.src.Plasmacraft.ItemCausticBoat;
@@ -32,8 +33,7 @@ import net.minecraft.src.Plasmacraft.ItemEnergyWeapon;
 import net.minecraft.src.Plasmacraft.ItemPlasma;
 import net.minecraft.src.Plasmacraft.PCServerProxy;
 import net.minecraft.src.Plasmacraft.PlasmaCraftCore;
-import net.minecraft.src.Plasmacraft.TileEntityCaustic;
-import net.minecraft.src.Plasmacraft.TileEntityPlasmaBench;
+import net.minecraft.src.Plasmacraft.TilePlasmaBench;
 import net.minecraft.src.Plasmacraft.WorldGenCausticLakes;
 import net.minecraft.src.Plasmacraft.WorldGenCaustics;
 import net.minecraft.src.Plasmacraft.WorldGenNetherCaustics;
@@ -42,10 +42,10 @@ import net.minecraft.src.forge.IGuiHandler;
 import net.minecraft.src.forge.MinecraftForge;
 import net.minecraft.src.forge.NetworkMod;
 
-public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
+public class mod_PlasmaCraft extends NetworkMod
 {
+    public static mod_PlasmaCraft instance;
 	public int causticRenderID;
-	static mod_PlasmaCraft inst1;
 	
     public String getVersion()
     {
@@ -82,18 +82,19 @@ public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
 	
 	public mod_PlasmaCraft()
 	{
+		instance = this;
 	}
 
     @Override
     public void generateNether(World world, Random random, int i, int j)
     {
-    	PlasmaCraftCore.GenerateNether(world, random, i, j);
+    	PlasmaCraftCore.generateNether(world, random, i, j);
     }
 
     @Override
     public void generateSurface(World world, Random random, int i, int j)
     {
-    	PlasmaCraftCore.GenerateSurface(world, random, i, j);
+    	PlasmaCraftCore.generateSurface(world, random, i, j);
     }
 	
 	@Override
@@ -134,24 +135,6 @@ public class mod_PlasmaCraft extends NetworkMod implements IGuiHandler
 	public boolean serverSideRequired()
 	{
 		return false;
-	}
-
-	@Override
-	public Object getGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z)
-	{
-		if(!world.blockExists(x, y, z))
-		        return null;
-		
-		TileEntity tile = world.getBlockTileEntity(x, y, z);
-		
-		if(ID == 159)
-		{
-			if(!(tile instanceof TileEntityPlasmaBench))
-				return null;
-			return new ContainerPlasmaBench(player.inventory, (TileEntityPlasmaBench)tile);
-		}
-		else
-			return null;
 	}
 
     

@@ -16,6 +16,7 @@ import net.minecraft.src.ModLoader;
 import net.minecraft.src.TileEntity;
 import net.minecraft.src.TileEntityFurnace;
 import net.minecraft.src.World;
+import net.minecraft.src.mod_PlasmaCraft;
 import net.minecraft.src.forge.ITextureProvider;
 
 public class BlockPlasmificator extends BlockContainer implements ITextureProvider
@@ -38,17 +39,20 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
         setStepSound(Block.soundStoneFootstep);
         setLightValue(lightValue);
     }
-    
+
+    @Override
     public void addCreativeItems(ArrayList itemList)
     {    	
     	itemList.add(new ItemStack(this, 1));
     }
 
-    public int idDropped(int i, Random random)
+    @Override
+    public int idDropped(int i, Random random, int j)
     {
         return PlasmaCraftCore.plasmificatorIdle.blockID;
     }
 
+    @Override
     public void onBlockAdded(World world, int i, int j, int k)
     {
         super.onBlockAdded(world, i, j, k);
@@ -57,7 +61,7 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
 
     private void setDefaultDirection(World world, int i, int j, int k)
     {
-        if(world.isRemote)
+        if(!PlasmaCraftCore.proxy.isClient(world))
         {
             return;
         }
@@ -112,6 +116,7 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
         }
     }
 
+    @Override
     public int getBlockTextureFromSide(int i)
     {
         if(i == 3)
@@ -123,18 +128,24 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
         }
     }
 
+    @Override
     public boolean blockActivated(World world, int i, int j, int k, EntityPlayer entityplayer)
     {
-    	if(world.isRemote)
-    	{
-    		return true;
-    	}
-        TileEntityPlasmaBench tileentityplasmabench = (TileEntityPlasmaBench)world.getBlockTileEntity(i, j, k);
-        if(tileentityplasmabench != null)
-        {
-        	PlasmaCraftCore.proxy.OpenGUI(entityplayer,  tileentityplasmabench);
-        }
-        return true;
+    	TileEntity tileentity = world.getBlockTileEntity(i, j, k);
+    	
+    	if(tileentity == null || !(tileentity instanceof TilePlasmaBench))
+    		return false;
+		
+		// Drop through if the player is sneaking
+		if(entityplayer.isSneaking())
+			return false;
+		
+		if(world.isRemote)
+			return true;
+
+    	entityplayer.openGui(mod_PlasmaCraft.instance, GuiIds.PLASMIFICATOR, world, i, j, k);
+    	
+    	return true;
     }
 
     public static void updatePlasmificatorBlockState(boolean flag, World world, int i, int j, int k)
@@ -158,11 +169,14 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
         }
     }
 
+    
+    @Override
     public TileEntity getBlockEntity()
     {
-        return new TileEntityPlasmaBench();
+        return new TilePlasmaBench();
     }
 
+    @Override
     public void onBlockPlacedBy(World world, int i, int j, int k, EntityLiving entityliving)
     {
         int l = MathHelper.floor_double((double)((entityliving.rotationYaw * 4F) / 360F) + 0.5D) & 3;
@@ -184,11 +198,12 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
         }
     }
 
+    @Override
     public void onBlockRemoval(World world, int i, int j, int k)
     {
         if(!keepPlasmificatorInventory)
         {
-            TileEntityPlasmaBench tileentityfurnace = (TileEntityPlasmaBench)world.getBlockTileEntity(i, j, k);
+            TilePlasmaBench tileentityfurnace = (TilePlasmaBench)world.getBlockTileEntity(i, j, k);
             if(tileentityfurnace != null)
             {
 label0:
