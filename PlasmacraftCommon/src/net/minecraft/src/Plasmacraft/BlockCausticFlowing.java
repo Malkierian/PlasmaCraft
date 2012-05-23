@@ -1,8 +1,10 @@
 package net.minecraft.src.Plasmacraft;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.Block;
+import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
 import net.minecraft.src.forge.ITextureProvider;
@@ -25,6 +27,12 @@ public class BlockCausticFlowing extends BlockCausticFluids implements ITextureP
     public int getBlockTextureFromSide(int i)
     {
         return flowingTextureID;
+    }
+    
+    @Override
+    public void addCreativeItems(ArrayList itemList)
+    {    	
+    	itemList.add(new ItemStack(this, 1));
     }
 
     private void updateFlow(World world, int i, int j, int k)
@@ -49,17 +57,21 @@ public class BlockCausticFlowing extends BlockCausticFluids implements ITextureP
             j1 = getSmallestFlowDecay(world, i, j, k - 1, j1);
             j1 = getSmallestFlowDecay(world, i, j, k + 1, j1);
             int k1 = j1 + i1;
+            
             if(k1 >= 8 || j1 < 0)
             {
                 k1 = -1;
             }
+            
             if(getFlowDecay(world, i, j + 1, k) >= 0)
             {
                 int i2 = getFlowDecay(world, i, j + 1, k);
+                
                 if(i2 >= 8)
                 {
                     k1 = i2;
-                } else
+                }
+                else
                 {
                     k1 = i2 + 8;
                 }

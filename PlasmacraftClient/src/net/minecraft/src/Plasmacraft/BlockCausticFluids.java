@@ -41,31 +41,32 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
         this.setTickRandomly(true);
     }
     
-    public void addCreativeItems(ArrayList itemList)
-    {    	
-    	itemList.add(new ItemStack(this, 1));
-    }
-
-    public boolean isBlockReplaceable(World world, int i, int j, int k)
-    {
-	    return world.getBlockId(i, j, k) == blockID;
-    }
-    
+    @Override
     public int getBlockColor()
     {
         return 0xffffff;
     }
+    
+    @Override
 
     public int colorMultiplier(IBlockAccess iblockaccess, int i, int j, int k)
     {
         return 0xffffff;
     }
     
+    @Override
     public int getBlockTextureFromSide(int par1)
     {
         return par1 != 0 && par1 != 1 ? flowingTextureID : stillTextureID;
     }
 
+    @Override
+    public boolean isBlockReplaceable(World world, int i, int j, int k)
+    {
+	    return world.getBlockId(i, j, k) == blockID;
+    }
+
+    @Override
     public void onBlockDestroyedByExplosion(World world, int i, int j, int k)
     {
         if((blockID == PlasmaCraftCore.acidMoving.blockID) | (blockID == PlasmaCraftCore.acidStill.blockID))
@@ -83,6 +84,7 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
         }
     }
 
+    
     public static float setFluidHeight(int i)
     {
         if(i >= 8)
@@ -366,12 +368,12 @@ public abstract class BlockCausticFluids extends Block implements ITextureProvid
 
     public void onBlockAdded(World world, int i, int j, int k)
     {
-        checkForHarden(world, i, j, k);
+        //checkForHarden(world, i, j, k);
     }
 
     public void onNeighborBlockChange(World world, int i, int j, int k, int l)
     {
-        checkForHarden(world, i, j, k);
+        //checkForHarden(world, i, j, k);
     }
 
     private boolean blockAdjoinsBlockID(World world, int i, int j, int k, int l)

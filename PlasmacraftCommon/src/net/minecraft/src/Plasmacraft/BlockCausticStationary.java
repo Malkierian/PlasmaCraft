@@ -9,6 +9,7 @@ import net.minecraft.src.forge.ITextureProvider;
 
 public class BlockCausticStationary extends BlockCausticFluids implements ITextureProvider
 {
+	private int[] neighbors;
     public BlockCausticStationary(int i, int j, int k, int l, int i1, int j1, float lightvalue)
     {
         super(i, j, k, l, i1, j1);
@@ -30,13 +31,30 @@ public class BlockCausticStationary extends BlockCausticFluids implements ITextu
         }
     }
 
+    @Override
     public void onNeighborBlockChange(World world, int i, int j, int k, int l)
     {
         super.onNeighborBlockChange(world, i, j, k, l);
-        if(world.getBlockId(i, j, k) == blockID && neighborChangeDeservesCausticChange(world, i, j, k, l))// && (bordersAir(world, i, j, k) || bordersCaustic(world, i, j, k)))
+        
+        if(world.getBlockId(i, j, k) == blockID)
         {
-            func_27038_j(world, i, j, k);
+            setNotStationary(world, i, j, k);
         }
+    }
+
+	private void setNotStationary(World world, int i, int j, int k)
+    {
+        int l = world.getBlockMetadata(i, j, k);
+        world.editingBlocks = true;
+        world.setBlockAndMetadata(i, j, k, flowingBlockID, l);
+        world.markBlocksDirty(i, j, k, i, j, k);
+        world.scheduleBlockUpdate(i, j, k, flowingBlockID, tickRate());
+        world.editingBlocks = false;
+    }
+
+    private boolean isFlammable(World world, int i, int j, int k)
+    {
+        return world.getBlockMaterial(i, j, k).getCanBurn();
     }
 
     private boolean neighborChangeDeservesCausticChange(World world, int i,
@@ -59,16 +77,6 @@ public class BlockCausticStationary extends BlockCausticFluids implements ITextu
 		else
 			return false;
 	}
-
-	private void func_27038_j(World world, int i, int j, int k)
-    {
-        int l = world.getBlockMetadata(i, j, k);
-        world.editingBlocks = true;
-        world.setBlockAndMetadata(i, j, k, flowingBlockID, l);
-        world.markBlocksDirty(i, j, k, i, j, k);
-        world.scheduleBlockUpdate(i, j, k, flowingBlockID, tickRate());
-        world.editingBlocks = false;
-    }
 
     public void updateTick(World world, int i, int j, int k, Random random)
     {
@@ -97,10 +105,5 @@ public class BlockCausticStationary extends BlockCausticFluids implements ITextu
             }
 
         }
-    }
-
-    private boolean isFlammable(World world, int i, int j, int k)
-    {
-        return world.getBlockMaterial(i, j, k).getCanBurn();
     }
 }

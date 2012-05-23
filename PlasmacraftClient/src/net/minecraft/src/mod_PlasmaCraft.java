@@ -57,22 +57,14 @@ public class mod_PlasmaCraft extends NetworkMod
         causticRenderID = ModLoader.getUniqueBlockModelID(instance, false);
         PlasmaCraftCore.init(causticRenderID, this);
 
-        ModLoader.addName(PlasmaCraftCore.cryoniteStill, "Cryonite (Still)");
         ModLoader.addName(PlasmaCraftCore.cryoniteMoving, "Cryonite (Moving)");
         ModLoader.addName(PlasmaCraftCore.acidMoving, "Acid (Moving)");
-        ModLoader.addName(PlasmaCraftCore.acidStill, "Acid (Still)");
         ModLoader.addName(PlasmaCraftCore.plutoniumMoving, "Plutonium (Moving)");
-        ModLoader.addName(PlasmaCraftCore.plutoniumStill, "Plutonium (Still)");
         ModLoader.addName(PlasmaCraftCore.radioniteMoving, "Radionite (Moving)");
-        ModLoader.addName(PlasmaCraftCore.radioniteStill, "Radionite (Still)");
         ModLoader.addName(PlasmaCraftCore.netherflowMoving, "Netherflow (Moving)");
-        ModLoader.addName(PlasmaCraftCore.netherflowStill, "Netherflow (Still)");
         ModLoader.addName(PlasmaCraftCore.neptuniumMoving, "Neptunium (Moving)");
-        ModLoader.addName(PlasmaCraftCore.neptuniumStill, "Neptunium (Still)");
         ModLoader.addName(PlasmaCraftCore.obsidiumMoving, "Obsidium (Moving)");
-        ModLoader.addName(PlasmaCraftCore.obsidiumStill, "Obsidium (Still)");
         ModLoader.addName(PlasmaCraftCore.uraniumMoving, "Uranium (Moving)");
-        ModLoader.addName(PlasmaCraftCore.uraniumStill, "Uranium (Still)");
         ModLoader.addName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
         ModLoader.addName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
         ModLoader.addName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
@@ -115,8 +107,8 @@ public class mod_PlasmaCraft extends NetworkMod
         ModLoader.addName(PlasmaCraftCore.plasma, "Plasma");
         ModLoader.addName(PlasmaCraftCore.lasergun, "Laser Rifle");
         ModLoader.addName(PlasmaCraftCore.plasmagun, "Plasma Rifle");
-        ModLoader.addName(PlasmaCraftCore.plasmagunsplit, "Plasma Rifle + Beam Splitter");
-        ModLoader.addName(PlasmaCraftCore.lasergunsplit, "Laser Rifle + Beam Splitter");
+        ModLoader.addName(PlasmaCraftCore.plasmagunsplit, "Split Beam Plasma Rifle");
+        ModLoader.addName(PlasmaCraftCore.lasergunsplit, "Split Beam Laser Rifle");
         ModLoader.addName(PlasmaCraftCore.acidgun, "Acid Launcher");
         ModLoader.addName(PlasmaCraftCore.railgun, "Rail Gun");
         ModLoader.addName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
@@ -145,38 +137,6 @@ public class mod_PlasmaCraft extends NetworkMod
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.itemTexture);
         MinecraftForgeClient.preloadTexture(PlasmaCraftCore.terrainTexture);
     }
-
-//    public static int floatColorsToDamage(float f, float f1, float f2)
-//    {
-//        int i = (int)(f * 255F);
-//        int j = (int)(f1 * 255F);
-//        int k = (int)(f2 * 255F);
-//        if(i < 0)
-//        {
-//            i = 0;
-//        }
-//        if(j < 0)
-//        {
-//            j = 0;
-//        }
-//        if(k < 0)
-//        {
-//            k = 0;
-//        }
-//        if(i > 255)
-//        {
-//            i = 255;
-//        }
-//        if(j > 255)
-//        {
-//            j = 255;
-//        }
-//        if(k > 255)
-//        {
-//            k = 255;
-//        }
-//        return i << 16 | j << 8 | k;
-//    }
 
     @Override
     public int addFuel(int i, int j)

@@ -310,7 +310,6 @@ public class PlasmaCraftCore
 	private static int radioniteOreYRange = 24;
 	private static int radioniteOreYStart = 4;
 	private static int radioniteOreVeinSize = 6;
-	private static int acidLakeChance = 16;
 	private static int acidLakeYCutoff = 48;
 	private static int acidSpoutCount = 20;
 	private static int acidSpoutYRange = 30;
@@ -795,34 +794,7 @@ public class PlasmaCraftCore
             int k5 = j + random.nextInt(16);
             (new WorldGenMulti(oreBlockID, radioniteOreVeinSize, radioniteMeta)).generate(world, random, k2, i4, k5);
         }
-        if(random.nextInt(acidLakeChance) == 0)
-        {
-            int i1 = random.nextInt(16) + 8;
-            int l2 = random.nextInt(world.getHeight());
-            int j4 = random.nextInt(16) + 8;
-            (new WorldGenLakes(acidMoving.blockID)).generate(world, random, i1, l2, j4);
-        }       
-        for(int k1 = 0; k1 < acidSpoutCount; k1++)
-        {
-            int i3 = i + random.nextInt(16) + 8;
-            int k4 = random.nextInt(random.nextInt(acidSpoutYRange) + acidSpoutYStart);
-            int l5 = j + random.nextInt(16) + 8;
-            (new WorldGenCaustics(acidMoving.blockID)).generate(world, random, i3, k4, l5);
-        }
-        if(random.nextInt(acidLakeChance) == 0)
-        {
-            int l1 = i + random.nextInt(16) + 8;
-            int j3 = random.nextInt(world.getHeight());
-            int l4 = j + random.nextInt(16) + 8;
-            BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(l1, l4);
-            if((biomegenbase == BiomeGenBase.taiga) 
-            		| (biomegenbase == BiomeGenBase.frozenOcean) 
-            		| (biomegenbase == BiomeGenBase.iceMountains) 
-            		| (biomegenbase == BiomeGenBase.frozenRiver) 
-            		| (biomegenbase == BiomeGenBase.icePlains))
-            {
-                (new WorldGenFrozenCryonite(frozenCryonite.blockID)).generate(world, random, l1, j3, l4);
-            }
-        }
+        
+        CausticLakes.populateSurfaceLiquids(world, random, i, j);
     }
 }
