@@ -66,7 +66,7 @@ public class ItemCausticSupportBlock extends ItemBlock
             {
                 Block.blocksList[blockID].onBlockPlaced(world, i, j, k, l);
                 Block.blocksList[blockID].onBlockPlacedBy(world, i, j, k, entityplayer);
-                PlasmaCraftCore.proxy.playSoundEffect(world, i, j, k, block);
+                world.playSoundEffect((double)i, (double)j, (double)k, block.stepSound.stepSoundName, (block.stepSound.getVolume() + 1.0F) / 2.0F, block.stepSound.getPitch() * 0.8F);
                 itemstack.stackSize--;
             }
         }

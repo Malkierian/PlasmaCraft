@@ -54,15 +54,6 @@ public class PCServerProxy implements IPCProxy
 	}
 
 	@Override
-	public ItemStack armorItemInSlot(EntityPlayer entityplayer, int i) {
-		return entityplayer.inventory.getStackInSlot(i + entityplayer.inventory.mainInventory.length);
-	}
-
-	@Override
-	public void playSoundEffect(World world, int i, int j, int k, Block block) {
-	}
-
-	@Override
 	public double getAverageEdgeLength(AxisAlignedBB boundingBox) {
 		return 0;
 	}

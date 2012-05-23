@@ -194,7 +194,7 @@ public class TilePlasmaBench extends TileEntity
             if(flag != (furnaceBurnTime > 0))
             {
                 flag1 = true;
-                BlockPlasmificator.updatePlasmificatorBlockState(furnaceBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
+                BlockPlasmaBench.updatePlasmificatorBlockState(furnaceBurnTime > 0, worldObj, xCoord, yCoord, zCoord);
             }
         }
         if(flag1)

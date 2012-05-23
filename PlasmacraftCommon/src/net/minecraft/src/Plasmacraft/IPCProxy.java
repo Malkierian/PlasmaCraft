@@ -27,10 +27,6 @@ public interface IPCProxy
 	public float getLightBrightess(IBlockAccess iblockaccess, int i, int j,
 			int k);
 
-	public ItemStack armorItemInSlot(EntityPlayer entityplayer, int i);
-
-	public void playSoundEffect(World world, int i, int j, int k, Block block);
-
 	public double getAverageEdgeLength(AxisAlignedBB boundingBox);
 	
 }

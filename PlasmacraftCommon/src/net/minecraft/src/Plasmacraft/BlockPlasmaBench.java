@@ -19,7 +19,7 @@ import net.minecraft.src.World;
 import net.minecraft.src.mod_PlasmaCraft;
 import net.minecraft.src.forge.ITextureProvider;
 
-public class BlockPlasmificator extends BlockContainer implements ITextureProvider
+public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
 {
 	private Random plasmificatorRand;
     private final boolean isActive;
@@ -27,7 +27,7 @@ public class BlockPlasmificator extends BlockContainer implements ITextureProvid
     private final int frontActiveTexture;
     private static boolean keepPlasmificatorInventory = false;
 
-    protected BlockPlasmificator(int i, int j, int k, int l, boolean flag, float lightValue)
+    protected BlockPlasmaBench(int i, int j, int k, int l, boolean flag, float lightValue)
     {
         super(i, Material.rock);
         isActive = flag;

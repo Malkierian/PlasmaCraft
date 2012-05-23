@@ -398,8 +398,8 @@ public class PlasmaCraftCore
         reinforcedGlass = (new BlockReinforcedGlass(reinforcedGlassBlockID, reinforcedGlassIndex, Material.glass, false, 500.0F)).setBlockName("reinforcedGlass");
         frozenCryonite = (new BlockReinforcedGlass(cryoniteFrozenBlockID, frozenCryoniteIndex, Material.glass, false, 1.0F)).setBlockName("frozenCryonite");
         
-        plasmificatorIdle = (new BlockPlasmificator(plasmificatorIdleBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, false, 0.0F)).setBlockName("plasmificatorIdle");
-        plasmificatorActive = (new BlockPlasmificator(plasmificatorActiveBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, true, 1.0F)).setBlockName("plasmificatorActive");
+        plasmificatorIdle = (new BlockPlasmaBench(plasmificatorIdleBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, false, 0.0F)).setBlockName("plasmificatorIdle");
+        plasmificatorActive = (new BlockPlasmaBench(plasmificatorActiveBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, true, 1.0F)).setBlockName("plasmificatorActive");
         
         acidHot = (new BlockAcidHot(acidBarrierBlockID, acidHotIndex)).setBlockName("acidHot");
         
