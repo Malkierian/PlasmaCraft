@@ -11,15 +11,12 @@ import net.minecraft.src.forge.ITextureProvider;
 
 public class BlockCausticFlowing extends BlockCausticFluids implements ITextureProvider
 {
-
-    int numAdjacentSources;
     boolean isOptimalFlowDirection[];
     int flowCost[];
 
     public BlockCausticFlowing(int i, int j, int k, int l, int i1, int j1)
     {
         super(i, j, k, l, i1, j1);
-        numAdjacentSources = 0;
         isOptimalFlowDirection = new boolean[4];
         flowCost = new int[4];
     }
@@ -51,7 +48,6 @@ public class BlockCausticFlowing extends BlockCausticFluids implements ITextureP
         if(l > 0)
         {
             int j1 = -100;
-            numAdjacentSources = 0;
             j1 = getSmallestFlowDecay(world, i - 1, j, k, j1);
             j1 = getSmallestFlowDecay(world, i + 1, j, k, j1);
             j1 = getSmallestFlowDecay(world, i, j, k - 1, j1);
@@ -74,17 +70,6 @@ public class BlockCausticFlowing extends BlockCausticFluids implements ITextureP
                 else
                 {
                     k1 = i2 + 8;
-                }
-            }
-            if(numAdjacentSources >= 2)
-            {
-                if(world.isBlockOpaqueCube(i, j - 1, k))
-                {
-                    k1 = 0;
-                } else
-                if(world.getBlockMaterial(i, j - 1, k) == blockMaterial && world.getBlockMetadata(i, j, k) == 0)
-                {
-                    k1 = 0;
                 }
             }
             if(k1 != l)
@@ -289,10 +274,6 @@ public class BlockCausticFlowing extends BlockCausticFluids implements ITextureP
         if(i1 < 0)
         {
             return l;
-        }
-        if(i1 == 0)
-        {
-            numAdjacentSources++;
         }
         if(i1 >= 8)
         {
