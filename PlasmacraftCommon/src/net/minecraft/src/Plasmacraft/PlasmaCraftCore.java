@@ -36,191 +36,191 @@ public class PlasmaCraftCore
 	
 	public static IPCProxy proxy;
 	
-	public static Block cryoniteStill;
-	public static Block cryoniteMoving;
-	public static Block acidStill;
+	public static Block acidBarrier;
 	public static Block acidMoving;
-	public static Block plutoniumStill;
-	public static Block plutoniumMoving;
-	public static Block radioniteStill;
-	public static Block radioniteMoving;
-	public static Block neptuniumStill;
-	public static Block neptuniumMoving;
-	public static Block netherflowStill;
-	public static Block netherflowMoving;
-	public static Block obsidiumStill;
-	public static Block obsidiumMoving;
-	public static Block uraniumStill;
-	public static Block uraniumMoving;
-	public static Block frozenCryonite;
-	public static Block reinforcedGlass;
-	public static Block plasmificatorIdle;
-	public static Block plasmificatorActive;
-	public static Block acidHot;
+	public static Block acidStill;
 	public static Block acidTnt;
+	public static Block cryoniteMoving;
+	public static Block cryoniteStill;
+	public static Block frozenCryonite;
+	public static Block neptuniumMoving;
+	public static Block neptuniumStill;
+	public static Block netherflowMoving;
+	public static Block netherflowStill;
+	public static Block obsidiumMoving;
+	public static Block obsidiumStill;
+	public static Block plasmaBenchActive;
+	public static Block plasmaBenchIdle;
+	public static Block plutoniumMoving;
+	public static Block plutoniumStill;
+	public static Block radioniteMoving;
+	public static Block radioniteStill;
+	public static Block reinforcedGlass;
+	public static Block uraniumMoving;
+	public static Block uraniumStill;
 
 	public static Block orePlasma;
 	public static Block glowCloth;
 	
-	public static Item causticBoat;
-	public static Item ingotPlutonium;
-	public static Item ingotRadionite;
-	public static Item energyCell;
+	public static Item acidGrenade;
+	public static Item acidVial;
+	public static Item acidgun;
+	public static Item batteryCharged;
+	public static Item batteryCryo;
+	public static Item batteryEmpty;
+	public static Item batteryOverCharged;
+	public static Item batteryPlasma;
 	public static Item beamSplitter;
-	public static Item BatteryEmpty;
-	public static Item ThermoPellet;
-	public static Item BatteryCryo;
-	public static Item BatteryCharged;
-	public static Item BatteryOvercharged;
-	public static Item BatteryPlasma;
-	public static Item ingotNeptunium;
-	public static Item ingotObsidium;
-	public static Item ingotCryonite;
-	public static Item ingotUranium;
-	public static Item ingotNetherflow;
-	public static Item goopPlutonium;
-	public static Item goopRadionite;
+	public static Item causticBoat;
+	public static Item causticVial;
+	public static Item cryoblaster;
+	public static Item cryoniteVial;
+	public static Item energyCell;
+	public static Item goopCryonite;
 	public static Item goopNeptunium;
 	public static Item goopNetherflow;
 	public static Item goopObsidium;
-	public static Item goopCryonite;
+	public static Item goopPlutonium;
+	public static Item goopRadionite;
 	public static Item goopUranium;
-	public static Item acidVial;
-	public static Item fullAcidVial;
-	public static Item plutoniumVial;
-	public static Item radioniteVial;
+	public static Item hazmatBoots;
+	public static Item hazmatHood;
+	public static Item hazmatJacket;
+	public static Item hazmatPants;
+	public static Item ingotCryonite;
+	public static Item ingotNeptunium;
+	public static Item ingotNetherflow;
+	public static Item ingotObsidium;
+	public static Item ingotPlutonium;
+	public static Item ingotRadionite;
+	public static Item ingotUranium;
+	public static Item lasergun;
+	public static Item lasergunsplit;
+	public static Item lasershotgun;
 	public static Item neptuniumVial;
 	public static Item netherflowVial;
 	public static Item obsidiumVial;
-	public static Item cryoniteVial;
-	public static Item uraniumVial;
 	public static Item plasma;
 	public static Item plasmaGel;
 	public static Item plasmaLeather;
-	public static Item acidGrenade;
-	public static Item lasergun;
 	public static Item plasmagun;
 	public static Item plasmagunsplit;
-	public static Item lasergunsplit;
-	public static Item acidgun;
+	public static Item plutoniumVial;
+	public static Item radioniteVial;
 	public static Item railgun;
-	public static Item cryoblaster;
-	public static Item lasershotgun;
-	public static Item helmetHazmat;
-	public static Item plateHazmat;
-	public static Item legsHazmat;
-	public static Item bootsHazmat;
+	public static Item thermoPellet;
+	public static Item uraniumVial;
 	public static Material caustic;
 	public static Material gas;
 	
-	public static int orePlutoniumIndex = 13;
-	public static int oreRadioniteIndex = 14;
-	public static int oreNeptuniumIndex = 8;
-	public static int oreObsidiumIndex = 9;
-	public static int reinforcedGlassIndex = 15;
-	public static int plasmificatorSidesIndex = 12;
-	public static int plasmificatorFrontIdleIndex = 11;
-	public static int plasmificatorFrontActiveIndex = 10;
-	public static int acidHotIndex = 16;
+	public static int acidBarrierIndex = 16;
+	public static int acidTntBottomIndex = 2;
 	public static int acidTntSideIndex = 1;
 	public static int acidTntTopIndex = 3;
-	public static int acidTntBottomIndex = 2;
 	public static int blockUraniumIndex = 4;
 	public static int frozenCryoniteIndex = 5;
+	public static int oreNeptuniumIndex = 8;
+	public static int oreObsidiumIndex = 9;
+	public static int orePlutoniumIndex = 13;
+	public static int oreRadioniteIndex = 14;
+	public static int plasmaBenchFrontActiveIndex = 10;
+	public static int plasmaBenchFrontIdleIndex = 11;
+	public static int plasmaBenchSidesIndex = 12;
+	public static int reinforcedGlassIndex = 15;
 
 	public static int glowClothAcidIndex = 6;
-	public static int glowClothRadioniteIndex = 7;
-	public static int glowClothNetherflowIndex = 17;
-	public static int glowClothNeptuniumIndex = 18;
-	public static int glowClothUraniumIndex = 19;
-	public static int glowClothPlutoniumIndex = 20;
 	public static int glowClothCryoniteIndex = 21;
+	public static int glowClothNeptuniumIndex = 18;
+	public static int glowClothNetherflowIndex = 17;
 	public static int glowClothObsidiumIndex = 22;
-	
-	public static int cryoniteStillIndex = 1;
-	public static int cryoniteMovingIndex = cryoniteStillIndex + 1;
-	public static int acidStillIndex = 32;
+	public static int glowClothPlutoniumIndex = 20;
+	public static int glowClothRadioniteIndex = 7;
+	public static int glowClothUraniumIndex = 19;
+
+	public static int acidStillIndex = 1;
 	public static int acidMovingIndex = acidStillIndex + 1;
-	public static int plutoniumStillIndex = 64;
-	public static int plutoniumMovingIndex = plutoniumStillIndex + 1;
-	public static int radioniteStillIndex = 96;
-	public static int radioniteMovingIndex = radioniteStillIndex + 1;
-	public static int uraniumStillIndex = 128;
-	public static int uraniumMovingIndex = uraniumStillIndex + 1;
-	public static int neptuniumStillIndex = 160;
+	public static int cryoniteStillIndex = 32;
+	public static int cryoniteMovingIndex = cryoniteStillIndex + 1;
+	public static int neptuniumStillIndex = 64;
 	public static int neptuniumMovingIndex = neptuniumStillIndex + 1;
-	public static int netherflowStillIndex = 192;
+	public static int netherflowStillIndex = 96;
 	public static int netherflowMovingIndex = netherflowStillIndex + 1;
-	public static int obsidiumStillIndex = 224;
+	public static int obsidiumStillIndex = 128;
 	public static int obsidiumMovingIndex = obsidiumStillIndex + 1;
+	public static int plutoniumStillIndex = 160;
+	public static int plutoniumMovingIndex = plutoniumStillIndex + 1;
+	public static int radioniteStillIndex = 192;
+	public static int radioniteMovingIndex = radioniteStillIndex + 1;
+	public static int uraniumStillIndex = 228;
+	public static int uraniumMovingIndex = uraniumStillIndex + 1;
 	
-	public static int ingotPlutoniumIndex = 40;
-	public static int ingotRadioniteIndex = 43;
-	public static int energyCellIndex = 14;
+	public static int acidGrenadeIndex = 1;
+	public static int acidVialIndex = 12;
+	public static int acidgunIndex = 2;
+	public static int batteryChargedIndex = 6;
+	public static int batteryCryoIndex = 7;
+	public static int batteryEmptyIndex = 13;
+	public static int batteryOverChargedIndex = 32;
+	public static int batteryPlasmaIndex = 36;
 	public static int beamSplitterIndex = 4;
-	public static int BatteryEmptyIndex = 13;
-	public static int ThermoPelletIndex = 46;
-	public static int BatteryCryoIndex = 7;
-	public static int BatteryChargedIndex = 6;
-	public static int BatteryOverchargedIndex = 32;
-	public static int BatteryPlasmaIndex = 36;
-	public static int ingotNeptuniumIndex = 24;
-	public static int ingotObsidiumIndex = 30;
-	public static int ingotCryoniteIndex = 10;
-	public static int ingotUraniumIndex = 48;
-	public static int ingotNetherflowIndex = 27;
-	public static int goopPlutoniumIndex = 39;
-	public static int goopRadioniteIndex = 42;
+	public static int causticBoatEntityID;
+	public static int causticBoatIndex = 5;
+	public static int causticBoatNetEntityID;
+	public static int cryoblasterIndex = 8;
+	public static int cryoniteVialIndex = 11;
+	public static int energyCellIndex = 14;
+	public static int fullAcidVialIndex = 0;
+	public static int goopCryoniteIndex = 9;
 	public static int goopNeptuniumIndex = 23;
 	public static int goopNetherflowIndex = 26;
 	public static int goopObsidiumIndex = 29;
-	public static int goopCryoniteIndex = 9;
+	public static int goopPlutoniumIndex = 39;
+	public static int goopRadioniteIndex = 42;
 	public static int goopUraniumIndex = 47;
-	public static int acidGrenadeIndex = 1;
+	public static int hazmatBootsIndex = 15;
+	public static int hazmatHoodIndex = 16;
+	public static int hazmatJacketIndex = 17;
+	public static int hazmatPantsIndex = 18;
+	public static int ingotCryoniteIndex = 10;
+	public static int ingotNeptuniumIndex = 24;
+	public static int ingotNetherflowIndex = 27;
+	public static int ingotObsidiumIndex = 30;
+	public static int ingotPlutoniumIndex = 40;
+	public static int ingotRadioniteIndex = 43;
+	public static int ingotUraniumIndex = 48;
 	public static int lasergunIndex = 19;
-	public static int plasmagunIndex = 37;
-	public static int plasmagunsplitIndex = 38;
 	public static int lasergunsplitIndex = 20;
-	public static int acidgunIndex = 2;
-	public static int railgunIndex = 45;
-	public static int cryoblasterIndex = 8;
 	public static int lasershotgunIndex = 21;
-	public static int acidVialIndex = 12;
-	public static int fullAcidVialIndex = 0;
-	public static int plutoniumVialIndex = 41;
-	public static int radioniteVialIndex = 44;
-	public static int uraniumVialIndex = 49;
 	public static int neptuniumVialIndex = 25;
 	public static int netherflowVialIndex = 28;
 	public static int obsidiumVialIndex = 31;
-	public static int cryoniteVialIndex = 11;
 	public static int plasmaGelIndex = 34;
-	public static int plasmaLeatherIndex = 35;
 	public static int plasmaIndex = 33;
-	public static int causticBoatIndex = 5;
-	public static int causticBoatEntityID;
-	public static int causticBoatNetEntityID;
-	public static int helmetIndex = 16;
-	public static int plateIndex = 17;
-	public static int legsIndex = 18;
-	public static int bootsIndex = 15;
+	public static int plasmaLeatherIndex = 35;
+	public static int plasmagunIndex = 37;
+	public static int plasmagunsplitIndex = 38;
+	public static int plutoniumVialIndex = 41;
+	public static int radioniteVialIndex = 44;
+	public static int railgunIndex = 45;
+	public static int thermoPelletIndex = 46;
+	public static int uraniumVialIndex = 49;
 	
-	public static int cryoniteStillBlockID;
-	public static int cryoniteFlowingBlockID;
-	public static int acidStillBlockID;
 	public static int acidFlowingBlockID;
-	public static int plutoniumStillBlockID;
-	public static int plutoniumFlowingBlockID;
-	public static int radioniteStillBlockID;
-	public static int radioniteFlowingBlockID;
-	public static int netherflowStillBlockID;
-	public static int netherflowFlowingBlockID;
-	public static int neptuniumStillBlockID;
+	public static int acidStillBlockID;
+	public static int cryoniteFlowingBlockID;
+	public static int cryoniteStillBlockID;
 	public static int neptuniumFlowingBlockID;
-	public static int uraniumStillBlockID;
-	public static int uraniumFlowingBlockID;
-	public static int obsidiumStillBlockID;
+	public static int neptuniumStillBlockID;
+	public static int netherflowFlowingBlockID;
+	public static int netherflowStillBlockID;
 	public static int obsidiumFlowingBlockID;
+	public static int obsidiumStillBlockID;
+	public static int plutoniumFlowingBlockID;
+	public static int plutoniumStillBlockID;
+	public static int radioniteFlowingBlockID;
+	public static int radioniteStillBlockID;
+	public static int uraniumFlowingBlockID;
+	public static int uraniumStillBlockID;
 	
 	public static final int plutoniumMeta = 0;
 	public static final int radioniteMeta = 1;
@@ -236,102 +236,102 @@ public class PlasmaCraftCore
     public static final int glowClothPlutoniumMeta = 5;
     public static final int glowClothCryoniteMeta = 6;
     public static final int glowClothObsidiumMeta = 7;
-	
+
+	public static int hazmatBootsID;
 	public static int hazmatHoodID;
 	public static int hazmatJacketID;
 	public static int hazmatPantsID;
-	public static int hazmatBootsID;
-	public static int plasmificatorFront;
+	public static int plasmaBenchFront;
 	
-	public static boolean LiquidSourceExplodesAfterCausticExplosion;
-	public static int cryoniteFrozenBlockID;
-	public static int acidTNTBlockID;
+	public static boolean liquidSourceExplodesAfterCausticExplosion;
 	public static int acidBarrierBlockID;
-	public static int plasmificatorActiveBlockID;
-	public static int plasmificatorIdleBlockID;
-	public static int reinforcedGlassBlockID;
+	public static int acidGrenadeID;
+	public static int acidTNTBlockID;
+	public static int acidVialID;
+	public static int acidgunID;
+	public static int batteryChargedID;
+	public static int batteryCryoID;
+	public static int batteryEmptyID;
+	public static int batteryOverChargedID;
+	public static int batteryPlasmaID;
+	public static int beamSplitterID;
+	public static int causticBoatID;
+	public static int cryoBlasterID;
+	public static int cryoniteFrozenBlockID;
+	public static int cryoniteVialID;
+	public static int emptyVialID;
+	public static int energyCellID;
+	public static int goopCryoniteID;
+	public static int goopNeptuniumID;
+	public static int goopNetherflowID;
+	public static int goopObsidiumID;
+	public static int goopPlutoniumID;
+	public static int goopRadioniteID;
+	public static int goopUraniumID;
+	public static int ingotCryoniteID;
+	public static int ingotNeptuniumID;
+	public static int ingotNetherflowID;
+	public static int ingotObsidiumID;
 	public static int ingotPlutoniumID;
 	public static int ingotRadioniteID;
-	public static int emptyVialID;
-	public static int acidVialID;
-	public static int plutoniumViaID;
-	public static int radioniteVialID;
-	public static int plasmaGelID;
-	public static int plasmaID;
-	public static int causticBoatID;
-	public static int uraniumViaID;
+	public static int ingotUraniumID;
+	public static int laserGunID;
+	public static int laserGunsplitID;
+	public static int laserShotgunID;
 	public static int neptuniumVialID;
 	public static int netherflowVialID;
 	public static int obsidiumVialID;
-	public static int acidNadeID;
-	public static int ingotNeptuniumID;
-	public static int ingotObsidiumID;
-	public static int goopPlutoniumID;
-	public static int goopRadioniteID;
-	public static int goopNeptuniumID;
-	public static int goopObsidiumID;
-	public static int goopNetherflowID;
+	public static int plasmaBenchActiveBlockID;
+	public static int plasmaBenchIdleBlockID;
+	public static int plasmaGelID;
+	public static int plasmaID;
 	public static int plasmaLeatherID;
-	public static int goopUraniumID;
-	public static int ingotUraniumID;
-	public static int ingotNetherflowID;
-	public static int lasergunID;
-	public static int energyCellID;
 	public static int plasmagunID;
-	public static int BatteryEmptyID;
-	public static int BatteryPlasmaID;
-	public static int acidgunID;
-	public static int beamSplitterID;
 	public static int plasmagunsplitID;
-	public static int lasergunsplitID;
+	public static int plutoniumViaID;
+	public static int radioniteVialID;
 	public static int railgunID;
-	public static int BatteryChargedID;
-	public static int BatteryOverchargedID;
-	public static int lasershotgunID;
-	public static int cryoniteVialID;
-	public static int goopCryoniteID;
-	public static int ingotCryoniteID;
-	public static int cryoblasterID;
-	public static int batterycryoID;
-	public static int ThermoPelletID;
+	public static int reinforcedGlassBlockID;
+	public static int thermoPelletID;
+	public static int uraniumViaID;
 
 	public static int oreBlockID;
 	public static int glowClothBlockID;
 
-	private static int plutoniumOreVeinCount = 4;
-	private static int plutoniumOreYRange = 16;
-	private static int plutoniumOreYStart = 4;
-	private static int plutoniumOreVeinSize = 6;
-	private static int uraniumOreVeinCount = 4;
-	private static int uraniumOreYRange = 16;
-	private static int uraniumOreYStart = 4;
-	private static int uraniumOreVeinSize = 6;
-	private static int radioniteOreVeinCount = 4;
-	private static int radioniteOreYRange = 24;
-	private static int radioniteOreYStart = 4;
-	private static int radioniteOreVeinSize = 6;
 	private static int acidLakeYCutoff = 48;
 	private static int acidSpoutCount = 20;
 	private static int acidSpoutYRange = 30;
 	private static int acidSpoutYStart = 8;
 	private static int neptuniumOreVeinCount = 6;
+	private static int neptuniumOreVeinSize = 10;
 	private static int neptuniumOreYRange = 64;
 	private static int neptuniumOreYStart = 32;
-	private static int neptuniumOreVeinSize = 10;
-	private static int obsidiumOreVeinCount = 4;
-	private static int obsidiumOreYRange = 64;
-	private static int obsidiumOreYStart = 32;
-	private static int obsidiumOreVeinSize = 10;
-	private static int netherflowLakeChance = 32;
-	private static int netherflowLakeYRange = 16;
-	private static int netherflowLakeYStart = 56;
-	private static int netherflowLakeYCutoff = 96;
-	private static int netherflowSpoutCount = 20;
-	private static int netherflowSpoutYRange = 96;
-	private static int netherflowSpoutYStart = 16;
 	private static int neptuniumSpoutCount = 20;
 	private static int neptuniumSpoutYRange = 64;
 	private static int neptuniumSpoutYStart = 8;
+	private static int netherflowLakeChance = 32;
+	private static int netherflowLakeYCutoff = 96;
+	private static int netherflowLakeYRange = 16;
+	private static int netherflowLakeYStart = 56;
+	private static int netherflowSpoutCount = 20;
+	private static int netherflowSpoutYRange = 96;
+	private static int netherflowSpoutYStart = 16;
+	private static int obsidiumOreVeinCount = 4;
+	private static int obsidiumOreVeinSize = 10;
+	private static int obsidiumOreYRange = 64;
+	private static int obsidiumOreYStart = 32;
+	private static int plutoniumOreVeinCount = 4;
+	private static int plutoniumOreVeinSize = 6;
+	private static int plutoniumOreYRange = 16;
+	private static int plutoniumOreYStart = 4;
+	private static int radioniteOreVeinCount = 4;
+	private static int radioniteOreVeinSize = 6;
+	private static int radioniteOreYRange = 24;
+	private static int radioniteOreYStart = 4;
+	private static int uraniumOreVeinCount = 4;
+	private static int uraniumOreVeinSize = 6;
+	private static int uraniumOreYRange = 16;
+	private static int uraniumOreYStart = 4;
 	
 	public static int liquidRes;	
 	private static boolean generateUranium;
@@ -350,58 +350,58 @@ public class PlasmaCraftCore
 
         MinecraftForge.setGuiHandler(mod, new GuiHandler());
         
-        ModLoader.registerTileEntity(TilePlasmaBench.class, "plasmaBench");
-		ModLoader.registerEntityID(EntityAcid.class, "Acid", ModLoader.getUniqueEntityId());
-		ModLoader.registerEntityID(EntityAcidGrenade.class, "AcidGrenade", ModLoader.getUniqueEntityId());
-		ModLoader.registerEntityID(EntityAcidTNTPrimed.class, "AcidTNTPrimed", ModLoader.getUniqueEntityId());
-        ModLoader.registerEntityID(EntityCausticBoat.class, "RadioniteBoat", ModLoader.getUniqueEntityId());
-        ModLoader.registerEntityID(EntityCryoBlast.class, "CryoBlast", ModLoader.getUniqueEntityId());
-        ModLoader.registerEntityID(EntityLaser.class, "Laser", ModLoader.getUniqueEntityId());
-        ModLoader.registerEntityID(EntityLaserShotgun.class, "LaserShotgun", ModLoader.getUniqueEntityId());
-        ModLoader.registerEntityID(EntityMutantCow.class, "MutantCow", ModLoader.getUniqueEntityId());
-        ModLoader.registerEntityID(EntityPlasma.class, "Plasma", ModLoader.getUniqueEntityId());
-        ModLoader.registerEntityID(EntityRailGun.class, "RailGun", ModLoader.getUniqueEntityId());
+        ModLoader.registerTileEntity(TilePlasmaBench.class,   "plasmaBench");
+		ModLoader.registerEntityID(EntityAcid.class, 		  "acid", 			ModLoader.getUniqueEntityId());
+		ModLoader.registerEntityID(EntityAcidGrenade.class,   "acidGrenade", 	ModLoader.getUniqueEntityId());
+		ModLoader.registerEntityID(EntityAcidTNTPrimed.class, "acidTNTPrimed", 	ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityCausticBoat.class,	  "radioniteBoat", 	ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityCryoBlast.class, 	  "cryoBlast", 		ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityLaser.class, 		  "laser", 			ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityLaserShotgun.class,  "laserShotgun", 	ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityMutantCow.class, 	  "mutantCow", 		ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityPlasma.class, 		  "plasma", 		ModLoader.getUniqueEntityId());
+        ModLoader.registerEntityID(EntityRailGun.class, 	  "railGun", 		ModLoader.getUniqueEntityId());
         
-        MinecraftForge.registerEntity(EntityLaser.class, mod, 160, 32, 100, true);
-        MinecraftForge.registerEntity(EntityLaserShotgun.class, mod, 161, 32, 100, true);
-        MinecraftForge.registerEntity(EntityPlasma.class, mod, 162, 32, 100, true);
-        MinecraftForge.registerEntity(EntityRailGun.class, mod, 163, 32, 100, true);
-        MinecraftForge.registerEntity(EntityAcid.class, mod, 164, 32, 100, true);
+        MinecraftForge.registerEntity(EntityLaser.class, 		 mod, 160, 32, 100, true);
+        MinecraftForge.registerEntity(EntityLaserShotgun.class,  mod, 161, 32, 100, true);
+        MinecraftForge.registerEntity(EntityPlasma.class, 		 mod, 162, 32, 100, true);
+        MinecraftForge.registerEntity(EntityRailGun.class, 		 mod, 163, 32, 100, true);
+        MinecraftForge.registerEntity(EntityAcid.class, 		 mod, 164, 32, 100, true);
         MinecraftForge.registerEntity(EntityAcidTNTPrimed.class, mod, 165, 32, 100, true);
-        MinecraftForge.registerEntity(EntityAcidGrenade.class, mod, 166, 32, 100, true);
-        MinecraftForge.registerEntity(EntityCryoBlast.class, mod, 167, 32, 100, true);
-        MinecraftForge.registerEntity(EntityCausticBoat.class, mod, 168, 32, 100, true);
+        MinecraftForge.registerEntity(EntityAcidGrenade.class, 	 mod, 166, 32, 100, true);
+        MinecraftForge.registerEntity(EntityCryoBlast.class, 	 mod, 167, 32, 100, true);
+        MinecraftForge.registerEntity(EntityCausticBoat.class, 	 mod, 168, 32, 100, true);
         MinecraftForge.registerEntity(EntityAcidTNTPrimed.class, mod, 169, 32, 100, true);
-        MinecraftForge.registerEntity(EntityMutantCow.class, mod, 170, 32, 100, true);
+        MinecraftForge.registerEntity(EntityMutantCow.class, 	 mod, 170, 32, 100, true);
 		
         orePlasma = (new BlockPlasmaOre(oreBlockID, orePlutoniumIndex)).setBlockName("orePlasma");
 		
-        glowCloth = (new BlockGlowCloth(glowClothBlockID, glowClothAcidIndex)).setBlockName("glowcloth");
+        glowCloth = (new BlockGlowCloth(glowClothBlockID, glowClothAcidIndex)).setBlockName("glowCloth");
         
-        cryoniteStill = (new BlockCausticStationary(cryoniteStillBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID, 0.0F)).setBlockName("cryoniteStill");
-        cryoniteMoving = (new BlockCausticFlowing(cryoniteFlowingBlockID, cryoniteStillIndex, cryoniteMovingIndex, causticID, cryoniteStillBlockID, cryoniteFlowingBlockID)).setBlockName("cryoniteMoving");
-        acidStill = (new BlockCausticStationary(acidStillBlockID, acidStillIndex, acidMovingIndex, causticID, acidStillBlockID, acidFlowingBlockID, 1.0F)).setBlockName("acidStill");
-        acidMoving = (new BlockCausticFlowing(acidFlowingBlockID, acidStillIndex, acidMovingIndex, causticID, acidStillBlockID, acidFlowingBlockID)).setBlockName("acidMoving");
-        radioniteStill = (new BlockCausticStationary(radioniteStillBlockID, radioniteStillIndex, radioniteMovingIndex, causticID, radioniteStillBlockID, radioniteFlowingBlockID, 1.0F)).setBlockName("radioniteStill");
-        radioniteMoving = (new BlockCausticFlowing(radioniteFlowingBlockID, radioniteStillIndex, radioniteMovingIndex, causticID, radioniteStillBlockID, radioniteFlowingBlockID)).setBlockName("radioniteMoving");
-        plutoniumStill = (new BlockCausticStationary(plutoniumStillBlockID, plutoniumStillIndex, plutoniumMovingIndex, causticID, plutoniumStillBlockID, plutoniumFlowingBlockID, 1.0F)).setBlockName("plutoniumStill");
-        plutoniumMoving = (new BlockCausticFlowing(plutoniumFlowingBlockID, plutoniumStillIndex, plutoniumMovingIndex, causticID, plutoniumStillBlockID, plutoniumFlowingBlockID)).setBlockName("plutoniumMoving");
-        netherflowStill = (new BlockCausticStationary(netherflowStillBlockID, netherflowStillIndex, netherflowMovingIndex, causticID, netherflowStillBlockID, netherflowFlowingBlockID, 1.0F)).setBlockName("netherflowStill");
-        netherflowMoving = (new BlockCausticFlowing(netherflowFlowingBlockID, netherflowStillIndex, netherflowMovingIndex, causticID, netherflowStillBlockID, netherflowFlowingBlockID)).setBlockName("netherflowMoving");
-        neptuniumStill = (new BlockCausticStationary(neptuniumStillBlockID, neptuniumStillIndex, neptuniumMovingIndex, causticID, neptuniumStillBlockID, neptuniumFlowingBlockID, 1.0F)).setBlockName("neptuniumStill");
-        neptuniumMoving = (new BlockCausticFlowing(neptuniumFlowingBlockID, neptuniumStillIndex, neptuniumMovingIndex, causticID, neptuniumStillBlockID, neptuniumFlowingBlockID)).setBlockName("neptuniumMoving");
-        uraniumStill = (new BlockCausticStationary(uraniumStillBlockID, uraniumStillIndex, uraniumMovingIndex, causticID, uraniumStillBlockID, uraniumFlowingBlockID, 1.0F)).setBlockName("uraniumStill");
-        uraniumMoving = (new BlockCausticFlowing(uraniumFlowingBlockID, uraniumStillIndex, uraniumMovingIndex, causticID, uraniumStillBlockID, uraniumFlowingBlockID)).setBlockName("uraniumMoving");
-        obsidiumStill = (new BlockCausticStationary(obsidiumStillBlockID, obsidiumStillIndex, obsidiumMovingIndex, causticID, obsidiumStillBlockID, obsidiumFlowingBlockID, 1.0F)).setBlockName("obsidiumStill");
-        obsidiumMoving = (new BlockCausticFlowing(obsidiumFlowingBlockID, obsidiumStillIndex, obsidiumMovingIndex, causticID, obsidiumStillBlockID, obsidiumFlowingBlockID)).setBlockName("obsidiumMoving");
+        acidMoving =		(new BlockCausticFlowing	(acidFlowingBlockID, 	   acidStillIndex, 		 acidMovingIndex, 		causticID, acidStillBlockID, 	   acidFlowingBlockID			 )).setBlockName("acidMoving");
+        acidStill = 		(new BlockCausticStationary	(acidStillBlockID, 		   acidStillIndex, 		 acidMovingIndex, 		causticID, acidStillBlockID, 	   acidFlowingBlockID, 		 1.0F)).setBlockName("acidStill");
+        cryoniteMoving = 	(new BlockCausticFlowing	(cryoniteFlowingBlockID,   cryoniteStillIndex, 	 cryoniteMovingIndex, 	causticID, cryoniteStillBlockID,   cryoniteFlowingBlockID		 )).setBlockName("cryoniteMoving");
+        cryoniteStill = 	(new BlockCausticStationary	(cryoniteStillBlockID, 	   cryoniteStillIndex, 	 cryoniteMovingIndex, 	causticID, cryoniteStillBlockID,   cryoniteFlowingBlockID,   0.0F)).setBlockName("cryoniteStill");
+        neptuniumMoving = 	(new BlockCausticFlowing	(neptuniumFlowingBlockID,  neptuniumStillIndex,  neptuniumMovingIndex, 	causticID, neptuniumStillBlockID,  neptuniumFlowingBlockID	 	 )).setBlockName("neptuniumMoving");
+        neptuniumStill = 	(new BlockCausticStationary	(neptuniumStillBlockID,    neptuniumStillIndex,  neptuniumMovingIndex, 	causticID, neptuniumStillBlockID,  neptuniumFlowingBlockID,  1.0F)).setBlockName("neptuniumStill");
+        netherflowMoving = 	(new BlockCausticFlowing	(netherflowFlowingBlockID, netherflowStillIndex, netherflowMovingIndex, causticID, netherflowStillBlockID, netherflowFlowingBlockID		 )).setBlockName("netherflowMoving");
+        netherflowStill = 	(new BlockCausticStationary	(netherflowStillBlockID,   netherflowStillIndex, netherflowMovingIndex, causticID, netherflowStillBlockID, netherflowFlowingBlockID, 1.0F)).setBlockName("netherflowStill");
+        obsidiumMoving = 	(new BlockCausticFlowing	(obsidiumFlowingBlockID,   obsidiumStillIndex, 	 obsidiumMovingIndex, 	causticID, obsidiumStillBlockID,   obsidiumFlowingBlockID		 )).setBlockName("obsidiumMoving");
+        obsidiumStill = 	(new BlockCausticStationary	(obsidiumStillBlockID, 	   obsidiumStillIndex, 	 obsidiumMovingIndex, 	causticID, obsidiumStillBlockID,   obsidiumFlowingBlockID,   1.0F)).setBlockName("obsidiumStill");
+        plutoniumMoving = 	(new BlockCausticFlowing	(plutoniumFlowingBlockID,  plutoniumStillIndex,  plutoniumMovingIndex, 	causticID, plutoniumStillBlockID,  plutoniumFlowingBlockID		 )).setBlockName("plutoniumMoving");
+        plutoniumStill = 	(new BlockCausticStationary	(plutoniumStillBlockID,    plutoniumStillIndex,  plutoniumMovingIndex, 	causticID, plutoniumStillBlockID,  plutoniumFlowingBlockID,  1.0F)).setBlockName("plutoniumStill");
+        radioniteMoving = 	(new BlockCausticFlowing	(radioniteFlowingBlockID,  radioniteStillIndex,  radioniteMovingIndex, 	causticID, radioniteStillBlockID,  radioniteFlowingBlockID		 )).setBlockName("radioniteMoving");
+        radioniteStill = 	(new BlockCausticStationary	(radioniteStillBlockID,    radioniteStillIndex,  radioniteMovingIndex, 	causticID, radioniteStillBlockID,  radioniteFlowingBlockID,  1.0F)).setBlockName("radioniteStill");
+        uraniumMoving = 	(new BlockCausticFlowing	(uraniumFlowingBlockID,    uraniumStillIndex, 	 uraniumMovingIndex, 	causticID, uraniumStillBlockID,    uraniumFlowingBlockID		 )).setBlockName("uraniumMoving");
+        uraniumStill = 		(new BlockCausticStationary	(uraniumStillBlockID, 	   uraniumStillIndex, 	 uraniumMovingIndex, 	causticID, uraniumStillBlockID,    uraniumFlowingBlockID,	 1.0F)).setBlockName("uraniumStill");
         
         reinforcedGlass = (new BlockReinforcedGlass(reinforcedGlassBlockID, reinforcedGlassIndex, Material.glass, false, 500.0F)).setBlockName("reinforcedGlass");
         frozenCryonite = (new BlockReinforcedGlass(cryoniteFrozenBlockID, frozenCryoniteIndex, Material.glass, false, 1.0F)).setBlockName("frozenCryonite");
         
-        plasmificatorIdle = (new BlockPlasmaBench(plasmificatorIdleBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, false, 0.0F)).setBlockName("plasmificatorIdle");
-        plasmificatorActive = (new BlockPlasmaBench(plasmificatorActiveBlockID, plasmificatorSidesIndex, plasmificatorFrontIdleIndex, plasmificatorFront, true, 1.0F)).setBlockName("plasmificatorActive");
+        plasmaBenchIdle = (new BlockPlasmaBench(plasmaBenchIdleBlockID, plasmaBenchSidesIndex, plasmaBenchFrontIdleIndex, plasmaBenchFront, false, 0.0F)).setBlockName("plasmificatorIdle");
+        plasmaBenchActive = (new BlockPlasmaBench(plasmaBenchActiveBlockID, plasmaBenchSidesIndex, plasmaBenchFrontIdleIndex, plasmaBenchFront, true, 1.0F)).setBlockName("plasmificatorActive");
         
-        acidHot = (new BlockAcidHot(acidBarrierBlockID, acidHotIndex)).setBlockName("acidHot");
+        acidBarrier = (new BlockAcidHot(acidBarrierBlockID, acidBarrierIndex)).setBlockName("acidHot");
         
         acidTnt = (new BlockAcidTNT(acidTNTBlockID, acidTntSideIndex, acidTntTopIndex, acidTntBottomIndex)).setBlockName("acidTnt");
         
@@ -409,12 +409,12 @@ public class PlasmaCraftCore
         ingotRadionite = (new ItemPlasma(ingotRadioniteID)).setIconIndex(ingotRadioniteIndex).setItemName("ingotRadionite");
         energyCell = (new ItemPlasma(energyCellID)).setIconIndex(energyCellIndex).setItemName("energyCell");
         beamSplitter = (new ItemPlasma(beamSplitterID)).setIconIndex(beamSplitterIndex).setItemName("beamSplitter");
-        BatteryEmpty = (new ItemPlasma(BatteryEmptyID)).setIconIndex(BatteryEmptyIndex).setItemName("batteryEmpy");
-        ThermoPellet = (new ItemPlasma(ThermoPelletID)).setIconIndex(ThermoPelletIndex).setItemName("thermpellet");
-        BatteryCryo = (new ItemPlasma(batterycryoID)).setIconIndex(BatteryCryoIndex).setItemName("batteryCryo");
-        BatteryCharged = (new ItemPlasma(BatteryChargedID)).setIconIndex(BatteryChargedIndex).setItemName("batteryCharged");
-        BatteryOvercharged = (new ItemPlasma(BatteryOverchargedID)).setIconIndex(BatteryOverchargedIndex).setItemName("batteryOvercharged");
-        BatteryPlasma = (new ItemPlasma(BatteryPlasmaID)).setIconIndex(BatteryPlasmaIndex).setItemName("batteryPlasma");
+        batteryEmpty = (new ItemPlasma(batteryEmptyID)).setIconIndex(batteryEmptyIndex).setItemName("batteryEmpy");
+        thermoPellet = (new ItemPlasma(thermoPelletID)).setIconIndex(thermoPelletIndex).setItemName("thermpellet");
+        batteryCryo = (new ItemPlasma(batteryCryoID)).setIconIndex(batteryCryoIndex).setItemName("batteryCryo");
+        batteryCharged = (new ItemPlasma(batteryChargedID)).setIconIndex(batteryChargedIndex).setItemName("batteryCharged");
+        batteryOverCharged = (new ItemPlasma(batteryOverChargedID)).setIconIndex(batteryOverChargedIndex).setItemName("batteryOvercharged");
+        batteryPlasma = (new ItemPlasma(batteryPlasmaID)).setIconIndex(batteryPlasmaIndex).setItemName("batteryPlasma");
         ingotNeptunium = (new ItemPlasma(ingotNeptuniumID)).setIconIndex(ingotNeptuniumIndex).setItemName("ingotNeptunium");
         ingotObsidium = (new ItemPlasma(ingotObsidiumID)).setIconIndex(ingotObsidiumIndex).setItemName("ingotObsidium");
         ingotCryonite = (new ItemPlasma(ingotCryoniteID)).setIconIndex(ingotCryoniteIndex).setItemName("ingotCryonite");
@@ -427,8 +427,8 @@ public class PlasmaCraftCore
         goopObsidium = (new ItemPlasma(goopObsidiumID)).setIconIndex(goopObsidiumIndex).setItemName("goopObsidium");
         goopCryonite = (new ItemPlasma(goopCryoniteID)).setIconIndex(goopCryoniteIndex).setItemName("goopCryonite");
         goopUranium = (new ItemPlasma(goopUraniumID)).setIconIndex(goopUraniumIndex).setItemName("goopUranium");
-        acidVial = (new ItemVial(emptyVialID, 0, EnumPlasmaLiquid.EMPTY)).setIconIndex(acidVialIndex).setItemName("acidVial");
-        fullAcidVial = (new ItemVial(acidVialID, acidMoving.blockID, EnumPlasmaLiquid.ACID)).setIconIndex(fullAcidVialIndex).setItemName("fullAcidVial");
+        causticVial = (new ItemVial(emptyVialID, 0, EnumPlasmaLiquid.EMPTY)).setIconIndex(acidVialIndex).setItemName("acidVial");
+        acidVial = (new ItemVial(acidVialID, acidMoving.blockID, EnumPlasmaLiquid.ACID)).setIconIndex(fullAcidVialIndex).setItemName("fullAcidVial");
         plutoniumVial = (new ItemVial(plutoniumViaID, plutoniumMoving.blockID, EnumPlasmaLiquid.PLUTONIUM)).setIconIndex(plutoniumVialIndex).setItemName("plutoniumVial");
         radioniteVial = (new ItemVial(radioniteVialID, radioniteMoving.blockID, EnumPlasmaLiquid.RADIONITE)).setIconIndex(radioniteVialIndex).setItemName("radioniteVial");
         uraniumVial = (new ItemVial(uraniumViaID, uraniumMoving.blockID, EnumPlasmaLiquid.URANIUM)).setIconIndex(uraniumVialIndex).setItemName("uraniumVial");
@@ -440,20 +440,20 @@ public class PlasmaCraftCore
         plasmaLeather = (new ItemPlasma(plasmaLeatherID)).setIconIndex(plasmaLeatherIndex).setItemName("plasmaLeather");
         plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");
         causticBoat = (new ItemCausticBoat(causticBoatID)).setIconIndex(causticBoatIndex).setItemName("causticBoat");
-        acidGrenade = (new ItemAcidGrenade(acidNadeID)).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
-        lasergun = (new ItemEnergyWeapon(lasergunID, 200)).setIconIndex(lasergunIndex).setItemName("laserGun");
+        acidGrenade = (new ItemAcidGrenade(acidGrenadeID)).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
+        lasergun = (new ItemEnergyWeapon(laserGunID, 200)).setIconIndex(lasergunIndex).setItemName("laserGun");
         plasmagun = (new ItemEnergyWeapon(plasmagunID, 200)).setIconIndex(plasmagunIndex).setItemName("plasmaGun");
         plasmagunsplit = (new ItemEnergyWeapon(plasmagunsplitID, 300)).setIconIndex(plasmagunsplitIndex).setItemName("plasmaGunSplit");
-        lasergunsplit = (new ItemEnergyWeapon(lasergunsplitID, 300)).setIconIndex(lasergunsplitIndex).setItemName("laserGunSplit");
+        lasergunsplit = (new ItemEnergyWeapon(laserGunsplitID, 300)).setIconIndex(lasergunsplitIndex).setItemName("laserGunSplit");
         acidgun = (new ItemEnergyWeapon(acidgunID, 200)).setIconIndex(acidgunIndex).setItemName("acidGun");
         railgun = (new ItemEnergyWeapon(railgunID, 200)).setIconIndex(railgunIndex).setItemName("railGun");
-        cryoblaster = (new ItemEnergyWeapon(cryoblasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
-        lasershotgun = (new ItemEnergyWeapon(lasershotgunID, 200)).setIconIndex(lasershotgunIndex).setItemName("lasershotgunGun");
+        cryoblaster = (new ItemEnergyWeapon(cryoBlasterID, 100)).setIconIndex(cryoblasterIndex).setItemName("cryoBlaster");
+        lasershotgun = (new ItemEnergyWeapon(laserShotgunID, 200)).setIconIndex(lasershotgunIndex).setItemName("lasershotgunGun");
 
-        helmetHazmat = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 0)).setIconIndex(helmetIndex).setItemName("helmetHazmat");
-        plateHazmat = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 1)).setIconIndex(plateIndex).setItemName("plateHazmat");
-        legsHazmat = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 2)).setIconIndex(legsIndex).setItemName("legsHazmat");
-        bootsHazmat = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 3)).setIconIndex(bootsIndex).setItemName("bootsHazmat");
+        hazmatHood = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 0)).setIconIndex(hazmatHoodIndex).setItemName("helmetHazmat");
+        hazmatJacket = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 1)).setIconIndex(hazmatJacketIndex).setItemName("plateHazmat");
+        hazmatPants = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 2)).setIconIndex(hazmatPantsIndex).setItemName("legsHazmat");
+        hazmatBoots = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.values()[2], ModLoader.addArmor("hazmat"), 3)).setIconIndex(hazmatBootsIndex).setItemName("bootsHazmat");
         
         ModLoader.registerBlock(cryoniteStill);
         ModLoader.registerBlock(cryoniteMoving);
@@ -473,9 +473,9 @@ public class PlasmaCraftCore
         ModLoader.registerBlock(obsidiumMoving);
         ModLoader.registerBlock(frozenCryonite);
         ModLoader.registerBlock(reinforcedGlass);
-        ModLoader.registerBlock(plasmificatorIdle);
-        ModLoader.registerBlock(plasmificatorActive);
-        ModLoader.registerBlock(acidHot);
+        ModLoader.registerBlock(plasmaBenchIdle);
+        ModLoader.registerBlock(plasmaBenchActive);
+        ModLoader.registerBlock(acidBarrier);
         ModLoader.registerBlock(acidTnt);
         
         ModLoader.registerBlock(glowCloth, net.minecraft.src.Plasmacraft.ItemGlowCloth.class);
@@ -520,7 +520,7 @@ public class PlasmaCraftCore
     	Configuration c = new Configuration(new File(proxy.getMinecraftDirectory() + "config/PlasmaCraft.cfg"));
     	c.load();
     	
-        LiquidSourceExplodesAfterCausticExplosion = getBool(c.getOrCreateBooleanProperty("LiquidSourceExplodesAfterCausticExplosion", Configuration.CATEGORY_GENERAL, true));
+        liquidSourceExplodesAfterCausticExplosion = getBool(c.getOrCreateBooleanProperty("LiquidSourceExplodesAfterCausticExplosion", Configuration.CATEGORY_GENERAL, true));
 
         radioniteStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.RadioniteStill", 143));
         radioniteFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.RadioniteFlowing", 142));
@@ -540,8 +540,8 @@ public class PlasmaCraftCore
         acidStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidStill", 127));
         acidFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidFlowing", 126));
         reinforcedGlassBlockID = getInt(c.getOrCreateBlockIdProperty("ID.ReinforcedGlass", 125));
-        plasmificatorIdleBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorIdle", 153));
-        plasmificatorActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 152));
+        plasmaBenchIdleBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorIdle", 153));
+        plasmaBenchActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 152));
         acidBarrierBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidBarrier", 151));
         acidTNTBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidTNT", 150));
         
@@ -568,7 +568,7 @@ public class PlasmaCraftCore
         neptuniumVialID = getInt(c.getOrCreateIntProperty("neptuniumVialID", Configuration.CATEGORY_ITEM, 2062));
         netherflowVialID = getInt(c.getOrCreateIntProperty("netherflowVialID", Configuration.CATEGORY_ITEM, 2063));
         obsidiumVialID = getInt(c.getOrCreateIntProperty("obsidiumVialID", Configuration.CATEGORY_ITEM, 2064));
-        acidNadeID = getInt(c.getOrCreateIntProperty("acidNadeID", Configuration.CATEGORY_ITEM, 2068));
+        acidGrenadeID = getInt(c.getOrCreateIntProperty("acidNadeID", Configuration.CATEGORY_ITEM, 2068));
         ingotNeptuniumID = getInt(c.getOrCreateIntProperty("ingotNeptuniumID", Configuration.CATEGORY_ITEM, 2069));
         ingotObsidiumID = getInt(c.getOrCreateIntProperty("ingotObsidiumID", Configuration.CATEGORY_ITEM, 2070));
         goopPlutoniumID = getInt(c.getOrCreateIntProperty("goopPlutoniumID", Configuration.CATEGORY_ITEM, 2071));
@@ -580,25 +580,25 @@ public class PlasmaCraftCore
         goopUraniumID = getInt(c.getOrCreateIntProperty("goopUraniumID", Configuration.CATEGORY_ITEM, 2077));
         ingotUraniumID = getInt(c.getOrCreateIntProperty("ingotUraniumID", Configuration.CATEGORY_ITEM, 2078));
         ingotNetherflowID = getInt(c.getOrCreateIntProperty("ingotNetherflowID", Configuration.CATEGORY_ITEM, 2079));
-        lasergunID = getInt(c.getOrCreateIntProperty("lasergunID", Configuration.CATEGORY_ITEM, 2080));
+        laserGunID = getInt(c.getOrCreateIntProperty("lasergunID", Configuration.CATEGORY_ITEM, 2080));
         energyCellID = getInt(c.getOrCreateIntProperty("energyCellID", Configuration.CATEGORY_ITEM, 2081));
         plasmagunID = getInt(c.getOrCreateIntProperty("plasmagunID", Configuration.CATEGORY_ITEM, 2082));
-        BatteryEmptyID = getInt(c.getOrCreateIntProperty("BatteryEmptyID", Configuration.CATEGORY_ITEM, 2083));
-        BatteryPlasmaID = getInt(c.getOrCreateIntProperty("BatteryPlasmaID", Configuration.CATEGORY_ITEM, 2084));
+        batteryEmptyID = getInt(c.getOrCreateIntProperty("BatteryEmptyID", Configuration.CATEGORY_ITEM, 2083));
+        batteryPlasmaID = getInt(c.getOrCreateIntProperty("BatteryPlasmaID", Configuration.CATEGORY_ITEM, 2084));
         acidgunID = getInt(c.getOrCreateIntProperty("acidgunID", Configuration.CATEGORY_ITEM, 2085));
         beamSplitterID = getInt(c.getOrCreateIntProperty("beamSplitterID", Configuration.CATEGORY_ITEM, 2086));
         plasmagunsplitID = getInt(c.getOrCreateIntProperty("plasmagunsplitID", Configuration.CATEGORY_ITEM, 2087));
-        lasergunsplitID = getInt(c.getOrCreateIntProperty("lasergunsplitID", Configuration.CATEGORY_ITEM, 2088));
+        laserGunsplitID = getInt(c.getOrCreateIntProperty("lasergunsplitID", Configuration.CATEGORY_ITEM, 2088));
         railgunID = getInt(c.getOrCreateIntProperty("railgunID", Configuration.CATEGORY_ITEM, 2089));
-        BatteryChargedID = getInt(c.getOrCreateIntProperty("BatteryChargedID", Configuration.CATEGORY_ITEM, 2090));
-        BatteryOverchargedID = getInt(c.getOrCreateIntProperty("BatteryOverchargedID", Configuration.CATEGORY_ITEM, 2091));
-        lasershotgunID = getInt(c.getOrCreateIntProperty("lasershotgunID", Configuration.CATEGORY_ITEM, 2092));
+        batteryChargedID = getInt(c.getOrCreateIntProperty("BatteryChargedID", Configuration.CATEGORY_ITEM, 2090));
+        batteryOverChargedID = getInt(c.getOrCreateIntProperty("BatteryOverchargedID", Configuration.CATEGORY_ITEM, 2091));
+        laserShotgunID = getInt(c.getOrCreateIntProperty("lasershotgunID", Configuration.CATEGORY_ITEM, 2092));
         cryoniteVialID = getInt(c.getOrCreateIntProperty("cryoniteVialID", Configuration.CATEGORY_ITEM, 2093));
         goopCryoniteID = getInt(c.getOrCreateIntProperty("goopCryoniteID", Configuration.CATEGORY_ITEM, 2094));
         ingotCryoniteID = getInt(c.getOrCreateIntProperty("ingotCryoniteID", Configuration.CATEGORY_ITEM, 2095));
-        cryoblasterID = getInt(c.getOrCreateIntProperty("cryoblasterID", Configuration.CATEGORY_ITEM, 2096));
-        batterycryoID = getInt(c.getOrCreateIntProperty("batterycryoID", Configuration.CATEGORY_ITEM, 2099));
-        ThermoPelletID = getInt(c.getOrCreateIntProperty("ThermoPelletID", Configuration.CATEGORY_ITEM, 2098));
+        cryoBlasterID = getInt(c.getOrCreateIntProperty("cryoblasterID", Configuration.CATEGORY_ITEM, 2096));
+        batteryCryoID = getInt(c.getOrCreateIntProperty("batterycryoID", Configuration.CATEGORY_ITEM, 2099));
+        thermoPelletID = getInt(c.getOrCreateIntProperty("ThermoPelletID", Configuration.CATEGORY_ITEM, 2098));
         
         liquidRes = getInt(c.getOrCreateIntProperty("liquidResolution", Configuration.CATEGORY_GENERAL, 16));
         generateUranium = getBool(c.getOrCreateBooleanProperty("GenerateUranium", Configuration.CATEGORY_GENERAL, true));
@@ -617,19 +617,19 @@ public class PlasmaCraftCore
         });
         ModLoader.addRecipe(new ItemStack(cryoblaster, 1), new Object[] {
             "  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
-            ingotObsidium, Character.valueOf('X'), BatteryCryo, Character.valueOf('E'), ingotPlutonium
+            ingotObsidium, Character.valueOf('X'), batteryCryo, Character.valueOf('E'), ingotPlutonium
         });
         ModLoader.addRecipe(new ItemStack(acidGrenade, 4), new Object[] {
-            "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), fullAcidVial, Character.valueOf('Z'), plasma
+            "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), acidVial, Character.valueOf('Z'), plasma
         });
         ModLoader.addRecipe(new ItemStack(reinforcedGlass, 1), new Object[] {
             "X", "#", Character.valueOf('#'), Block.glass, Character.valueOf('X'), Item.ingotIron
         });
-        ModLoader.addRecipe(new ItemStack(acidVial, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(causticVial, 1), new Object[] {
             "X#X", "Y Y", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Block.glass
         });
-        ModLoader.addRecipe(new ItemStack(plasmificatorIdle, 1), new Object[] {
-            "X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), fullAcidVial
+        ModLoader.addRecipe(new ItemStack(plasmaBenchIdle, 1), new Object[] {
+            "X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), acidVial
         });
         ModLoader.addRecipe(new ItemStack(causticBoat, 1), new Object[] {
             "R R", "RRR", Character.valueOf('R'), ingotRadionite
@@ -637,62 +637,62 @@ public class PlasmaCraftCore
         ModLoader.addRecipe(new ItemStack(energyCell, 5), new Object[] {
             " R ", "RXR", " R ", Character.valueOf('R'), ingotNeptunium, Character.valueOf('X'), plasmaGel
         });
-        ModLoader.addRecipe(new ItemStack(BatteryEmpty, 8), new Object[] {
+        ModLoader.addRecipe(new ItemStack(batteryEmpty, 8), new Object[] {
             "IRI", "I I", "IRI", Character.valueOf('R'), ingotRadionite, Character.valueOf('I'), Item.ingotIron
         });
-        ModLoader.addRecipe(new ItemStack(BatteryCryo, 1), new Object[] {
-            "R", "X", Character.valueOf('R'), goopCryonite, Character.valueOf('X'), BatteryEmpty
+        ModLoader.addRecipe(new ItemStack(batteryCryo, 1), new Object[] {
+            "R", "X", Character.valueOf('R'), goopCryonite, Character.valueOf('X'), batteryEmpty
         });
-        ModLoader.addRecipe(new ItemStack(BatteryPlasma, 1), new Object[] {
-            "R", "X", Character.valueOf('R'), plasma, Character.valueOf('X'), BatteryEmpty
+        ModLoader.addRecipe(new ItemStack(batteryPlasma, 1), new Object[] {
+            "R", "X", Character.valueOf('R'), plasma, Character.valueOf('X'), batteryEmpty
         });
-        ModLoader.addRecipe(new ItemStack(BatteryCharged, 1), new Object[] {
-            "R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), BatteryEmpty
+        ModLoader.addRecipe(new ItemStack(batteryCharged, 1), new Object[] {
+            "R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), batteryEmpty
         });
         ModLoader.addRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
             "N", "J", Character.valueOf('N'), plasmaGel, Character.valueOf('J'), Item.leather
         });
-        ModLoader.addRecipe(new ItemStack(acidHot, 1), new Object[] {
-            "Z", "X", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), fullAcidVial
+        ModLoader.addRecipe(new ItemStack(acidBarrier, 1), new Object[] {
+            "Z", "X", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), acidVial
         });
         ModLoader.addRecipe(new ItemStack(plutoniumVial, 1), new Object[] {
-            "Q", "E", Character.valueOf('Q'), goopPlutonium, Character.valueOf('E'), acidVial
+            "Q", "E", Character.valueOf('Q'), goopPlutonium, Character.valueOf('E'), causticVial
         });
         ModLoader.addRecipe(new ItemStack(radioniteVial, 1), new Object[] {
-            "Q", "F", Character.valueOf('Q'), goopRadionite, Character.valueOf('F'), acidVial
+            "Q", "F", Character.valueOf('Q'), goopRadionite, Character.valueOf('F'), causticVial
         });
         ModLoader.addRecipe(new ItemStack(uraniumVial, 1), new Object[] {
-            "Q", "G", Character.valueOf('Q'), goopUranium, Character.valueOf('G'), acidVial
+            "Q", "G", Character.valueOf('Q'), goopUranium, Character.valueOf('G'), causticVial
         });
         ModLoader.addRecipe(new ItemStack(neptuniumVial, 1), new Object[] {
-            "Q", "H", Character.valueOf('Q'), goopNeptunium, Character.valueOf('H'), acidVial
+            "Q", "H", Character.valueOf('Q'), goopNeptunium, Character.valueOf('H'), causticVial
         });
         ModLoader.addRecipe(new ItemStack(netherflowVial, 1), new Object[] {
-            "Q", "I", Character.valueOf('Q'), goopNetherflow, Character.valueOf('I'), acidVial
+            "Q", "I", Character.valueOf('Q'), goopNetherflow, Character.valueOf('I'), causticVial
         });
         ModLoader.addRecipe(new ItemStack(obsidiumVial, 1), new Object[] {
-            "Q", "J", Character.valueOf('Q'), goopObsidium, Character.valueOf('J'), acidVial
+            "Q", "J", Character.valueOf('Q'), goopObsidium, Character.valueOf('J'), causticVial
         });
         ModLoader.addRecipe(new ItemStack(cryoniteVial, 1), new Object[] {
-            "Q", "J", Character.valueOf('Q'), goopCryonite, Character.valueOf('J'), acidVial
+            "Q", "J", Character.valueOf('Q'), goopCryonite, Character.valueOf('J'), causticVial
         });
-        ModLoader.addRecipe(new ItemStack(helmetHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(hazmatHood, 1), new Object[] {
             "LLL", "L L", Character.valueOf('L'), plasmaLeather
         });
-        ModLoader.addRecipe(new ItemStack(plateHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(hazmatJacket, 1), new Object[] {
             "L L", "LLL", "LLL", Character.valueOf('L'), plasmaLeather
         });
-        ModLoader.addRecipe(new ItemStack(legsHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(hazmatPants, 1), new Object[] {
             "LLL", "L L", "L L", Character.valueOf('L'), plasmaLeather
         });
-        ModLoader.addRecipe(new ItemStack(bootsHazmat, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(hazmatBoots, 1), new Object[] {
             "L L", "L L", Character.valueOf('L'), plasmaLeather
         });
         ModLoader.addRecipe(new ItemStack(acidTnt, 4), new Object[] {
-            "APA", "GAG", "APA", Character.valueOf('A'), fullAcidVial, Character.valueOf('G'), Item.gunpowder, Character.valueOf('P'), plasma
+            "APA", "GAG", "APA", Character.valueOf('A'), acidVial, Character.valueOf('G'), Item.gunpowder, Character.valueOf('P'), plasma
         });
         ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothAcidMeta), new Object[] {
-            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), fullAcidVial
+            "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), acidVial
         });
         ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothRadioniteMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopRadionite

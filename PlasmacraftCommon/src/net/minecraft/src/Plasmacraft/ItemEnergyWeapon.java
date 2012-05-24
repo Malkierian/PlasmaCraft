@@ -42,12 +42,12 @@ public class ItemEnergyWeapon extends ItemPlasma
             }
 
         }
-        if(shiftedIndex == PlasmaCraftCore.plasmagun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryPlasma.shiftedIndex))
+        if(shiftedIndex == PlasmaCraftCore.plasmagun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.batteryPlasma.shiftedIndex))
         {
             int j = random.nextInt(3);
             if(j == 1)
             {
-                entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.BatteryEmpty, 1));
+                entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.batteryEmpty, 1));
             }
             world.playSoundAtEntity(entityplayer, "plasmacraft.lasergun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
             if(!world.isRemote)
@@ -56,14 +56,14 @@ public class ItemEnergyWeapon extends ItemPlasma
                 world.spawnEntityInWorld(new EntityPlasma(world, entityplayer, 12));
             }
         }
-        if(shiftedIndex == PlasmaCraftCore.plasmagunsplit.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryPlasma.shiftedIndex))
+        if(shiftedIndex == PlasmaCraftCore.plasmagunsplit.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.batteryPlasma.shiftedIndex))
         {
             itemstack.damageItem(1, entityplayer);
             world.playSoundAtEntity(entityplayer, "plasmacraft.lasergun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
             int k = random.nextInt(3);
             if(k == 1)
             {
-                entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.BatteryEmpty, 1));
+                entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.batteryEmpty, 1));
             }
             for(int j1 = 0; j1 < 3; j1++)
             {
@@ -74,9 +74,9 @@ public class ItemEnergyWeapon extends ItemPlasma
             }
 
         }
-        if(shiftedIndex == PlasmaCraftCore.acidgun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.fullAcidVial.shiftedIndex))
+        if(shiftedIndex == PlasmaCraftCore.acidgun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.acidVial.shiftedIndex))
         {
-            entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.acidVial, 1));
+            entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.causticVial, 1));
             world.playSoundAtEntity(entityplayer, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
             if(!world.isRemote)
             {
@@ -84,12 +84,12 @@ public class ItemEnergyWeapon extends ItemPlasma
                 world.spawnEntityInWorld(new EntityAcid(world, entityplayer));
             }
         }
-        if(shiftedIndex == PlasmaCraftCore.railgun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryOvercharged.shiftedIndex))
+        if(shiftedIndex == PlasmaCraftCore.railgun.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.batteryOverCharged.shiftedIndex))
         {
             int l = random.nextInt(3);
             if(l == 1)
             {
-                entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.BatteryEmpty, 1));
+                entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.batteryEmpty, 1));
             }
             world.playSoundAtEntity(entityplayer, "plasmacraft.railgun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
             if(!world.isRemote)
@@ -111,7 +111,7 @@ public class ItemEnergyWeapon extends ItemPlasma
             }
 
         }
-        if(shiftedIndex == PlasmaCraftCore.cryoblaster.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.BatteryCryo.shiftedIndex))
+        if(shiftedIndex == PlasmaCraftCore.cryoblaster.shiftedIndex && entityplayer.inventory.consumeInventoryItem(PlasmaCraftCore.batteryCryo.shiftedIndex))
         {
             world.playSoundAtEntity(entityplayer, "plasmacraft.railgun", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 0.8F));
             if(!world.isRemote)

@@ -24,12 +24,12 @@ public class PCOreHandler implements IOreHandler
 		else if(oreClass == "ingotUranium")
 		{
 	        ModLoader.addRecipe(new ItemStack(PlasmaCraftCore.beamSplitter, 1), new Object[] {
-	            " N ", "BXQ", " N ", Character.valueOf('N'), PlasmaCraftCore.ingotNetherflow, Character.valueOf('X'), PlasmaCraftCore.BatteryPlasma, Character.valueOf('Q'), ore.getItem(), Character.valueOf('B'), 
+	            " N ", "BXQ", " N ", Character.valueOf('N'), PlasmaCraftCore.ingotNetherflow, Character.valueOf('X'), PlasmaCraftCore.batteryPlasma, Character.valueOf('Q'), ore.getItem(), Character.valueOf('B'), 
 	            Item.diamond
 	        });
 	        ModLoader.addRecipe(new ItemStack(PlasmaCraftCore.acidgun, 1), new Object[] {
-	            "  Z", "ABC", " MN", Character.valueOf('Z'), PlasmaCraftCore.acidVial, Character.valueOf('A'), PlasmaCraftCore.ingotObsidium, Character.valueOf('B'), ore.getItem(), Character.valueOf('C'), 
-	            PlasmaCraftCore.reinforcedGlass, Character.valueOf('M'), PlasmaCraftCore.BatteryPlasma, Character.valueOf('N'), Item.ingotIron
+	            "  Z", "ABC", " MN", Character.valueOf('Z'), PlasmaCraftCore.causticVial, Character.valueOf('A'), PlasmaCraftCore.ingotObsidium, Character.valueOf('B'), ore.getItem(), Character.valueOf('C'), 
+	            PlasmaCraftCore.reinforcedGlass, Character.valueOf('M'), PlasmaCraftCore.batteryPlasma, Character.valueOf('N'), Item.ingotIron
 	        });
 		}
 		else if(oreClass == "ingotPlutonium")
@@ -40,15 +40,15 @@ public class PCOreHandler implements IOreHandler
 	        ModLoader.addRecipe(new ItemStack(PlasmaCraftCore.plasmagun, 1), new Object[] {
 	            "XBZ", " YZ", Character.valueOf('X'), Item.diamond, Character.valueOf('B'), PlasmaCraftCore.plasma, Character.valueOf('Z'), ore.getItem(), Character.valueOf('Y'), PlasmaCraftCore.ingotObsidium
 	        });
-	        ModLoader.addRecipe(new ItemStack(PlasmaCraftCore.ThermoPellet, 1), new Object[] {
+	        ModLoader.addRecipe(new ItemStack(PlasmaCraftCore.thermoPellet, 1), new Object[] {
 	            "III", "IXI", "III", Character.valueOf('X'), ore.getItem(), Character.valueOf('I'), PlasmaCraftCore.goopUranium
 	        });
 	        ModLoader.addRecipe(new ItemStack(PlasmaCraftCore.lasershotgun, 1), new Object[] {
 	            "  Z", "XBQ", " UP", Character.valueOf('Z'), Item.redstoneRepeater, Character.valueOf('X'), PlasmaCraftCore.beamSplitter, Character.valueOf('B'), PlasmaCraftCore.ingotNetherflow, Character.valueOf('Q'), 
-	            PlasmaCraftCore.BatteryCharged, Character.valueOf('P'), PlasmaCraftCore.ingotPlutonium, Character.valueOf('U'), PlasmaCraftCore.ingotRadionite
+	            PlasmaCraftCore.batteryCharged, Character.valueOf('P'), PlasmaCraftCore.ingotPlutonium, Character.valueOf('U'), PlasmaCraftCore.ingotRadionite
 	        });
 	        ModLoader.addRecipe(new ItemStack(PlasmaCraftCore.railgun, 1), new Object[] {
-	            "XYZ", " BC", "XY ", Character.valueOf('Z'), PlasmaCraftCore.BatteryPlasma, Character.valueOf('X'), PlasmaCraftCore.ingotObsidium, Character.valueOf('B'), PlasmaCraftCore.goopPlutonium, Character.valueOf('C'), 
+	            "XYZ", " BC", "XY ", Character.valueOf('Z'), PlasmaCraftCore.batteryPlasma, Character.valueOf('X'), PlasmaCraftCore.ingotObsidium, Character.valueOf('B'), PlasmaCraftCore.goopPlutonium, Character.valueOf('C'), 
 	            Item.ingotGold, Character.valueOf('Y'), PlasmaCraftCore.ingotPlutonium
 	        });
 		}

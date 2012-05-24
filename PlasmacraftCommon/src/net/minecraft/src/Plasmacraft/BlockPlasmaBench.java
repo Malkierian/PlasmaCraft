@@ -49,7 +49,7 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
     @Override
     public int idDropped(int i, Random random, int j)
     {
-        return PlasmaCraftCore.plasmificatorIdle.blockID;
+        return PlasmaCraftCore.plasmaBenchIdle.blockID;
     }
 
     @Override
@@ -155,10 +155,10 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
         keepPlasmificatorInventory = true;
         if(flag)
         {
-            world.setBlockWithNotify(i, j, k, PlasmaCraftCore.plasmificatorActive.blockID);
+            world.setBlockWithNotify(i, j, k, PlasmaCraftCore.plasmaBenchActive.blockID);
         } else
         {
-            world.setBlockWithNotify(i, j, k, PlasmaCraftCore.plasmificatorIdle.blockID);
+            world.setBlockWithNotify(i, j, k, PlasmaCraftCore.plasmaBenchIdle.blockID);
         }
         keepPlasmificatorInventory = false;
         world.setBlockMetadataWithNotify(i, j, k, l);

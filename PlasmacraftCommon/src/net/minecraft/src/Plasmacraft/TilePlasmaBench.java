@@ -336,7 +336,7 @@ public class TilePlasmaBench extends TileEntity
 	            {
 	                break;
 	            }
-	            ItemStack itemstack1 = new ItemStack(PlasmaCraftCore.acidVial);
+	            ItemStack itemstack1 = new ItemStack(PlasmaCraftCore.causticVial);
 	            j = getAvailableDestIndex(itemstack1);
 	            if(j != -1)
 	            {
@@ -344,7 +344,7 @@ public class TilePlasmaBench extends TileEntity
 	            }
 	            l++;
 	        } while(true);
-	        ItemStack itemstack2 = new ItemStack(PlasmaCraftCore.acidVial);
+	        ItemStack itemstack2 = new ItemStack(PlasmaCraftCore.causticVial);
 	        if(j == -1)
 	        {
 	        	Random rand = new Random();
@@ -352,7 +352,7 @@ public class TilePlasmaBench extends TileEntity
 	            float f1 = rand.nextFloat() * 0.8F + 0.1F;
 	            float f2 = rand.nextFloat() * 0.8F + 0.1F;
 	            float f3 = 0.05F;
-	            EntityItem entityitem = new EntityItem(worldObj, (float)xCoord + f, (float)yCoord + f1, (float)zCoord + f2, new ItemStack(PlasmaCraftCore.acidVial));
+	            EntityItem entityitem = new EntityItem(worldObj, (float)xCoord + f, (float)yCoord + f1, (float)zCoord + f2, new ItemStack(PlasmaCraftCore.causticVial));
 	            entityitem.motionX = (float)rand.nextGaussian() * f3;
 	            entityitem.motionY = (float)rand.nextGaussian() * f3 + 0.2F;
 	            entityitem.motionZ = (float)rand.nextGaussian() * f3;
@@ -388,7 +388,7 @@ public class TilePlasmaBench extends TileEntity
         {
             return 4000;
         }
-        if(i == PlasmaCraftCore.BatteryCharged.shiftedIndex)
+        if(i == PlasmaCraftCore.batteryCharged.shiftedIndex)
         {
             return 4000;
         }
@@ -396,7 +396,7 @@ public class TilePlasmaBench extends TileEntity
         {
             return 8000;
         }
-        if(i == PlasmaCraftCore.BatteryPlasma.shiftedIndex)
+        if(i == PlasmaCraftCore.batteryPlasma.shiftedIndex)
         {
             return 8000;
         }

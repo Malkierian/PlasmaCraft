@@ -65,9 +65,9 @@ public class EntityMutantCow extends EntityAnimal
     public boolean interact(EntityPlayer entityplayer)
     {
         ItemStack itemstack = entityplayer.inventory.getCurrentItem();
-        if(itemstack != null && itemstack.itemID == PlasmaCraftCore.acidVial.shiftedIndex)
+        if(itemstack != null && itemstack.itemID == PlasmaCraftCore.causticVial.shiftedIndex)
         {
-            entityplayer.inventory.setInventorySlotContents(entityplayer.inventory.currentItem, new ItemStack(PlasmaCraftCore.fullAcidVial));
+            entityplayer.inventory.setInventorySlotContents(entityplayer.inventory.currentItem, new ItemStack(PlasmaCraftCore.acidVial));
             return true;
         }
         else

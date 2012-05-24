@@ -63,7 +63,7 @@ public class ItemVial extends ItemPlasma
                 {
                     if(world.setBlockWithNotify(i, j, k, 0))
                     {
-                    	returnStack = new ItemStack(PlasmaCraftCore.fullAcidVial);
+                    	returnStack = new ItemStack(PlasmaCraftCore.acidVial);
                     }
                 }
                 else
@@ -149,7 +149,7 @@ public class ItemVial extends ItemPlasma
                     //if(itemstack.stackSize > 1)
                     //{
                     	itemstack.stackSize--;
-                    	entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.acidVial));
+                    	entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.causticVial));
                     	return itemstack;
                     //}
                     //else
@@ -164,7 +164,7 @@ public class ItemVial extends ItemPlasma
         	//if(itemstack.stackSize > 1)
         	//{
         		itemstack.stackSize--;
-        		entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.fullAcidVial));
+        		entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraftCore.acidVial));
         		return itemstack;
         	//}
         	//else

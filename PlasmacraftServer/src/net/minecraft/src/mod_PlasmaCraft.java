@@ -122,7 +122,7 @@ public class mod_PlasmaCraft extends NetworkMod
         {
             return 0x7a120;
         }
-        return i != PlasmaCraftCore.ThermoPellet.shiftedIndex ? 0 : 0xf4240;
+        return i != PlasmaCraftCore.thermoPellet.shiftedIndex ? 0 : 0xf4240;
     }
 
 	@Override

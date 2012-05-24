@@ -33,7 +33,7 @@ public class BlockAcidHot extends Block implements ITextureProvider
 
     public int idDropped(int i, Random random)
     {
-        return PlasmaCraftCore.acidHot.blockID;
+        return PlasmaCraftCore.acidBarrier.blockID;
     }
 
     public int getRenderBlockPass()

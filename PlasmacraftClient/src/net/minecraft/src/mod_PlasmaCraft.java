@@ -68,19 +68,19 @@ public class mod_PlasmaCraft extends NetworkMod
         ModLoader.addName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
         ModLoader.addName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
         ModLoader.addName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
-        ModLoader.addName(PlasmaCraftCore.plasmificatorIdle, "Plasmificator");
-        ModLoader.addName(PlasmaCraftCore.acidHot, "Acidic Barrier");
+        ModLoader.addName(PlasmaCraftCore.plasmaBenchIdle, "Plasmificator");
+        ModLoader.addName(PlasmaCraftCore.acidBarrier, "Acidic Barrier");
         ModLoader.addName(PlasmaCraftCore.acidTnt, "Acidic TNT");
         ModLoader.addName(PlasmaCraftCore.ingotPlutonium, "Plutonium Ingot");
         ModLoader.addName(PlasmaCraftCore.ingotRadionite, "Radionite Ingot");
         ModLoader.addName(PlasmaCraftCore.energyCell, "Energy Cell");
         ModLoader.addName(PlasmaCraftCore.beamSplitter, "Rifle Beam Splitter");
-        ModLoader.addName(PlasmaCraftCore.BatteryEmpty, "Caustic Battery: Empty");
-        ModLoader.addName(PlasmaCraftCore.ThermoPellet, "Thermonuclear Pellet");
-        ModLoader.addName(PlasmaCraftCore.BatteryCryo, "Cryo Battery");
-        ModLoader.addName(PlasmaCraftCore.BatteryCharged, "Caustic Battery: Charged");
-        ModLoader.addName(PlasmaCraftCore.BatteryOvercharged, "Caustic Battery: Overcharged");
-        ModLoader.addName(PlasmaCraftCore.BatteryPlasma, "Caustic Battery: Plasma");
+        ModLoader.addName(PlasmaCraftCore.batteryEmpty, "Caustic Battery: Empty");
+        ModLoader.addName(PlasmaCraftCore.thermoPellet, "Thermonuclear Pellet");
+        ModLoader.addName(PlasmaCraftCore.batteryCryo, "Cryo Battery");
+        ModLoader.addName(PlasmaCraftCore.batteryCharged, "Caustic Battery: Charged");
+        ModLoader.addName(PlasmaCraftCore.batteryOverCharged, "Caustic Battery: Overcharged");
+        ModLoader.addName(PlasmaCraftCore.batteryPlasma, "Caustic Battery: Plasma");
         ModLoader.addName(PlasmaCraftCore.ingotNeptunium, "Neptunium Ingot");
         ModLoader.addName(PlasmaCraftCore.ingotObsidium, "Obsidium Ingot");
         ModLoader.addName(PlasmaCraftCore.ingotCryonite, "Cryonite Ingot");
@@ -93,8 +93,8 @@ public class mod_PlasmaCraft extends NetworkMod
         ModLoader.addName(PlasmaCraftCore.goopObsidium, "Obsidium Goop");
         ModLoader.addName(PlasmaCraftCore.goopCryonite, "Cryonite Goop");
         ModLoader.addName(PlasmaCraftCore.goopUranium, "Uranium Goop");
-        ModLoader.addName(PlasmaCraftCore.acidVial, "Empty Vial");
-        ModLoader.addName(PlasmaCraftCore.fullAcidVial, "Acid Vial");
+        ModLoader.addName(PlasmaCraftCore.causticVial, "Empty Vial");
+        ModLoader.addName(PlasmaCraftCore.acidVial, "Acid Vial");
         ModLoader.addName(PlasmaCraftCore.plutoniumVial, "Plutonium Vial");
         ModLoader.addName(PlasmaCraftCore.radioniteVial, "Radionite Vial");
         ModLoader.addName(PlasmaCraftCore.uraniumVial, "Uranium Vial");
@@ -114,10 +114,10 @@ public class mod_PlasmaCraft extends NetworkMod
         ModLoader.addName(PlasmaCraftCore.cryoblaster, "Cryo Blaster");
         ModLoader.addName(PlasmaCraftCore.lasershotgun, "Laser Shotgun");
         ModLoader.addName(PlasmaCraftCore.causticBoat, "Radionite Boat");
-        ModLoader.addName(PlasmaCraftCore.helmetHazmat, "Hazmat Hood");
-        ModLoader.addName(PlasmaCraftCore.plateHazmat, "Hazmat Jacket");
-        ModLoader.addName(PlasmaCraftCore.legsHazmat, "Hazmat Pants");
-        ModLoader.addName(PlasmaCraftCore.bootsHazmat, "Hazmat Boots");
+        ModLoader.addName(PlasmaCraftCore.hazmatHood, "Hazmat Hood");
+        ModLoader.addName(PlasmaCraftCore.hazmatJacket, "Hazmat Jacket");
+        ModLoader.addName(PlasmaCraftCore.hazmatPants, "Hazmat Pants");
+        ModLoader.addName(PlasmaCraftCore.hazmatBoots, "Hazmat Boots");
 
         ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothAcidMeta), "Acid Glowcloth");
         ModLoader.addName(new ItemStack(PlasmaCraftCore.glowCloth, 1, PlasmaCraftCore.glowClothRadioniteMeta), "Radionite Glowcloth");
@@ -145,13 +145,13 @@ public class mod_PlasmaCraft extends NetworkMod
         {
             return 0x7a120;
         }
-        return i != PlasmaCraftCore.ThermoPellet.shiftedIndex ? 0 : 0xf4240;
+        return i != PlasmaCraftCore.thermoPellet.shiftedIndex ? 0 : 0xf4240;
     }
 
     @Override
     public void registerAnimation(Minecraft minecraft)
     {
-        ModLoader.addAnimation(new TextureFrameAnimFX(PlasmaCraftCore.plasmificatorFront, "/PlasmaCraftSprites/animations/animatedplasmificator.png"));
+        ModLoader.addAnimation(new TextureFrameAnimFX(PlasmaCraftCore.plasmaBenchFront, "/PlasmaCraftSprites/animations/animatedplasmificator.png"));
         registerLiquidFX(PlasmaCraftCore.cryoniteStillIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F);
         registerLiquidFX(PlasmaCraftCore.acidStillIndex, 0.5F, 1.0F, 0.5F, 1.0F, 32F, 255F, 50F, 146F, 32F, 64F, 64F, 50F);
         registerLiquidFX(PlasmaCraftCore.plutoniumStillIndex, 0.5F, 0.9F, 1.0F, 1.0F, 32F, 64F, 64F, 255F, 32F, 64F, 64F, 75F);
