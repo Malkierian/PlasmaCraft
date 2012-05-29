@@ -27,17 +27,17 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
     private final int frontActiveTexture;
     private static boolean keepPlasmificatorInventory = false;
 
-    protected BlockPlasmaBench(int i, int j, int k, int l, boolean flag, float lightValue)
+    protected BlockPlasmaBench(int i)
     {
         super(i, Material.rock);
-        isActive = flag;
+        isActive = false;
         plasmificatorRand = new Random();
-        blockIndexInTexture = j;
-        frontIdleTexture = k;
-        frontActiveTexture = l;
+        blockIndexInTexture = PlasmaCraftCore.plasmaBenchSidesIndex;
+        frontIdleTexture = PlasmaCraftCore.plasmaBenchFrontIdleIndex;
+        frontActiveTexture = PlasmaCraftCore.plasmaBenchFrontAnim;
         setHardness(3F);
         setStepSound(Block.soundStoneFootstep);
-        setLightValue(lightValue);
+        setLightValue(0.0f);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
     @Override
     public int idDropped(int i, Random random, int j)
     {
-        return PlasmaCraftCore.plasmaBenchIdle.blockID;
+        return PlasmaCraftCore.plasmaBench.blockID;
     }
 
     @Override
@@ -89,14 +89,16 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
         world.setBlockMetadataWithNotify(i, j, k, byte0);
     }
 
+    @Override
     public int getBlockTexture(IBlockAccess iblockaccess, int i, int j, int k, int l)
     {
         int i1 = iblockaccess.getBlockMetadata(i, j, k);
-        if(l != i1)
+        int meta = i1 > 8 ? i1 - 8 : i1; 
+        if(l != meta)
         {
             return blockIndexInTexture;
         }
-        if(isActive)
+        if(i1 > 8)
         {
             return frontActiveTexture;
         } else
@@ -117,11 +119,14 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
     }
 
     @Override
-    public int getBlockTextureFromSide(int i)
+    public int getBlockTextureFromSideAndMetadata(int i, int j)
     {
         if(i == 3)
         {
-            return frontIdleTexture;
+        	if(j > 8)
+        		return frontActiveTexture;
+        	else
+        		return frontIdleTexture;
         } else
         {
             return blockIndexInTexture;
@@ -131,14 +136,14 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
     @Override
     public boolean blockActivated(World world, int i, int j, int k, EntityPlayer entityplayer)
     {
+    	// Drop through if the player is sneaking
+		if(entityplayer.isSneaking())
+			return false;
+		
     	TileEntity tileentity = world.getBlockTileEntity(i, j, k);
     	
     	if(tileentity == null || !(tileentity instanceof TilePlasmaBench))
     		return false;
-		
-		// Drop through if the player is sneaking
-		if(entityplayer.isSneaking())
-			return false;
 		
 		if(world.isRemote)
 			return true;
@@ -151,24 +156,28 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
     public static void updatePlasmificatorBlockState(boolean flag, World world, int i, int j, int k)
     {
         int l = world.getBlockMetadata(i, j, k);
-        TileEntity tileentity = world.getBlockTileEntity(i, j, k);
-        keepPlasmificatorInventory = true;
+//        TileEntity tileentity = world.getBlockTileEntity(i, j, k);
+//        keepPlasmificatorInventory = true;
         if(flag)
         {
-            world.setBlockWithNotify(i, j, k, PlasmaCraftCore.plasmaBenchActive.blockID);
-        } else
-        {
-            world.setBlockWithNotify(i, j, k, PlasmaCraftCore.plasmaBenchIdle.blockID);
+        	if(l < 8)
+        		l += 8;
         }
-        keepPlasmificatorInventory = false;
+        else
+        {
+        	if(l > 8)
+        		l -= 8;
+        }
+        
+        //keepPlasmificatorInventory = false;
         world.setBlockMetadataWithNotify(i, j, k, l);
-        if(tileentity != null)
-        {
-            tileentity.validate();
-            world.setBlockTileEntity(i, j, k, tileentity);
-        }
+        world.markBlockNeedsUpdate(i, j, k);
+//        if(tileentity != null)
+//        {
+//            tileentity.validate();
+//            world.setBlockTileEntity(i, j, k, tileentity);
+//        }
     }
-
     
     @Override
     public TileEntity getBlockEntity()

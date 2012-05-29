@@ -14,7 +14,6 @@ import net.minecraft.src.ModLoader;
 import net.minecraft.src.World;
 import net.minecraft.src.mod_PlasmaCraft;
 import net.minecraft.src.Plasmacraft.WorldGenCaustics;
-import net.minecraft.src.Plasmacraft.WorldGenFrozenCryonite;
 import net.minecraft.src.WorldGenLakes;
 import net.minecraft.src.WorldGenMinable;
 import net.minecraft.src.forge.Configuration;
@@ -50,7 +49,7 @@ public class PlasmaCraftCore
 	public static Block obsidiumMoving;
 	public static Block obsidiumStill;
 	public static Block plasmaBenchActive;
-	public static Block plasmaBenchIdle;
+	public static Block plasmaBench;
 	public static Block plutoniumMoving;
 	public static Block plutoniumStill;
 	public static Block radioniteMoving;
@@ -241,7 +240,7 @@ public class PlasmaCraftCore
 	public static int hazmatHoodID;
 	public static int hazmatJacketID;
 	public static int hazmatPantsID;
-	public static int plasmaBenchFront;
+	public static int plasmaBenchFrontAnim;
 	
 	public static boolean liquidSourceExplodesAfterCausticExplosion;
 	public static int acidBarrierBlockID;
@@ -282,7 +281,7 @@ public class PlasmaCraftCore
 	public static int netherflowVialID;
 	public static int obsidiumVialID;
 	public static int plasmaBenchActiveBlockID;
-	public static int plasmaBenchIdleBlockID;
+	public static int plasmaBenchBlockID;
 	public static int plasmaGelID;
 	public static int plasmaID;
 	public static int plasmaLeatherID;
@@ -398,10 +397,9 @@ public class PlasmaCraftCore
         reinforcedGlass = (new BlockReinforcedGlass(reinforcedGlassBlockID, reinforcedGlassIndex, Material.glass, false, 500.0F)).setBlockName("reinforcedGlass");
         frozenCryonite = (new BlockReinforcedGlass(cryoniteFrozenBlockID, frozenCryoniteIndex, Material.glass, false, 1.0F)).setBlockName("frozenCryonite");
         
-        plasmaBenchIdle = (new BlockPlasmaBench(plasmaBenchIdleBlockID, plasmaBenchSidesIndex, plasmaBenchFrontIdleIndex, plasmaBenchFront, false, 0.0F)).setBlockName("plasmificatorIdle");
-        plasmaBenchActive = (new BlockPlasmaBench(plasmaBenchActiveBlockID, plasmaBenchSidesIndex, plasmaBenchFrontIdleIndex, plasmaBenchFront, true, 1.0F)).setBlockName("plasmificatorActive");
+        plasmaBench = (new BlockPlasmaBench(plasmaBenchBlockID)).setBlockName("plasmaBench");
         
-        acidBarrier = (new BlockAcidHot(acidBarrierBlockID, acidBarrierIndex)).setBlockName("acidHot");
+        acidBarrier = (new BlockAcidHot(acidBarrierBlockID, acidBarrierIndex)).setBlockName("acidBarrier");
         
         acidTnt = (new BlockAcidTNT(acidTNTBlockID, acidTntSideIndex, acidTntTopIndex, acidTntBottomIndex)).setBlockName("acidTnt");
         
@@ -473,8 +471,7 @@ public class PlasmaCraftCore
         ModLoader.registerBlock(obsidiumMoving);
         ModLoader.registerBlock(frozenCryonite);
         ModLoader.registerBlock(reinforcedGlass);
-        ModLoader.registerBlock(plasmaBenchIdle);
-        ModLoader.registerBlock(plasmaBenchActive);
+        ModLoader.registerBlock(plasmaBench);
         ModLoader.registerBlock(acidBarrier);
         ModLoader.registerBlock(acidTnt);
         
@@ -540,7 +537,7 @@ public class PlasmaCraftCore
         acidStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidStill", 127));
         acidFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidFlowing", 126));
         reinforcedGlassBlockID = getInt(c.getOrCreateBlockIdProperty("ID.ReinforcedGlass", 125));
-        plasmaBenchIdleBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorIdle", 153));
+        plasmaBenchBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorIdle", 153));
         plasmaBenchActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 152));
         acidBarrierBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidBarrier", 151));
         acidTNTBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidTNT", 150));
@@ -628,7 +625,7 @@ public class PlasmaCraftCore
         ModLoader.addRecipe(new ItemStack(causticVial, 1), new Object[] {
             "X#X", "Y Y", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Block.glass
         });
-        ModLoader.addRecipe(new ItemStack(plasmaBenchIdle, 1), new Object[] {
+        ModLoader.addRecipe(new ItemStack(plasmaBench, 1), new Object[] {
             "X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), acidVial
         });
         ModLoader.addRecipe(new ItemStack(causticBoat, 1), new Object[] {
@@ -742,7 +739,7 @@ public class PlasmaCraftCore
             int k3 = random.nextInt(16) + 8;
             if(j2 < netherflowLakeYCutoff)
             {
-                (new WorldGenCausticLakes(netherflowMoving.blockID)).generate(world, random, i1, j2, k3);
+                //(new WorldGenCausticLakes(netherflowMoving.blockID)).generate(world, random, i1, j2, k3);
             }
         }
         for(int j1 = 0; j1 < netherflowSpoutCount; j1++)

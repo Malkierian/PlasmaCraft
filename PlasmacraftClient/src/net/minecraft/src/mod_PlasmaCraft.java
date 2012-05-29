@@ -68,7 +68,7 @@ public class mod_PlasmaCraft extends NetworkMod
         ModLoader.addName(PlasmaCraftCore.frozenCryonite, "Frozen Cryonite");
         ModLoader.addName(PlasmaCraftCore.acidGrenade, "Acid Grenade");
         ModLoader.addName(PlasmaCraftCore.reinforcedGlass, "Reinforced Glass");
-        ModLoader.addName(PlasmaCraftCore.plasmaBenchIdle, "Plasmificator");
+        ModLoader.addName(PlasmaCraftCore.plasmaBench, "Plasmificator");
         ModLoader.addName(PlasmaCraftCore.acidBarrier, "Acidic Barrier");
         ModLoader.addName(PlasmaCraftCore.acidTnt, "Acidic TNT");
         ModLoader.addName(PlasmaCraftCore.ingotPlutonium, "Plutonium Ingot");
@@ -151,7 +151,7 @@ public class mod_PlasmaCraft extends NetworkMod
     @Override
     public void registerAnimation(Minecraft minecraft)
     {
-        ModLoader.addAnimation(new TextureFrameAnimFX(PlasmaCraftCore.plasmaBenchFront, "/PlasmaCraftSprites/animations/animatedplasmificator.png"));
+        ModLoader.addAnimation(new TextureFrameAnimFX(PlasmaCraftCore.plasmaBenchFrontAnim, "/PlasmaCraftSprites/animations/animatedplasmificator.png"));
         registerLiquidFX(PlasmaCraftCore.cryoniteStillIndex, 0.5F, 0.8F, 1.0F, 1.0F, 128F, 230F, 255F, 146F, 32F, 50F, 36F, 55F);
         registerLiquidFX(PlasmaCraftCore.acidStillIndex, 0.5F, 1.0F, 0.5F, 1.0F, 32F, 255F, 50F, 146F, 32F, 64F, 64F, 50F);
         registerLiquidFX(PlasmaCraftCore.plutoniumStillIndex, 0.5F, 0.9F, 1.0F, 1.0F, 32F, 64F, 64F, 255F, 32F, 64F, 64F, 75F);
