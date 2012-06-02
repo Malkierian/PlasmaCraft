@@ -51,10 +51,6 @@ public class TextureFrameAnimFX extends TextureFX
         {
 			e.printStackTrace();
 		}
-        catch (NoSuchFieldException e)
-		{
-			e.printStackTrace();
-		}
     }
 
     public void onTick()

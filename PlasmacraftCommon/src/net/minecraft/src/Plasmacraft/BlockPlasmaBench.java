@@ -89,7 +89,6 @@ public class BlockPlasmaBench extends BlockContainer implements ITextureProvider
         world.setBlockMetadataWithNotify(i, j, k, byte0);
     }
 
-    @Override
     public int getBlockTexture(IBlockAccess iblockaccess, int i, int j, int k, int l)
     {
         int i1 = iblockaccess.getBlockMetadata(i, j, k);

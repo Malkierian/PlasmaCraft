@@ -48,7 +48,6 @@ public class PlasmaCraftCore
 	public static Block netherflowStill;
 	public static Block obsidiumMoving;
 	public static Block obsidiumStill;
-	public static Block plasmaBenchActive;
 	public static Block plasmaBench;
 	public static Block plutoniumMoving;
 	public static Block plutoniumStill;
@@ -537,8 +536,7 @@ public class PlasmaCraftCore
         acidStillBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidStill", 127));
         acidFlowingBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidFlowing", 126));
         reinforcedGlassBlockID = getInt(c.getOrCreateBlockIdProperty("ID.ReinforcedGlass", 125));
-        plasmaBenchBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorIdle", 153));
-        plasmaBenchActiveBlockID = getInt(c.getOrCreateBlockIdProperty("ID.PlasmificatorActive", 152));
+        plasmaBenchBlockID = getInt(c.getOrCreateBlockIdProperty("ID.Plasmificator", 152));
         acidBarrierBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidBarrier", 151));
         acidTNTBlockID = getInt(c.getOrCreateBlockIdProperty("ID.AcidTNT", 150));
         
