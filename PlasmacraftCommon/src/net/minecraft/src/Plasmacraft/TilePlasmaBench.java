@@ -380,7 +380,7 @@ public class TilePlasmaBench extends TileEntity
         {
         	return 250;
         }
-        if(i == PlasmaCraftCore.plasmaGel.shiftedIndex)
+        if(i == PlasmaCraftCore.goopAcid.shiftedIndex)
         {
             return 1000;
         }

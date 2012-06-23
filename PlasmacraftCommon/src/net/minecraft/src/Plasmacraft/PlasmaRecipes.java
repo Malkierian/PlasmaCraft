@@ -33,7 +33,7 @@ public class PlasmaRecipes
         addPlasmaRecipe(PlasmaCraftCore.goopObsidium.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotObsidium));
         addPlasmaRecipe(PlasmaCraftCore.goopUranium.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotUranium));
         addPlasmaRecipe(PlasmaCraftCore.goopCryonite.shiftedIndex, new ItemStack(PlasmaCraftCore.ingotCryonite));
-        addPlasmaRecipe(PlasmaCraftCore.acidVial.shiftedIndex, new ItemStack(PlasmaCraftCore.plasmaGel));
+        addPlasmaRecipe(PlasmaCraftCore.acidVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopAcid));
         addPlasmaRecipe(PlasmaCraftCore.netherflowVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopNetherflow));
         addPlasmaRecipe(PlasmaCraftCore.plutoniumVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopPlutonium));
         addPlasmaRecipe(PlasmaCraftCore.radioniteVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopRadionite));
@@ -41,9 +41,9 @@ public class PlasmaRecipes
         addPlasmaRecipe(PlasmaCraftCore.obsidiumVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopObsidium));
         addPlasmaRecipe(PlasmaCraftCore.uraniumVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopUranium));
         addPlasmaRecipe(PlasmaCraftCore.cryoniteVial.shiftedIndex, new ItemStack(PlasmaCraftCore.goopCryonite));
-        addPlasmaRecipe(PlasmaCraftCore.plasmaGel.shiftedIndex, new ItemStack(PlasmaCraftCore.plasma));
+        addPlasmaRecipe(PlasmaCraftCore.goopAcid.shiftedIndex, new ItemStack(PlasmaCraftCore.plasma));
         addPlasmaRecipe(PlasmaCraftCore.batteryCharged.shiftedIndex, new ItemStack(PlasmaCraftCore.batteryOverCharged));
-        addPlasmaRecipe(Item.slimeBall.shiftedIndex, new ItemStack(PlasmaCraftCore.plasmaGel));
+        addPlasmaRecipe(Item.slimeBall.shiftedIndex, new ItemStack(PlasmaCraftCore.goopAcid));
     }
 
     public void addPlasmaRecipe(int i, ItemStack itemstack)

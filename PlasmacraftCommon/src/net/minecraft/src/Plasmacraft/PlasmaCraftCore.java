@@ -17,6 +17,7 @@ import net.minecraft.src.Plasmacraft.WorldGenCaustics;
 import net.minecraft.src.WorldGenLakes;
 import net.minecraft.src.WorldGenMinable;
 import net.minecraft.src.forge.Configuration;
+import net.minecraft.src.forge.ForgeHooks;
 import net.minecraft.src.forge.MinecraftForge;
 import net.minecraft.src.forge.Property;
 
@@ -30,7 +31,7 @@ public class PlasmaCraftCore
 	
 	public static String Version()
 	{
-		return "1.2.5/0.2.9";
+		return "1.2.5/0.3.0";
 	}
 	
 	public static IPCProxy proxy;
@@ -74,6 +75,7 @@ public class PlasmaCraftCore
 	public static Item cryoblaster;
 	public static Item cryoniteVial;
 	public static Item energyCell;
+	public static Item goopAcid;
 	public static Item goopCryonite;
 	public static Item goopNeptunium;
 	public static Item goopNetherflow;
@@ -99,7 +101,6 @@ public class PlasmaCraftCore
 	public static Item netherflowVial;
 	public static Item obsidiumVial;
 	public static Item plasma;
-	public static Item plasmaGel;
 	public static Item plasmaLeather;
 	public static Item plasmagun;
 	public static Item plasmagunsplit;
@@ -340,6 +341,7 @@ public class PlasmaCraftCore
 	
 	public static void init(int causticID, mod_PlasmaCraft mod2)
 	{
+		versionDetect("PlasmaCraft", 3, 3, 7, 135);
 		mod = mod2;
 		loadConfig();
 		
@@ -433,7 +435,7 @@ public class PlasmaCraftCore
         netherflowVial = (new ItemVial(netherflowVialID, netherflowMoving.blockID, EnumPlasmaLiquid.NETHERFLOW)).setIconIndex(netherflowVialIndex).setItemName("netherflowVial");
         obsidiumVial = (new ItemVial(obsidiumVialID, obsidiumMoving.blockID, EnumPlasmaLiquid.OBSIDIUM)).setIconIndex(obsidiumVialIndex).setItemName("obsidiumVial");
         cryoniteVial = (new ItemVial(cryoniteVialID, cryoniteMoving.blockID, EnumPlasmaLiquid.CRYONITE)).setIconIndex(cryoniteVialIndex).setItemName("cryoniteVial");
-        plasmaGel = (new ItemPlasma(plasmaGelID)).setIconIndex(plasmaGelIndex).setItemName("plasmaGel");
+        goopAcid = (new ItemPlasma(plasmaGelID)).setIconIndex(plasmaGelIndex).setItemName("plasmaGel");
         plasmaLeather = (new ItemPlasma(plasmaLeatherID)).setIconIndex(plasmaLeatherIndex).setItemName("plasmaLeather");
         plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");
         causticBoat = (new ItemCausticBoat(causticBoatID)).setIconIndex(causticBoatIndex).setItemName("causticBoat");
@@ -630,7 +632,7 @@ public class PlasmaCraftCore
             "R R", "RRR", Character.valueOf('R'), ingotRadionite
         });
         ModLoader.addRecipe(new ItemStack(energyCell, 5), new Object[] {
-            " R ", "RXR", " R ", Character.valueOf('R'), ingotNeptunium, Character.valueOf('X'), plasmaGel
+            " R ", "RXR", " R ", Character.valueOf('R'), ingotNeptunium, Character.valueOf('X'), goopAcid
         });
         ModLoader.addRecipe(new ItemStack(batteryEmpty, 8), new Object[] {
             "IRI", "I I", "IRI", Character.valueOf('R'), ingotRadionite, Character.valueOf('I'), Item.ingotIron
@@ -645,7 +647,7 @@ public class PlasmaCraftCore
             "R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), batteryEmpty
         });
         ModLoader.addRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
-            "N", "J", Character.valueOf('N'), plasmaGel, Character.valueOf('J'), Item.leather
+            "N", "J", Character.valueOf('N'), goopAcid, Character.valueOf('J'), Item.leather
         });
         ModLoader.addRecipe(new ItemStack(acidBarrier, 1), new Object[] {
             "Z", "X", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), acidVial
@@ -709,6 +711,27 @@ public class PlasmaCraftCore
         });
         ModLoader.addRecipe(new ItemStack(glowCloth, 1, glowClothObsidiumMeta), new Object[] {
             "C", "D", Character.valueOf('C'), Block.cloth, Character.valueOf('D'), goopObsidium
+        });
+        ModLoader.addShapelessRecipe(new ItemStack(goopCryonite, 4), new Object[]{
+        	plasma, goopCryonite
+        });
+        ModLoader.addShapelessRecipe(new ItemStack(goopNeptunium, 4), new Object[]{
+        	plasma, goopNeptunium
+        });
+        ModLoader.addShapelessRecipe(new ItemStack(goopNetherflow, 4), new Object[]{
+        	plasma, goopNetherflow
+        });
+        ModLoader.addShapelessRecipe(new ItemStack(goopObsidium, 4), new Object[]{
+        	plasma, goopObsidium
+        });
+        ModLoader.addShapelessRecipe(new ItemStack(goopPlutonium, 4), new Object[]{
+        	plasma, goopPlutonium
+        });
+        ModLoader.addShapelessRecipe(new ItemStack(goopRadionite, 4), new Object[]{
+        	plasma, goopRadionite
+        });
+        ModLoader.addShapelessRecipe(new ItemStack(goopUranium, 4), new Object[]{
+        	plasma, goopUranium
         });
     }
 
@@ -791,5 +814,32 @@ public class PlasmaCraftCore
         }
         
         CausticLakes.populateSurfaceLiquids(world, random, i, j);
+    }
+    
+    public static void versionDetect(String mod, int major, int minor, int revision, int build)
+    {
+        if (major != ForgeHooks.majorVersion)
+        {
+            MinecraftForge.killMinecraft(mod, "MinecraftForge Major Version Mismatch, expecting " + major + ".x.x");
+        }
+        else if (minor != ForgeHooks.minorVersion)
+        {
+            if (minor > ForgeHooks.minorVersion)
+            {
+            	MinecraftForge.killMinecraft(mod, "MinecraftForge Too Old, need at least " + major + "." + minor + "." + revision);
+            }
+            else
+            {
+                System.out.println(mod + ": MinecraftForge minor version mismatch, expecting " + major + "." + minor + ".x, may lead to unexpected behavior");
+            }
+        }
+        else if (revision > ForgeHooks.revisionVersion)
+        {
+        	MinecraftForge.killMinecraft(mod, "MinecraftForge Too Old, need at least " + major + "." + minor + "." + revision);
+        }
+        else if (build > ForgeHooks.buildVersion)
+        {
+        	System.out.println(mod + "MinecraftForge build version mismatch, expecting " + build + "; may lead to unexpected behavior");
+        }
     }
 }
