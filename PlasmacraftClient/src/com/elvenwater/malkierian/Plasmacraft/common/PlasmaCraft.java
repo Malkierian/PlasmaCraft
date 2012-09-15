@@ -22,6 +22,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 public class PlasmaCraft
 {
 	public static Block orePlasma;
+	public static Block glowCloth;
 	
 	public static int oreNeptuniumIndex = 8;
 	public static int oreObsidiumIndex = 9;
@@ -36,6 +37,7 @@ public class PlasmaCraft
     public static final int uraniumMeta = 4;
     
 	public static int oreBlockID = 2500;
+	public static int glowClothBlockID = 2501;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -71,6 +73,24 @@ public class PlasmaCraft
 	public static int uraniumOreVeinSize = 6;
 	public static int uraniumOreYRange = 16;
 	public static int uraniumOreYStart = 4;
+
+	public static int glowClothAcidIndex = 6;
+	public static int glowClothCryoniteIndex = 21;
+	public static int glowClothNeptuniumIndex = 18;
+	public static int glowClothNetherflowIndex = 17;
+	public static int glowClothObsidiumIndex = 22;
+	public static int glowClothPlutoniumIndex = 20;
+	public static int glowClothRadioniteIndex = 7;
+	public static int glowClothUraniumIndex = 19;
+    
+    public static final int glowClothAcidMeta = 0;
+    public static final int glowClothRadioniteMeta = 1;
+    public static final int glowClothNetherflowMeta = 2;
+    public static final int glowClothNeptuniumMeta = 3;
+    public static final int glowClothUraniumMeta = 4;
+    public static final int glowClothPlutoniumMeta = 5;
+    public static final int glowClothCryoniteMeta = 6;
+    public static final int glowClothObsidiumMeta = 7;
 	
 	public static boolean generateUranium = true;
 	public static boolean generatePlutonium = true;
@@ -118,5 +138,16 @@ public class PlasmaCraft
         MinecraftForge.setBlockHarvestLevel(orePlasma, plutoniumMeta, "pickaxe", 2);
         MinecraftForge.setBlockHarvestLevel(orePlasma, neptuniumMeta, "pickaxe", 1);
         //MinecraftForge.setBlockHarvestLevel(frozenCryonite, "pickaxe", 1);
+        
+        glowCloth = new BlockGlowCloth(glowClothBlockID, glowClothAcidIndex);
+        GameRegistry.registerBlock(glowCloth, com.elvenwater.malkierian.Plasmacraft.common.ItemGlowCloth.class);
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothAcidMeta),	"Acid Glowcloth");
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothRadioniteMeta),	"Radionite Glowcloth");
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothNetherflowMeta),	"Netherflow Glowcloth");
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothNeptuniumMeta),	"Neptunium Glowcloth");
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothUraniumMeta),	"Uranium Glowcloth");
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta),	"Plutonium Glowcloth");
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothCryoniteMeta),	"Cryonite Glowcloth");
+        LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothObsidiumMeta),	"Obsidium Glowcloth");
 	}
 }

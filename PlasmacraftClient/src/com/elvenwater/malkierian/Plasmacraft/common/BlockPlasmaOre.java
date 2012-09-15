@@ -97,21 +97,21 @@ public class BlockPlasmaOre extends BlockOre //implements  ISpecialResistance
 		return CommonProxy.BLOCK_PNG;
 	}
 
-//	@Override
-//	public float getSpecialExplosionResistance(World world, int i, int j,
-//			int k, double src_x, double src_y, double src_z, Entity exploder) {
-//		switch(world.getBlockMetadata(i, j, k))
-//		{
-//		case PlasmaCraftCore.obsidiumMeta:
-//			return 1200F;
-//		case PlasmaCraftCore.uraniumMeta:
-//			return 6F;
-//		case PlasmaCraftCore.plutoniumMeta:
-//			return 8F;
-//		default:
-//			return 3F;
-//		}
-//	}
+	@Override
+	public float getExplosionResistance(Entity exploder, World world, int i, int j,
+			int k, double src_x, double src_y, double src_z) {
+		switch(world.getBlockMetadata(i, j, k))
+		{
+		case PlasmaCraft.obsidiumMeta:
+			return 1200F;
+		case PlasmaCraft.uraniumMeta:
+			return 6F;
+		case PlasmaCraft.plutoniumMeta:
+			return 8F;
+		default:
+			return 3F;
+		}
+	}
 	
 	@Override
 	public float getBlockHardness(World world, int x, int y, int z)
