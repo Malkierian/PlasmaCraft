@@ -89,10 +89,12 @@ public class PlasmaCraft
 	}
 	
 	@Init
-	public void load(FMLInitializationEvent event)
-	{
-		registerBlocks();
+	public void load(FMLInitializationEvent event) {
 		proxy.registerRenderers();
+		
+		registerBlocks();
+		
+		GameRegistry.registerWorldGenerator(new WorldGenerator());
 	}
 	
 	@PostInit
