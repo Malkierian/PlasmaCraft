@@ -2,6 +2,7 @@ package com.elvenwater.malkierian.Plasmacraft.common;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockOre;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -36,6 +37,15 @@ public class PlasmaCraft
 	public static Item goopRadionite;
 	public static Item goopUranium;
 	public static Item plasma;
+
+	public static Item ingotCryonite;
+	public static Item ingotLead;
+	public static Item ingotNeptunium;
+	public static Item ingotNetherflow;
+	public static Item ingotObsidium;
+	public static Item ingotPlutonium;
+	public static Item ingotRadionite;
+	public static Item ingotUranium;
 	
 	public static int oreNeptuniumIndex = 8;
 	public static int oreObsidiumIndex = 9;
@@ -63,6 +73,15 @@ public class PlasmaCraft
 	public static int goopRadioniteID = 2706;
 	public static int goopUraniumID = 2707;
 	public static int plasmaID = 2708;
+
+	public static int ingotCryoniteID = 2709;
+	public static int ingotLeadID = 2716;
+	public static int ingotNeptuniumID = 2710;
+	public static int ingotNetherflowID = 2711;
+	public static int ingotObsidiumID = 2712;
+	public static int ingotPlutoniumID = 2713;
+	public static int ingotRadioniteID = 2714;
+	public static int ingotUraniumID = 2715;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -121,6 +140,15 @@ public class PlasmaCraft
 	public static int goopPlutoniumIndex = 39;
 	public static int goopRadioniteIndex = 42;
 	public static int goopUraniumIndex = 47;
+
+	public static int ingotCryoniteIndex = 10;
+	public static int ingotLeadIndex = 50;
+	public static int ingotNeptuniumIndex = 24;
+	public static int ingotNetherflowIndex = 27;
+	public static int ingotObsidiumIndex = 30;
+	public static int ingotPlutoniumIndex = 40;
+	public static int ingotRadioniteIndex = 43;
+	public static int ingotUraniumIndex = 48;
     
     public static final int glowClothAcidMeta = 0;
     public static final int glowClothRadioniteMeta = 1;
@@ -202,24 +230,41 @@ public class PlasmaCraft
 	
 	private void registerItems()
 	{
-		goopAcid = (new ItemPlasma(goopAcidID)).setIconIndex(goopAcidIndex).setItemName("goopAcid");
-        goopPlutonium = (new ItemPlasma(goopPlutoniumID)).setIconIndex(goopPlutoniumIndex).setItemName("goopPlutonium");
-        goopRadionite = (new ItemPlasma(goopRadioniteID)).setIconIndex(goopRadioniteIndex).setItemName("goopRadionite");
-        goopNeptunium = (new ItemPlasma(goopNeptuniumID)).setIconIndex(goopNeptuniumIndex).setItemName("goopNeptunium");
-        goopNetherflow = (new ItemPlasma(goopNetherflowID)).setIconIndex(goopNetherflowIndex).setItemName("goopNetherflow");
-        goopObsidium = (new ItemPlasma(goopObsidiumID)).setIconIndex(goopObsidiumIndex).setItemName("goopObsidium");
-        goopCryonite = (new ItemPlasma(goopCryoniteID)).setIconIndex(goopCryoniteIndex).setItemName("goopCryonite");
-        goopUranium = (new ItemPlasma(goopUraniumID)).setIconIndex(goopUraniumIndex).setItemName("goopUranium");
-        plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");
+		goopAcid = (new ItemPlasma(goopAcidID)).setIconIndex(goopAcidIndex).setItemName("goopAcid").setCreativeTab(CreativeTabs.tabMisc);
+		goopCryonite = (new ItemPlasma(goopCryoniteID)).setIconIndex(goopCryoniteIndex).setItemName("goopCryonite").setCreativeTab(CreativeTabs.tabMisc);
+		goopNeptunium = (new ItemPlasma(goopNeptuniumID)).setIconIndex(goopNeptuniumIndex).setItemName("goopNeptunium").setCreativeTab(CreativeTabs.tabMisc);
+		goopNetherflow = (new ItemPlasma(goopNetherflowID)).setIconIndex(goopNetherflowIndex).setItemName("goopNetherflow").setCreativeTab(CreativeTabs.tabMisc);
+		goopObsidium = (new ItemPlasma(goopObsidiumID)).setIconIndex(goopObsidiumIndex).setItemName("goopObsidium").setCreativeTab(CreativeTabs.tabMisc);
+		goopPlutonium = (new ItemPlasma(goopPlutoniumID)).setIconIndex(goopPlutoniumIndex).setItemName("goopPlutonium").setCreativeTab(CreativeTabs.tabMisc);
+		goopRadionite = (new ItemPlasma(goopRadioniteID)).setIconIndex(goopRadioniteIndex).setItemName("goopRadionite").setCreativeTab(CreativeTabs.tabMisc);
+		goopUranium = (new ItemPlasma(goopUraniumID)).setIconIndex(goopUraniumIndex).setItemName("goopUranium").setCreativeTab(CreativeTabs.tabMisc);
+        plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma").setCreativeTab(CreativeTabs.tabMisc);
+        
+        ingotCryonite = (new ItemPlasma(ingotCryoniteID)).setIconIndex(ingotCryoniteIndex).setItemName("ingotCryonite").setCreativeTab(CreativeTabs.tabMaterials);
+        ingotLead = (new ItemPlasma(ingotLeadID)).setIconIndex(ingotLeadIndex).setItemName("ingotLead").setCreativeTab(CreativeTabs.tabMaterials);
+        ingotNeptunium = (new ItemPlasma(ingotNeptuniumID)).setIconIndex(ingotNeptuniumIndex).setItemName("ingotNeptunium").setCreativeTab(CreativeTabs.tabMaterials);
+        ingotNetherflow = (new ItemPlasma(ingotNetherflowID)).setIconIndex(ingotNetherflowIndex).setItemName("ingotNetherflow").setCreativeTab(CreativeTabs.tabMaterials);
+        ingotObsidium = (new ItemPlasma(ingotObsidiumID)).setIconIndex(ingotObsidiumIndex).setItemName("ingotObsidium").setCreativeTab(CreativeTabs.tabMaterials);
+        ingotPlutonium = (new ItemPlasma(ingotPlutoniumID)).setIconIndex(ingotPlutoniumIndex).setItemName("ingotPlutonium").setCreativeTab(CreativeTabs.tabMaterials);
+        ingotRadionite = (new ItemPlasma(ingotRadioniteID)).setIconIndex(ingotRadioniteIndex).setItemName("ingotRadionite").setCreativeTab(CreativeTabs.tabMaterials);
+        ingotUranium = (new ItemPlasma(ingotUraniumID)).setIconIndex(ingotUraniumIndex).setItemName("ingotUranium").setCreativeTab(CreativeTabs.tabMaterials);
         
         LanguageRegistry.addName(goopAcid, "Acid Goop");
-        LanguageRegistry.addName(goopPlutonium, "Plutonium Goop");
-        LanguageRegistry.addName(goopRadionite, "Radionite Goop");
+        LanguageRegistry.addName(goopCryonite, "Cryonite Goop");
         LanguageRegistry.addName(goopNeptunium, "Neptunium Goop");
         LanguageRegistry.addName(goopNetherflow, "Netherflow Goop");
         LanguageRegistry.addName(goopObsidium, "Obsidium Goop");
-        LanguageRegistry.addName(goopCryonite, "Cryonite Goop");
+        LanguageRegistry.addName(goopPlutonium, "Plutonium Goop");
+        LanguageRegistry.addName(goopRadionite, "Radionite Goop");
         LanguageRegistry.addName(goopUranium, "Uranium Goop");
+        LanguageRegistry.addName(ingotCryonite, "Cryonite Ingot");
+        LanguageRegistry.addName(ingotLead, "Lead Ingot");
+        LanguageRegistry.addName(ingotNeptunium, "Neptunium Ingot");
+        LanguageRegistry.addName(ingotNetherflow, "Netherflow Ingot");
+        LanguageRegistry.addName(ingotObsidium, "Obsidium Ingot");
+        LanguageRegistry.addName(ingotPlutonium, "Plutonium Ingot");
+        LanguageRegistry.addName(ingotRadionite, "Radionite Ingot");
+        LanguageRegistry.addName(ingotUranium, "Uranium Ingot");
         LanguageRegistry.addName(plasma, "Plasma");
 	}
 	
@@ -233,5 +278,7 @@ public class PlasmaCraft
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothObsidiumMeta), goopObsidium, new ItemStack(Block.cloth, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothCryoniteMeta), goopCryonite, new ItemStack(Block.cloth, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothUraniumMeta), goopUranium, new ItemStack(Block.cloth, 1, 0));
+		
+		GameRegistry.addSmelting(oreLeadBlock.blockID, new ItemStack(ingotLead, 1), 0.1f);
 	}
 }
