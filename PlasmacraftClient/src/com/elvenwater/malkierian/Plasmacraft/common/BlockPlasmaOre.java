@@ -12,6 +12,7 @@ import net.minecraft.src.BlockOre;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.DamageSource;
 import net.minecraft.src.Entity;
+import net.minecraft.src.IBlockAccess;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.World;
 //import net.minecraft.src.forge.ISpecialResistance;
@@ -23,9 +24,9 @@ public class BlockPlasmaOre extends BlockOre //implements  ISpecialResistance
         super(i, j);
         setTickRandomly(true);
         setStepSound(Block.soundStoneFootstep);
-        setLightValue(0.54F);
         setBlockName("orePlasma");
 		setCreativeTab(CreativeTabs.tabBlock);
+		setRequiresSelfNotify();
     }
     
     public void addCreativeItems(ArrayList itemList)
@@ -58,17 +59,15 @@ public class BlockPlasmaOre extends BlockOre //implements  ISpecialResistance
     		return PlasmaCraft.oreNeptuniumIndex;
     	case 3:
     		return PlasmaCraft.oreObsidiumIndex;
-    	case 4:
-    		return PlasmaCraft.oreUraniumIndex;
     	default:
-    		return PlasmaCraft.orePlutoniumIndex;
+    		return PlasmaCraft.oreUraniumIndex;
     	}
     	
     }
 
     public int quantityDropped(Random random)
     {
-        return 1;
+    	return 1;
     }
 
     public void onEntityWalking(World world, int i, int j, int k, Entity entity)

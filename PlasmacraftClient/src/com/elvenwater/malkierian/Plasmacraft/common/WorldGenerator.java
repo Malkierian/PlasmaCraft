@@ -14,11 +14,10 @@ public class WorldGenerator implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world,
 			IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		switch (world.provider.worldType)
-		{
-		   case -1: generateNether(world, random, chunkX*16, chunkZ*16);
-		   case 0: generateSurface(world, random, chunkX*16, chunkZ*16);
-		}
+		if(world.provider.isHellWorld)
+			generateNether(world, random, chunkX*16, chunkZ*16);
+		else
+		   generateSurface(world, random, chunkX*16, chunkZ*16);
 	}
 	
 	private void generateNether(World world, Random random, int i, int j)
@@ -50,13 +49,21 @@ public class WorldGenerator implements IWorldGenerator {
 	        }
     	}
     	
-        for(int i1 = 0; i1 < PlasmaCraft.radioniteOreVeinCount; i1++)
-        {
-            int k2 = i + random.nextInt(16);
-            int i4 = random.nextInt(PlasmaCraft.radioniteOreYRange) + PlasmaCraft.radioniteOreYStart;
-            int k5 = j + random.nextInt(16);
-            (new WorldGenMulti(PlasmaCraft.oreBlockID, PlasmaCraft.radioniteOreVeinSize, PlasmaCraft.radioniteMeta)).generate(world, random, k2, i4, k5);
-        }
+		for(int i1 = 0; i1 < PlasmaCraft.radioniteOreVeinCount; i1++)
+		{
+			int k2 = i + random.nextInt(16);
+			int i4 = random.nextInt(PlasmaCraft.radioniteOreYRange) + PlasmaCraft.radioniteOreYStart;
+			int k5 = j + random.nextInt(16);
+			(new WorldGenMulti(PlasmaCraft.oreBlockID, PlasmaCraft.radioniteOreVeinSize, PlasmaCraft.radioniteMeta)).generate(world, random, k2, i4, k5);
+		}
+    	
+		for(int i1 = 0; i1 < PlasmaCraft.leadOreVeinCount; i1++)
+		{
+			int k2 = i + random.nextInt(16);
+			int i4 = random.nextInt(PlasmaCraft.leadOreYRange) + PlasmaCraft.leadOreYStart;
+			int k5 = j + random.nextInt(16);
+			(new WorldGenMulti(PlasmaCraft.oreLeadBlockID, PlasmaCraft.leadOreVeinSize, 0)).generate(world, random, k2, i4, k5);
+		}
         
         //CausticLakes.populateSurfaceLiquids(world, random, i, j);
 	}
