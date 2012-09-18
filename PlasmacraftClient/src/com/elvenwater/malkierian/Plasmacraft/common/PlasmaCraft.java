@@ -2,6 +2,7 @@ package com.elvenwater.malkierian.Plasmacraft.common;
 
 import net.minecraft.src.Block;
 import net.minecraft.src.BlockOre;
+import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
@@ -25,6 +26,16 @@ public class PlasmaCraft
 	public static Block orePlasma;
 	public static Block oreLeadBlock;
 	public static Block glowCloth;
+
+	public static Item goopAcid;
+	public static Item goopCryonite;
+	public static Item goopNeptunium;
+	public static Item goopNetherflow;
+	public static Item goopObsidium;
+	public static Item goopPlutonium;
+	public static Item goopRadionite;
+	public static Item goopUranium;
+	public static Item plasma;
 	
 	public static int oreNeptuniumIndex = 8;
 	public static int oreObsidiumIndex = 9;
@@ -42,6 +53,16 @@ public class PlasmaCraft
 	public static int oreBlockID = 2500;
 	public static int oreLeadBlockID = 2501;
 	public static int glowClothBlockID = 2502;
+
+	public static int goopAcidID = 2700;
+	public static int goopCryoniteID = 2701;
+	public static int goopNeptuniumID = 2702;
+	public static int goopNetherflowID = 2703;
+	public static int goopObsidiumID = 2704;
+	public static int goopPlutoniumID = 2705;
+	public static int goopRadioniteID = 2706;
+	public static int goopUraniumID = 2707;
+	public static int plasmaID = 2708;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -82,6 +103,7 @@ public class PlasmaCraft
 	public static int uraniumOreYRange = 16;
 	public static int uraniumOreYStart = 4;
 
+	public static int goopAcidIndex = 34;
 	public static int glowClothAcidIndex = 6;
 	public static int glowClothCryoniteIndex = 21;
 	public static int glowClothNeptuniumIndex = 18;
@@ -90,6 +112,15 @@ public class PlasmaCraft
 	public static int glowClothPlutoniumIndex = 20;
 	public static int glowClothRadioniteIndex = 7;
 	public static int glowClothUraniumIndex = 19;
+	public static int plasmaIndex = 33;
+
+	public static int goopCryoniteIndex = 9;
+	public static int goopNeptuniumIndex = 23;
+	public static int goopNetherflowIndex = 26;
+	public static int goopObsidiumIndex = 29;
+	public static int goopPlutoniumIndex = 39;
+	public static int goopRadioniteIndex = 42;
+	public static int goopUraniumIndex = 47;
     
     public static final int glowClothAcidMeta = 0;
     public static final int glowClothRadioniteMeta = 1;
@@ -121,6 +152,10 @@ public class PlasmaCraft
 		proxy.registerRenderers();
 		
 		registerBlocks();
+		
+		registerItems();
+		
+		registerRecipes();
 		
 		GameRegistry.registerWorldGenerator(new WorldGenerator());
 	}
@@ -163,5 +198,40 @@ public class PlasmaCraft
         LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta),	"Plutonium Glowcloth");
         LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothCryoniteMeta),	"Cryonite Glowcloth");
         LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothObsidiumMeta),	"Obsidium Glowcloth");
+	}
+	
+	private void registerItems()
+	{
+		goopAcid = (new ItemPlasma(goopAcidID)).setIconIndex(goopAcidIndex).setItemName("goopAcid");
+        goopPlutonium = (new ItemPlasma(goopPlutoniumID)).setIconIndex(goopPlutoniumIndex).setItemName("goopPlutonium");
+        goopRadionite = (new ItemPlasma(goopRadioniteID)).setIconIndex(goopRadioniteIndex).setItemName("goopRadionite");
+        goopNeptunium = (new ItemPlasma(goopNeptuniumID)).setIconIndex(goopNeptuniumIndex).setItemName("goopNeptunium");
+        goopNetherflow = (new ItemPlasma(goopNetherflowID)).setIconIndex(goopNetherflowIndex).setItemName("goopNetherflow");
+        goopObsidium = (new ItemPlasma(goopObsidiumID)).setIconIndex(goopObsidiumIndex).setItemName("goopObsidium");
+        goopCryonite = (new ItemPlasma(goopCryoniteID)).setIconIndex(goopCryoniteIndex).setItemName("goopCryonite");
+        goopUranium = (new ItemPlasma(goopUraniumID)).setIconIndex(goopUraniumIndex).setItemName("goopUranium");
+        plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");
+        
+        LanguageRegistry.addName(goopAcid, "Acid Goop");
+        LanguageRegistry.addName(goopPlutonium, "Plutonium Goop");
+        LanguageRegistry.addName(goopRadionite, "Radionite Goop");
+        LanguageRegistry.addName(goopNeptunium, "Neptunium Goop");
+        LanguageRegistry.addName(goopNetherflow, "Netherflow Goop");
+        LanguageRegistry.addName(goopObsidium, "Obsidium Goop");
+        LanguageRegistry.addName(goopCryonite, "Cryonite Goop");
+        LanguageRegistry.addName(goopUranium, "Uranium Goop");
+        LanguageRegistry.addName(plasma, "Plasma");
+	}
+	
+	private void registerRecipes()
+	{
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothAcidMeta), goopAcid, new ItemStack(Block.cloth, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta), goopPlutonium, new ItemStack(Block.cloth, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothRadioniteMeta), goopRadionite, new ItemStack(Block.cloth, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothNeptuniumMeta), goopNeptunium, new ItemStack(Block.cloth, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothNetherflowMeta), goopNetherflow, new ItemStack(Block.cloth, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothObsidiumMeta), goopObsidium, new ItemStack(Block.cloth, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothCryoniteMeta), goopCryonite, new ItemStack(Block.cloth, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothUraniumMeta), goopUranium, new ItemStack(Block.cloth, 1, 0));
 	}
 }
