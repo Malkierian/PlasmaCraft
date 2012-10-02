@@ -8,6 +8,7 @@ import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
@@ -76,6 +77,16 @@ public class PlasmaCraft
 	public static Item ingotRadionite;
 	public static Item ingotUranium;
 	
+	public static Item acidVial;
+	public static Item causticVial;
+	public static Item cryoniteVial;
+	public static Item neptuniumVial;
+	public static Item netherflowVial;
+	public static Item obsidiumVial;
+	public static Item plutoniumVial;
+	public static Item radioniteVial;
+	public static Item uraniumVial;
+	
 	public static int oreNeptuniumIndex = 8;
 	public static int oreObsidiumIndex = 9;
 	public static int orePlutoniumIndex = 13;
@@ -131,6 +142,16 @@ public class PlasmaCraft
 	public static int ingotPlutoniumID = 2713;
 	public static int ingotRadioniteID = 2714;
 	public static int ingotUraniumID = 2715;
+	
+	public static int acidVialID = 2716;
+	public static int cryoniteVialID = 2717;
+	public static int emptyVialID = 2718;
+	public static int neptuniumVialID = 2719;
+	public static int netherflowVialID = 2720;
+	public static int obsidiumVialID = 2721;
+	public static int plutoniumViaID = 2722;
+	public static int radioniteVialID = 2723;
+	public static int uraniumViaID = 2724;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -218,6 +239,16 @@ public class PlasmaCraft
 	public static int ingotPlutoniumIndex = 40;
 	public static int ingotRadioniteIndex = 43;
 	public static int ingotUraniumIndex = 48;
+
+	public static int causticVialIndex = 12;
+	public static int cryoniteVialIndex = 11;
+	public static int acidVialIndex = 0;
+	public static int neptuniumVialIndex = 25;
+	public static int netherflowVialIndex = 28;
+	public static int obsidiumVialIndex = 31;
+	public static int plutoniumVialIndex = 41;
+	public static int radioniteVialIndex = 44;
+	public static int uraniumVialIndex = 49;
     
     public static final int glowClothAcidMeta = 0;
     public static final int glowClothRadioniteMeta = 1;
@@ -240,7 +271,8 @@ public class PlasmaCraft
 	public static CommonProxy proxy;
 	
 	@PreInit
-	public void preInit(FMLPreInitializationEvent event) {
+	public void preInit(FMLPreInitializationEvent event)
+	{
 		// Stub Method
 	}
 	
@@ -254,13 +286,25 @@ public class PlasmaCraft
 		
 		registerRecipes();
 		
+		registerOres();
+		
 		proxy.registerTextureFX();
 		
 		GameRegistry.registerWorldGenerator(new WorldGenerator());
 	}
 	
+	private void registerOres()
+	{
+		OreDictionary.registerOre("orePlutonium", new ItemStack(orePlasma, 1, plutoniumMeta));
+		OreDictionary.registerOre("oreUranium", new ItemStack(orePlasma, 1, uraniumMeta));
+        
+		OreDictionary.registerOre("ingotPlutonium", new ItemStack(ingotPlutonium, 1));
+		OreDictionary.registerOre("ingotUranium", new ItemStack(ingotUranium, 1));
+	}
+
 	@PostInit
-	public void postInit(FMLPostInitializationEvent event) {
+	public void postInit(FMLPostInitializationEvent event)
+	{
 		// Stub Method
 	}
 	
@@ -392,6 +436,25 @@ public class PlasmaCraft
         LanguageRegistry.addName(ingotRadionite, "Radionite Ingot");
         LanguageRegistry.addName(ingotUranium, "Uranium Ingot");
         LanguageRegistry.addName(plasma, "Plasma");
+
+        acidVial = (new ItemVial(acidVialID, acidMoving.blockID, EnumPlasmaLiquid.ACID)).setIconIndex(acidVialIndex).setItemName("acidVial");
+        causticVial = (new ItemVial(emptyVialID, 0, EnumPlasmaLiquid.EMPTY)).setIconIndex(causticVialIndex).setItemName("causticVial");
+        cryoniteVial = (new ItemVial(cryoniteVialID, cryoniteMoving.blockID, EnumPlasmaLiquid.CRYONITE)).setIconIndex(cryoniteVialIndex).setItemName("cryoniteVial");
+        neptuniumVial = (new ItemVial(neptuniumVialID, neptuniumMoving.blockID, EnumPlasmaLiquid.NEPTUNIUM)).setIconIndex(neptuniumVialIndex).setItemName("neptuniumVial");
+        netherflowVial = (new ItemVial(netherflowVialID, netherflowMoving.blockID, EnumPlasmaLiquid.NETHERFLOW)).setIconIndex(netherflowVialIndex).setItemName("netherflowVial");
+        obsidiumVial = (new ItemVial(obsidiumVialID, obsidiumMoving.blockID, EnumPlasmaLiquid.OBSIDIUM)).setIconIndex(obsidiumVialIndex).setItemName("obsidiumVial");
+        plutoniumVial = (new ItemVial(plutoniumViaID, plutoniumMoving.blockID, EnumPlasmaLiquid.PLUTONIUM)).setIconIndex(plutoniumVialIndex).setItemName("plutoniumVial");
+        radioniteVial = (new ItemVial(radioniteVialID, radioniteMoving.blockID, EnumPlasmaLiquid.RADIONITE)).setIconIndex(radioniteVialIndex).setItemName("radioniteVial");
+        uraniumVial = (new ItemVial(uraniumViaID, uraniumMoving.blockID, EnumPlasmaLiquid.URANIUM)).setIconIndex(uraniumVialIndex).setItemName("uraniumVial");
+        LanguageRegistry.addName(acidVial, "Acid Vial");
+        LanguageRegistry.addName(causticVial, "Empty Vial");
+        LanguageRegistry.addName(cryoniteVial, "Cryonite Vial");
+        LanguageRegistry.addName(neptuniumVial, "Neptunium Vial");
+        LanguageRegistry.addName(netherflowVial, "Netherflow Vial");
+        LanguageRegistry.addName(obsidiumVial, "Obsidium Vial");
+        LanguageRegistry.addName(plutoniumVial, "Plutonium Vial");
+        LanguageRegistry.addName(radioniteVial, "Radionite Vial");
+        LanguageRegistry.addName(uraniumVial, "Uranium Vial");
 	}
 	
 	private void registerRecipes()
@@ -404,6 +467,30 @@ public class PlasmaCraft
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothObsidiumMeta), goopObsidium, new ItemStack(Block.cloth, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothCryoniteMeta), goopCryonite, new ItemStack(Block.cloth, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothUraniumMeta), goopUranium, new ItemStack(Block.cloth, 1, 0));
+		
+        GameRegistry.addRecipe(new ItemStack(reinforcedGlass, 1), new Object[] {
+            "X", "#", Character.valueOf('#'), Block.glass, Character.valueOf('X'), Item.ingotIron
+        });
+        GameRegistry.addRecipe(new ItemStack(causticVial, 1), new Object[] {
+            "X#X", "Y Y", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Block.glass
+        });
+        
+        GameRegistry.addShapelessRecipe(new ItemStack(goopCryonite, 4), plasma, goopCryonite);
+        GameRegistry.addShapelessRecipe(new ItemStack(goopNeptunium, 4), plasma, goopNeptunium);
+        GameRegistry.addShapelessRecipe(new ItemStack(goopNetherflow, 4), plasma, goopNetherflow);
+        GameRegistry.addShapelessRecipe(new ItemStack(goopObsidium, 4), plasma, goopObsidium);
+        GameRegistry.addShapelessRecipe(new ItemStack(goopPlutonium, 4), plasma, goopPlutonium);
+        GameRegistry.addShapelessRecipe(new ItemStack(goopRadionite, 4), plasma, goopRadionite);
+        GameRegistry.addShapelessRecipe(new ItemStack(goopUranium, 4), plasma, goopUranium);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(acidVial, 1), goopAcid, causticVial);
+		GameRegistry.addShapelessRecipe(new ItemStack(cryoniteVial, 1), goopCryonite, causticVial);
+		GameRegistry.addShapelessRecipe(new ItemStack(neptuniumVial, 1), goopNeptunium, causticVial);
+		GameRegistry.addShapelessRecipe(new ItemStack(netherflowVial, 1), goopNetherflow, causticVial);
+		GameRegistry.addShapelessRecipe(new ItemStack(obsidiumVial, 1), goopObsidium, causticVial);
+		GameRegistry.addShapelessRecipe(new ItemStack(plutoniumVial, 1), goopPlutonium, causticVial);
+		GameRegistry.addShapelessRecipe(new ItemStack(radioniteVial, 1), goopRadionite, causticVial);
+		GameRegistry.addShapelessRecipe(new ItemStack(uraniumVial, 1), goopUranium, causticVial);
 		
 		GameRegistry.addSmelting(oreLeadBlock.blockID, new ItemStack(ingotLead, 1), 0.1f);
 	}
