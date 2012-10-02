@@ -224,43 +224,11 @@ public abstract class BlockCausticFluids extends Block
                 vec3 = vec3.addVector((j1 - i) * k2, (k1 - j) * k2, (l1 - k) * k2);
             }
         }
-
+        
         if(iblockaccess.getBlockMetadata(i, j, k) >= 8)
         {
-            boolean flag = false;
-            if(flag || shouldSideBeRendered(iblockaccess, i, j, k - 1, 2))
-            {
-                flag = true;
-            }
-            if(flag || shouldSideBeRendered(iblockaccess, i, j, k + 1, 3))
-            {
-                flag = true;
-            }
-            if(flag || shouldSideBeRendered(iblockaccess, i - 1, j, k, 4))
-            {
-                flag = true;
-            }
-            if(flag || shouldSideBeRendered(iblockaccess, i + 1, j, k, 5))
-            {
-                flag = true;
-            }
-            if(flag || shouldSideBeRendered(iblockaccess, i, j + 1, k - 1, 2))
-            {
-                flag = true;
-            }
-            if(flag || shouldSideBeRendered(iblockaccess, i, j + 1, k + 1, 3))
-            {
-                flag = true;
-            }
-            if(flag || shouldSideBeRendered(iblockaccess, i - 1, j + 1, k, 4))
-            {
-                flag = true;
-            }
-            if(flag || shouldSideBeRendered(iblockaccess, i + 1, j + 1, k, 5))
-            {
-                flag = true;
-            }
-            if(flag)
+            
+            if(CommonProxy.shouldSideBeRendered(iblockaccess, i, j, k, l))
             {
                 vec3 = vec3.normalize().addVector(0.0D, -6D, 0.0D);
             }

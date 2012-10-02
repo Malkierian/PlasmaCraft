@@ -1,6 +1,7 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
 import net.minecraft.src.Entity;
+import net.minecraft.src.IBlockAccess;
 
 public class CommonProxy
 {
@@ -23,5 +24,11 @@ public class CommonProxy
 	public void registerTextureFX()
 	{
 		
+	}
+
+	public static boolean shouldSideBeRendered(IBlockAccess iblockaccess,
+			int i, int j, int k, int l)
+	{
+		return false;
 	}
 }

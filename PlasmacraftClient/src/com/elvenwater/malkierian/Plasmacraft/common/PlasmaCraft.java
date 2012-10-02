@@ -366,6 +366,14 @@ public class PlasmaCraft
 		goopRadionite = (new ItemPlasma(goopRadioniteID)).setIconIndex(goopRadioniteIndex).setItemName("goopRadionite");
 		goopUranium = (new ItemPlasma(goopUraniumID)).setIconIndex(goopUraniumIndex).setItemName("goopUranium");
         plasma = (new ItemPlasma(plasmaID)).setIconIndex(plasmaIndex).setItemName("plasma");
+        LanguageRegistry.addName(goopAcid, "Acid Goop");
+        LanguageRegistry.addName(goopCryonite, "Cryonite Goop");
+        LanguageRegistry.addName(goopNeptunium, "Neptunium Goop");
+        LanguageRegistry.addName(goopNetherflow, "Netherflow Goop");
+        LanguageRegistry.addName(goopObsidium, "Obsidium Goop");
+        LanguageRegistry.addName(goopPlutonium, "Plutonium Goop");
+        LanguageRegistry.addName(goopRadionite, "Radionite Goop");
+        LanguageRegistry.addName(goopUranium, "Uranium Goop");
         
         ingotCryonite = (new ItemPlasma(ingotCryoniteID)).setIconIndex(ingotCryoniteIndex).setItemName("ingotCryonite");
         ingotLead = (new ItemPlasma(ingotLeadID)).setIconIndex(ingotLeadIndex).setItemName("ingotLead");
@@ -375,15 +383,6 @@ public class PlasmaCraft
         ingotPlutonium = (new ItemPlasma(ingotPlutoniumID)).setIconIndex(ingotPlutoniumIndex).setItemName("ingotPlutonium");
         ingotRadionite = (new ItemPlasma(ingotRadioniteID)).setIconIndex(ingotRadioniteIndex).setItemName("ingotRadionite");
         ingotUranium = (new ItemPlasma(ingotUraniumID)).setIconIndex(ingotUraniumIndex).setItemName("ingotUranium");
-        
-        LanguageRegistry.addName(goopAcid, "Acid Goop");
-        LanguageRegistry.addName(goopCryonite, "Cryonite Goop");
-        LanguageRegistry.addName(goopNeptunium, "Neptunium Goop");
-        LanguageRegistry.addName(goopNetherflow, "Netherflow Goop");
-        LanguageRegistry.addName(goopObsidium, "Obsidium Goop");
-        LanguageRegistry.addName(goopPlutonium, "Plutonium Goop");
-        LanguageRegistry.addName(goopRadionite, "Radionite Goop");
-        LanguageRegistry.addName(goopUranium, "Uranium Goop");
         LanguageRegistry.addName(ingotCryonite, "Cryonite Ingot");
         LanguageRegistry.addName(ingotLead, "Lead Ingot");
         LanguageRegistry.addName(ingotNeptunium, "Neptunium Ingot");
