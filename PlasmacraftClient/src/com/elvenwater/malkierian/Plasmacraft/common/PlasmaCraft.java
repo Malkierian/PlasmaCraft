@@ -5,6 +5,7 @@ import net.minecraft.src.BlockOre;
 import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
+import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -52,7 +53,7 @@ public class PlasmaCraft
 	public static Block plutoniumStill;
 	public static Block radioniteMoving;
 	public static Block radioniteStill;
-	//public static Block reinforcedGlass;
+	public static Block reinforcedGlass;
 	public static Block uraniumMoving;
 	public static Block uraniumStill;
 
@@ -108,6 +109,9 @@ public class PlasmaCraft
 	public static int radioniteStillBlockID = 2516;
 	public static int uraniumFlowingBlockID = 2517;
 	public static int uraniumStillBlockID = 2518;
+	
+	public static int cryoniteFrozenBlockID = 2519;
+	public static int reinforcedGlassBlockID = 2520;
 
 	public static int goopAcidID = 2700;
 	public static int goopCryoniteID = 2701;
@@ -185,6 +189,9 @@ public class PlasmaCraft
 	public static int goopPlutoniumIndex = 39;
 	public static int goopRadioniteIndex = 42;
 	public static int goopUraniumIndex = 47;
+
+	public static int frozenCryoniteIndex = 5;
+	public static int reinforcedGlassIndex = 15;
 
 	public static int acidStillIndex = 199;
 	public static int acidMovingIndex = acidStillIndex + 1;
@@ -339,6 +346,13 @@ public class PlasmaCraft
         LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta),	"Plutonium Glowcloth");
         LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothCryoniteMeta),	"Cryonite Glowcloth");
         LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothObsidiumMeta),	"Obsidium Glowcloth");
+        
+        frozenCryonite = (new BlockReinforcedGlass(cryoniteFrozenBlockID, frozenCryoniteIndex, Material.glass, false, 1.0F)).setBlockName("frozenCryonite");
+        reinforcedGlass = (new BlockReinforcedGlass(reinforcedGlassBlockID, reinforcedGlassIndex, Material.glass, false, 500.0F)).setBlockName("reinforcedGlass");
+        GameRegistry.registerBlock(frozenCryonite);
+        GameRegistry.registerBlock(reinforcedGlass);
+        LanguageRegistry.addName(frozenCryonite, "Frozen Cryonite");
+        LanguageRegistry.addName(reinforcedGlass, "Reinforced Glass");
 	}
 	
 	private void registerItems()
