@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import net.minecraft.src.Block;
+import net.minecraft.src.CreativeTabs;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.World;
@@ -18,6 +19,7 @@ public class BlockCausticFlowing extends BlockCausticFluids
         super(i, j, k, l, i1, j1);
         isOptimalFlowDirection = new boolean[4];
         flowCost = new int[4];
+        setCreativeTab(CreativeTabs.tabBlock);
     }
 
     public int getBlockTextureFromSide(int i)

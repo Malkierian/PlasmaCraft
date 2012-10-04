@@ -38,6 +38,8 @@ serverPacketHandlerSpec =
 @SidedPacketHandler(channels = {"PlasmaCraft" }, packetHandler = ServerPacketHandler.class))
 public class PlasmaCraft
 {
+	public static Block acidBarrier;
+	
 	public static Block orePlasma;
 	public static Block oreLeadBlock;
 	public static Block glowCloth;
@@ -46,7 +48,6 @@ public class PlasmaCraft
 	
 	public static int causticID = 180;
 	
-	//public static Block acidBarrier;
 	public static Block acidMoving;
 	public static Block acidStill;
 	//public static Block acidTnt;
@@ -59,7 +60,6 @@ public class PlasmaCraft
 	public static Block netherflowStill;
 	public static Block obsidiumMoving;
 	public static Block obsidiumStill;
-	//public static Block plasmaBench;
 	public static Block plutoniumMoving;
 	public static Block plutoniumStill;
 	public static Block radioniteMoving;
@@ -135,6 +135,7 @@ public class PlasmaCraft
 	public static int reinforcedGlassBlockID = 2520;
 	
 	public static int plasmaBenchBlockID = 2521;
+	public static int acidBarrierBlockID = 2522;
 
 	public static int goopAcidID = 2700;
 	public static int goopCryoniteID = 2701;
@@ -204,7 +205,6 @@ public class PlasmaCraft
 	public static int uraniumOreYRange = 16;
 	public static int uraniumOreYStart = 4;
 
-	public static int goopAcidIndex = 34;
 	public static int glowClothAcidIndex = 6;
 	public static int glowClothCryoniteIndex = 21;
 	public static int glowClothNeptuniumIndex = 18;
@@ -213,8 +213,11 @@ public class PlasmaCraft
 	public static int glowClothPlutoniumIndex = 20;
 	public static int glowClothRadioniteIndex = 7;
 	public static int glowClothUraniumIndex = 19;
+	
 	public static int plasmaIndex = 33;
+	public static int acidBarrierIndex = 16;
 
+	public static int goopAcidIndex = 34;
 	public static int goopCryoniteIndex = 9;
 	public static int goopNeptuniumIndex = 23;
 	public static int goopNetherflowIndex = 26;
@@ -362,37 +365,37 @@ public class PlasmaCraft
         uraniumMoving = 	(new BlockCausticFlowing	(uraniumFlowingBlockID,    uraniumStillIndex, 	 uraniumMovingIndex, 	causticID, uraniumStillBlockID,    uraniumFlowingBlockID		 )).setBlockName("uraniumMoving");
         uraniumStill = 		(new BlockCausticStationary	(uraniumStillBlockID, 	   uraniumStillIndex, 	 uraniumMovingIndex, 	causticID, uraniumStillBlockID,    uraniumFlowingBlockID,	 1.0F)).setBlockName("uraniumStill");
         GameRegistry.registerBlock(acidMoving);
-        GameRegistry.registerBlock(acidStill);
+//        GameRegistry.registerBlock(acidStill);
         GameRegistry.registerBlock(cryoniteMoving);
-        GameRegistry.registerBlock(cryoniteStill);
+//        GameRegistry.registerBlock(cryoniteStill);
         GameRegistry.registerBlock(neptuniumMoving);
-        GameRegistry.registerBlock(neptuniumStill);
+//        GameRegistry.registerBlock(neptuniumStill);
         GameRegistry.registerBlock(netherflowMoving);
-        GameRegistry.registerBlock(netherflowStill);
+//        GameRegistry.registerBlock(netherflowStill);
         GameRegistry.registerBlock(obsidiumMoving);
-        GameRegistry.registerBlock(obsidiumStill);
+//        GameRegistry.registerBlock(obsidiumStill);
         GameRegistry.registerBlock(plutoniumMoving);
-        GameRegistry.registerBlock(plutoniumStill);
+//        GameRegistry.registerBlock(plutoniumStill);
         GameRegistry.registerBlock(radioniteMoving);
-        GameRegistry.registerBlock(radioniteStill);
+//        GameRegistry.registerBlock(radioniteStill);
         GameRegistry.registerBlock(uraniumMoving);
-        GameRegistry.registerBlock(uraniumStill);
+//        GameRegistry.registerBlock(uraniumStill);
         LanguageRegistry.addName(acidMoving, "Acid");
-        LanguageRegistry.addName(acidStill, "Acid Still");
+        //LanguageRegistry.addName(acidStill, "Acid Still");
         LanguageRegistry.addName(cryoniteMoving, "Cryonite");
-        LanguageRegistry.addName(cryoniteStill, "Cryonite Still");
+        //LanguageRegistry.addName(cryoniteStill, "Cryonite Still");
         LanguageRegistry.addName(neptuniumMoving, "Neptunium");
-        LanguageRegistry.addName(neptuniumStill, "Neptunium Still");
+        //LanguageRegistry.addName(neptuniumStill, "Neptunium Still");
         LanguageRegistry.addName(netherflowMoving, "Netherflow");
-        LanguageRegistry.addName(netherflowStill, "Netherflow Still");
+        //LanguageRegistry.addName(netherflowStill, "Netherflow Still");
         LanguageRegistry.addName(obsidiumMoving, "Obsidium");
-        LanguageRegistry.addName(obsidiumStill, "Obsidium Still");
+        //LanguageRegistry.addName(obsidiumStill, "Obsidium Still");
         LanguageRegistry.addName(plutoniumMoving, "Plutonium");
-        LanguageRegistry.addName(plutoniumStill, "Plutonium Still");
+        //LanguageRegistry.addName(plutoniumStill, "Plutonium Still");
         LanguageRegistry.addName(radioniteMoving, "Radionite");
-        LanguageRegistry.addName(radioniteStill, "Radionite Still");
+        //LanguageRegistry.addName(radioniteStill, "Radionite Still");
         LanguageRegistry.addName(uraniumMoving, "Uranium");
-        LanguageRegistry.addName(uraniumStill, "Uranium Still");
+        //LanguageRegistry.addName(uraniumStill, "Uranium Still");
         
         glowCloth = new BlockGlowCloth(glowClothBlockID, glowClothAcidIndex);
         GameRegistry.registerBlock(glowCloth, com.elvenwater.malkierian.Plasmacraft.common.ItemGlowCloth.class);
@@ -415,6 +418,10 @@ public class PlasmaCraft
         plasmaBench = (new BlockPlasmaBench(plasmaBenchBlockID)).setBlockName("plasmaBench");
         GameRegistry.registerBlock(plasmaBench);
         LanguageRegistry.addName(plasmaBench, "Plasmificator");
+        
+        acidBarrier = (new BlockAcidBarrier(acidBarrierBlockID, acidBarrierIndex)).setBlockName("acidBarrier");
+        GameRegistry.registerBlock(acidBarrier);
+        LanguageRegistry.addName(acidBarrier, "Acid Barrier");
 	}
 	
 	private void registerItems()
@@ -495,14 +502,17 @@ public class PlasmaCraft
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothCryoniteMeta), goopCryonite, new ItemStack(Block.cloth, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothUraniumMeta), goopUranium, new ItemStack(Block.cloth, 1, 0));
 		
-        GameRegistry.addRecipe(new ItemStack(reinforcedGlass, 1), new Object[] {
-            "X", "#", Character.valueOf('#'), Block.glass, Character.valueOf('X'), Item.ingotIron
+        GameRegistry.addRecipe(new ItemStack(reinforcedGlass, 4), new Object[] {
+            " X ", "X#X", " X ", Character.valueOf('#'), Block.glass, Character.valueOf('X'), Item.ingotIron
         });
         GameRegistry.addRecipe(new ItemStack(causticVial, 1), new Object[] {
             "X#X", "Y Y", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Block.glass
         });
         GameRegistry.addRecipe(new ItemStack(plasmaBench, 1), new Object[] {
-            "X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), acidVial
+            "X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), goopAcid
+        });
+        GameRegistry.addRecipe(new ItemStack(acidBarrier, 1), new Object[] {
+            " X ", "XZX", " X ", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), goopAcid
         });
         
         GameRegistry.addShapelessRecipe(new ItemStack(goopCryonite, 4), plasma, goopCryonite);
