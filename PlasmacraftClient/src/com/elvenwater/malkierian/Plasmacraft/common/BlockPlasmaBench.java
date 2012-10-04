@@ -44,6 +44,15 @@ public class BlockPlasmaBench extends BlockContainer
     {    	
     	itemList.add(new ItemStack(this, 1));
     }
+    
+    @Override
+    public int getLightValue(IBlockAccess world, int x, int y, int z)
+    {
+    	if(world.getBlockMetadata(x, y, z) > 8)
+    		return 12;
+    	else
+    		return 0;
+    }
 
     @Override
     public int idDropped(int i, Random random, int j)
