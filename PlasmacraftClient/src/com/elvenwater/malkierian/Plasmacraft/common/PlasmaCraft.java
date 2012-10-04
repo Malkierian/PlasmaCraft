@@ -7,6 +7,9 @@ import net.minecraft.src.Item;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.Material;
 import net.minecraft.src.ModLoader;
+
+import com.elvenwater.malkierian.Plasmacraft.client.ClientPacketHandler;
+import com.elvenwater.malkierian.Plasmacraft.client.GuiHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -22,17 +25,24 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = "Malkierian_PlasmaCraft", name = "PlasmaCraft", version = "0.3.1")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false)
-
+@NetworkMod(clientSideRequired = true, serverSideRequired = false,
+clientPacketHandlerSpec =
+@SidedPacketHandler(channels = {"PlasmaCraft" }, packetHandler = ClientPacketHandler.class),
+serverPacketHandlerSpec =
+@SidedPacketHandler(channels = {"PlasmaCraft" }, packetHandler = ServerPacketHandler.class))
 public class PlasmaCraft
 {
 	public static Block orePlasma;
 	public static Block oreLeadBlock;
 	public static Block glowCloth;
+	
+	public static Block plasmaBench;
 	
 	public static int causticID = 180;
 	
@@ -123,6 +133,8 @@ public class PlasmaCraft
 	
 	public static int cryoniteFrozenBlockID = 2519;
 	public static int reinforcedGlassBlockID = 2520;
+	
+	public static int plasmaBenchBlockID = 2521;
 
 	public static int goopAcidID = 2700;
 	public static int goopCryoniteID = 2701;
@@ -212,6 +224,9 @@ public class PlasmaCraft
 	public static int goopUraniumIndex = 47;
 
 	public static int frozenCryoniteIndex = 5;
+	public static int plasmaBenchFrontActiveIndex = 10;
+	public static int plasmaBenchFrontIdleIndex = 11;
+	public static int plasmaBenchSidesIndex = 12;
 	public static int reinforcedGlassIndex = 15;
 
 	public static int acidStillIndex = 199;
@@ -261,10 +276,14 @@ public class PlasmaCraft
 	
 	public static boolean generateUranium = true;
 	public static boolean generatePlutonium = true;
+
+	public static int plasmaBenchFrontAnim;
 	
 	// The instance of your mod that Forge uses.
 	@Instance("PlasmaCraft")
 	public static PlasmaCraft instance;
+	
+	private GuiHandler guiHandler = new GuiHandler();
 	
 	// Says where the client and server 'proxy' code is loaded.
 	@SidedProxy(clientSide="com.elvenwater.malkierian.Plasmacraft.client.ClientProxy", serverSide="com.elvenwater.malkierian.Plasmacraft.common.CommonProxy")
@@ -273,11 +292,13 @@ public class PlasmaCraft
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		// Stub Method
+		instance = this;
 	}
 	
 	@Init
 	public void load(FMLInitializationEvent event) {
+		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
+		
 		proxy.registerRenderers();
 		
 		registerBlocks();
@@ -288,18 +309,11 @@ public class PlasmaCraft
 		
 		registerOres();
 		
+		registerTileEntities();
+		
 		proxy.registerTextureFX();
 		
 		GameRegistry.registerWorldGenerator(new WorldGenerator());
-	}
-	
-	private void registerOres()
-	{
-		OreDictionary.registerOre("orePlutonium", new ItemStack(orePlasma, 1, plutoniumMeta));
-		OreDictionary.registerOre("oreUranium", new ItemStack(orePlasma, 1, uraniumMeta));
-        
-		OreDictionary.registerOre("ingotPlutonium", new ItemStack(ingotPlutonium, 1));
-		OreDictionary.registerOre("ingotUranium", new ItemStack(ingotUranium, 1));
 	}
 
 	@PostInit
@@ -397,6 +411,10 @@ public class PlasmaCraft
         GameRegistry.registerBlock(reinforcedGlass);
         LanguageRegistry.addName(frozenCryonite, "Frozen Cryonite");
         LanguageRegistry.addName(reinforcedGlass, "Reinforced Glass");
+        
+        plasmaBench = (new BlockPlasmaBench(plasmaBenchBlockID)).setBlockName("plasmaBench");
+        GameRegistry.registerBlock(plasmaBench);
+        LanguageRegistry.addName(plasmaBench, "Plasmificator");
 	}
 	
 	private void registerItems()
@@ -457,6 +475,15 @@ public class PlasmaCraft
         LanguageRegistry.addName(uraniumVial, "Uranium Vial");
 	}
 	
+	private void registerOres()
+	{
+		OreDictionary.registerOre("orePlutonium", new ItemStack(orePlasma, 1, plutoniumMeta));
+		OreDictionary.registerOre("oreUranium", new ItemStack(orePlasma, 1, uraniumMeta));
+        
+		OreDictionary.registerOre("ingotPlutonium", new ItemStack(ingotPlutonium, 1));
+		OreDictionary.registerOre("ingotUranium", new ItemStack(ingotUranium, 1));
+	}
+	
 	private void registerRecipes()
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(glowCloth, 1, glowClothAcidMeta), goopAcid, new ItemStack(Block.cloth, 1, 0));
@@ -473,6 +500,9 @@ public class PlasmaCraft
         });
         GameRegistry.addRecipe(new ItemStack(causticVial, 1), new Object[] {
             "X#X", "Y Y", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Block.glass
+        });
+        GameRegistry.addRecipe(new ItemStack(plasmaBench, 1), new Object[] {
+            "X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), acidVial
         });
         
         GameRegistry.addShapelessRecipe(new ItemStack(goopCryonite, 4), plasma, goopCryonite);
@@ -493,5 +523,10 @@ public class PlasmaCraft
 		GameRegistry.addShapelessRecipe(new ItemStack(uraniumVial, 1), goopUranium, causticVial);
 		
 		GameRegistry.addSmelting(oreLeadBlock.blockID, new ItemStack(ingotLead, 1), 0.1f);
+	}
+
+	private void registerTileEntities()
+	{
+        GameRegistry.registerTileEntity(TilePlasmaBench.class,   "tilePlasmaBench");		
 	}
 }
