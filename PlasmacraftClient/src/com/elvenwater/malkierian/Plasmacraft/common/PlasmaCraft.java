@@ -13,6 +13,7 @@ import com.elvenwater.malkierian.Plasmacraft.client.GuiHandler;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -27,6 +28,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
@@ -77,6 +79,7 @@ public class PlasmaCraft
 	public static Item goopRadionite;
 	public static Item goopUranium;
 	public static Item plasma;
+	public static Item causticBoat;
 
 	public static Item ingotCryonite;
 	public static Item ingotLead;
@@ -165,6 +168,11 @@ public class PlasmaCraft
 	public static int plutoniumViaID = 2722;
 	public static int radioniteVialID = 2723;
 	public static int uraniumViaID = 2724;
+	
+	public static int causticBoatEntityID;
+	public static int causticBoatIndex = 5;
+	public static int causticBoatNetEntityID;
+	public static int causticBoatID = 2725;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -316,6 +324,8 @@ public class PlasmaCraft
 		
 		proxy.registerTextureFX();
 		
+		registerEntities();
+		
 		GameRegistry.registerWorldGenerator(new WorldGenerator());
 	}
 
@@ -424,6 +434,13 @@ public class PlasmaCraft
         LanguageRegistry.addName(acidBarrier, "Acid Barrier");
 	}
 	
+	private void registerEntities()
+	{
+		causticBoatEntityID = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", causticBoatEntityID);
+		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", causticBoatEntityID, this, 32, 100, true);
+	}
+	
 	private void registerItems()
 	{
 		goopAcid = (new ItemPlasma(goopAcidID)).setIconIndex(goopAcidIndex).setItemName("goopAcid");
@@ -480,6 +497,9 @@ public class PlasmaCraft
         LanguageRegistry.addName(plutoniumVial, "Plutonium Vial");
         LanguageRegistry.addName(radioniteVial, "Radionite Vial");
         LanguageRegistry.addName(uraniumVial, "Uranium Vial");
+        
+        causticBoat = (new ItemCausticBoat(causticBoatID)).setIconIndex(causticBoatIndex).setItemName("causticBoat");
+        LanguageRegistry.addName(causticBoat, "Radionite Boat");
 	}
 	
 	private void registerOres()
@@ -513,6 +533,9 @@ public class PlasmaCraft
         });
         GameRegistry.addRecipe(new ItemStack(acidBarrier, 1), new Object[] {
             " X ", "XZX", " X ", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), goopAcid
+        });
+        GameRegistry.addRecipe(new ItemStack(causticBoat, 1), new Object[] {
+            "R R", "RRR", Character.valueOf('R'), ingotRadionite
         });
         
         GameRegistry.addShapelessRecipe(new ItemStack(goopCryonite, 4), plasma, goopCryonite);

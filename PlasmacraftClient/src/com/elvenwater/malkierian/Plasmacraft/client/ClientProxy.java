@@ -8,6 +8,7 @@ import net.minecraft.src.RenderEngine;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.EntityCausticBoat;
 import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
 import com.elvenwater.malkierian.Plasmacraft.client.TextureFrameAnimFX;
 
@@ -25,6 +26,7 @@ public class ClientProxy extends CommonProxy
 		
 		PlasmaCraft.causticID = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderCaustic());
+		RenderingRegistry.registerEntityRenderingHandler(EntityCausticBoat.class, new RenderCausticBoat());
 	}
 	
 	@Override

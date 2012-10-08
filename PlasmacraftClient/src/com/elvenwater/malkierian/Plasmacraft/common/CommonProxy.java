@@ -31,4 +31,9 @@ public class CommonProxy
 	{
 		return false;
 	}
+
+	public void registerEntities()
+	{
+		
+	}
 }
