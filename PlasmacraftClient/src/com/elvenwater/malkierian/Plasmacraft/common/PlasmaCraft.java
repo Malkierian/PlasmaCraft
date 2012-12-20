@@ -1,12 +1,6 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockOre;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.ModLoader;
+import net.minecraft.src.*;
 
 import com.elvenwater.malkierian.Plasmacraft.client.ClientPacketHandler;
 import com.elvenwater.malkierian.Plasmacraft.client.GuiHandler;
@@ -30,14 +24,24 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Malkierian_PlasmaCraft", name = "PlasmaCraft", version = "0.3.1")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false,
-clientPacketHandlerSpec =
-@SidedPacketHandler(channels = {"PlasmaCraft" }, packetHandler = ClientPacketHandler.class),
-serverPacketHandlerSpec =
-@SidedPacketHandler(channels = {"PlasmaCraft" }, packetHandler = ServerPacketHandler.class))
+
+@Mod(modid = "Malkierian_PlasmaCraft", name="PlasmaCraft", version="0.3.1")
+@NetworkMod(channels = { "PlasmaCraft" }, clientSideRequired = true, serverSideRequired = false, packetHandler = PacketHandler.class)
+
+
 public class PlasmaCraft
 {
+	private GuiHandler guiHandler = new GuiHandler();
+	
+	// Says where the client and server 'proxy' code is loaded.
+	@SidedProxy(clientSide="com.elvenwater.malkierian.Plasmacraft.client.ClientProxy", serverSide="com.elvenwater.malkierian.Plasmacraft.common.CommonProxy")
+	public static CommonProxy proxy;
+	
+	// The instance of your mod that Forge uses.
+	@Instance("PlasmaCraft")
+	public static PlasmaCraft instance;
+	
+	//Blocks
 	public static Block acidBarrier;
 	
 	public static Block orePlasma;
@@ -107,8 +111,8 @@ public class PlasmaCraft
 	public static final int plutoniumMeta = 0;
 	public static final int radioniteMeta = 1;
 	public static final int neptuniumMeta = 2;
-    public static final int obsidiumMeta = 3; 
-    public static final int uraniumMeta = 4;
+        public static final int obsidiumMeta = 3; 
+        public static final int uraniumMeta = 4;
     
 	public static int oreBlockID = 2500;
 	public static int oreLeadBlockID = 2501;
@@ -268,29 +272,19 @@ public class PlasmaCraft
 	public static int radioniteVialIndex = 44;
 	public static int uraniumVialIndex = 49;
     
-    public static final int glowClothAcidMeta = 0;
-    public static final int glowClothRadioniteMeta = 1;
-    public static final int glowClothNetherflowMeta = 2;
-    public static final int glowClothNeptuniumMeta = 3;
-    public static final int glowClothUraniumMeta = 4;
-    public static final int glowClothPlutoniumMeta = 5;
-    public static final int glowClothCryoniteMeta = 6;
-    public static final int glowClothObsidiumMeta = 7;
+    	public static final int glowClothAcidMeta = 0;
+    	public static final int glowClothRadioniteMeta = 1;
+   	public static final int glowClothNetherflowMeta = 2;
+   	public static final int glowClothNeptuniumMeta = 3;
+   	public static final int glowClothUraniumMeta = 4;
+   	public static final int glowClothPlutoniumMeta = 5;
+   	public static final int glowClothCryoniteMeta = 6;
+   	public static final int glowClothObsidiumMeta = 7;
 	
 	public static boolean generateUranium = true;
 	public static boolean generatePlutonium = true;
 
 	public static int plasmaBenchFrontAnim;
-	
-	// The instance of your mod that Forge uses.
-	@Instance("PlasmaCraft")
-	public static PlasmaCraft instance;
-	
-	private GuiHandler guiHandler = new GuiHandler();
-	
-	// Says where the client and server 'proxy' code is loaded.
-	@SidedProxy(clientSide="com.elvenwater.malkierian.Plasmacraft.client.ClientProxy", serverSide="com.elvenwater.malkierian.Plasmacraft.common.CommonProxy")
-	public static CommonProxy proxy;
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event)
@@ -299,7 +293,8 @@ public class PlasmaCraft
 	}
 	
 	@Init
-	public void load(FMLInitializationEvent event) {
+	public void load(FMLInitializationEvent event) 
+	{
 		NetworkRegistry.instance().registerGuiHandler(this, guiHandler);
 		
 		proxy.registerRenderers();
