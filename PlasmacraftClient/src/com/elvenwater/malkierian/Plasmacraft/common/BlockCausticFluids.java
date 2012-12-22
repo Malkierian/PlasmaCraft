@@ -1,23 +1,20 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-import cpw.mods.fml.common.Side;
-import cpw.mods.fml.common.asm.SideOnly;
-
-import net.minecraft.src.AxisAlignedBB;
-import net.minecraft.src.Block;
-import net.minecraft.src.DamageSource;
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityItem;
-import net.minecraft.src.EntityLiving;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.Vec3;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockCausticFluids extends Block
 {
@@ -77,7 +74,7 @@ public abstract class BlockCausticFluids extends Block
 //        if(PlasmaCraft.liquidSourceExplodesAfterCausticExplosion)
 //        {
 //            world.setBlockWithNotify(i, j, k, 0);
-//            world.createExplosion(null, i, j, k, 4F);
+//            world.createExplosion(null, i, j, k, 4F, false);
 //        }
         else
         {
@@ -507,23 +504,23 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumFlowingBlockID))
             {
@@ -546,15 +543,15 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowFlowingBlockID))
             {
@@ -562,7 +559,7 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumFlowingBlockID))
             {
@@ -581,15 +578,15 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowFlowingBlockID))
             {
@@ -597,7 +594,7 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumFlowingBlockID))
             {
@@ -605,7 +602,7 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
         }
         else if(blockIndexInTexture == PlasmaCraft.neptuniumStillIndex || blockIndexInTexture == PlasmaCraft.neptuniumMovingIndex)
@@ -620,15 +617,15 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowFlowingBlockID))
             {
@@ -644,7 +641,7 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
         }
         else if(blockIndexInTexture == PlasmaCraft.netherflowStillIndex || blockIndexInTexture == PlasmaCraft.netherflowMovingIndex)
@@ -659,7 +656,7 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteFlowingBlockID))
             {
@@ -698,15 +695,15 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumFlowingBlockID))
             {
@@ -722,7 +719,7 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 8F);
+                world.createExplosion(null, i, j, k, 8F, false);
             }
         }
         else if(blockIndexInTexture == PlasmaCraft.obsidiumStillIndex || blockIndexInTexture == PlasmaCraft.obsidiumMovingIndex)
@@ -780,11 +777,11 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 4F);
+                world.createExplosion(null, i, j, k, 4F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowFlowingBlockID))
             {
@@ -792,7 +789,7 @@ public abstract class BlockCausticFluids extends Block
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumFlowingBlockID))
             {
-                world.createExplosion(null, i, j, k, 8F);
+                world.createExplosion(null, i, j, k, 8F, false);
             }
             else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStillBlockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumFlowingBlockID))
             {

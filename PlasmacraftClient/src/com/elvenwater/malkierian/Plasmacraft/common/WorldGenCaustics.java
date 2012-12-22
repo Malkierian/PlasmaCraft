@@ -2,9 +2,8 @@ package com.elvenwater.malkierian.Plasmacraft.common;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.block.Block;
+import net.minecraft.world.World;
 
 public class WorldGenCaustics extends WorldGenerator
 {

@@ -1,14 +1,15 @@
 package com.elvenwater.malkierian.Plasmacraft.client;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFluid;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.IBlockAccess;
+
 import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockFluid;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.Material;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.RenderBlocks;
-import net.minecraft.src.Tessellator;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 
 public class RenderCaustic implements ISimpleBlockRenderingHandler
@@ -80,25 +81,25 @@ public class RenderCaustic implements ISimpleBlockRenderingHandler
         Tessellator tessellator = Tessellator.instance;
         int j = (i & 0xf) << 4;
         int k = i & 0xf0;
-        double d3 = ((double)j + block.minX * 16D) / 256D;
-        double d4 = (((double)j + block.maxX * 16D) - 0.01D) / 256D;
-        double d5 = ((double)k + block.minZ * 16D) / 256D;
-        double d6 = (((double)k + block.maxZ * 16D) - 0.01D) / 256D;
-        if(block.minX < 0.0D || block.maxX > 1.0D)
+        double d3 = ((double)j + block.getBlockBoundsMinX() * 16D) / 256D;
+        double d4 = (((double)j + block.getBlockBoundsMaxX() * 16D) - 0.01D) / 256D;
+        double d5 = ((double)k + block.getBlockBoundsMinZ() * 16D) / 256D;
+        double d6 = (((double)k + block.getBlockBoundsMaxZ() * 16D) - 0.01D) / 256D;
+        if(block.getBlockBoundsMinX() < 0.0D || block.getBlockBoundsMaxX() > 1.0D)
         {
             d3 = ((float)j + 0.0F) / 256F;
             d4 = ((float)j + 15.99F) / 256F;
         }
-        if(block.minZ < 0.0D || block.maxZ > 1.0D)
+        if(block.getBlockBoundsMinZ() < 0.0D || block.getBlockBoundsMaxZ() > 1.0D)
         {
             d5 = ((float)k + 0.0F) / 256F;
             d6 = ((float)k + 15.99F) / 256F;
         }
-        double d7 = d + block.minX;
-        double d8 = d + block.maxX;
-        double d9 = d1 + block.minY;
-        double d10 = d2 + block.minZ;
-        double d11 = d2 + block.maxZ;
+        double d7 = d + block.getBlockBoundsMinX();
+        double d8 = d + block.getBlockBoundsMaxX();
+        double d9 = d1 + block.getBlockBoundsMinY();
+        double d10 = d2 + block.getBlockBoundsMinZ();
+        double d11 = d2 + block.getBlockBoundsMaxZ();
         tessellator.addVertexWithUV(d7, d9, d11, d3, d6);
         tessellator.addVertexWithUV(d7, d9, d10, d3, d5);
         tessellator.addVertexWithUV(d8, d9, d10, d4, d5);
@@ -267,8 +268,9 @@ public class RenderCaustic implements ISimpleBlockRenderingHandler
             }
         }
 
-        block.minY = d;
-        block.maxY = d1;
+        block.setBlockBounds((float)block.getBlockBoundsMinX(),
+        		(float)block.getBlockBoundsMaxX(), (float)d, (float)d1,
+        		(float)block.getBlockBoundsMinZ(), (float)block.getBlockBoundsMaxZ());
         return flag2;
     }
 

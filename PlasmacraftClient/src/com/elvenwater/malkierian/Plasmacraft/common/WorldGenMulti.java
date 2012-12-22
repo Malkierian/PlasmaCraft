@@ -6,10 +6,9 @@ package com.elvenwater.malkierian.Plasmacraft.common;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.World;
-import net.minecraft.src.WorldGenerator;
+import net.minecraft.block.Block;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
 // Referenced classes of package net.minecraft.src:
 //            WorldGenerator, MathHelper, World, Block

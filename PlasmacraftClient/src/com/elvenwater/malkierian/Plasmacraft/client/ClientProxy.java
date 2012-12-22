@@ -1,16 +1,16 @@
 package com.elvenwater.malkierian.Plasmacraft.client;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityPlayerSP;
-import net.minecraft.src.IBlockAccess;
-import net.minecraft.src.ModLoader;
-import net.minecraft.src.RenderEngine;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.renderer.RenderEngine;
+import net.minecraft.entity.Entity;
+import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.EntityAcidGrenade;
+import com.elvenwater.malkierian.Plasmacraft.common.EntityAcidTNTPrimed;
 import com.elvenwater.malkierian.Plasmacraft.common.EntityCausticBoat;
 import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
-import com.elvenwater.malkierian.Plasmacraft.client.TextureFrameAnimFX;
 
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
@@ -27,6 +27,8 @@ public class ClientProxy extends CommonProxy
 		PlasmaCraft.causticID = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerBlockHandler(new RenderCaustic());
 		RenderingRegistry.registerEntityRenderingHandler(EntityCausticBoat.class, new RenderCausticBoat());
+		RenderingRegistry.registerEntityRenderingHandler(EntityAcidTNTPrimed.class, new RenderAcidTNTPrimed());
+		RenderingRegistry.registerEntityRenderingHandler(EntityAcidGrenade.class, new RenderAcidGrenade(PlasmaCraft.acidGrenadeIndex));
 	}
 	
 	@Override

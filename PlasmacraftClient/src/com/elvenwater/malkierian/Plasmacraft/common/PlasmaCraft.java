@@ -1,27 +1,22 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockOre;
-import net.minecraft.src.CreativeTabs;
-import net.minecraft.src.Item;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Material;
-import net.minecraft.src.ModLoader;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockOre;
+import net.minecraft.block.material.Material;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 
 import com.elvenwater.malkierian.Plasmacraft.client.ClientPacketHandler;
 import com.elvenwater.malkierian.Plasmacraft.client.GuiHandler;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.OreDictionary;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.client.FMLClientHandler;
+
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
 import cpw.mods.fml.common.Mod.PreInit;
-import cpw.mods.fml.common.Side;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.asm.SideOnly;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -52,7 +47,7 @@ public class PlasmaCraft
 	
 	public static Block acidMoving;
 	public static Block acidStill;
-	//public static Block acidTnt;
+	public static Block acidTnt;
 	public static Block cryoniteMoving;
 	public static Block cryoniteStill;
 	public static Block frozenCryonite;
@@ -79,7 +74,9 @@ public class PlasmaCraft
 	public static Item goopRadionite;
 	public static Item goopUranium;
 	public static Item plasma;
+	public static Item acidGrenade;
 	public static Item causticBoat;
+	public static Item thermoPellet;
 
 	public static Item ingotCryonite;
 	public static Item ingotLead;
@@ -110,8 +107,8 @@ public class PlasmaCraft
 	public static final int plutoniumMeta = 0;
 	public static final int radioniteMeta = 1;
 	public static final int neptuniumMeta = 2;
-    public static final int obsidiumMeta = 3; 
-    public static final int uraniumMeta = 4;
+	public static final int obsidiumMeta = 3; 
+	public static final int uraniumMeta = 4;
     
 	public static int oreBlockID = 2500;
 	public static int oreLeadBlockID = 2501;
@@ -139,6 +136,7 @@ public class PlasmaCraft
 	
 	public static int plasmaBenchBlockID = 2521;
 	public static int acidBarrierBlockID = 2522;
+	public static int acidTNTBlockID = 2523;
 
 	public static int goopAcidID = 2700;
 	public static int goopCryoniteID = 2701;
@@ -173,6 +171,8 @@ public class PlasmaCraft
 	public static int causticBoatIndex = 5;
 	public static int causticBoatNetEntityID;
 	public static int causticBoatID = 2725;
+	public static int thermoPelletID = 2726;
+	public static int acidGrenadeID = 2727;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -224,6 +224,9 @@ public class PlasmaCraft
 	
 	public static int plasmaIndex = 33;
 	public static int acidBarrierIndex = 16;
+	public static int acidTntBottomIndex = 2;
+	public static int acidTntSideIndex = 1;
+	public static int acidTntTopIndex = 3;
 
 	public static int goopAcidIndex = 34;
 	public static int goopCryoniteIndex = 9;
@@ -275,15 +278,17 @@ public class PlasmaCraft
 	public static int plutoniumVialIndex = 41;
 	public static int radioniteVialIndex = 44;
 	public static int uraniumVialIndex = 49;
+	public static int acidGrenadeIndex = 1;
+	public static int thermoPelletIndex = 46;
     
-    public static final int glowClothAcidMeta = 0;
-    public static final int glowClothRadioniteMeta = 1;
-    public static final int glowClothNetherflowMeta = 2;
-    public static final int glowClothNeptuniumMeta = 3;
-    public static final int glowClothUraniumMeta = 4;
-    public static final int glowClothPlutoniumMeta = 5;
-    public static final int glowClothCryoniteMeta = 6;
-    public static final int glowClothObsidiumMeta = 7;
+	public static final int glowClothAcidMeta = 0;
+	public static final int glowClothRadioniteMeta = 1;
+	public static final int glowClothNetherflowMeta = 2;
+	public static final int glowClothNeptuniumMeta = 3;
+	public static final int glowClothUraniumMeta = 4;
+	public static final int glowClothPlutoniumMeta = 5;
+	public static final int glowClothCryoniteMeta = 6;
+	public static final int glowClothObsidiumMeta = 7;
 	
 	public static boolean generateUranium = true;
 	public static boolean generatePlutonium = true;
@@ -313,6 +318,8 @@ public class PlasmaCraft
 		proxy.registerRenderers();
 		
 		registerBlocks();
+		
+		registerFuel();
 		
 		registerItems();
 		
@@ -432,13 +439,29 @@ public class PlasmaCraft
         acidBarrier = (new BlockAcidBarrier(acidBarrierBlockID, acidBarrierIndex)).setBlockName("acidBarrier");
         GameRegistry.registerBlock(acidBarrier);
         LanguageRegistry.addName(acidBarrier, "Acid Barrier");
+        
+        acidTnt = (new BlockAcidTNT(acidTNTBlockID, acidTntSideIndex, acidTntTopIndex, acidTntBottomIndex)).setBlockName("acidTnt");
+        GameRegistry.registerBlock(acidTnt);
+        LanguageRegistry.addName(acidTnt, "Acid TNT");
 	}
 	
 	private void registerEntities()
 	{
 		causticBoatEntityID = EntityRegistry.findGlobalUniqueEntityId();
-		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", causticBoatEntityID);
+//		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", causticBoatEntityID);
 		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", causticBoatEntityID, this, 32, 100, true);
+		
+		int acidTntEntityID = EntityRegistry.findGlobalUniqueEntityId();
+//		EntityRegistry.registerGlobalEntityID(EntityAcidTNTPrimed.class, "acidTnt", acidTntEntityID);
+		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTnt", acidTntEntityID, this, 32, 100, false);
+		
+		int acidGrenadeEntityID = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerModEntity(EntityAcidGrenade.class, "acidGrenade", acidGrenadeEntityID, this, 32, 100, true);
+	}
+	
+	private void registerFuel()
+	{
+		GameRegistry.registerFuelHandler(new FuelHandler());
 	}
 	
 	private void registerItems()
@@ -500,6 +523,12 @@ public class PlasmaCraft
         
         causticBoat = (new ItemCausticBoat(causticBoatID)).setIconIndex(causticBoatIndex).setItemName("causticBoat");
         LanguageRegistry.addName(causticBoat, "Radionite Boat");
+        
+        thermoPellet = (new ItemPlasma(thermoPelletID)).setIconIndex(thermoPelletIndex).setItemName("thermopellet");
+        LanguageRegistry.addName(thermoPellet, "Thermopellet");
+        
+        acidGrenade = new ItemPlasma(acidGrenadeID).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
+        LanguageRegistry.addName(acidGrenade, "Acid Grenade");
 	}
 	
 	private void registerOres()
@@ -536,6 +565,12 @@ public class PlasmaCraft
         });
         GameRegistry.addRecipe(new ItemStack(causticBoat, 1), new Object[] {
             "R R", "RRR", Character.valueOf('R'), ingotRadionite
+        });
+        GameRegistry.addRecipe(new ItemStack(acidTnt, 4), new Object[] {
+            "APA", "GAG", "APA", Character.valueOf('A'), acidVial, Character.valueOf('G'), Item.gunpowder, Character.valueOf('P'), plasma
+        });
+        GameRegistry.addRecipe(new ItemStack(acidGrenade, 4), new Object[] {
+            "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), acidVial, Character.valueOf('Z'), plasma
         });
         
         GameRegistry.addShapelessRecipe(new ItemStack(goopCryonite, 4), plasma, goopCryonite);

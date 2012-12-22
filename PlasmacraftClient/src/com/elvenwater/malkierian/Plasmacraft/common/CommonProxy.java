@@ -1,7 +1,7 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.IBlockAccess;
+import net.minecraft.entity.Entity;
+import net.minecraft.world.IBlockAccess;
 
 public class CommonProxy
 {

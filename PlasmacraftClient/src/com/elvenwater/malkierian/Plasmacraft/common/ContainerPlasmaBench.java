@@ -1,12 +1,11 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
-import net.minecraft.src.Container;
-import net.minecraft.src.EntityPlayer;
-import net.minecraft.src.ICrafting;
-import net.minecraft.src.IInventory;
-import net.minecraft.src.InventoryPlayer;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.Slot;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.Slot;
+import net.minecraft.item.ItemStack;
 
 public class ContainerPlasmaBench extends Container
 {
@@ -46,6 +45,7 @@ public class ContainerPlasmaBench extends Container
 
     }
 
+    @Override
     public void updateCraftingResults()
     {
         super.updateCraftingResults();
@@ -54,15 +54,15 @@ public class ContainerPlasmaBench extends Container
             ICrafting icrafting = (ICrafting)crafters.get(i);
             if(cookTime != bench.furnaceCookTime)
             {
-                icrafting.updateCraftingInventoryInfo(this, 0, bench.furnaceCookTime);
+                icrafting.sendProgressBarUpdate(this, 0, bench.furnaceCookTime);
             }
             if(burnTime != bench.furnaceBurnTime)
             {
-                icrafting.updateCraftingInventoryInfo(this, 1, bench.furnaceBurnTime);
+                icrafting.sendProgressBarUpdate(this, 1, bench.furnaceBurnTime);
             }
             if(currBurnTime != bench.currentItemBurnTime)
             {
-                icrafting.updateCraftingInventoryInfo(this, 2, bench.currentItemBurnTime);
+                icrafting.sendProgressBarUpdate(this, 2, bench.currentItemBurnTime);
             }
         }
 
@@ -71,6 +71,7 @@ public class ContainerPlasmaBench extends Container
         currBurnTime = bench.currentItemBurnTime;
     }
 
+    @Override
     public void updateProgressBar(int i, int j)
     {
         if(i == 0)
@@ -87,12 +88,14 @@ public class ContainerPlasmaBench extends Container
         }
     }
 
+    @Override
     public boolean canInteractWith(EntityPlayer entityplayer)
     {
         return bench.isUseableByPlayer(entityplayer);
     }
 
-    public ItemStack transferStackInSlot(int i)
+    @Override
+    public ItemStack transferStackInSlot(EntityPlayer player, int i)
     {
         ItemStack itemstack = null;
         Slot slot = (Slot)inventorySlots.get(i);
@@ -134,7 +137,7 @@ public class ContainerPlasmaBench extends Container
             }
             if(itemstack1.stackSize != itemstack.stackSize)
             {
-                slot.onPickupFromSlot(itemstack1);
+                slot.onPickupFromSlot(player, itemstack1);
             } else
             {
                 return null;

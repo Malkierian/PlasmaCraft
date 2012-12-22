@@ -1,10 +1,7 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.BlockCloth;
-import net.minecraft.src.ItemBlock;
-import net.minecraft.src.ItemStack;
-import net.minecraft.src.ModLoader;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 
 public class ItemPlasmaOre extends ItemBlock
 {

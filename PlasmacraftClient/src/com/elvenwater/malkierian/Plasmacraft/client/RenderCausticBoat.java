@@ -1,16 +1,15 @@
 package com.elvenwater.malkierian.Plasmacraft.client;
 
-import net.minecraft.src.Entity;
-import net.minecraft.src.EntityBoat;
-import net.minecraft.src.MathHelper;
-import net.minecraft.src.ModelBase;
-import net.minecraft.src.ModelBoat;
-import net.minecraft.src.Render;
+import net.minecraft.client.model.ModelBase;
+import net.minecraft.client.model.ModelBoat;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.entity.Entity;
+import net.minecraft.util.MathHelper;
+
+import org.lwjgl.opengl.GL11;
 
 import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
 import com.elvenwater.malkierian.Plasmacraft.common.EntityCausticBoat;
-
-import org.lwjgl.opengl.GL11;
 
 public class RenderCausticBoat extends Render
 {

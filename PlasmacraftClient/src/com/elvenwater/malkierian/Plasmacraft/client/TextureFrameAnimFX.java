@@ -6,18 +6,15 @@ import java.io.InputStream;
 
 import javax.imageio.ImageIO;
 
-import org.lwjgl.opengl.GL11;
+import net.minecraft.client.renderer.RenderEngine;
+import net.minecraft.client.renderer.texturefx.TextureFX;
+import net.minecraft.client.texturepacks.TexturePackList;
+import net.minecraft.src.ModLoader;
+import net.minecraftforge.client.ForgeHooksClient;
 
 import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
 
 import cpw.mods.fml.client.FMLClientHandler;
-
-import net.minecraft.src.ModLoader;
-import net.minecraft.src.RenderEngine;
-import net.minecraft.src.TextureFX;
-import net.minecraft.src.TexturePackList;
-import net.minecraftforge.client.ForgeHooksClient;
-import net.minecraftforge.client.MinecraftForgeClient;
 
 public class TextureFrameAnimFX extends TextureFX
 {

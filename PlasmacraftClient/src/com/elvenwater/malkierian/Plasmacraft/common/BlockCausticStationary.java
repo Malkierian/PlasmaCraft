@@ -2,9 +2,9 @@ package com.elvenwater.malkierian.Plasmacraft.common;
 
 import java.util.Random;
 
-import net.minecraft.src.Block;
-import net.minecraft.src.Material;
-import net.minecraft.src.World;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.world.World;
 
 public class BlockCausticStationary extends BlockCausticFluids
 {
@@ -46,7 +46,7 @@ public class BlockCausticStationary extends BlockCausticFluids
         int l = world.getBlockMetadata(i, j, k);
         world.editingBlocks = true;
         world.setBlockAndMetadata(i, j, k, flowingBlockID, l);
-        world.markBlocksDirty(i, j, k, i, j, k);
+        world.markBlockForUpdate(i, j, k);
         world.scheduleBlockUpdate(i, j, k, flowingBlockID, tickRate());
         world.editingBlocks = false;
     }
