@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
-import com.elvenwater.malkierian.Plasmacraft.client.ClientPacketHandler;
 import com.elvenwater.malkierian.Plasmacraft.client.GuiHandler;
 
 import cpw.mods.fml.common.Mod;
@@ -21,18 +20,14 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
-import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "Malkierian_PlasmaCraft", name = "PlasmaCraft", version = "0.3.1")
-@NetworkMod(clientSideRequired = true, serverSideRequired = false,
-clientPacketHandlerSpec =
-@SidedPacketHandler(channels = {"PlasmaCraft" }, packetHandler = ClientPacketHandler.class),
-serverPacketHandlerSpec =
-@SidedPacketHandler(channels = {"PlasmaCraft" }, packetHandler = ServerPacketHandler.class))
+@Mod(modid = "MPC", name = "PlasmaCraft", version = "0.3.2")
+@NetworkMod(channels = "MPC", clientSideRequired = true, serverSideRequired = false,
+packetHandler = PacketHandler.class)
 public class PlasmaCraft
 {
 	public static Block acidBarrier;
