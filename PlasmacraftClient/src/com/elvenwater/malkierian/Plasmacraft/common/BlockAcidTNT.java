@@ -42,24 +42,29 @@ public class BlockAcidTNT extends BlockTNT
         }
     }
 
+    @Override
     public void onBlockDestroyedByExplosion(World world, int i, int j, int k)
     {
-        EntityAcidTNTPrimed entityacidtntprimed = new EntityAcidTNTPrimed(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
-        entityacidtntprimed.fuse = world.rand.nextInt(entityacidtntprimed.fuse / 4) + entityacidtntprimed.fuse / 8;
-        world.spawnEntityInWorld(entityacidtntprimed);
+    	if(!world.isRemote)
+    	{
+	        EntityAcidTNTPrimed entityacidtntprimed = new EntityAcidTNTPrimed(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
+	        entityacidtntprimed.fuse = world.rand.nextInt(entityacidtntprimed.fuse / 4) + entityacidtntprimed.fuse / 8;
+	        world.spawnEntityInWorld(entityacidtntprimed);
+    	}
     }
 
+    @Override
     public void onBlockDestroyedByPlayer(World world, int i, int j, int k, int l)
     {
-        if(world.isRemote)
+        if(!world.isRemote)
         {
-            return;
-        } else
-        {
-            EntityAcidTNTPrimed entityacidtntprimed = new EntityAcidTNTPrimed(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
-            world.spawnEntityInWorld(entityacidtntprimed);
-            world.playSoundAtEntity(entityacidtntprimed, "random.fuse", 1.0F, 1.0F);
-            return;
+        	if((l & 1) == 1)
+            {
+        		EntityAcidTNTPrimed entityacidtntprimed = new EntityAcidTNTPrimed(world, (float)i + 0.5F, (float)j + 0.5F, (float)k + 0.5F);
+	            world.spawnEntityInWorld(entityacidtntprimed);
+	            world.playSoundAtEntity(entityacidtntprimed, "random.fuse", 1.0F, 1.0F);
+	            return;
+            }
         }
     }
 

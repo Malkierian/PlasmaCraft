@@ -436,22 +436,20 @@ public class PlasmaCraft
         LanguageRegistry.addName(acidBarrier, "Acid Barrier");
         
         acidTnt = (new BlockAcidTNT(acidTNTBlockID, acidTntSideIndex, acidTntTopIndex, acidTntBottomIndex)).setBlockName("acidTnt");
-        GameRegistry.registerBlock(acidTnt);
+        GameRegistry.registerBlock(acidTnt, "Acid TNT");
         LanguageRegistry.addName(acidTnt, "Acid TNT");
 	}
 	
 	private void registerEntities()
 	{
-		causticBoatEntityID = EntityRegistry.findGlobalUniqueEntityId();
-//		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", causticBoatEntityID);
-		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", causticBoatEntityID, this, 32, 100, true);
+//		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 40, true);
 		
-		int acidTntEntityID = EntityRegistry.findGlobalUniqueEntityId();
-//		EntityRegistry.registerGlobalEntityID(EntityAcidTNTPrimed.class, "acidTnt", acidTntEntityID);
-		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTnt", acidTntEntityID, this, 32, 100, false);
+//		EntityRegistry.registerGlobalEntityID(EntityAcidTNTPrimed.class, "acidTntPrimed", EntityRegistry.findGlobalUniqueEntityId());
+		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTntPrimed", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 100, false);
 		
-		int acidGrenadeEntityID = EntityRegistry.findGlobalUniqueEntityId();
-		EntityRegistry.registerModEntity(EntityAcidGrenade.class, "acidGrenade", acidGrenadeEntityID, this, 32, 100, true);
+//		int acidGrenadeEntityID = EntityRegistry.findGlobalUniqueEntityId();
+//		EntityRegistry.registerModEntity(EntityAcidGrenade.class, "acidGrenade", acidGrenadeEntityID, this, 32, 100, true);
 	}
 	
 	private void registerFuel()
