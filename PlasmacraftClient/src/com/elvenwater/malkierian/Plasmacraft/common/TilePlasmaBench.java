@@ -216,7 +216,7 @@ public class TilePlasmaBench extends TileEntity
             {
                 continue;
             }
-            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex, furnaceItemStacks[k].getItemDamage());
+            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().itemID, furnaceItemStacks[k].getItemDamage());
             if(itemstack != null)
             {
                 ai[i] = k;
@@ -267,7 +267,7 @@ public class TilePlasmaBench extends TileEntity
         for(int j = 0; j < i; j++)
         {
             int k = ai[j];
-            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex, furnaceItemStacks[k].getItemDamage());
+            ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().itemID, furnaceItemStacks[k].getItemDamage());
             Item item = furnaceItemStacks[k].getItem();
             int l = getAvailableDestIndex(itemstack);
             if(l != -1)
@@ -301,7 +301,7 @@ public class TilePlasmaBench extends TileEntity
                 break;
             }
             int i1 = ai[l];
-            ItemStack itemstack1 = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[i1].getItem().shiftedIndex, furnaceItemStacks[i1].getItemDamage());
+            ItemStack itemstack1 = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[i1].getItem().itemID, furnaceItemStacks[i1].getItemDamage());
             j = getAvailableDestIndex(itemstack1);
             if(j != -1)
             {
@@ -310,7 +310,7 @@ public class TilePlasmaBench extends TileEntity
             }
             l++;
         } while(true);
-        ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().shiftedIndex, furnaceItemStacks[k].getItemDamage());
+        ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem().itemID, furnaceItemStacks[k].getItemDamage());
         if(furnaceItemStacks[j] == null)
         {
             furnaceItemStacks[j] = itemstack.copy();
@@ -375,32 +375,32 @@ public class TilePlasmaBench extends TileEntity
         {
             return 0;
         }
-        int i = itemstack.getItem().shiftedIndex;
-        if(i == Item.redstone.shiftedIndex)
+        int i = itemstack.getItem().itemID;
+        if(i == Item.redstone.itemID)
         {
         	return 250;
         }
-        if(i == PlasmaCraft.goopAcid.shiftedIndex)
+        if(i == PlasmaCraft.goopAcid.itemID)
         {
             return 1000;
         }
-        if(i == PlasmaCraft.plasma.shiftedIndex)
+        if(i == PlasmaCraft.plasma.itemID)
         {
             return 4000;
         }
-//        if(i == PlasmaCraft.batteryCharged.shiftedIndex)
+//        if(i == PlasmaCraft.batteryCharged.itemID)
 //        {
 //            return 4000;
 //        }
-        if(i == PlasmaCraft.radioniteVial.shiftedIndex)
+        if(i == PlasmaCraft.radioniteVial.itemID)
         {
             return 8000;
         }
-//        if(i == PlasmaCraft.batteryPlasma.shiftedIndex)
+//        if(i == PlasmaCraft.batteryPlasma.itemID)
 //        {
 //            return 8000;
 //        }
-        return i != PlasmaCraft.plutoniumVial.shiftedIndex ? 0 : 20000;
+        return i != PlasmaCraft.plutoniumVial.itemID ? 0 : 20000;
     }
 
     @Override

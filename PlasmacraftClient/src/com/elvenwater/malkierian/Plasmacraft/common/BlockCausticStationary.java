@@ -15,7 +15,6 @@ public class BlockCausticStationary extends BlockCausticFluids
         setHardness(5F);
         setLightOpacity(3);
         setLightValue(lightvalue);
-        
     }
 
     public int getBlockTextureFromSide(int i)

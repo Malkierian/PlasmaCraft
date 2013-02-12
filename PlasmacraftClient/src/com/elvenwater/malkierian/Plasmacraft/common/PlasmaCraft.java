@@ -144,7 +144,7 @@ public class PlasmaCraft
 	public static int plasmaID = 2708;
 
 	public static int ingotCryoniteID = 2709;
-	public static int ingotLeadID = 2716;
+	public static int ingotLeadID = 2728;
 	public static int ingotNeptuniumID = 2710;
 	public static int ingotNetherflowID = 2711;
 	public static int ingotObsidiumID = 2712;
@@ -376,21 +376,21 @@ public class PlasmaCraft
         radioniteStill = 	(new BlockCausticStationary	(radioniteStillBlockID,    radioniteStillIndex,  radioniteMovingIndex, 	causticID, radioniteStillBlockID,  radioniteFlowingBlockID,  1.0F)).setBlockName("radioniteStill");
         uraniumMoving = 	(new BlockCausticFlowing	(uraniumFlowingBlockID,    uraniumStillIndex, 	 uraniumMovingIndex, 	causticID, uraniumStillBlockID,    uraniumFlowingBlockID		 )).setBlockName("uraniumMoving");
         uraniumStill = 		(new BlockCausticStationary	(uraniumStillBlockID, 	   uraniumStillIndex, 	 uraniumMovingIndex, 	causticID, uraniumStillBlockID,    uraniumFlowingBlockID,	 1.0F)).setBlockName("uraniumStill");
-        GameRegistry.registerBlock(acidMoving);
+        GameRegistry.registerBlock(acidMoving, "Acid");
 //        GameRegistry.registerBlock(acidStill);
-        GameRegistry.registerBlock(cryoniteMoving);
+        GameRegistry.registerBlock(cryoniteMoving, "Cryonite");
 //        GameRegistry.registerBlock(cryoniteStill);
-        GameRegistry.registerBlock(neptuniumMoving);
+        GameRegistry.registerBlock(neptuniumMoving, "Neptunium");
 //        GameRegistry.registerBlock(neptuniumStill);
-        GameRegistry.registerBlock(netherflowMoving);
+        GameRegistry.registerBlock(netherflowMoving, "Netherflow");
 //        GameRegistry.registerBlock(netherflowStill);
-        GameRegistry.registerBlock(obsidiumMoving);
+        GameRegistry.registerBlock(obsidiumMoving, "Obsidium");
 //        GameRegistry.registerBlock(obsidiumStill);
-        GameRegistry.registerBlock(plutoniumMoving);
+        GameRegistry.registerBlock(plutoniumMoving, "Plutonium");
 //        GameRegistry.registerBlock(plutoniumStill);
-        GameRegistry.registerBlock(radioniteMoving);
+        GameRegistry.registerBlock(radioniteMoving, "Radionite");
 //        GameRegistry.registerBlock(radioniteStill);
-        GameRegistry.registerBlock(uraniumMoving);
+        GameRegistry.registerBlock(uraniumMoving, "Uranium");
 //        GameRegistry.registerBlock(uraniumStill);
         LanguageRegistry.addName(acidMoving, "Acid");
         //LanguageRegistry.addName(acidStill, "Acid Still");

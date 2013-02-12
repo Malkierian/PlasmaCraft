@@ -41,12 +41,14 @@ public abstract class BlockCausticFluids extends Block
     }
     
     @SideOnly(value = Side.CLIENT)
+    @Override
     public int getBlockColor()
     {
         return 0xffffff;
     }
 
     @SideOnly(value = Side.CLIENT)
+    @Override
     public int colorMultiplier(IBlockAccess iblockaccess, int i, int j, int k)
     {
         return 0xffffff;
@@ -81,159 +83,199 @@ public abstract class BlockCausticFluids extends Block
             return;
         }
     }
-
     
-    public static float setFluidHeight(int i)
+    public static float getFluidHeightPercent(int par0)
     {
-        if(i >= 8)
+        if (par0 >= 8)
         {
-            i = 0;
+            par0 = 0;
         }
-        float f = (float)(i + 1) / 9F;
-        return f;
+
+        return (float)(par0 + 1) / 9.0F;
     }
 
-    protected int getFlowDecay(World world, int i, int j, int k)
+    protected int getFlowDecay(World par1World, int par2, int par3, int par4)
     {
-        if(world.getBlockMaterial(i, j, k) != blockMaterial)
-        {
-            return -1;
-        } else
-        {
-            return world.getBlockMetadata(i, j, k);
-        }
+        return par1World.getBlockMaterial(par2, par3, par4) == this.blockMaterial ? par1World.getBlockMetadata(par2, par3, par4) : -1;
     }
-
-    protected int getEffectiveFlowDecay(IBlockAccess iblockaccess, int i, int j, int k)
+    
+    protected int getEffectiveFlowDecay(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
-        if(iblockaccess.getBlockMaterial(i, j, k) != blockMaterial)
+        if (par1IBlockAccess.getBlockMaterial(par2, par3, par4) != this.blockMaterial)
         {
             return -1;
         }
-        int l = iblockaccess.getBlockMetadata(i, j, k);
-        if(l >= 8)
+        else
         {
-            l = 0;
+            int var5 = par1IBlockAccess.getBlockMetadata(par2, par3, par4);
+
+            if (var5 >= 8)
+            {
+                var5 = 0;
+            }
+
+            return var5;
         }
-        return l;
     }
 
+    @Override
     public boolean renderAsNormalBlock()
     {
         return false;
     }
 
+    @Override
     public boolean isOpaqueCube()
     {
         return false;
     }
 
+    @Override
     public boolean canCollideCheck(int i, boolean flag)
     {
         return flag && i == 0;
     }
 
     @SideOnly(value = Side.CLIENT)
-    public boolean shouldSideBeRendered(IBlockAccess iblockaccess, int i, int j, int k, int l)
+    @Override
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
     {
-        Material material = iblockaccess.getBlockMaterial(i, j, k);
-        if(material == blockMaterial)
-        {
-            return false;
-        }
-        if(material == Material.ice)
-        {
-            return false;
-        }
-        if(l == 1)
-        {
-            return true;
-        }
-        else
-        {
-            return super.shouldSideBeRendered(iblockaccess, i, j, k, l);
-        }
+        Material var6 = par1IBlockAccess.getBlockMaterial(par2, par3, par4);
+        return var6 == this.blockMaterial || par5 == 0 ? false : (par5 == 1 ? true : (var6 == Material.ice ? false : super.shouldSideBeRendered(par1IBlockAccess, par2, par3, par4, par5)));
     }
 
+    @Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World world, int i, int j, int k)
     {
         return null;
     }
 
+    @Override
     public int getRenderType()
     {
         return renderID;
     }
 
-    public int idDropped(int i, Random random)
+    @Override
+    public int idDropped(int i, Random random, int j)
     {
         return 0;
     }
 
+    @Override
     public int quantityDropped(Random random)
     {
         return 0;
     }
 
-    private Vec3 getFlowVector(IBlockAccess iblockaccess, int i, int j, int k)
+    private Vec3 getFlowVector(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
-        Vec3 vec3 = Vec3.createVectorHelper(0.0D, 0.0D, 0.0D);
-        int l = getEffectiveFlowDecay(iblockaccess, i, j, k);
-        for(int i1 = 0; i1 < 4; i1++)
+        Vec3 var5 = par1IBlockAccess.getWorldVec3Pool().getVecFromPool(0.0D, 0.0D, 0.0D);
+        int var6 = this.getEffectiveFlowDecay(par1IBlockAccess, par2, par3, par4);
+
+        for (int var7 = 0; var7 < 4; ++var7)
         {
-            int j1 = i;
-            int k1 = j;
-            int l1 = k;
-            if(i1 == 0)
+            int var8 = par2;
+            int var10 = par4;
+
+            if (var7 == 0)
             {
-                j1--;
+                var8 = par2 - 1;
             }
-            if(i1 == 1)
+
+            if (var7 == 1)
             {
-                l1--;
+                var10 = par4 - 1;
             }
-            if(i1 == 2)
+
+            if (var7 == 2)
             {
-                j1++;
+                ++var8;
             }
-            if(i1 == 3)
+
+            if (var7 == 3)
             {
-                l1++;
+                ++var10;
             }
-            int i2 = getEffectiveFlowDecay(iblockaccess, j1, k1, l1);
-            if(i2 < 0)
+
+            int var11 = this.getEffectiveFlowDecay(par1IBlockAccess, var8, par3, var10);
+            int var12;
+
+            if (var11 < 0)
             {
-                if(iblockaccess.getBlockMaterial(j1, k1, l1).isSolid())
+                if (!par1IBlockAccess.getBlockMaterial(var8, par3, var10).blocksMovement())
                 {
-                    continue;
+                    var11 = this.getEffectiveFlowDecay(par1IBlockAccess, var8, par3 - 1, var10);
+
+                    if (var11 >= 0)
+                    {
+                        var12 = var11 - (var6 - 8);
+                        var5 = var5.addVector((double)((var8 - par2) * var12), (double)((par3 - par3) * var12), (double)((var10 - par4) * var12));
+                    }
                 }
-                i2 = getEffectiveFlowDecay(iblockaccess, j1, k1 - 1, l1);
-                if(i2 >= 0)
-                {
-                    int j2 = i2 - (l - 8);
-                    vec3 = vec3.addVector((j1 - i) * j2, (k1 - j) * j2, (l1 - k) * j2);
-                }
-                continue;
             }
-            if(i2 >= 0)
+            else if (var11 >= 0)
             {
-                int k2 = i2 - l;
-                vec3 = vec3.addVector((j1 - i) * k2, (k1 - j) * k2, (l1 - k) * k2);
+                var12 = var11 - var6;
+                var5 = var5.addVector((double)((var8 - par2) * var12), (double)((par3 - par3) * var12), (double)((var10 - par4) * var12));
             }
         }
-        
-        if(iblockaccess.getBlockMetadata(i, j, k) >= 8)
+
+        if (par1IBlockAccess.getBlockMetadata(par2, par3, par4) >= 8)
         {
-            
-            if(CommonProxy.shouldSideBeRendered(iblockaccess, i, j, k, l))
+            boolean var13 = false;
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2, par3, par4 - 1, 2))
             {
-                vec3 = vec3.normalize().addVector(0.0D, -6D, 0.0D);
+                var13 = true;
+            }
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2, par3, par4 + 1, 3))
+            {
+                var13 = true;
+            }
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2 - 1, par3, par4, 4))
+            {
+                var13 = true;
+            }
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2 + 1, par3, par4, 5))
+            {
+                var13 = true;
+            }
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2, par3 + 1, par4 - 1, 2))
+            {
+                var13 = true;
+            }
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2, par3 + 1, par4 + 1, 3))
+            {
+                var13 = true;
+            }
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2 - 1, par3 + 1, par4, 4))
+            {
+                var13 = true;
+            }
+
+            if (var13 || this.isBlockSolid(par1IBlockAccess, par2 + 1, par3 + 1, par4, 5))
+            {
+                var13 = true;
+            }
+
+            if (var13)
+            {
+                var5 = var5.normalize().addVector(0.0D, -6.0D, 0.0D);
             }
         }
-        vec3 = vec3.normalize();
-        return vec3;
+
+        var5 = var5.normalize();
+        return var5;
     }
 
+    @Override
     public void velocityToAddToEntity(World world, int i, int j, int k, Entity entity, Vec3 vec3)
     {
         Vec3 vec31 = getFlowVector(world, i, j, k);
@@ -242,6 +284,7 @@ public abstract class BlockCausticFluids extends Block
         vec3.zCoord += vec31.zCoord;
     }
 
+    @Override
     public int tickRate()
     {
         if(blockIndexInTexture == PlasmaCraft.acidStillIndex || blockIndexInTexture == PlasmaCraft.acidMovingIndex)
@@ -275,24 +318,31 @@ public abstract class BlockCausticFluids extends Block
         return blockIndexInTexture != PlasmaCraft.obsidiumStillIndex && blockIndexInTexture != PlasmaCraft.obsidiumMovingIndex ? 5 : 25;
     }
 
-    public float getBlockBrightness(IBlockAccess iblockaccess, int i, int j, int k)
+    public int getMixedBrightnessForBlock(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
-        float f = iblockaccess.getLightBrightness(i, j, k);
-        float f1 = iblockaccess.getLightBrightness(i, j + 1, k);
-        return f <= f1 ? f1 : f;
+        int var5 = par1IBlockAccess.getLightBrightnessForSkyBlocks(par2, par3, par4, 0);
+        int var6 = par1IBlockAccess.getLightBrightnessForSkyBlocks(par2, par3 + 1, par4, 0);
+        int var7 = var5 & 255;
+        int var8 = var6 & 255;
+        int var9 = var5 >> 16 & 255;
+        int var10 = var6 >> 16 & 255;
+        return (var7 > var8 ? var7 : var8) | (var9 > var10 ? var9 : var10) << 16;
+//        return 15728880;
     }
 
-    public int getMixedBrightnessForBlock(IBlockAccess iblockaccess, int i, int j, int k)
+    @SideOnly(Side.CLIENT)
+
+    /**
+     * How bright to render this block based on the light its receiving. Args: iBlockAccess, x, y, z
+     */
+    public float getBlockBrightness(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
     {
-        int l = iblockaccess.getLightBrightnessForSkyBlocks(i, j, k, 0);
-        int i1 = iblockaccess.getLightBrightnessForSkyBlocks(i, j + 1, k, 0);
-        int j1 = l & 0xff;
-        int k1 = i1 & 0xff;
-        int l1 = l >> 16 & 0xff;
-        int i2 = i1 >> 16 & 0xff;
-        return (j1 > k1 ? j1 : k1) | (l1 > i2 ? l1 : i2) << 16;
+        float var5 = par1IBlockAccess.getLightBrightness(par2, par3, par4);
+        float var6 = par1IBlockAccess.getLightBrightness(par2, par3 + 1, par4);
+        return var5 > var6 ? var5 : var6;
     }
 
+    @Override
     public void updateTick(World world, int i, int j, int k, Random random)
     {
         if(armorTick > 0)
@@ -302,11 +352,13 @@ public abstract class BlockCausticFluids extends Block
         super.updateTick(world, i, j, k, random);
     }
 
+    @Override
     public int getRenderBlockPass()
     {
         return blockMaterial == Material.water ? 1 : 0;
     }
 
+    @Override
     public void randomDisplayTick(World world, int i, int j, int k, Random random)
     {
         if(random.nextInt(64) == 0)
@@ -395,10 +447,10 @@ public abstract class BlockCausticFluids extends Block
                     return;
                 }
             }
-//            boolean flag = itemstack[0].itemID == PlasmaCraft.hazmatHood.shiftedIndex;
-//            boolean flag1 = itemstack[1].itemID == PlasmaCraft.hazmatJacket.shiftedIndex;
-//            boolean flag2 = itemstack[2].itemID == PlasmaCraft.hazmatPants.shiftedIndex;
-//            boolean flag3 = itemstack[3].itemID == PlasmaCraft.hazmatBoots.shiftedIndex;
+//            boolean flag = itemstack[0].itemID == PlasmaCraft.hazmatHood.itemID;
+//            boolean flag1 = itemstack[1].itemID == PlasmaCraft.hazmatJacket.itemID;
+//            boolean flag2 = itemstack[2].itemID == PlasmaCraft.hazmatPants.itemID;
+//            boolean flag3 = itemstack[3].itemID == PlasmaCraft.hazmatBoots.itemID;
 //            if(flag && flag1 && flag2 && flag3)
 //            {
 //                if(armorTick == 0)

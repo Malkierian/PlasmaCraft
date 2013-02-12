@@ -100,7 +100,7 @@ public class EntityCausticBoat extends EntityBoat
 	        }
 	        for (int j = 0; j < 5; j++)
 	        {
-                this.dropItemWithOffset(PlasmaCraft.ingotRadionite.shiftedIndex, 1, 0.0F);
+                this.dropItemWithOffset(PlasmaCraft.ingotRadionite.itemID, 1, 0.0F);
 	        }
 	
 	        setDead();
@@ -275,7 +275,7 @@ public class EntityCausticBoat extends EntityBoat
 	        	setDead();
 	            for (int j = 0; j < 5; j++)
 	            {
-                    this.dropItemWithOffset(PlasmaCraft.ingotRadionite.shiftedIndex, 1, 0.0F);
+                    this.dropItemWithOffset(PlasmaCraft.ingotRadionite.itemID, 1, 0.0F);
 	            }
 	        }
 	    }

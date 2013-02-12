@@ -7,7 +7,6 @@ import java.io.InputStream;
 import javax.imageio.ImageIO;
 
 import net.minecraft.client.renderer.RenderEngine;
-import net.minecraft.client.renderer.texturefx.TextureFX;
 import net.minecraft.client.texturepacks.TexturePackList;
 import net.minecraft.src.ModLoader;
 import net.minecraftforge.client.ForgeHooksClient;
@@ -15,8 +14,9 @@ import net.minecraftforge.client.ForgeHooksClient;
 import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
 
 import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.client.FMLTextureFX;
 
-public class TextureFrameAnimFX extends TextureFX
+public class TextureFrameAnimFX extends FMLTextureFX
 {
 
     public TextureFrameAnimFX(int indexToReplace, String filePath)
@@ -59,38 +59,29 @@ public class TextureFrameAnimFX extends TextureFX
 
     public void onTick()
     {
-        if(tileResolution == 0)
+    	++tick;
+
+        for (int var2 = 0; var2 < tileSizeSquare; ++var2)
         {
-            return;
-        }
-        tick++;
-        tick %= numFrames;
-        for(int i = 0; i < tileResolution; i++)
-        {
-            int j = i * tileResolution * numFrames;
-            for(int k = 0; k < tileResolution; k++)
+            int var3 = imageData[var2 * 4 + 0] & 255;
+            int var4 = imageData[var2 * 4 + 1] & 255;
+            int var5 = imageData[var2 * 4 + 2] & 255;
+            int var6 = imageData[var2 * 4 + 3] & 255;
+
+            if (this.anaglyphEnabled)
             {
-                int l = tileResolution * tick + k;
-                int i1 = fileBuffer[j + l];
-                int j1 = i * tileResolution + k;
-                int k1 = i1 >> 0 & 0xff;
-                int l1 = i1 >> 8 & 0xff;
-                int i2 = i1 >> 16 & 0xff;
-                int j2 = i1 >> 24 & 0xff;
-                if(anaglyphEnabled)
-                {
-                    int k2 = (i2 * 30 + l1 * 59 + k1 * 11) / 100;
-                    int l2 = (i2 * 30 + l1 * 70) / 100;
-                    int i3 = (i2 * 30 + k1 * 70) / 100;
-                    i2 = k2;
-                    l1 = l2;
-                    k1 = i3;
-                }
-                imageData[j1 * 4 + 0] = (byte)i2;
-                imageData[j1 * 4 + 1] = (byte)l1;
-                imageData[j1 * 4 + 2] = (byte)k1;
-                imageData[j1 * 4 + 3] = (byte)j2;
+                int var7 = (var3 * 30 + var4 * 59 + var5 * 11) / 100;
+                int var8 = (var3 * 30 + var4 * 70) / 100;
+                int var9 = (var3 * 30 + var5 * 70) / 100;
+                var3 = var7;
+                var4 = var8;
+                var5 = var9;
             }
+
+            this.imageData[var2 * 4 + 0] = (byte)var3;
+            this.imageData[var2 * 4 + 1] = (byte)var4;
+            this.imageData[var2 * 4 + 2] = (byte)var5;
+            this.imageData[var2 * 4 + 3] = (byte)var6;
         }
     }
 
