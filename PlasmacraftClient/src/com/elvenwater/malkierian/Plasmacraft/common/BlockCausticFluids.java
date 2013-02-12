@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
@@ -345,10 +346,6 @@ public abstract class BlockCausticFluids extends Block
     @Override
     public void updateTick(World world, int i, int j, int k, Random random)
     {
-        if(armorTick > 0)
-        {
-            armorTick--;
-        }
         super.updateTick(world, i, j, k, random);
     }
 
@@ -438,31 +435,37 @@ public abstract class BlockCausticFluids extends Block
             ItemStack itemstack[] = entityplayer.inventory.armorInventory;
             if(itemstack[0] == null || itemstack[1] == null || itemstack[2] == null || itemstack[3] == null)
             {
-//                if(entityplayer.ridingEntity != null && (entityplayer.ridingEntity instanceof EntityCausticBoat))
-//                {
-//                    return;
-//                } else
+                if(entityplayer.ridingEntity != null && (entityplayer.ridingEntity instanceof EntityCausticBoat))
                 {
-                    entityplayer.attackEntityFrom(DamageSource.lava, 3);
+                    return;
+                }
+                else
+                {
+                	entity.setFire(3);
+                    entityplayer.attackEntityFrom(DamageSource.inFire, 3);
                     return;
                 }
             }
-//            boolean flag = itemstack[0].itemID == PlasmaCraft.hazmatHood.itemID;
-//            boolean flag1 = itemstack[1].itemID == PlasmaCraft.hazmatJacket.itemID;
-//            boolean flag2 = itemstack[2].itemID == PlasmaCraft.hazmatPants.itemID;
-//            boolean flag3 = itemstack[3].itemID == PlasmaCraft.hazmatBoots.itemID;
-//            if(flag && flag1 && flag2 && flag3)
-//            {
-//                if(armorTick == 0)
-//                {
-//                    entityplayer.inventory.damageArmor(1);
-//                    armorTick = 10;
-//                }
-//            }
+            boolean flag = itemstack[3].itemID == PlasmaCraft.hazmatHood.itemID;
+            boolean flag1 = itemstack[2].itemID == PlasmaCraft.hazmatJacket.itemID;
+            boolean flag2 = itemstack[1].itemID == PlasmaCraft.hazmatPants.itemID;
+            boolean flag3 = itemstack[0].itemID == PlasmaCraft.hazmatBoots.itemID;
+            if(flag && flag1 && flag2 && flag3)
+            {
+                if(armorTick > 0)
+                {
+                    armorTick--;
+                }
+                if(armorTick == 0)
+                {
+                    entityplayer.inventory.damageArmor(1);
+                    armorTick = 100;
+                }
+            }
             else
             {
-            	entity.setFire(20);
-                entityplayer.attackEntityFrom(DamageSource.lava, 3);
+            	entity.setFire(3);
+                entityplayer.attackEntityFrom(DamageSource.inFire, 3);
             }
         }
         else if(entity instanceof EntityLiving)
@@ -472,22 +475,22 @@ public abstract class BlockCausticFluids extends Block
             {
                 return;
             }
-            entity.setFire(20);
-            entityliving.attackEntityFrom(DamageSource.lava, 3);
+            entity.setFire(3);
+            entityliving.attackEntityFrom(DamageSource.inFire, 3);
         }
-//        else if(!(entity instanceof EntityCausticBoat))
-//        {
-//        	if(entity instanceof EntityItem)
-//        	{
-//            	EntityItem ent = (EntityItem) entity;
-//            	if(ent.item.itemID == PlasmaCraft.ingotRadioniteID + 256)
-//            	{
-//            		return;
-//            	}
-//        	}
-//        	entity.setFire(20);
-//            entity.attackEntityFrom(DamageSource.lava, 10);
-//        }
+        else if(!(entity instanceof EntityCausticBoat))
+        {
+        	if(entity instanceof EntityItem)
+        	{
+            	EntityItem ent = (EntityItem) entity;
+            	if(ent.getEntityItem().itemID == PlasmaCraft.ingotRadionite.itemID)
+            	{
+            		return;
+            	}
+        	}
+        	entity.setFire(3);
+            entity.attackEntityFrom(DamageSource.inFire, 10);
+        }
     }
 
     private void setAdjoiningLavaIDs(World world, int i, int j, int k, int l)

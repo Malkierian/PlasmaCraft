@@ -3,8 +3,10 @@ package com.elvenwater.malkierian.Plasmacraft.common;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
 import net.minecraft.block.material.Material;
+import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -25,8 +27,8 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "MPC", name = "PlasmaCraft", version = "0.3.2")
-@NetworkMod(channels = "MPC", clientSideRequired = true, serverSideRequired = false,
+@Mod(modid = "PlasmaCraft", name = "PlasmaCraft", version = "0.3.2")
+@NetworkMod(channels = "PlasmaCraft", clientSideRequired = true, serverSideRequired = false,
 packetHandler = PacketHandler.class)
 public class PlasmaCraft
 {
@@ -81,6 +83,11 @@ public class PlasmaCraft
 	public static Item ingotPlutonium;
 	public static Item ingotRadionite;
 	public static Item ingotUranium;
+	
+	public static Item hazmatBoots;
+	public static Item hazmatHood;
+	public static Item hazmatJacket;
+	public static Item hazmatPants;
 	
 	public static Item acidVial;
 	public static Item causticVial;
@@ -143,6 +150,11 @@ public class PlasmaCraft
 	public static int goopUraniumID = 2707;
 	public static int plasmaID = 2708;
 
+	public static int hazmatBootsIndex = 15;
+	public static int hazmatHoodIndex = 16;
+	public static int hazmatJacketIndex = 17;
+	public static int hazmatPantsIndex = 18;
+
 	public static int ingotCryoniteID = 2709;
 	public static int ingotLeadID = 2728;
 	public static int ingotNeptuniumID = 2710;
@@ -168,6 +180,11 @@ public class PlasmaCraft
 	public static int causticBoatID = 2725;
 	public static int thermoPelletID = 2726;
 	public static int acidGrenadeID = 2727;
+
+	public static int hazmatBootsID = 2729;
+	public static int hazmatHoodID = 2730;
+	public static int hazmatJacketID = 2731;
+	public static int hazmatPantsID = 2732;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -525,6 +542,15 @@ public class PlasmaCraft
         
         acidGrenade = new ItemPlasma(acidGrenadeID).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
         LanguageRegistry.addName(acidGrenade, "Acid Grenade");
+
+        hazmatHood = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 0)).setIconIndex(hazmatHoodIndex).setItemName("helmetHazmat");
+        hazmatJacket = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 1)).setIconIndex(hazmatJacketIndex).setItemName("plateHazmat");
+        hazmatPants = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 2)).setIconIndex(hazmatPantsIndex).setItemName("legsHazmat");
+        hazmatBoots = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 3)).setIconIndex(hazmatBootsIndex).setItemName("bootsHazmat");
+        LanguageRegistry.addName(hazmatBoots,	"Hazmat Boots");
+        LanguageRegistry.addName(hazmatHood,	"Hazmat Hood");
+        LanguageRegistry.addName(hazmatJacket,	"Hazmat Jacket");
+        LanguageRegistry.addName(hazmatPants,	"Hazmat Pants");
 	}
 	
 	private void registerOres()
