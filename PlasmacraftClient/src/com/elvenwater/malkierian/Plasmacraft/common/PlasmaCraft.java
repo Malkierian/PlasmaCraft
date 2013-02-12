@@ -12,6 +12,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.elvenwater.malkierian.Plasmacraft.client.GuiHandler;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -543,10 +544,10 @@ public class PlasmaCraft
         acidGrenade = new ItemPlasma(acidGrenadeID).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
         LanguageRegistry.addName(acidGrenade, "Acid Grenade");
 
-        hazmatHood = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 0)).setIconIndex(hazmatHoodIndex).setItemName("helmetHazmat");
-        hazmatJacket = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 1)).setIconIndex(hazmatJacketIndex).setItemName("plateHazmat");
-        hazmatPants = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 2)).setIconIndex(hazmatPantsIndex).setItemName("legsHazmat");
-        hazmatBoots = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.GOLD, ModLoader.addArmor("hazmat"), 3)).setIconIndex(hazmatBootsIndex).setItemName("bootsHazmat");
+        hazmatHood = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.GOLD, proxy.addArmor("hazmat"), 0)).setIconIndex(hazmatHoodIndex).setItemName("helmetHazmat");
+        hazmatJacket = (new ItemPlasmaArmor(hazmatJacketID, EnumArmorMaterial.GOLD, proxy.addArmor("hazmat"), 1)).setIconIndex(hazmatJacketIndex).setItemName("plateHazmat");
+        hazmatPants = (new ItemPlasmaArmor(hazmatPantsID, EnumArmorMaterial.GOLD, proxy.addArmor("hazmat"), 2)).setIconIndex(hazmatPantsIndex).setItemName("legsHazmat");
+        hazmatBoots = (new ItemPlasmaArmor(hazmatBootsID, EnumArmorMaterial.GOLD, proxy.addArmor("hazmat"), 3)).setIconIndex(hazmatBootsIndex).setItemName("bootsHazmat");
         LanguageRegistry.addName(hazmatBoots,	"Hazmat Boots");
         LanguageRegistry.addName(hazmatHood,	"Hazmat Hood");
         LanguageRegistry.addName(hazmatJacket,	"Hazmat Jacket");
