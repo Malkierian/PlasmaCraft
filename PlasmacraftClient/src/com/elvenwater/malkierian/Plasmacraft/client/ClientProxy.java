@@ -61,43 +61,4 @@ public class ClientProxy extends CommonProxy
     	renderEngine.registerTextureFX(new TextureTintedFlowFX(stillIndex + 17, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
     	renderEngine.registerTextureFX(new TextureTintedFlowFX(stillIndex + 18, f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12));
 	}
-
-	public static boolean shouldSideBeRendered(IBlockAccess iblockaccess,
-			int i, int j, int k, int l)
-	{
-		boolean flag = false;
-        if(flag || CommonProxy.shouldSideBeRendered(iblockaccess, i, j, k - 1, 2))
-        {
-            flag = true;
-        }
-        if(flag || shouldSideBeRendered(iblockaccess, i, j, k + 1, 3))
-        {
-            flag = true;
-        }
-        if(flag || shouldSideBeRendered(iblockaccess, i - 1, j, k, 4))
-        {
-            flag = true;
-        }
-        if(flag || shouldSideBeRendered(iblockaccess, i + 1, j, k, 5))
-        {
-            flag = true;
-        }
-        if(flag || shouldSideBeRendered(iblockaccess, i, j + 1, k - 1, 2))
-        {
-            flag = true;
-        }
-        if(flag || shouldSideBeRendered(iblockaccess, i, j + 1, k + 1, 3))
-        {
-            flag = true;
-        }
-        if(flag || shouldSideBeRendered(iblockaccess, i - 1, j + 1, k, 4))
-        {
-            flag = true;
-        }
-        if(flag || shouldSideBeRendered(iblockaccess, i + 1, j + 1, k, 5))
-        {
-            flag = true;
-        }
-        return flag;
-	}
 }
