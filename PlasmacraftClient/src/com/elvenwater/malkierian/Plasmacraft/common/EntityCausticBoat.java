@@ -385,7 +385,7 @@ public class EntityCausticBoat extends Entity
 
                     for (var25 = 0; var25 < 5; ++var25)
                     {
-                        this.dropItemWithOffset(PlasmaCraft.ingotRadioniteID, 1, 0.0F);
+                        this.dropItemWithOffset(PlasmaCraft.ingotRadionite.itemID, 1, 0.0F);
                     }
                 }
             }

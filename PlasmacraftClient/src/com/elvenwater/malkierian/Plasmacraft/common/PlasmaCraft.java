@@ -442,14 +442,17 @@ public class PlasmaCraft
 	
 	private void registerEntities()
 	{
-//		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", 100, this, 64, 40, true);
+		int entityID = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", entityID);
+		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", entityID, this, 64, 5, true);
 		
-//		EntityRegistry.registerGlobalEntityID(EntityAcidTNTPrimed.class, "acidTntPrimed", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTntPrimed", 101, this, 64, 100, false);
+		entityID = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerGlobalEntityID(EntityAcidTNTPrimed.class, "acidTntPrimed", entityID);
+		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTntPrimed", entityID, this, 64, 100, false);
 		
-//		int acidGrenadeEntityID = EntityRegistry.findGlobalUniqueEntityId();
-//		EntityRegistry.registerModEntity(EntityAcidGrenade.class, "acidGrenade", EntityRegistry.findGlobalUniqueEntityId(), this, 32, 100, true);
+		entityID = EntityRegistry.findGlobalUniqueEntityId();
+		EntityRegistry.registerGlobalEntityID(EntityAcidGrenade.class, "acidGrenade", entityID);
+		EntityRegistry.registerModEntity(EntityAcidGrenade.class, "acidGrenade", entityID, this, 32, 100, true);
 	}
 	
 	private void registerFuel()
