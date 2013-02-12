@@ -6,13 +6,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.ModLoader;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.elvenwater.malkierian.Plasmacraft.client.GuiHandler;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -89,6 +87,7 @@ public class PlasmaCraft
 	public static Item hazmatHood;
 	public static Item hazmatJacket;
 	public static Item hazmatPants;
+	public static Item plasmaLeather;
 	
 	public static Item acidVial;
 	public static Item causticVial;
@@ -155,6 +154,7 @@ public class PlasmaCraft
 	public static int hazmatHoodIndex = 16;
 	public static int hazmatJacketIndex = 17;
 	public static int hazmatPantsIndex = 18;
+	public static int plasmaLeatherIndex = 35;
 
 	public static int ingotCryoniteID = 2709;
 	public static int ingotLeadID = 2728;
@@ -186,6 +186,7 @@ public class PlasmaCraft
 	public static int hazmatHoodID = 2730;
 	public static int hazmatJacketID = 2731;
 	public static int hazmatPantsID = 2732;
+	public static int plasmaLeatherID = 2733;
 
 	public static int acidLakeYCutoff = 48;
 	public static int acidSpoutCount = 20;
@@ -552,6 +553,9 @@ public class PlasmaCraft
         LanguageRegistry.addName(hazmatHood,	"Hazmat Hood");
         LanguageRegistry.addName(hazmatJacket,	"Hazmat Jacket");
         LanguageRegistry.addName(hazmatPants,	"Hazmat Pants");
+        
+        plasmaLeather = (new ItemPlasma(plasmaLeatherID)).setIconIndex(plasmaLeatherIndex).setItemName("plasmaLeather");
+        LanguageRegistry.addName(plasmaLeather,	"Plasma Leather");
 	}
 	
 	private void registerOres()
@@ -594,6 +598,21 @@ public class PlasmaCraft
         });
         GameRegistry.addRecipe(new ItemStack(acidGrenade, 4), new Object[] {
             "X", "Y", "Z", Character.valueOf('X'), Item.ingotIron, Character.valueOf('Y'), acidVial, Character.valueOf('Z'), plasma
+        });
+        GameRegistry.addRecipe(new ItemStack(hazmatHood, 1), new Object[] {
+            "LLL", "L L", Character.valueOf('L'), plasmaLeather
+        });
+        GameRegistry.addRecipe(new ItemStack(hazmatJacket, 1), new Object[] {
+            "L L", "LLL", "LLL", Character.valueOf('L'), plasmaLeather
+        });
+        GameRegistry.addRecipe(new ItemStack(hazmatPants, 1), new Object[] {
+            "LLL", "L L", "L L", Character.valueOf('L'), plasmaLeather
+        });
+        GameRegistry.addRecipe(new ItemStack(hazmatBoots, 1), new Object[] {
+            "L L", "L L", Character.valueOf('L'), plasmaLeather
+        });
+        GameRegistry.addRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
+            "N", "J", Character.valueOf('N'), goopAcid, Character.valueOf('J'), Item.leather
         });
         
         GameRegistry.addShapelessRecipe(new ItemStack(goopCryonite, 4), plasma, goopCryonite);
