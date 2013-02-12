@@ -443,13 +443,13 @@ public class PlasmaCraft
 	private void registerEntities()
 	{
 //		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 40, true);
+		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", 100, this, 64, 40, true);
 		
 //		EntityRegistry.registerGlobalEntityID(EntityAcidTNTPrimed.class, "acidTntPrimed", EntityRegistry.findGlobalUniqueEntityId());
-		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTntPrimed", EntityRegistry.findGlobalUniqueEntityId(), this, 64, 100, false);
+		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTntPrimed", 101, this, 64, 100, false);
 		
 //		int acidGrenadeEntityID = EntityRegistry.findGlobalUniqueEntityId();
-//		EntityRegistry.registerModEntity(EntityAcidGrenade.class, "acidGrenade", acidGrenadeEntityID, this, 32, 100, true);
+//		EntityRegistry.registerModEntity(EntityAcidGrenade.class, "acidGrenade", EntityRegistry.findGlobalUniqueEntityId(), this, 32, 100, true);
 	}
 	
 	private void registerFuel()

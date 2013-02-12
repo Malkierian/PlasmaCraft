@@ -7,7 +7,6 @@ import net.minecraft.world.World;
 
 public class EntityAcidTNTPrimed extends Entity
 {
-
     public int fuse;
 
     public EntityAcidTNTPrimed(World world)
@@ -27,7 +26,7 @@ public class EntityAcidTNTPrimed extends Entity
         motionX = -MathHelper.sin((f * 3.141593F) / 180F) * 0.02F;
         motionY = 0.20000000298023224D;
         motionZ = -MathHelper.cos((f * 3.141593F) / 180F) * 0.02F;
-        fuse = 40;
+        fuse = 80;
         prevPosX = d;
         prevPosY = d1;
         prevPosZ = d2;
@@ -58,11 +57,16 @@ public class EntityAcidTNTPrimed extends Entity
             motionZ *= 0.69999998807907104D;
             motionY *= -0.5D;
         }
-        if(fuse-- <= 0)
+
+        if (!this.worldObj.isRemote)
         {
-            setDead();
-            explode();
-        } else
+	        if(fuse-- <= 0)
+	        {
+	            setDead();
+	            explode();
+	        }
+        }
+        else
         {
             worldObj.spawnParticle("smoke", posX, posY + 0.5D, posZ, 0.0D, 0.0D, 0.0D);
         }
@@ -79,12 +83,12 @@ public class EntityAcidTNTPrimed extends Entity
 
     protected void writeEntityToNBT(NBTTagCompound nbttagcompound)
     {
-        nbttagcompound.setByte("Fuse", (byte)fuse);
+        nbttagcompound.setInteger("Fuse", fuse);
     }
 
     protected void readEntityFromNBT(NBTTagCompound nbttagcompound)
     {
-        fuse = nbttagcompound.getByte("Fuse");
+        fuse = nbttagcompound.getInteger("Fuse");
     }
 
     public float getShadowSize()
