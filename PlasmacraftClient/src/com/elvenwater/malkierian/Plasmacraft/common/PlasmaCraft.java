@@ -542,7 +542,7 @@ public class PlasmaCraft
         thermoPellet = (new ItemPlasma(thermoPelletID)).setIconIndex(thermoPelletIndex).setItemName("thermopellet");
         LanguageRegistry.addName(thermoPellet, "Thermopellet");
         
-        acidGrenade = new ItemPlasma(acidGrenadeID).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
+        acidGrenade = new ItemAcidGrenade(acidGrenadeID).setIconIndex(acidGrenadeIndex).setItemName("acidGrenade");
         LanguageRegistry.addName(acidGrenade, "Acid Grenade");
 
         hazmatHood = (new ItemPlasmaArmor(hazmatHoodID, EnumArmorMaterial.GOLD, proxy.addArmor("hazmat"), 0)).setIconIndex(hazmatHoodIndex).setItemName("helmetHazmat");
