@@ -29,6 +29,20 @@ public class EntityLaser extends Entity
     public EntityLiving owner;
     private int ticksInAir;
     int damg;
+    
+    public EntityLaser(World world)
+    {
+    	super(world);
+    	xTile = -1;
+    	yTile = -1;
+    	zTile = -1;
+    	inTile = 0;
+    	inGround = false;
+    	arrowShake = 0;
+    	ticksInAir = 0;
+    	setSize(0.5f, 0.5f);
+    }
+    
     public EntityLaser(World world, EntityPlayer entityplayer)
     {
         super(world);
