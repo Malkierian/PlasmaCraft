@@ -1,7 +1,11 @@
-package com.elvenwater.malkierian.Plasmacraft.common;
+package com.elvenwater.malkierian.Plasmacraft.common.blocks;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
+
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -14,7 +18,7 @@ import net.minecraft.world.World;
 
 public class BlockAcidBarrier extends Block
 {
-    protected BlockAcidBarrier(int i, int j)
+    public BlockAcidBarrier(int i, int j)
     {
         super(i, j, Material.glass);
         setHardness(3F);

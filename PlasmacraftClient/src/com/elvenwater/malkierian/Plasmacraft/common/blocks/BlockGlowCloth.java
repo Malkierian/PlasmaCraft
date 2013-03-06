@@ -1,8 +1,11 @@
-package com.elvenwater.malkierian.Plasmacraft.common;
+package com.elvenwater.malkierian.Plasmacraft.common.blocks;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
+import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -13,7 +16,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGlowCloth extends Block
 {
-    protected BlockGlowCloth(int i, int j)
+    public BlockGlowCloth(int i, int j)
     {
         super(i, j, Material.cloth);
         setLightValue(1F);

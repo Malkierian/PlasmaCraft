@@ -1,7 +1,12 @@
-package com.elvenwater.malkierian.Plasmacraft.common;
+package com.elvenwater.malkierian.Plasmacraft.common.blocks;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.GuiIds;
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
+import com.elvenwater.malkierian.Plasmacraft.common.TilePlasmaBench;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
@@ -23,7 +28,7 @@ public class BlockPlasmaBench extends BlockContainer
     private final int frontActiveTexture;
     private static boolean keepPlasmificatorInventory = false;
 
-    protected BlockPlasmaBench(int i)
+    public BlockPlasmaBench(int i)
     {
         super(i, Material.rock);
         isActive = false;

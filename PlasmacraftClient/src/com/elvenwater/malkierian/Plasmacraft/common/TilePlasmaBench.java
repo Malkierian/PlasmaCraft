@@ -2,6 +2,9 @@ package com.elvenwater.malkierian.Plasmacraft.common;
 
 import java.util.Random;
 
+import com.elvenwater.malkierian.Plasmacraft.common.blocks.BlockPlasmaBench;
+import com.elvenwater.malkierian.Plasmacraft.common.items.ItemVial;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;

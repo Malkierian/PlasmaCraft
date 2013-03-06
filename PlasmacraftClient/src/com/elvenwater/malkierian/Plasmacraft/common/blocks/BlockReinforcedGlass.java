@@ -1,12 +1,19 @@
-package com.elvenwater.malkierian.Plasmacraft.common;
+package com.elvenwater.malkierian.Plasmacraft.common.blocks;
 
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
+
+import cpw.mods.fml.common.FMLCommonHandler;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
 
 public class BlockReinforcedGlass extends BlockBreakable
 {
@@ -17,6 +24,7 @@ public class BlockReinforcedGlass extends BlockBreakable
         setResistance(resistance);
         setStepSound(Block.soundGlassFootstep);
         setTickRandomly(true);
+        setCreativeTab(CreativeTabs.tabBlock);
     }
     
     public void addCreativeItems(ArrayList itemList)
@@ -31,12 +39,26 @@ public class BlockReinforcedGlass extends BlockBreakable
 
     public int quantityDropped(Random random)
     {
-        return 1;
+    	if(blockID == PlasmaCraft.frozenCryonite.blockID)
+    		return 0;
+    	else
+    		return 1;
     }
 
 	@Override
 	public String getTextureFile()
 	{
 		return CommonProxy.BLOCK_PNG;
+	}
+	
+	@Override
+	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
+	{
+		if(blockID == PlasmaCraft.frozenCryonite.blockID)
+		{
+			par1World.setBlockWithNotify(par2, par3, par4, PlasmaCraft.cryoniteMoving.blockID);
+		}
+		else
+			super.breakBlock(par1World, par2, par3, par4, par5, par6);
 	}
 }

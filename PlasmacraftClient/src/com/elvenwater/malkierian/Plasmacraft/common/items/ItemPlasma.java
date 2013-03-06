@@ -1,4 +1,6 @@
-package com.elvenwater.malkierian.Plasmacraft.common;
+package com.elvenwater.malkierian.Plasmacraft.common.items;
+
+import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

@@ -1,4 +1,6 @@
-package com.elvenwater.malkierian.Plasmacraft.common;
+package com.elvenwater.malkierian.Plasmacraft.common.items;
+
+import com.elvenwater.malkierian.Plasmacraft.common.EntityAcidGrenade;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
