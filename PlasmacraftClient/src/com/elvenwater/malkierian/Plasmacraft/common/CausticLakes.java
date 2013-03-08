@@ -20,80 +20,80 @@ public class CausticLakes
 	public void populateSurfaceLiquids(World world, Random random, int x, int z)
 	{
 		rand = random;
-        if(rand.nextFloat() >= 0.97f)
-        {
-        	int startX = x + rand.nextInt(8);
-        	int startZ = z + rand.nextInt(8);
-            int rad = 4 + rand.nextInt(4);
-            BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(x, z);
-            if(biomegenbase == BiomeGenBase.forest
-            		|| biomegenbase == BiomeGenBase.forestHills
-            		|| biomegenbase == BiomeGenBase.jungle
-            		|| biomegenbase == BiomeGenBase.jungleHills
-            		|| biomegenbase == BiomeGenBase.mushroomIsland
-            		|| biomegenbase == BiomeGenBase.plains
-            		|| biomegenbase == BiomeGenBase.swampland)
-            for(int i = 96; i > 50; i--)
-            {
-            	int id = world.getBlockId(startX, i, startZ);
-            	if(id != 0)
-            	{
-            		if(id == Block.grass.blockID)
-            		{
-            			createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.acidStill.blockID, PlasmaCraft.acidMoving.blockID);
-            			createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.acidStill.blockID, PlasmaCraft.acidMoving.blockID);
-            			break;
-            		}
-            		else if(id == Block.dirt.blockID || id == Block.waterStill.blockID ||
-            				id == Block.stone.blockID || id == Block.cobblestone.blockID ||
-            				id == Block.waterMoving.blockID)
-            		{
-            			break;
-            		}
-            	}
-            }
-        }       
-        for(int k1 = 0; k1 < acidSpoutCount; k1++)
-        {
-            int i3 = x + rand.nextInt(16) + 8;
-            int k4 = rand.nextInt(rand.nextInt(acidSpoutYRange) + acidSpoutYStart);
-            int l5 = z + rand.nextInt(16) + 8;
-            (new WorldGenCaustics(PlasmaCraft.acidMoving.blockID)).generate(world, rand, i3, k4, l5);
-        }
-        if(rand.nextFloat() >= 0.95f)
-        {
-        	int startX = x + rand.nextInt(8);
-        	int startZ = z + rand.nextInt(8);
-            int rad = 3 + rand.nextInt(3);
-            BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(x, z);
-            if(biomegenbase == BiomeGenBase.taiga 
-            		|| biomegenbase == BiomeGenBase.frozenOcean
-            		|| biomegenbase == BiomeGenBase.iceMountains 
-            		|| biomegenbase == BiomeGenBase.frozenRiver
-            		|| biomegenbase == BiomeGenBase.icePlains
-            		|| biomegenbase == BiomeGenBase.taigaHills)
-            {
-            	for(int i = 96; i > 50; i--)
-            	{
-            		int id = world.getBlockId(startX, i, startZ);
-            		if(id != 0)
-            		{
-            			if(id == Block.grass.blockID)
-            			{
-            				createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.frozenCryonite.blockID, PlasmaCraft.frozenCryonite.blockID);
-            				createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.frozenCryonite.blockID, PlasmaCraft.frozenCryonite.blockID);
-                			break;
-            			}
-                		else if(id == Block.dirt.blockID || id == Block.waterStill.blockID ||
-                				id == Block.stone.blockID || id == Block.cobblestone.blockID ||
-                				id == Block.waterMoving.blockID)
-                		{
-                			break;
-                		}
-            		}
-            	}
-            }
-        }
+		if(rand.nextFloat() >= 0.97f)
+		{
+			int startX = x + rand.nextInt(8);
+			int startZ = z + rand.nextInt(8);
+			int rad = 4 + rand.nextInt(4);
+			BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(x, z);
+			if(biomegenbase == BiomeGenBase.forest
+					|| biomegenbase == BiomeGenBase.forestHills
+					|| biomegenbase == BiomeGenBase.jungle
+					|| biomegenbase == BiomeGenBase.jungleHills
+					|| biomegenbase == BiomeGenBase.mushroomIsland
+					|| biomegenbase == BiomeGenBase.plains
+					|| biomegenbase == BiomeGenBase.swampland)
+			for(int i = 96; i > 50; i--)
+			{
+				int id = world.getBlockId(startX, i, startZ);
+				if(id != 0)
+				{
+					if(id == Block.grass.blockID)
+					{
+						createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.acidStill.blockID, PlasmaCraft.acidMoving.blockID);
+						createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.acidStill.blockID, PlasmaCraft.acidMoving.blockID);
+						break;
+					}
+					else if(id == Block.dirt.blockID || id == Block.waterStill.blockID ||
+							id == Block.stone.blockID || id == Block.cobblestone.blockID ||
+							id == Block.waterMoving.blockID)
+					{
+						break;
+					}
+				}
+			}
+		}	   
+		for(int k1 = 0; k1 < acidSpoutCount; k1++)
+		{
+			int i3 = x + rand.nextInt(16) + 8;
+			int k4 = rand.nextInt(rand.nextInt(acidSpoutYRange) + acidSpoutYStart);
+			int l5 = z + rand.nextInt(16) + 8;
+			(new WorldGenCaustics(PlasmaCraft.acidMoving.blockID)).generate(world, rand, i3, k4, l5);
+		}
+		if(rand.nextFloat() >= 0.95f)
+		{
+			int startX = x + rand.nextInt(8);
+			int startZ = z + rand.nextInt(8);
+			int rad = 3 + rand.nextInt(3);
+			BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(x, z);
+			if(biomegenbase == BiomeGenBase.taiga 
+					|| biomegenbase == BiomeGenBase.frozenOcean
+					|| biomegenbase == BiomeGenBase.iceMountains 
+					|| biomegenbase == BiomeGenBase.frozenRiver
+					|| biomegenbase == BiomeGenBase.icePlains
+					|| biomegenbase == BiomeGenBase.taigaHills)
+			{
+				for(int i = 96; i > 50; i--)
+				{
+					int id = world.getBlockId(startX, i, startZ);
+					if(id != 0)
+					{
+						if(id == Block.grass.blockID)
+						{
+							createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.frozenCryonite.blockID, PlasmaCraft.frozenCryonite.blockID);
+							createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.frozenCryonite.blockID, PlasmaCraft.frozenCryonite.blockID);
+							break;
+						}
+						else if(id == Block.dirt.blockID || id == Block.waterStill.blockID ||
+								id == Block.stone.blockID || id == Block.cobblestone.blockID ||
+								id == Block.waterMoving.blockID)
+						{
+							break;
+						}
+					}
+				}
+			}
+		}
 	}
 	
 	public void createSurfacePool(World world, int x, int y, int z, int rad, int stillId, int movingId)

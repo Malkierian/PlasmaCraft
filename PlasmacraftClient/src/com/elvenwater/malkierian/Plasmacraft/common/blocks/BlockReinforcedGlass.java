@@ -17,33 +17,33 @@ import net.minecraft.world.World;
 
 public class BlockReinforcedGlass extends BlockBreakable
 {
-    public BlockReinforcedGlass(int i, int j, Material material, boolean flag, float resistance)
-    {
-        super(i, j, material, flag);
-        setHardness(1.0F);
-        setResistance(resistance);
-        setStepSound(Block.soundGlassFootstep);
-        setTickRandomly(true);
-        setCreativeTab(CreativeTabs.tabBlock);
-    }
-    
-    public void addCreativeItems(ArrayList itemList)
-    {    	
-    	itemList.add(new ItemStack(this, 1));
-    }
+	public BlockReinforcedGlass(int i, int j, Material material, boolean flag, float resistance)
+	{
+		super(i, j, material, flag);
+		setHardness(1.0F);
+		setResistance(resistance);
+		setStepSound(Block.soundGlassFootstep);
+		setTickRandomly(true);
+		setCreativeTab(CreativeTabs.tabBlock);
+	}
+	
+	public void addCreativeItems(ArrayList itemList)
+	{		
+		itemList.add(new ItemStack(this, 1));
+	}
 
-    public int idDropped(int i, Random random)
-    {
-        return blockID;
-    }
+	public int idDropped(int i, Random random)
+	{
+		return blockID;
+	}
 
-    public int quantityDropped(Random random)
-    {
-    	if(blockID == PlasmaCraft.frozenCryonite.blockID)
-    		return 0;
-    	else
-    		return 1;
-    }
+	public int quantityDropped(Random random)
+	{
+		if(blockID == PlasmaCraft.frozenCryonite.blockID)
+			return 0;
+		else
+			return 1;
+	}
 
 	@Override
 	public String getTextureFile()

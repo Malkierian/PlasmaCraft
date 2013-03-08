@@ -7,11 +7,11 @@ import net.minecraft.item.Item;
 
 public class ItemPlasma extends Item
 {
-    public ItemPlasma(int i)
-    {
-        super(i);
-        setCreativeTab(CreativeTabs.tabMisc);
-    }
+	public ItemPlasma(int i)
+	{
+		super(i);
+		setCreativeTab(CreativeTabs.tabMisc);
+	}
 
 	@Override
 	public String getTextureFile()
