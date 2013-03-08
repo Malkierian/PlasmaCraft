@@ -18,11 +18,24 @@ import cpw.mods.fml.client.FMLTextureFX;
 
 public class TextureFrameAnimFX extends FMLTextureFX
 {
-
+    protected int fileBuffer[];
+    private int tick;
+    private int numFrames;
+    private int tileResolution;
+    private String filePath;
+    
     public TextureFrameAnimFX(int indexToReplace, String filePath)
     {
         super(indexToReplace);
-        tileResolution = 16;
+        this.filePath = filePath;
+        setup();
+    }
+    
+    @Override
+    public void setup()
+    {
+    	super.setup();
+    	tileResolution = 16;
         tick = 0;
         try
         {
@@ -57,6 +70,7 @@ public class TextureFrameAnimFX extends FMLTextureFX
 		}
     }
 
+    @Override
     public void onTick()
     {
     	++tick;
@@ -85,13 +99,9 @@ public class TextureFrameAnimFX extends FMLTextureFX
         }
     }
 
+    @Override
     public void bindImage(RenderEngine renderengine)
     {
     	ForgeHooksClient.bindTexture(CommonProxy.BLOCK_PNG, 0);
     }
-
-    protected int fileBuffer[];
-    private int tick;
-    private int numFrames;
-    private int tileResolution;
 }

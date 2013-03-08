@@ -63,7 +63,7 @@ public class ClientProxy extends CommonProxy
         registerLiquidFX(PlasmaCraft.netherflowStillIndex, 1.0F, 0.4F, 0.4F, 1.0F, 255F, 32F, 32F, 200F, 64F, 32F, 32F, 60F);
         registerLiquidFX(PlasmaCraft.obsidiumStillIndex, 0.35F, 0.1F, 0.35F, 1.0F, 72F, 64F, 72F, 250F, 40F, 32F, 40F, 10F);
         
-        FMLClientHandler.instance().getClient().renderEngine.registerTextureFX(new TextureFrameAnimFX(PlasmaCraft.plasmaBenchFrontAnim, "/PlasmaCraftSprites/animations/animatedplasmificator.png"));
+//        FMLClientHandler.instance().getClient().renderEngine.registerTextureFX(new TextureFrameAnimFX(PlasmaCraft.plasmaBenchFrontActiveIndex, "/PlasmaCraftSprites/animations/animatedplasmificator.png"));
 	}
 	
 	private void registerLiquidFX(int stillIndex, float f1, float f2, float f3, float f4, float f5, float f6, float f7, float f8, float f9, float f10, float f11, float f12)

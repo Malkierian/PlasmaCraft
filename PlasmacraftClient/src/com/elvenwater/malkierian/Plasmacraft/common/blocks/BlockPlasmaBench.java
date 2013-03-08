@@ -11,6 +11,7 @@ import com.elvenwater.malkierian.Plasmacraft.common.TilePlasmaBench;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -35,10 +36,11 @@ public class BlockPlasmaBench extends BlockContainer
         plasmificatorRand = new Random();
         blockIndexInTexture = PlasmaCraft.plasmaBenchSidesIndex;
         frontIdleTexture = PlasmaCraft.plasmaBenchFrontIdleIndex;
-        frontActiveTexture = PlasmaCraft.plasmaBenchFrontAnim;
+        frontActiveTexture = PlasmaCraft.plasmaBenchFrontActiveIndex;
         setHardness(3F);
         setStepSound(Block.soundStoneFootstep);
         setLightValue(0.0f);
+        setCreativeTab(CreativeTabs.tabBlock);
     }
 
     @Override
