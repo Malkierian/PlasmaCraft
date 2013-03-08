@@ -376,9 +376,10 @@ public class PlasmaCraft
 	public static final int glowClothPlutoniumMeta = 5;
 	public static final int glowClothCryoniteMeta = 6;
 	public static final int glowClothObsidiumMeta = 7;
-	
-	public static boolean generateUranium = true;
-	public static boolean generatePlutonium = true;
+
+	public static boolean generateLead;
+	public static boolean generateUranium;
+	public static boolean generatePlutonium;
 
 	public static int plasmaBenchFrontAnim;
 	
@@ -866,7 +867,8 @@ public class PlasmaCraft
         batteryCryoID = c.getItem("batterycryoID", 27097).getInt();
         thermoPelletID = c.getItem("thermoPelletID", 27098).getInt();
         plasmaLeatherID = c.getItem("plasmaLeatherID", 27099).getInt();
-        
+
+        generateLead = c.get(Configuration.CATEGORY_GENERAL, "General.GenerateLead", true).getBoolean(true);
         generateUranium = c.get(Configuration.CATEGORY_GENERAL, "General.GenerateUranium", true).getBoolean(true);
         generatePlutonium = c.get(Configuration.CATEGORY_GENERAL, "General.GeneratePlutonium", true).getBoolean(true);
         

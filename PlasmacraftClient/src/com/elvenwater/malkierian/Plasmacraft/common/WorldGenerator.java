@@ -95,12 +95,15 @@ public class WorldGenerator implements IWorldGenerator {
 			(new WorldGenMulti(PlasmaCraft.orePlasma.blockID, PlasmaCraft.radioniteOreVeinSize, PlasmaCraft.radioniteMeta)).generate(world, random, k2, i4, k5);
 		}
     	
-		for(int i1 = 0; i1 < PlasmaCraft.leadOreVeinCount; i1++)
+		if(PlasmaCraft.generateLead)
 		{
-			int k2 = i + random.nextInt(16);
-			int i4 = random.nextInt(PlasmaCraft.leadOreYRange) + PlasmaCraft.leadOreYStart;
-			int k5 = j + random.nextInt(16);
-			(new WorldGenMulti(PlasmaCraft.oreLeadBlock.blockID, PlasmaCraft.leadOreVeinSize, 0)).generate(world, random, k2, i4, k5);
+			for(int i1 = 0; i1 < PlasmaCraft.leadOreVeinCount; i1++)
+			{
+				int k2 = i + random.nextInt(16);
+				int i4 = random.nextInt(PlasmaCraft.leadOreYRange) + PlasmaCraft.leadOreYStart;
+				int k5 = j + random.nextInt(16);
+				(new WorldGenMulti(PlasmaCraft.oreLeadBlock.blockID, PlasmaCraft.leadOreVeinSize, 0)).generate(world, random, k2, i4, k5);
+			}
 		}
         
         (new CausticLakes()).populateSurfaceLiquids(world, random, i, j);
