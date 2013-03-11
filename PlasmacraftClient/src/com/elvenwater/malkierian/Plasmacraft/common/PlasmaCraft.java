@@ -52,7 +52,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(modid = "PlasmaCraft", name = "PlasmaCraft", version = "0.3.2")
+@Mod(modid = "PlasmaCraft", name = "PlasmaCraft", version = "0.3.1r2")
 @NetworkMod(channels = "PlasmaCraft", clientSideRequired = true, serverSideRequired = false,
 packetHandler = PacketHandler.class)
 public class PlasmaCraft
@@ -456,7 +456,6 @@ public class PlasmaCraft
 		MinecraftForge.setBlockHarvestLevel(orePlasma, plutoniumMeta, 	"pickaxe", 2);
 		MinecraftForge.setBlockHarvestLevel(orePlasma, neptuniumMeta, 	"pickaxe", 1);
 		MinecraftForge.setBlockHarvestLevel(oreLeadBlock, "pickaxe", 1);
-		//MinecraftForge.setBlockHarvestLevel(frozenCryonite, "pickaxe", 1);
 		
 		acidMoving =		(new BlockCausticFlowing	(acidFlowingBlockID, 	   acidStillIndex, 		 acidMovingIndex, 		causticID, acidStillBlockID, 	   acidFlowingBlockID			 )).setBlockName("acidMoving");
 		acidStill = 		(new BlockCausticStationary	(acidStillBlockID, 		   acidStillIndex, 		 acidMovingIndex, 		causticID, acidStillBlockID, 	   acidFlowingBlockID, 		 1.0F)).setBlockName("acidStill");
@@ -724,7 +723,7 @@ public class PlasmaCraft
 			"X#X", "Y Y", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Block.glass
 		});
 		GameRegistry.addRecipe(new ItemStack(plasmaBench, 1), new Object[] {
-			"X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), goopAcid
+			"X#X", "# #", "X#X", Character.valueOf('#'), Item.ingotIron, Character.valueOf('X'), acidVial
 		});
 		GameRegistry.addRecipe(new ItemStack(acidBarrier, 1), new Object[] {
 			" X ", "XZX", " X ", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), goopAcid
