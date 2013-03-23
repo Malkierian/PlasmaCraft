@@ -452,12 +452,12 @@ public class EntityCausticBoat extends Entity
 
 						if (var22 == Block.snow.blockID)
 						{
-							this.worldObj.setBlock(var28, var21, var19, 0, 0, 0);
+							this.worldObj.setBlockToAir(var28, var21, var19);
 						}
 						else if (var22 == Block.waterlily.blockID)
 						{
 							Block.waterlily.dropBlockAsItemWithChance(this.worldObj, var28, var21, var19, var23, 0.3F, 0);
-							this.worldObj.setBlock(var28, var21, var19, 0, 0, 0);
+							this.worldObj.setBlockToAir(var28, var21, var19);
 						}
 					}
 				}

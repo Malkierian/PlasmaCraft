@@ -213,7 +213,7 @@ public class EntityLaser extends Entity
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
 					entity.setFire(1);
 					setDead();
-					worldObj.setBlock(j, l, j1, Block.fire.blockID, 0, 0);
+					worldObj.setBlock(j, l, j1, Block.fire.blockID);
 				}
 			}
 			else
@@ -226,21 +226,21 @@ public class EntityLaser extends Entity
 				{
 					if(worldObj.getBlockId(k, i1, k1) == PlasmaCraft.frozenCryonite.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, 0, 0, 0);
+						worldObj.setBlockToAir(k, i1, k1);
 						setDead();
-						worldObj.setBlock(k, i1, k1, PlasmaCraft.cryoniteMoving.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1, PlasmaCraft.cryoniteMoving.blockID);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.oreIron.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, 0, 0, 0);
+						worldObj.setBlockToAir(k, i1, k1);
 						setDead();
 						dropItem(Item.ingotIron.itemID, 1);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.oreGold.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, 0, 0, 0);
+						worldObj.setBlockToAir(k, i1, k1);
 						setDead();
 						dropItem(Item.ingotGold.itemID, 1);
 						flag = false;
@@ -260,55 +260,55 @@ public class EntityLaser extends Entity
 						default:
 							index = PlasmaCraft.goopPlutonium.itemID;
 						}
-						worldObj.setBlock(k, i1, k1, 0, 0, 0);
+						worldObj.setBlockToAir(k, i1, k1);
 						setDead();
 						dropItem(index, 1);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.ice.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, Block.waterMoving.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1, Block.waterMoving.blockID);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.tallGrass.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1, Block.fire.blockID);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.snow.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1, Block.fire.blockID);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.plantRed.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1, Block.fire.blockID);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.plantYellow.blockID)
 					{
-						worldObj.setBlock(k, i1, k1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1, Block.fire.blockID);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1 + 1, k1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlock(k, i1 + 1, k1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k, i1 + 1, k1, Block.fire.blockID);
 					}
 					if(worldObj.getBlockId(k, i1, k1 + 1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlock(k, i1, k1 + 1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1 + 1, Block.fire.blockID);
 					}
 					if(worldObj.getBlockId(k, i1, k1 - 1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlock(k, i1, k1 - 1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k, i1, k1 - 1, Block.fire.blockID);
 					}
 					if(worldObj.getBlockId(k + 1, i1, k1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlock(k + 1, i1, k1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k + 1, i1, k1, Block.fire.blockID);
 					}
 					if(worldObj.getBlockId(k - 1, i1, k1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlock(k - 1, i1, k1, Block.fire.blockID, 0, 0);
+						worldObj.setBlock(k - 1, i1, k1, Block.fire.blockID);
 					}
 				}
 				xTile = movingobjectposition.blockX;

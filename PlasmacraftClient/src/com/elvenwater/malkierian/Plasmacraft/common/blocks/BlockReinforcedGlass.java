@@ -50,7 +50,7 @@ public class BlockReinforcedGlass extends BlockBreakable
 	{
 		if(blockID == PlasmaCraft.frozenCryonite.blockID)
 		{
-			par1World.setBlock(par2, par3, par4, PlasmaCraft.cryoniteMoving.blockID, 0, 0);
+			par1World.setBlock(par2, par3, par4, PlasmaCraft.cryoniteMoving.blockID);
 		}
 		else
 			super.breakBlock(par1World, par2, par3, par4, par5, par6);

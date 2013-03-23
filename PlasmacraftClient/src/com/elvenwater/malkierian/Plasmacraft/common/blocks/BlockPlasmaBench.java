@@ -102,7 +102,7 @@ public class BlockPlasmaBench extends BlockContainer
 		{
 			byte0 = 4;
 		}
-		world.setBlockMetadataWithNotify(i, j, k, byte0, 0);
+		world.setBlockMetadataWithNotify(i, j, k, byte0, 0x02);
 	}
 
 	@Override
@@ -167,8 +167,6 @@ public class BlockPlasmaBench extends BlockContainer
 	public static void updatePlasmificatorBlockState(boolean flag, World world, int i, int j, int k)
 	{
 		int l = world.getBlockMetadata(i, j, k);
-//		TileEntity tileentity = world.getBlockTileEntity(i, j, k);
-//		keepPlasmificatorInventory = true;
 		if(flag)
 		{
 			if(l < 8)
@@ -180,14 +178,8 @@ public class BlockPlasmaBench extends BlockContainer
 				l -= 8;
 		}
 		
-		//keepPlasmificatorInventory = false;
-		world.setBlockMetadataWithNotify(i, j, k, l, 0);
+		world.setBlockMetadataWithNotify(i, j, k, l, 0x02);
 		world.markBlockForUpdate(i, j, k);
-//		if(tileentity != null)
-//		{
-//			tileentity.validate();
-//			world.setBlockTileEntity(i, j, k, tileentity);
-//		}
 	}
 
 	@Override
@@ -196,19 +188,19 @@ public class BlockPlasmaBench extends BlockContainer
 		int l = MathHelper.floor_double((double)((entityliving.rotationYaw * 4F) / 360F) + 0.5D) & 3;
 		if(l == 0)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 2, 0);
+			world.setBlockMetadataWithNotify(i, j, k, 2, 0x02);
 		}
 		if(l == 1)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 5, 0);
+			world.setBlockMetadataWithNotify(i, j, k, 5, 0x02);
 		}
 		if(l == 2)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 3, 0);
+			world.setBlockMetadataWithNotify(i, j, k, 3, 0x02);
 		}
 		if(l == 3)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 4, 0);
+			world.setBlockMetadataWithNotify(i, j, k, 4, 0x02);
 		}
 	}
 	

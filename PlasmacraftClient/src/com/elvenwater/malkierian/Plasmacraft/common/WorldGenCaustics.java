@@ -64,7 +64,7 @@ public class WorldGenCaustics extends WorldGenerator
 		}
 		if(l == 3 && i1 == 1)
 		{
-			world.setBlock(i, j, k, causticID, 0, 0);
+			world.setBlock(i, j, k, causticID);
 			world.scheduledUpdatesAreImmediate = true;
 			Block.blocksList[causticID].updateTick(world, i, j, k, random);
 			world.scheduledUpdatesAreImmediate = false;
