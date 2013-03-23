@@ -154,7 +154,7 @@ label0:
 				int i4 = worldObj.getBlockId(i3, j3 - 1, k3);
 				if(l3 == 0 && Block.opaqueCubeLookup[i4] && ExplosionRNG.nextInt(3) == 0)
 				{
-					worldObj.setBlockAndMetadataWithNotify(i3, j3, k3, Block.fire.blockID, 0, 0);
+					worldObj.setBlock(i3, j3, k3, Block.fire.blockID, 0, 0);
 				}
 			}
 
@@ -202,7 +202,7 @@ label0:
 			if(i3 > 0)
 			{
 				Block.blocksList[i3].dropBlockAsItemWithChance(worldObj, i1, l1, k2, worldObj.getBlockMetadata(i1, l1, k2), 0.3F, i3);
-				worldObj.setBlockAndMetadataWithNotify(i1, l1, k2, 0, 0, 0);
+				worldObj.setBlock(i1, l1, k2, 0, 0, 0);
 				Block.blocksList[i3].onBlockDestroyedByExplosion(worldObj, i1, l1, k2, this);
 			}
 		}
@@ -217,7 +217,7 @@ label0:
 			double d = (double)i2 - posY;
 			if(d < -2D && j3 == 0)
 			{
-				worldObj.setBlockAndMetadataWithNotify(j1, i2, l2, PlasmaCraft.acidMoving.blockID, 0, 0);
+				worldObj.setBlock(j1, i2, l2, PlasmaCraft.acidMoving.blockID, 0, 0);
 			}
 		}
 
@@ -239,7 +239,7 @@ label0:
 					boolean flag4 = isFlowable(worldObj.getBlockId(k, l - 1, k1));
 					if(flag || flag1 || flag2 || flag3 || flag4)
 					{
-						worldObj.setBlockAndMetadataWithNotify(k, l, k1, Block.cobblestone.blockID, 0, 0);
+						worldObj.setBlock(k, l, k1, Block.cobblestone.blockID, 0, 0);
 					}
 				}
 

@@ -44,7 +44,7 @@ public class BlockCausticStationary extends BlockCausticFluids
     private void setNotStationary(World par1World, int par2, int par3, int par4)
     {
         int l = par1World.getBlockMetadata(par2, par3, par4);
-        par1World.setBlockAndMetadataWithNotify(par2, par3, par4, this.blockID - 1, l, 2);
+        par1World.setBlock(par2, par3, par4, this.blockID - 1, l, 2);
         par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID - 1, this.tickRate(par1World));
     }
 
@@ -70,7 +70,7 @@ public class BlockCausticStationary extends BlockCausticFluids
                 {
                     if (this.isFlammable(par1World, par2 - 1, par3, par4) || this.isFlammable(par1World, par2 + 1, par3, par4) || this.isFlammable(par1World, par2, par3, par4 - 1) || this.isFlammable(par1World, par2, par3, par4 + 1) || this.isFlammable(par1World, par2, par3 - 1, par4) || this.isFlammable(par1World, par2, par3 + 1, par4))
                     {
-                        par1World.func_94575_c(par2, par3, par4, Block.fire.blockID);
+                        par1World.setBlock(par2, par3, par4, Block.fire.blockID);
                         return;
                     }
                 }
@@ -92,7 +92,7 @@ public class BlockCausticStationary extends BlockCausticFluids
 
                     if (par1World.isAirBlock(par2, par3 + 1, par4) && this.isFlammable(par1World, par2, par3, par4))
                     {
-                        par1World.func_94575_c(par2, par3 + 1, par4, Block.fire.blockID);
+                        par1World.setBlock(par2, par3 + 1, par4, Block.fire.blockID);
                     }
                 }
             }

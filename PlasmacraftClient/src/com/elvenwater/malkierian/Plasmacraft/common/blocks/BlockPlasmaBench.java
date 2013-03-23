@@ -269,11 +269,11 @@ label0:
 	}
 
     @SideOnly(Side.CLIENT)
-    public void func_94332_a(IconRegister par1IconRegister)
+    public void registerIcons(IconRegister par1IconRegister)
     {
-        frontActiveIcon = par1IconRegister.func_94245_a("plasmaBench_active");
-        frontIdleIcon = par1IconRegister.func_94245_a("plasmaBench_idle");
-        sideIcon = par1IconRegister.func_94245_a("bench_side");
+        frontActiveIcon = par1IconRegister.registerIcon("plasmaBench_active");
+        frontIdleIcon = par1IconRegister.registerIcon("plasmaBench_idle");
+        sideIcon = par1IconRegister.registerIcon("bench_side");
     }
 
 	@Override

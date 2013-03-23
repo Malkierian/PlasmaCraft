@@ -67,17 +67,17 @@ public class BlockGlowCloth extends Block
 	}
 
     @SideOnly(Side.CLIENT)
-    public void func_94332_a(IconRegister par1IconRegister)
+    public void registerIcons(IconRegister par1IconRegister)
     {
         this.icons = new Icon[] {
-        		par1IconRegister.func_94245_a("glowCloth_acid"),
-        		par1IconRegister.func_94245_a("glowCloth_radionite"),
-        		par1IconRegister.func_94245_a("glowCloth_netherflow"),
-        		par1IconRegister.func_94245_a("glowCloth_neptunium"),
-        		par1IconRegister.func_94245_a("glowCloth_uranium"),
-        		par1IconRegister.func_94245_a("glowCloth_plutonium"),
-        		par1IconRegister.func_94245_a("glowCloth_cryonite"),
-        		par1IconRegister.func_94245_a("glowCloth_obsidium")
+        		par1IconRegister.registerIcon("glowCloth_acid"),
+        		par1IconRegister.registerIcon("glowCloth_radionite"),
+        		par1IconRegister.registerIcon("glowCloth_netherflow"),
+        		par1IconRegister.registerIcon("glowCloth_neptunium"),
+        		par1IconRegister.registerIcon("glowCloth_uranium"),
+        		par1IconRegister.registerIcon("glowCloth_plutonium"),
+        		par1IconRegister.registerIcon("glowCloth_cryonite"),
+        		par1IconRegister.registerIcon("glowCloth_obsidium")
         };
     }
 }

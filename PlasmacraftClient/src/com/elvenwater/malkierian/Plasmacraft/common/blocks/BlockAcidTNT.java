@@ -43,7 +43,7 @@ public class BlockAcidTNT extends BlockTNT
 			return topIcon;
 		} else
 		{
-			return field_94336_cN;
+			return blockIcon;
 		}
 	}
 
@@ -73,11 +73,12 @@ public class BlockAcidTNT extends BlockTNT
 		}
 	}
 
+	@Override
     @SideOnly(Side.CLIENT)
-    public void func_94332_a(IconRegister par1IconRegister)
+    public void registerIcons(IconRegister par1IconRegister)
     {
-        field_94336_cN = par1IconRegister.func_94245_a(func_94330_A());
-        topIcon = par1IconRegister.func_94245_a(func_94330_A() + "_top");
-        bottomIcon = par1IconRegister.func_94245_a(func_94330_A() + "_bottom");
+        blockIcon = par1IconRegister.registerIcon(getUnlocalizedName2());
+        topIcon = par1IconRegister.registerIcon(getUnlocalizedName2() + "_top");
+        bottomIcon = par1IconRegister.registerIcon(getUnlocalizedName2() + "_bottom");
     }
 }

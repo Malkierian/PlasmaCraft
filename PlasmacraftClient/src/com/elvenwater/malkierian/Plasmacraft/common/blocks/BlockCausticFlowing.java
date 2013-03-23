@@ -35,7 +35,7 @@ public class BlockCausticFlowing extends BlockCausticFluids
     private void updateFlow(World par1World, int par2, int par3, int par4)
     {
         int l = par1World.getBlockMetadata(par2, par3, par4);
-        par1World.setBlockAndMetadataWithNotify(par2, par3, par4, this.blockID + 1, l, 2);
+        par1World.setBlock(par2, par3, par4, this.blockID + 1, l, 2);
     }
 
     public boolean getBlocksMovement(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
@@ -119,7 +119,7 @@ public class BlockCausticFlowing extends BlockCausticFluids
 
                 if (i1 < 0)
                 {
-                    par1World.func_94571_i(par2, par3, par4);
+                    par1World.setBlockToAir(par2, par3, par4);
                 }
                 else
                 {
@@ -138,7 +138,7 @@ public class BlockCausticFlowing extends BlockCausticFluids
         {
             if (this.blockMaterial == Material.lava && par1World.getBlockMaterial(par2, par3 - 1, par4) == Material.water)
             {
-                par1World.func_94575_c(par2, par3 - 1, par4, Block.stone.blockID);
+                par1World.setBlock(par2, par3 - 1, par4, Block.stone.blockID);
                 this.triggerLavaMixEffects(par1World, par2, par3 - 1, par4);
                 return;
             }
@@ -211,7 +211,7 @@ public class BlockCausticFlowing extends BlockCausticFluids
                 }
             }
 
-            par1World.setBlockAndMetadataWithNotify(par2, par3, par4, this.blockID, par5, 3);
+            par1World.setBlock(par2, par3, par4, this.blockID, par5, 3);
         }
     }
 

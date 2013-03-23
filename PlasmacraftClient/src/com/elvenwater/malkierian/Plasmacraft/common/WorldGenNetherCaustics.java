@@ -64,7 +64,7 @@ public class WorldGenNetherCaustics extends WorldGenerator
 		}
 		if(l == 3 && i1 == 1)
 		{
-			world.setBlockAndMetadataWithNotify(i, j, k, causticID, 0, 0);
+			world.setBlock(i, j, k, causticID, 0, 0);
 			world.scheduledUpdatesAreImmediate = true;
 			Block.blocksList[causticID].updateTick(world, i, j, k, random);
 			world.scheduledUpdatesAreImmediate = false;

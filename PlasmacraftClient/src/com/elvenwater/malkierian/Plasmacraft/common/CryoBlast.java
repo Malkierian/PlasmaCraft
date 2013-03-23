@@ -186,27 +186,27 @@ label0:
 				continue;
 			}
 			Block.blocksList[i3].dropBlockAsItemWithChance(worldObj, i1, l1, k2, worldObj.getBlockMetadata(i1, l1, k2), 0.3F, i3);
-			worldObj.setBlockAndMetadataWithNotify(i1, l1, k2, 0, 0, 0);
+			worldObj.setBlock(i1, l1, k2, 0, 0, 0);
 			Block.blocksList[i3].onBlockDestroyedByExplosion(worldObj, i1, l1, k2, this);
 			
 			int r = ExplosionRNG.nextInt(10);
 			if(r < 7 && worldObj.isAirBlock(i1, l1, k2) && Block.blockSnow.canBlockStay(worldObj, i1, l1, k2))
 			{
-				worldObj.setBlockAndMetadataWithNotify(Block.blockSnow.blockID, i1, l1, k2, 0, 0);
+				worldObj.setBlock(Block.blockSnow.blockID, i1, l1, k2, 0, 0);
 			}
 			else if(r < 9 && worldObj.isAirBlock(i1, l1, k2) && Block.ice.canBlockStay(worldObj, i1, l1, k2))
 			{
-				worldObj.setBlockAndMetadataWithNotify(Block.ice.blockID, i1, l1, k2, 0, 0);
+				worldObj.setBlock(Block.ice.blockID, i1, l1, k2, 0, 0);
 			}
 			else if(worldObj.isAirBlock(i1, l1, k2) && PlasmaCraft.frozenCryonite.canBlockStay(worldObj, i1, l1, k2))
 			{
-				worldObj.setBlockAndMetadataWithNotify(PlasmaCraft.frozenCryonite.blockID, i1, l1, k2, 0, 0);
+				worldObj.setBlock(PlasmaCraft.frozenCryonite.blockID, i1, l1, k2, 0, 0);
 			}
 			
 			if(worldObj.getBlockId(i1, l1, k2) == Block.waterStill.blockID || worldObj.getBlockId(i1, l1 + 1, k2) == Block.waterMoving.blockID)
 			{
-				worldObj.setBlockAndMetadataWithNotify(i1, l1, k2, Block.ice.blockID, 0, 0);
-				worldObj.setBlockAndMetadataWithNotify(i1, l1 + 1, k2, Block.snow.blockID, 0, 0);
+				worldObj.setBlock(i1, l1, k2, Block.ice.blockID, 0, 0);
+				worldObj.setBlock(i1, l1 + 1, k2, Block.snow.blockID, 0, 0);
 				continue;
 			}
 		}
@@ -243,7 +243,7 @@ label0:
 					boolean flag4 = isFlowable(worldObj.getBlockId(k, l - 1, k1));
 					if(flag || flag1 || flag2 || flag3 || flag4)
 					{
-						worldObj.setBlockAndMetadataWithNotify(k, l, k1, Block.cobblestone.blockID, 0, 0);
+						worldObj.setBlock(k, l, k1, Block.cobblestone.blockID, 0, 0);
 					}
 				}
 

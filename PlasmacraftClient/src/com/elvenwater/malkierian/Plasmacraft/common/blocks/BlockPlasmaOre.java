@@ -53,13 +53,13 @@ public class BlockPlasmaOre extends BlockOre
 	
 	@Override
 	@SideOnly(Side.CLIENT)
-	public void func_94332_a(IconRegister par1IconRegister)
+	public void registerIcons(IconRegister par1IconRegister)
 	{
 		icons = new Icon[filenames.length];
 
 		for (int i = 0; i < icons.length; ++i)
 		{
-			icons[i] = par1IconRegister.func_94245_a(filenames[i]);
+			icons[i] = par1IconRegister.registerIcon(filenames[i]);
 		}
 	}
 	

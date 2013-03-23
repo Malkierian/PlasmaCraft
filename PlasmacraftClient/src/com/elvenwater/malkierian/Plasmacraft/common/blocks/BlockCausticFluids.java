@@ -81,7 +81,7 @@ public class BlockCausticFluids extends BlockFluid
 		}
 		if(PlasmaCraft.liquidSourceExplodesAfterCausticExplosion)
 		{
-			world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
+			world.setBlock(i, j, k, 0, 0, 0);
 			world.createExplosion(null, i, j, k, 4F, false);
 		}
 		else
@@ -124,39 +124,39 @@ public class BlockCausticFluids extends BlockFluid
 	}
 
     @SideOnly(Side.CLIENT)
-    public void func_94332_a(IconRegister par1IconRegister)
+    public void registerIcons(IconRegister par1IconRegister)
     {
         if (this.blockID == PlasmaCraft.acidMoving.blockID || blockID == PlasmaCraft.acidStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("acid"), par1IconRegister.func_94245_a("acid_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("acid"), par1IconRegister.registerIcon("acid_flow")};
         }
         else if (this.blockID == PlasmaCraft.cryoniteMoving.blockID || blockID == PlasmaCraft.cryoniteStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("cryonite"), par1IconRegister.func_94245_a("cryonite_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("cryonite"), par1IconRegister.registerIcon("cryonite_flow")};
         }
         else if (this.blockID == PlasmaCraft.neptuniumMoving.blockID || blockID == PlasmaCraft.neptuniumStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("neptunium"), par1IconRegister.func_94245_a("neptunium_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("neptunium"), par1IconRegister.registerIcon("neptunium_flow")};
         }
         else if (this.blockID == PlasmaCraft.netherflowMoving.blockID || blockID == PlasmaCraft.netherflowStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("netherflow"), par1IconRegister.func_94245_a("netherflow_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("netherflow"), par1IconRegister.registerIcon("netherflow_flow")};
         }
         else if (this.blockID == PlasmaCraft.obsidiumMoving.blockID || blockID == PlasmaCraft.obsidiumStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("obsidium"), par1IconRegister.func_94245_a("obsidium_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("obsidium"), par1IconRegister.registerIcon("obsidium_flow")};
         }
         else if (this.blockID == PlasmaCraft.plutoniumMoving.blockID || blockID == PlasmaCraft.plutoniumStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("plutonium"), par1IconRegister.func_94245_a("plutonium_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("plutonium"), par1IconRegister.registerIcon("plutonium_flow")};
         }
         else if (this.blockID == PlasmaCraft.radioniteMoving.blockID || blockID == PlasmaCraft.radioniteStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("radionite"), par1IconRegister.func_94245_a("radionite_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("radionite"), par1IconRegister.registerIcon("radionite_flow")};
         }
         else if (this.blockID == PlasmaCraft.uraniumMoving.blockID || blockID == PlasmaCraft.uraniumStill.blockID)
         {
-            this.icons = new Icon[] {par1IconRegister.func_94245_a("uranium"), par1IconRegister.func_94245_a("uranium_flow")};
+            this.icons = new Icon[] {par1IconRegister.registerIcon("uranium"), par1IconRegister.registerIcon("uranium_flow")};
         }
     }
 
@@ -290,23 +290,23 @@ public class BlockCausticFluids extends BlockFluid
 	{
 		if(world.getBlockId(i - 1, j, k) == Block.lavaStill.blockID || world.getBlockId(i - 1, j, k) == Block.lavaMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i - 1, j, k, l, 0, 0);
+			world.setBlock(i - 1, j, k, l, 0, 0);
 		}
 		if(world.getBlockId(i + 1, j, k) == Block.lavaStill.blockID || world.getBlockId(i + 1, j, k) == Block.lavaMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i + 1, j, k, l, 0, 0);
+			world.setBlock(i + 1, j, k, l, 0, 0);
 		}
 		if(world.getBlockId(i, j - 1, k) == Block.lavaStill.blockID || world.getBlockId(i, j - 1, k) == Block.lavaMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i, j - 1, k, l, 0, 0);
+			world.setBlock(i, j - 1, k, l, 0, 0);
 		}
 		if(world.getBlockId(i, j, k - 1) == Block.lavaStill.blockID || world.getBlockId(i, j, k - 1) == Block.lavaMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i, j, k - 1, l, 0, 0);
+			world.setBlock(i, j, k - 1, l, 0, 0);
 		}
 		if(world.getBlockId(i, j, k + 1) == Block.lavaStill.blockID || world.getBlockId(i, j, k + 1) == Block.lavaMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i, j, k + 1, l, 0, 0);
+			world.setBlock(i, j, k + 1, l, 0, 0);
 		}
 	}
 
@@ -314,23 +314,23 @@ public class BlockCausticFluids extends BlockFluid
 	{
 		if(world.getBlockId(i - 1, j, k) == Block.waterStill.blockID || world.getBlockId(i - 1, j, k) == Block.waterMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i - 1, j, k, l, 0, 0);
+			world.setBlock(i - 1, j, k, l, 0, 0);
 		}
 		if(world.getBlockId(i + 1, j, k) == Block.waterStill.blockID || world.getBlockId(i + 1, j, k) == Block.waterMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i + 1, j, k, l, 0, 0);
+			world.setBlock(i + 1, j, k, l, 0, 0);
 		}
 		if(world.getBlockId(i, j - 1, k) == Block.waterStill.blockID || world.getBlockId(i, j - 1, k) == Block.waterMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i, j - 1, k, l, 0, 0);
+			world.setBlock(i, j - 1, k, l, 0, 0);
 		}
 		if(world.getBlockId(i, j, k - 1) == Block.waterStill.blockID || world.getBlockId(i, j, k - 1) == Block.waterMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i, j, k - 1, l, 0, 0);
+			world.setBlock(i, j, k - 1, l, 0, 0);
 		}
 		if(world.getBlockId(i, j, k + 1) == Block.waterStill.blockID || world.getBlockId(i, j, k + 1) == Block.waterMoving.blockID)
 		{
-			world.setBlockAndMetadataWithNotify(i, j, k + 1, l, 0, 0);
+			world.setBlock(i, j, k + 1, l, 0, 0);
 		}
 	}
 
@@ -373,11 +373,11 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.cobblestone.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.cobblestone.blockID, 0, 0);
 //			}
 //		}
 //		else if(blockIndexInTexture == PlasmaCraft.radioniteStillIndex || blockIndexInTexture == PlasmaCraft.radioniteMovingIndex)
@@ -404,7 +404,7 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.glowStone.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.glowStone.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumMoving.blockID))
 //			{
@@ -412,7 +412,7 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //		}
 //		else if(blockIndexInTexture == PlasmaCraft.plutoniumStillIndex || blockIndexInTexture == PlasmaCraft.plutoniumMovingIndex)
@@ -439,7 +439,7 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.netherrack.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.netherrack.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumMoving.blockID))
 //			{
@@ -447,7 +447,7 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteMoving.blockID))
 //			{
@@ -478,15 +478,15 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.netherrack.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.netherrack.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.sand.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.sand.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteMoving.blockID))
 //			{
@@ -509,27 +509,27 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.glowStone.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.glowStone.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.netherrack.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.netherrack.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.netherrack.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.netherrack.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.slowSand.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.slowSand.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.glowStone.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.glowStone.blockID, 0, 0);
 //			}
 //		}
 //		else if(blockIndexInTexture == PlasmaCraft.uraniumStillIndex || blockIndexInTexture == PlasmaCraft.uraniumMovingIndex)
@@ -556,15 +556,15 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.sand.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.sand.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.slowSand.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.slowSand.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteMoving.blockID))
 //			{
@@ -583,31 +583,31 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.radioniteMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.neptuniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.cryoniteMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //		}
 //		else if(blockIndexInTexture == PlasmaCraft.cryoniteStillIndex || blockIndexInTexture == PlasmaCraft.cryoniteMovingIndex)
@@ -622,7 +622,7 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.acidMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.cobblestone.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.cobblestone.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.plutoniumMoving.blockID))
 //			{
@@ -634,7 +634,7 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.netherflowMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.glowStone.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.glowStone.blockID, 0, 0);
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.uraniumMoving.blockID))
 //			{
@@ -642,7 +642,7 @@ public class BlockCausticFluids extends BlockFluid
 //			}
 //			else if(blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumStill.blockID) || blockAdjoinsBlockID(world, i, j, k, PlasmaCraft.obsidiumMoving.blockID))
 //			{
-//				world.setBlockAndMetadataWithNotify(i, j, k, Block.obsidian.blockID, 0, 0);
+//				world.setBlock(i, j, k, Block.obsidian.blockID, 0, 0);
 //			}
 //		}
 	}
