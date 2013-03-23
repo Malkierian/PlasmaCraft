@@ -12,10 +12,4 @@ public class ItemPlasma extends Item
 		super(i);
 		setCreativeTab(CreativeTabs.tabMisc);
 	}
-
-	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.ITEMS_PNG;
-	}
 }

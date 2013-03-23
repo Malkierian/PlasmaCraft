@@ -3,30 +3,37 @@ package com.elvenwater.malkierian.Plasmacraft.common.blocks;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
-import com.elvenwater.malkierian.Plasmacraft.common.GuiIds;
-import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
-import com.elvenwater.malkierian.Plasmacraft.common.TilePlasmaBench;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Icon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.GuiIds;
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
+import com.elvenwater.malkierian.Plasmacraft.common.TilePlasmaBench;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlasmaBench extends BlockContainer
 {
 	private Random plasmificatorRand;
 	private final boolean isActive;
-	private final int frontIdleTexture;
-	private final int frontActiveTexture;
+	private Icon sideIcon;
+	private Icon frontIdleIcon;
+	private Icon frontActiveIcon;
 	private static boolean keepPlasmificatorInventory = false;
 
 	public BlockPlasmaBench(int i)
@@ -34,9 +41,6 @@ public class BlockPlasmaBench extends BlockContainer
 		super(i, Material.rock);
 		isActive = false;
 		plasmificatorRand = new Random();
-		blockIndexInTexture = PlasmaCraft.plasmaBenchSidesIndex;
-		frontIdleTexture = PlasmaCraft.plasmaBenchFrontIdleIndex;
-		frontActiveTexture = PlasmaCraft.plasmaBenchFrontActiveIndex;
 		setHardness(3F);
 		setStepSound(Block.soundStoneFootstep);
 		setLightValue(0.0f);
@@ -98,23 +102,24 @@ public class BlockPlasmaBench extends BlockContainer
 		{
 			byte0 = 4;
 		}
-		world.setBlockMetadataWithNotify(i, j, k, byte0);
+		world.setBlockMetadataWithNotify(i, j, k, byte0, 0);
 	}
 
-	public int getBlockTexture(IBlockAccess iblockaccess, int i, int j, int k, int l)
+	@Override
+	public Icon getBlockTexture(IBlockAccess iblockaccess, int i, int j, int k, int l)
 	{
 		int i1 = iblockaccess.getBlockMetadata(i, j, k);
 		int meta = i1 > 8 ? i1 - 8 : i1; 
 		if(l != meta)
 		{
-			return blockIndexInTexture;
+			return sideIcon;
 		}
 		if(i1 > 8)
 		{
-			return frontActiveTexture;
+			return frontActiveIcon;
 		} else
 		{
-			return frontIdleTexture;
+			return frontIdleIcon;
 		}
 	}
 
@@ -124,17 +129,17 @@ public class BlockPlasmaBench extends BlockContainer
 	}
 
 	@Override
-	public int getBlockTextureFromSideAndMetadata(int i, int j)
+	public Icon getBlockTextureFromSideAndMetadata(int i, int j)
 	{
 		if(i == 3)
 		{
 			if(j > 8)
-				return frontActiveTexture;
+				return frontActiveIcon;
 			else
-				return frontIdleTexture;
+				return frontIdleIcon;
 		} else
 		{
-			return blockIndexInTexture;
+			return sideIcon;
 		}
 	}
 
@@ -176,7 +181,7 @@ public class BlockPlasmaBench extends BlockContainer
 		}
 		
 		//keepPlasmificatorInventory = false;
-		world.setBlockMetadataWithNotify(i, j, k, l);
+		world.setBlockMetadataWithNotify(i, j, k, l, 0);
 		world.markBlockForUpdate(i, j, k);
 //		if(tileentity != null)
 //		{
@@ -186,24 +191,24 @@ public class BlockPlasmaBench extends BlockContainer
 	}
 
 	@Override
-	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLiving entityliving)
+	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLiving entityliving, ItemStack stack)
 	{
 		int l = MathHelper.floor_double((double)((entityliving.rotationYaw * 4F) / 360F) + 0.5D) & 3;
 		if(l == 0)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 2);
+			world.setBlockMetadataWithNotify(i, j, k, 2, 0);
 		}
 		if(l == 1)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 5);
+			world.setBlockMetadataWithNotify(i, j, k, 5, 0);
 		}
 		if(l == 2)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 3);
+			world.setBlockMetadataWithNotify(i, j, k, 3, 0);
 		}
 		if(l == 3)
 		{
-			world.setBlockMetadataWithNotify(i, j, k, 4);
+			world.setBlockMetadataWithNotify(i, j, k, 4, 0);
 		}
 	}
 	
@@ -215,10 +220,10 @@ public class BlockPlasmaBench extends BlockContainer
 	}
 	
 	@Override
-	public void onBlockDestroyedByExplosion(World par1World, int par2, int par3, int par4)
+	public void onBlockDestroyedByExplosion(World par1World, int par2, int par3, int par4, Explosion explosion)
 	{
 		onBlockRemoved(par1World, par2, par3, par4);
-		super.onBlockDestroyedByExplosion(par1World, par2, par3, par4);
+		super.onBlockDestroyedByExplosion(par1World, par2, par3, par4, explosion);
 	}
 
 	public void onBlockRemoved(World world, int i, int j, int k)
@@ -263,11 +268,13 @@ label0:
 		}
 	}
 
-	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.BLOCK_PNG;
-	}
+    @SideOnly(Side.CLIENT)
+    public void func_94332_a(IconRegister par1IconRegister)
+    {
+        frontActiveIcon = par1IconRegister.func_94245_a("plasmaBench_active");
+        frontIdleIcon = par1IconRegister.func_94245_a("plasmaBench_idle");
+        sideIcon = par1IconRegister.func_94245_a("bench_side");
+    }
 
 	@Override
 	public TileEntity createNewTileEntity(World var1)

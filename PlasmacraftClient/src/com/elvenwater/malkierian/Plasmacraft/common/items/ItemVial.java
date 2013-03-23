@@ -9,7 +9,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import com.elvenwater.malkierian.Plasmacraft.common.EnumPlasmaLiquid;
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaLiquid;
 import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
 import com.elvenwater.malkierian.Plasmacraft.common.Entities.EntityMutantCow;
 
@@ -17,9 +17,9 @@ public class ItemVial extends ItemPlasma
 {
 
 	private int isFull;
-	public EnumPlasmaLiquid contents;
+	public PlasmaLiquid contents;
 
-	public ItemVial(int i, int j, EnumPlasmaLiquid liquid)
+	public ItemVial(int i, int j, PlasmaLiquid liquid)
 	{
 		super(i);
 		maxStackSize = 8;
@@ -65,7 +65,7 @@ public class ItemVial extends ItemPlasma
 				int l = world.getBlockId(i, j, k);
 				if(l == PlasmaCraft.acidStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 				{
-					if(world.setBlockWithNotify(i, j, k, 0))
+					if(world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0))
 					{
 						returnStack = new ItemStack(PlasmaCraft.acidVial);
 					}
@@ -74,37 +74,37 @@ public class ItemVial extends ItemPlasma
 				{
 					if(l == PlasmaCraft.plutoniumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 					{
-						world.setBlockWithNotify(i, j, k, 0);
+						world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
 						returnStack = new ItemStack(PlasmaCraft.plutoniumVial);
 					}
 					if(l == PlasmaCraft.radioniteStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 					{
-						world.setBlockWithNotify(i, j, k, 0);
+						world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
 						returnStack = new ItemStack(PlasmaCraft.radioniteVial);
 					}
 					if(l == PlasmaCraft.uraniumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 					{
-						world.setBlockWithNotify(i, j, k, 0);
+						world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
 						returnStack = new ItemStack(PlasmaCraft.uraniumVial);
 					}
 					if(l == PlasmaCraft.neptuniumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 					{
-						world.setBlockWithNotify(i, j, k, 0);
+						world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
 						returnStack = new ItemStack(PlasmaCraft.neptuniumVial);
 					}
 					if(l == PlasmaCraft.netherflowStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 					{
-						world.setBlockWithNotify(i, j, k, 0);
+						world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
 						returnStack = new ItemStack(PlasmaCraft.netherflowVial);
 					}
 					if(l == PlasmaCraft.obsidiumStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 					{
-						world.setBlockWithNotify(i, j, k, 0);
+						world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
 						returnStack = new ItemStack(PlasmaCraft.obsidiumVial);
 					}
 					if(l == PlasmaCraft.cryoniteStill.blockID && world.getBlockMetadata(i, j, k) == 0)
 					{
-						world.setBlockWithNotify(i, j, k, 0);
+						world.setBlockAndMetadataWithNotify(i, j, k, 0, 0, 0);
 						returnStack = new ItemStack(PlasmaCraft.cryoniteVial);
 					}
 				}
@@ -149,7 +149,7 @@ public class ItemVial extends ItemPlasma
 				}
 				if(world.isAirBlock(i, j, k) || !world.getBlockMaterial(i, j, k).isSolid())
 				{
-					world.setBlockAndMetadataWithNotify(i, j, k, isFull, 0);
+					world.setBlockAndMetadataWithNotify(i, j, k, isFull, 0, 0);
 					//if(itemstack.stackSize > 1)
 					//{
 						itemstack.stackSize--;

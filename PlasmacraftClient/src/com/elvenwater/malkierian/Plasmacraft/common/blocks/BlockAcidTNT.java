@@ -2,25 +2,27 @@ package com.elvenwater.malkierian.Plasmacraft.common.blocks;
 
 import java.util.ArrayList;
 
-import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
-import com.elvenwater.malkierian.Plasmacraft.common.EntityAcidTNTPrimed;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTNT;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
+
+import com.elvenwater.malkierian.Plasmacraft.common.EntityAcidTNTPrimed;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockAcidTNT extends BlockTNT
 {
+	private Icon topIcon;
+	private Icon bottomIcon;
 
-	private int topTextureIndex;
-	private int bottomTextureIndex;
-
-	public BlockAcidTNT(int i, int j, int k, int l)
+	public BlockAcidTNT(int i)
 	{
-		super(i, j);
-		topTextureIndex = k;
-		bottomTextureIndex = l;
+		super(i);
 		setHardness(0.0F);
 		setStepSound(Block.soundGrassFootstep);
 	}
@@ -30,23 +32,23 @@ public class BlockAcidTNT extends BlockTNT
 		itemList.add(new ItemStack(this, 1));
 	}
 
-	public int getBlockTextureFromSide(int i)
+	public Icon getBlockTextureFromSideAndMetadata(int i, int j)
 	{
 		if(i == 0)
 		{
-			return bottomTextureIndex;
+			return bottomIcon;
 		}
 		if(i == 1)
 		{
-			return topTextureIndex;
+			return topIcon;
 		} else
 		{
-			return blockIndexInTexture;
+			return field_94336_cN;
 		}
 	}
 
 	@Override
-	public void onBlockDestroyedByExplosion(World world, int i, int j, int k)
+	public void onBlockDestroyedByExplosion(World world, int i, int j, int k, Explosion explosion)
 	{
 		if(!world.isRemote)
 		{
@@ -71,9 +73,11 @@ public class BlockAcidTNT extends BlockTNT
 		}
 	}
 
-	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.BLOCK_PNG;
-	}
+    @SideOnly(Side.CLIENT)
+    public void func_94332_a(IconRegister par1IconRegister)
+    {
+        field_94336_cN = par1IconRegister.func_94245_a(func_94330_A());
+        topIcon = par1IconRegister.func_94245_a(func_94330_A() + "_top");
+        bottomIcon = par1IconRegister.func_94245_a(func_94330_A() + "_bottom");
+    }
 }

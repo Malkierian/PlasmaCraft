@@ -17,9 +17,9 @@ import net.minecraft.world.World;
 
 public class BlockReinforcedGlass extends BlockBreakable
 {
-	public BlockReinforcedGlass(int i, int j, Material material, boolean flag, float resistance)
+	public BlockReinforcedGlass(int i, String filename, Material material, boolean flag, float resistance)
 	{
-		super(i, j, material, flag);
+		super(i, filename, material, flag);
 		setHardness(1.0F);
 		setResistance(resistance);
 		setStepSound(Block.soundGlassFootstep);
@@ -44,19 +44,13 @@ public class BlockReinforcedGlass extends BlockBreakable
 		else
 			return 1;
 	}
-
-	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.BLOCK_PNG;
-	}
 	
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6)
 	{
 		if(blockID == PlasmaCraft.frozenCryonite.blockID)
 		{
-			par1World.setBlockWithNotify(par2, par3, par4, PlasmaCraft.cryoniteMoving.blockID);
+			par1World.setBlockAndMetadataWithNotify(par2, par3, par4, PlasmaCraft.cryoniteMoving.blockID, 0, 0);
 		}
 		else
 			super.breakBlock(par1World, par2, par3, par4, par5, par6);

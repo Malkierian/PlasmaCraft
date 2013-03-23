@@ -1,6 +1,6 @@
 package com.elvenwater.malkierian.Plasmacraft.common;
 
-public enum EnumPlasmaLiquid
+public enum PlasmaLiquid
 {
 	EMPTY("EMPTY"),
 	ACID("ACID"),
@@ -12,7 +12,7 @@ public enum EnumPlasmaLiquid
 	OBSIDIUM("OBSIDIUM"),
 	CRYONITE("CRYONITE");
 	
-	private EnumPlasmaLiquid(String name)
+	private PlasmaLiquid(String name)
 	{
 	}
 }

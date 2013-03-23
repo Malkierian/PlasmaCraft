@@ -170,14 +170,14 @@ public class CausticLakes
 						world.getBlockId(x, y, z) == Block.waterMoving.blockID ||
 						isCaustic(world, x, y, z, stillId, movingId))
 				{
-					world.setBlockWithNotify(x, y, z, stillId);
+					world.setBlockAndMetadataWithNotify(x, y, z, stillId, 0, 0);
 				}
 				else
 				{
-					world.setBlockWithNotify(x, y, z, 0);
+					world.setBlockAndMetadataWithNotify(x, y, z, 0, 0, 0);
 				}
 				
-				world.setBlockWithNotify(x, y - 1, z, stillId);
+				world.setBlockAndMetadataWithNotify(x, y - 1, z, stillId, 0, 0);
 			}
 		}
 	}

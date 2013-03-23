@@ -240,7 +240,7 @@ public class EntityCausticBoat extends Entity
 		{
 			double var5 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(var4 + 0) / (double)var1 - 0.125D;
 			double var7 = this.boundingBox.minY + (this.boundingBox.maxY - this.boundingBox.minY) * (double)(var4 + 1) / (double)var1 - 0.125D;
-			AxisAlignedBB var9 = AxisAlignedBB.getAABBPool().addOrModifyAABBInPool(this.boundingBox.minX, var5, this.boundingBox.minZ, this.boundingBox.maxX, var7, this.boundingBox.maxZ);
+			AxisAlignedBB var9 = AxisAlignedBB.getAABBPool().getAABB(this.boundingBox.minX, var5, this.boundingBox.minZ, this.boundingBox.maxX, var7, this.boundingBox.maxZ);
 
 			if (this.worldObj.isAABBInMaterial(var9, Material.water))
 			{
@@ -452,12 +452,12 @@ public class EntityCausticBoat extends Entity
 
 						if (var22 == Block.snow.blockID)
 						{
-							this.worldObj.setBlockWithNotify(var28, var21, var19, 0);
+							this.worldObj.setBlockAndMetadataWithNotify(var28, var21, var19, 0, 0, 0);
 						}
 						else if (var22 == Block.waterlily.blockID)
 						{
 							Block.waterlily.dropBlockAsItemWithChance(this.worldObj, var28, var21, var19, var23, 0.3F, 0);
-							this.worldObj.setBlockWithNotify(var28, var21, var19, 0);
+							this.worldObj.setBlockAndMetadataWithNotify(var28, var21, var19, 0, 0, 0);
 						}
 					}
 				}

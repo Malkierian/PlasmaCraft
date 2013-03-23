@@ -55,10 +55,4 @@ public class ItemCausticBoat extends ItemBoat
 		}
 		return itemstack;
 	}
-
-	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.ITEMS_PNG;
-	}
 }

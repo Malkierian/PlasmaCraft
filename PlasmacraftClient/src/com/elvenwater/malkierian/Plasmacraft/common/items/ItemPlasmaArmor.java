@@ -16,12 +16,6 @@ public class ItemPlasmaArmor extends ItemArmor implements IArmorTextureProvider
 	}
 
 	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.ITEMS_PNG;
-	}
-
-	@Override
 	public String getArmorTextureFile(ItemStack itemstack)
 	{
 		if(itemstack.itemID == PlasmaCraft.hazmatHood.itemID

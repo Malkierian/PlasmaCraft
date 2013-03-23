@@ -9,13 +9,13 @@ import java.util.Set;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.ChunkPosition;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-public class AcidExplosion
+public class AcidExplosion extends Explosion
 {
 
 	public boolean isFlaming;
@@ -30,6 +30,7 @@ public class AcidExplosion
 
 	public AcidExplosion(World world, Entity entity, double d, double d1, double d2, float f)
 	{
+		super(world, entity, d, d1, d2, f);
 		isFlaming = false;
 		destroyedBlockPositions = new HashSet<ChunkPosition>();
 		ExplosionRNG = new Random();
@@ -129,7 +130,8 @@ label0:
 				d10 /= d11;
 				double d12 = worldObj.getBlockDensity(vec3d, entity.boundingBox);
 				double d13 = (1.0D - d4) * d12;
-				entity.attackEntityFrom(DamageSource.explosion, (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
+				// TODO entity damage
+//				entity.attackEntityFrom(DamageSource.explosion, (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
 				double d14 = d13;
 				entity.motionX += d6 * d14;
 				entity.motionY += d8 * d14;
@@ -152,7 +154,7 @@ label0:
 				int i4 = worldObj.getBlockId(i3, j3 - 1, k3);
 				if(l3 == 0 && Block.opaqueCubeLookup[i4] && ExplosionRNG.nextInt(3) == 0)
 				{
-					worldObj.setBlockWithNotify(i3, j3, k3, Block.fire.blockID);
+					worldObj.setBlockAndMetadataWithNotify(i3, j3, k3, Block.fire.blockID, 0, 0);
 				}
 			}
 
@@ -200,8 +202,8 @@ label0:
 			if(i3 > 0)
 			{
 				Block.blocksList[i3].dropBlockAsItemWithChance(worldObj, i1, l1, k2, worldObj.getBlockMetadata(i1, l1, k2), 0.3F, i3);
-				worldObj.setBlockWithNotify(i1, l1, k2, 0);
-				Block.blocksList[i3].onBlockDestroyedByExplosion(worldObj, i1, l1, k2);
+				worldObj.setBlockAndMetadataWithNotify(i1, l1, k2, 0, 0, 0);
+				Block.blocksList[i3].onBlockDestroyedByExplosion(worldObj, i1, l1, k2, this);
 			}
 		}
 
@@ -215,7 +217,7 @@ label0:
 			double d = (double)i2 - posY;
 			if(d < -2D && j3 == 0)
 			{
-				worldObj.setBlockWithNotify(j1, i2, l2, PlasmaCraft.acidMoving.blockID);
+				worldObj.setBlockAndMetadataWithNotify(j1, i2, l2, PlasmaCraft.acidMoving.blockID, 0, 0);
 			}
 		}
 
@@ -237,7 +239,7 @@ label0:
 					boolean flag4 = isFlowable(worldObj.getBlockId(k, l - 1, k1));
 					if(flag || flag1 || flag2 || flag3 || flag4)
 					{
-						worldObj.setBlockWithNotify(k, l, k1, Block.cobblestone.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, l, k1, Block.cobblestone.blockID, 0, 0);
 					}
 				}
 

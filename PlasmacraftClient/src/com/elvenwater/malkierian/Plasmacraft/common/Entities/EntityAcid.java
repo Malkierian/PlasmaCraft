@@ -195,7 +195,7 @@ public class EntityAcid extends Entity
 					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
 					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-					worldObj.setBlockWithNotify(j, l, j1, PlasmaCraft.acidMoving.blockID);
+					worldObj.setBlockAndMetadataWithNotify(j, l, j1, PlasmaCraft.acidMoving.blockID, 0, 0);
 					setDead();
 				}
 			} else
@@ -206,43 +206,43 @@ public class EntityAcid extends Entity
 				boolean flag = true;
 				if(worldObj.getBlockId(k, i1, k1) == Block.tallGrass.blockID)
 				{
-					worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 					flag = false;
 				}
 				if(worldObj.getBlockId(k, i1, k1) == Block.snow.blockID)
 				{
-					worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 					flag = false;
 				}
 				if(worldObj.getBlockId(k, i1, k1) == Block.plantRed.blockID)
 				{
-					worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 					flag = false;
 				}
 				if(worldObj.getBlockId(k, i1, k1) == Block.plantYellow.blockID)
 				{
-					worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 					flag = false;
 				}
 				if(worldObj.isAirBlock(k, i1 + 1, k1) && flag)
 				{
-					worldObj.setBlockWithNotify(k, i1 + 1, k1, PlasmaCraft.acidMoving.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k, i1 + 1, k1, PlasmaCraft.acidMoving.blockID, 0, 0);
 				}
 				if(worldObj.isAirBlock(k, i1, k1 + 1) && flag)
 				{
-					worldObj.setBlockWithNotify(k, i1, k1 + 1, PlasmaCraft.acidMoving.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k, i1, k1 + 1, PlasmaCraft.acidMoving.blockID, 0, 0);
 				}
 				if(worldObj.isAirBlock(k, i1, k1 - 1) && flag)
 				{
-					worldObj.setBlockWithNotify(k, i1, k1 - 1, PlasmaCraft.acidMoving.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k, i1, k1 - 1, PlasmaCraft.acidMoving.blockID, 0, 0);
 				}
 				if(worldObj.isAirBlock(k + 1, i1, k1) && flag)
 				{
-					worldObj.setBlockWithNotify(k + 1, i1, k1, PlasmaCraft.acidMoving.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k + 1, i1, k1, PlasmaCraft.acidMoving.blockID, 0, 0);
 				}
 				if(worldObj.isAirBlock(k - 1, i1, k1) && flag)
 				{
-					worldObj.setBlockWithNotify(k - 1, i1, k1, PlasmaCraft.acidMoving.blockID);
+					worldObj.setBlockAndMetadataWithNotify(k - 1, i1, k1, PlasmaCraft.acidMoving.blockID, 0, 0);
 				}
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;

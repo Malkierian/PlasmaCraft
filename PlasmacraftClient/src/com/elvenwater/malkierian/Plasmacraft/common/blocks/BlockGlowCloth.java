@@ -4,27 +4,31 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+
 import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
 import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGlowCloth extends Block
 {
-	public BlockGlowCloth(int i, int j)
+	private Icon[] icons;
+	
+	public BlockGlowCloth(int i)
 	{
-		super(i, j, Material.cloth);
+		super(i, Material.cloth);
 		setLightValue(1F);
 		setStepSound(Block.soundClothFootstep);
 		setCreativeTab(CreativeTabs.tabBlock);
-		setBlockName("glowCloth");
+		setUnlocalizedName("glowCloth");
 		setHardness(0.8F);
-		setRequiresSelfNotify();
 	}
 	
 	public void addCreativeItems(ArrayList itemList)
@@ -45,28 +49,9 @@ public class BlockGlowCloth extends Block
 		return i;
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int i, int j)
+	public Icon getBlockTextureFromSideAndMetadata(int i, int j)
 	{
-		switch (j)
-		{
-		case 0:
-			return PlasmaCraft.glowClothAcidIndex;
-		case 1:
-			return PlasmaCraft.glowClothRadioniteIndex;
-		case 2:
-			return PlasmaCraft.glowClothNetherflowIndex;
-		case 3:
-			return PlasmaCraft.glowClothNeptuniumIndex;
-		case 4:
-			return PlasmaCraft.glowClothUraniumIndex;
-		case 5:
-			return PlasmaCraft.glowClothPlutoniumIndex;
-		case 6:
-			return PlasmaCraft.glowClothCryoniteIndex;
-		default:
-			return PlasmaCraft.glowClothObsidiumIndex;
-		}
-		
+		return icons[j];
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -81,9 +66,18 @@ public class BlockGlowCloth extends Block
 		return 1;
 	}
 
-	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.BLOCK_PNG;
-	}
+    @SideOnly(Side.CLIENT)
+    public void func_94332_a(IconRegister par1IconRegister)
+    {
+        this.icons = new Icon[] {
+        		par1IconRegister.func_94245_a("glowCloth_acid"),
+        		par1IconRegister.func_94245_a("glowCloth_radionite"),
+        		par1IconRegister.func_94245_a("glowCloth_netherflow"),
+        		par1IconRegister.func_94245_a("glowCloth_neptunium"),
+        		par1IconRegister.func_94245_a("glowCloth_uranium"),
+        		par1IconRegister.func_94245_a("glowCloth_plutonium"),
+        		par1IconRegister.func_94245_a("glowCloth_cryonite"),
+        		par1IconRegister.func_94245_a("glowCloth_obsidium")
+        };
+    }
 }

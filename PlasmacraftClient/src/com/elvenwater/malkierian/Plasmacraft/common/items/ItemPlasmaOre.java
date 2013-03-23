@@ -1,19 +1,20 @@
 package com.elvenwater.malkierian.Plasmacraft.common.items;
 
-import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
-import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
-
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Icon;
+
+import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
 
 public class ItemPlasmaOre extends ItemBlock
 {
 	public static String[] blockNames = {
-		"Plutonium Ore",
-		"Radionite Ore",
-		"Neptunium Ore",
-		"Obsidium Ore",
-		"Uranium Ore"
+		"plutonium",
+		"radionite",
+		"neptunium",
+		"obsidium",
+		"uranium"
 		};
 
 	public ItemPlasmaOre(int id)
@@ -23,7 +24,8 @@ public class ItemPlasmaOre extends ItemBlock
 		setHasSubtypes(true);
 	}
 
-	public int getIconFromDamage(int i)
+	@Override
+	public Icon getIconFromDamage(int i)
 	{
 		return PlasmaCraft.orePlasma.getBlockTextureFromSideAndMetadata(0, i);
 	}
@@ -35,14 +37,8 @@ public class ItemPlasmaOre extends ItemBlock
 	}
 	
 	@Override
-	public String getItemNameIS(ItemStack itemstack)
+	public String getUnlocalizedName(ItemStack itemstack)
 	{
-		return getItemName() + "." + blockNames[itemstack.getItemDamage()];
-	}
-
-	public String getTextureFile() 
-	{
-		return CommonProxy.BLOCK_PNG;
-	}
-	
+		return super.getUnlocalizedName() + "." + blockNames[itemstack.getItemDamage()];
+	}	
 }

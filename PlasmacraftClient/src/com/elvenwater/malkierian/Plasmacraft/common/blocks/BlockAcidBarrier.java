@@ -18,9 +18,9 @@ import net.minecraft.world.World;
 
 public class BlockAcidBarrier extends Block
 {
-	public BlockAcidBarrier(int i, int j)
+	public BlockAcidBarrier(int i)
 	{
-		super(i, j, Material.glass);
+		super(i, Material.glass);
 		setHardness(3F);
 		setResistance(5F);
 		setLightValue(0.2F);
@@ -66,11 +66,5 @@ public class BlockAcidBarrier extends Block
 		float shrinkAmount = 0.125F;
 		return AxisAlignedBB.getBoundingBox(x + shrinkAmount, y + shrinkAmount, z + shrinkAmount,
 				x + 1 - shrinkAmount, y + 1 - shrinkAmount, z + 1 - shrinkAmount);
-	}
-
-	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.BLOCK_PNG;
 	}
 }

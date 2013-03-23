@@ -213,7 +213,7 @@ public class EntityLaser extends Entity
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
 					entity.setFire(1);
 					setDead();
-					worldObj.setBlockWithNotify(j, l, j1, Block.fire.blockID);
+					worldObj.setBlockAndMetadataWithNotify(j, l, j1, Block.fire.blockID, 0, 0);
 				}
 			}
 			else
@@ -226,21 +226,21 @@ public class EntityLaser extends Entity
 				{
 					if(worldObj.getBlockId(k, i1, k1) == PlasmaCraft.frozenCryonite.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, 0);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, 0, 0, 0);
 						setDead();
-						worldObj.setBlockWithNotify(k, i1, k1, PlasmaCraft.cryoniteMoving.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, PlasmaCraft.cryoniteMoving.blockID, 0, 0);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.oreIron.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, 0);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, 0, 0, 0);
 						setDead();
 						dropItem(Item.ingotIron.itemID, 1);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.oreGold.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, 0);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, 0, 0, 0);
 						setDead();
 						dropItem(Item.ingotGold.itemID, 1);
 						flag = false;
@@ -260,55 +260,55 @@ public class EntityLaser extends Entity
 						default:
 							index = PlasmaCraft.goopPlutonium.itemID;
 						}
-						worldObj.setBlockWithNotify(k, i1, k1, 0);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, 0, 0, 0);
 						setDead();
 						dropItem(index, 1);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.ice.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, Block.waterMoving.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.waterMoving.blockID, 0, 0);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.tallGrass.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.snow.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.plantRed.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1, k1) == Block.plantYellow.blockID)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1, Block.fire.blockID, 0, 0);
 						flag = false;
 					}
 					if(worldObj.getBlockId(k, i1 + 1, k1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlockWithNotify(k, i1 + 1, k1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1 + 1, k1, Block.fire.blockID, 0, 0);
 					}
 					if(worldObj.getBlockId(k, i1, k1 + 1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1 + 1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1 + 1, Block.fire.blockID, 0, 0);
 					}
 					if(worldObj.getBlockId(k, i1, k1 - 1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlockWithNotify(k, i1, k1 - 1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, i1, k1 - 1, Block.fire.blockID, 0, 0);
 					}
 					if(worldObj.getBlockId(k + 1, i1, k1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlockWithNotify(k + 1, i1, k1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k + 1, i1, k1, Block.fire.blockID, 0, 0);
 					}
 					if(worldObj.getBlockId(k - 1, i1, k1) == 0 && Block.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
 					{
-						worldObj.setBlockWithNotify(k - 1, i1, k1, Block.fire.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k - 1, i1, k1, Block.fire.blockID, 0, 0);
 					}
 				}
 				xTile = movingobjectposition.blockX;

@@ -12,13 +12,13 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.ChunkPosition;
+import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
-public class CryoBlast
+public class CryoBlast extends Explosion
 {
 	public boolean isFlaming;
 	protected Random ExplosionRNG;
@@ -32,6 +32,7 @@ public class CryoBlast
 
 	public CryoBlast(World world, Entity entity, double d, double d1, double d2, float f)
 	{
+		super(world, entity, d, d1, d2, f);
 		isFlaming = false;
 		destroyedBlockPositions = new HashSet<ChunkPosition>();
 		ExplosionRNG = new Random();
@@ -123,7 +124,8 @@ label0:
 				d10 /= d11;
 				double d12 = worldObj.getBlockDensity(vec3d, entity.boundingBox);
 				double d13 = (1.0D - d4) * d12;
-				entity.attackEntityFrom(DamageSource.explosion, (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
+				// TODO entity damage
+//				entity.attackEntityFrom(DamageSource.explosion, (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
 				if(entity instanceof EntityLiving)
 				{
 					EntityLiving el = (EntityLiving)entity;
@@ -184,27 +186,27 @@ label0:
 				continue;
 			}
 			Block.blocksList[i3].dropBlockAsItemWithChance(worldObj, i1, l1, k2, worldObj.getBlockMetadata(i1, l1, k2), 0.3F, i3);
-			worldObj.setBlockWithNotify(i1, l1, k2, 0);
-			Block.blocksList[i3].onBlockDestroyedByExplosion(worldObj, i1, l1, k2);
+			worldObj.setBlockAndMetadataWithNotify(i1, l1, k2, 0, 0, 0);
+			Block.blocksList[i3].onBlockDestroyedByExplosion(worldObj, i1, l1, k2, this);
 			
 			int r = ExplosionRNG.nextInt(10);
 			if(r < 7 && worldObj.isAirBlock(i1, l1, k2) && Block.blockSnow.canBlockStay(worldObj, i1, l1, k2))
 			{
-				worldObj.setBlockWithNotify(Block.blockSnow.blockID, i1, l1, k2);
+				worldObj.setBlockAndMetadataWithNotify(Block.blockSnow.blockID, i1, l1, k2, 0, 0);
 			}
 			else if(r < 9 && worldObj.isAirBlock(i1, l1, k2) && Block.ice.canBlockStay(worldObj, i1, l1, k2))
 			{
-				worldObj.setBlockWithNotify(Block.ice.blockID, i1, l1, k2);
+				worldObj.setBlockAndMetadataWithNotify(Block.ice.blockID, i1, l1, k2, 0, 0);
 			}
 			else if(worldObj.isAirBlock(i1, l1, k2) && PlasmaCraft.frozenCryonite.canBlockStay(worldObj, i1, l1, k2))
 			{
-				worldObj.setBlockWithNotify(PlasmaCraft.frozenCryonite.blockID, i1, l1, k2);
+				worldObj.setBlockAndMetadataWithNotify(PlasmaCraft.frozenCryonite.blockID, i1, l1, k2, 0, 0);
 			}
 			
 			if(worldObj.getBlockId(i1, l1, k2) == Block.waterStill.blockID || worldObj.getBlockId(i1, l1 + 1, k2) == Block.waterMoving.blockID)
 			{
-				worldObj.setBlockWithNotify(i1, l1, k2, Block.ice.blockID);
-				worldObj.setBlockWithNotify(i1, l1 + 1, k2, Block.snow.blockID);
+				worldObj.setBlockAndMetadataWithNotify(i1, l1, k2, Block.ice.blockID, 0, 0);
+				worldObj.setBlockAndMetadataWithNotify(i1, l1 + 1, k2, Block.snow.blockID, 0, 0);
 				continue;
 			}
 		}
@@ -241,7 +243,7 @@ label0:
 					boolean flag4 = isFlowable(worldObj.getBlockId(k, l - 1, k1));
 					if(flag || flag1 || flag2 || flag3 || flag4)
 					{
-						worldObj.setBlockWithNotify(k, l, k1, Block.cobblestone.blockID);
+						worldObj.setBlockAndMetadataWithNotify(k, l, k1, Block.cobblestone.blockID, 0, 0);
 					}
 				}
 

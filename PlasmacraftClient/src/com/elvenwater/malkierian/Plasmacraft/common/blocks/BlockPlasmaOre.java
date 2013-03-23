@@ -4,30 +4,33 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.elvenwater.malkierian.Plasmacraft.common.CommonProxy;
-import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockOre;
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.Icon;
 import net.minecraft.world.World;
+
+import com.elvenwater.malkierian.Plasmacraft.common.PlasmaCraft;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-//import net.minecraft.src.forge.ISpecialResistance;
 
-public class BlockPlasmaOre extends BlockOre //implements  ISpecialResistance
+public class BlockPlasmaOre extends BlockOre
 {
-	public BlockPlasmaOre(int i, int j)
+	public static final String[] filenames = new String[] {"ore_plutonium", "ore_radionite", "ore_neptunium", "ore_obsidium", "ore_uranium"};
+	@SideOnly(Side.CLIENT)
+	private Icon[] icons;
+	
+	public BlockPlasmaOre(int i)
 	{
-		super(i, j);
+		super(i);
 		setTickRandomly(true);
 		setStepSound(Block.soundStoneFootstep);
-		setBlockName("orePlasma");
 		setCreativeTab(CreativeTabs.tabBlock);
-		setRequiresSelfNotify();
 	}
 	
 	public void addCreativeItems(ArrayList itemList)
@@ -48,22 +51,22 @@ public class BlockPlasmaOre extends BlockOre //implements  ISpecialResistance
 		return i;
 	}
 	
-	public int getBlockTextureFromSideAndMetadata(int i, int j)
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void func_94332_a(IconRegister par1IconRegister)
 	{
-		switch (j)
+		icons = new Icon[filenames.length];
+
+		for (int i = 0; i < icons.length; ++i)
 		{
-		case 0:
-			return PlasmaCraft.orePlutoniumIndex;
-		case 1:
-			return PlasmaCraft.oreRadioniteIndex;
-		case 2:
-			return PlasmaCraft.oreNeptuniumIndex;
-		case 3:
-			return PlasmaCraft.oreObsidiumIndex;
-		default:
-			return PlasmaCraft.oreUraniumIndex;
+			icons[i] = par1IconRegister.func_94245_a(filenames[i]);
 		}
-		
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public Icon getBlockTextureFromSideAndMetadata(int i, int j)
+	{
+		return icons[j];		
 	}
 
 	public int quantityDropped(Random random)
@@ -92,14 +95,9 @@ public class BlockPlasmaOre extends BlockOre //implements  ISpecialResistance
 	}
 
 	@Override
-	public String getTextureFile()
-	{
-		return CommonProxy.BLOCK_PNG;
-	}
-
-	@Override
 	public float getExplosionResistance(Entity exploder, World world, int i, int j,
-			int k, double src_x, double src_y, double src_z) {
+			int k, double src_x, double src_y, double src_z)
+	{
 		switch(world.getBlockMetadata(i, j, k))
 		{
 		case PlasmaCraft.obsidiumMeta:
@@ -130,8 +128,10 @@ public class BlockPlasmaOre extends BlockOre //implements  ISpecialResistance
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(int par1, CreativeTabs tab, List subItems) {
-		for (int ix = 0; ix < 5; ix++) {
+	public void getSubBlocks(int par1, CreativeTabs tab, List subItems)
+	{
+		for (int ix = 0; ix < 5; ix++)
+		{
 			subItems.add(new ItemStack(this, 1, ix));
 		}
 	}

@@ -4,104 +4,106 @@ import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockCausticStationary extends BlockCausticFluids
 {
 	private int[] neighbors;
-	public BlockCausticStationary(int i, int j, int k, int l, int i1, int j1, float lightvalue)
+	public BlockCausticStationary(int i, int j, int k, float lightvalue)
 	{
-		super(i, j, k, l, i1, j1);
+		super(i, j, k);
+        this.setTickRandomly(false);
 		setHardness(5F);
 		setLightOpacity(3);
 		setLightValue(lightvalue);
 	}
 
-	public int getBlockTextureFromSide(int i)
-	{
-		if(i == 0 || i == 1)
-		{
-			return stillTextureID;
-		}
-		else
-		{
-			return flowingTextureID;
-		}
-	}
+    public boolean getBlocksMovement(IBlockAccess par1IBlockAccess, int par2, int par3, int par4)
+    {
+        return this.blockMaterial != Material.lava;
+    }
 
-	@Override
-	public void onNeighborBlockChange(World world, int i, int j, int k, int l)
-	{
-		super.onNeighborBlockChange(world, i, j, k, l);
-		
-		if(world.getBlockId(i, j, k) == blockID)
-		{
-			setNotStationary(world, i, j, k);
-		}
-	}
+    /**
+     * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
+     * their own) Args: x, y, z, neighbor blockID
+     */
+    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
+    {
+        super.onNeighborBlockChange(par1World, par2, par3, par4, par5);
 
-	private void setNotStationary(World world, int i, int j, int k)
-	{
-		int l = world.getBlockMetadata(i, j, k);
-		world.editingBlocks = true;
-		world.setBlockAndMetadata(i, j, k, flowingBlockID, l);
-		world.markBlockForUpdate(i, j, k);
-		world.scheduleBlockUpdate(i, j, k, flowingBlockID, tickRate());
-		world.editingBlocks = false;
-	}
+        if (par1World.getBlockId(par2, par3, par4) == this.blockID)
+        {
+            this.setNotStationary(par1World, par2, par3, par4);
+        }
+    }
 
-	private boolean isFlammable(World world, int i, int j, int k)
-	{
-		return world.getBlockMaterial(i, j, k).getCanBurn();
-	}
+    /**
+     * Changes the block ID to that of an updating fluid.
+     */
+    private void setNotStationary(World par1World, int par2, int par3, int par4)
+    {
+        int l = par1World.getBlockMetadata(par2, par3, par4);
+        par1World.setBlockAndMetadataWithNotify(par2, par3, par4, this.blockID - 1, l, 2);
+        par1World.scheduleBlockUpdate(par2, par3, par4, this.blockID - 1, this.tickRate(par1World));
+    }
 
-	private boolean neighborChangeDeservesCausticChange(World world, int i,
-			int j, int k, int l) {
-		if(l == flowingBlockID || l == stillBlockID)
-			return true;
-		return isBlockTrulyNeighbor(world, i, j, k, l);
-	}
+    /**
+     * Ticks the block if it's been scheduled
+     */
+    public void updateTick(World par1World, int par2, int par3, int par4, Random par5Random)
+    {
+        if (this.blockMaterial == Material.lava)
+        {
+            int l = par5Random.nextInt(3);
+            int i1;
+            int j1;
 
-	private boolean isBlockTrulyNeighbor(World world, int i, int j, int k, int l) {
-		int leftX = 0, leftZ = 0, rightX = 0, rightZ = 0, topY = 0, bottomY = 0;
-		leftX = world.getBlockId(i - 1, j, k);
-		rightX = world.getBlockId(i + 1, j, k);
-		leftZ = world.getBlockId(i, j, k - 1);
-		rightZ = world.getBlockId(i, j, k + 1);
-		topY = world.getBlockId(i, j + 1, k);
-		bottomY = world.getBlockId(i, j - 1, k);
-		if(rightX == l || rightZ == l || leftX == l || leftZ == l || topY == l || bottomY == l)
-			return true;
-		else
-			return false;
-	}
+            for (i1 = 0; i1 < l; ++i1)
+            {
+                par2 += par5Random.nextInt(3) - 1;
+                ++par3;
+                par4 += par5Random.nextInt(3) - 1;
+                j1 = par1World.getBlockId(par2, par3, par4);
 
-	public void updateTick(World world, int i, int j, int k, Random random)
-	{
-		if(blockMaterial == Material.lava)
-		{
-			int l = random.nextInt(3);
-			for(int i1 = 0; i1 < l; i1++)
-			{
-				i += random.nextInt(3) - 1;
-				j++;
-				k += random.nextInt(3) - 1;
-				int j1 = world.getBlockId(i, j, k);
-				if(j1 == 0)
-				{
-					if(isFlammable(world, i - 1, j, k) || isFlammable(world, i + 1, j, k) || isFlammable(world, i, j, k - 1) || isFlammable(world, i, j, k + 1) || isFlammable(world, i, j - 1, k) || isFlammable(world, i, j + 1, k))
-					{
-						world.setBlockWithNotify(i, j, k, Block.fire.blockID);
-						return;
-					}
-					continue;
-				}
-				if(Block.blocksList[j1].blockMaterial.isSolid())
-				{
-					return;
-				}
-			}
+                if (j1 == 0)
+                {
+                    if (this.isFlammable(par1World, par2 - 1, par3, par4) || this.isFlammable(par1World, par2 + 1, par3, par4) || this.isFlammable(par1World, par2, par3, par4 - 1) || this.isFlammable(par1World, par2, par3, par4 + 1) || this.isFlammable(par1World, par2, par3 - 1, par4) || this.isFlammable(par1World, par2, par3 + 1, par4))
+                    {
+                        par1World.func_94575_c(par2, par3, par4, Block.fire.blockID);
+                        return;
+                    }
+                }
+                else if (Block.blocksList[j1].blockMaterial.blocksMovement())
+                {
+                    return;
+                }
+            }
 
-		}
-	}
+            if (l == 0)
+            {
+                i1 = par2;
+                j1 = par4;
+
+                for (int k1 = 0; k1 < 3; ++k1)
+                {
+                    par2 = i1 + par5Random.nextInt(3) - 1;
+                    par4 = j1 + par5Random.nextInt(3) - 1;
+
+                    if (par1World.isAirBlock(par2, par3 + 1, par4) && this.isFlammable(par1World, par2, par3, par4))
+                    {
+                        par1World.func_94575_c(par2, par3 + 1, par4, Block.fire.blockID);
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Checks to see if the block is flammable.
+     */
+    private boolean isFlammable(World par1World, int par2, int par3, int par4)
+    {
+        return par1World.getBlockMaterial(par2, par3, par4).getCanBurn();
+    }
 }
