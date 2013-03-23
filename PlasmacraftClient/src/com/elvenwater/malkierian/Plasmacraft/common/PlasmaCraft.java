@@ -56,7 +56,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "PlasmaCraft", name = "PlasmaCraft", version = "0.3.1r2")
+@Mod(modid = "PlasmaCraft", name = "PlasmaCraft", version = "0.3.2")
 @NetworkMod(channels = "PlasmaCraft", clientSideRequired = true, serverSideRequired = false,
 packetHandler = PacketHandler.class)
 public class PlasmaCraft
