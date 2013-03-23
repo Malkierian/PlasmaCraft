@@ -39,6 +39,7 @@ import com.elvenwater.malkierian.Plasmacraft.common.items.ItemPlasmaArmor;
 import com.elvenwater.malkierian.Plasmacraft.common.items.ItemVial;
 import com.elvenwater.malkierian.Plasmacraft.common.listeners.PCBucketFillEvent;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -53,6 +54,7 @@ import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 @Mod(modid = "PlasmaCraft", name = "PlasmaCraft", version = "0.3.1r2")
 @NetworkMod(channels = "PlasmaCraft", clientSideRequired = true, serverSideRequired = false,
@@ -723,7 +725,15 @@ public class PlasmaCraft
 	
 	public static void loadConfig()
 	{
-		Configuration c = new Configuration(new File(Minecraft.getMinecraftDir() + "/config/PlasmaCraft.cfg"));
+		Configuration c;
+		if(FMLCommonHandler.instance().getSide() == Side.CLIENT)
+		{
+			c = new Configuration(new File(Minecraft.getMinecraftDir() + "/config/PlasmaCraft.cfg"));
+		}
+		else
+		{
+			c = new Configuration(new File("./config/PlasmaCraft.cfg"));
+		}
 		c.load();
 		
 		liquidSourceExplodesAfterCausticExplosion = c.get(Configuration.CATEGORY_GENERAL, "LiquidSourceExplodesAfterCausticExplosion", true).getBoolean(true);
