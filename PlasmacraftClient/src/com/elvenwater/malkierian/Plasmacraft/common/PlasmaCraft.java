@@ -9,7 +9,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.item.EnumArmorMaterial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.src.ModLoader;
 import net.minecraft.util.Icon;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
@@ -677,29 +676,39 @@ public class PlasmaCraft
 		GameRegistry.addRecipe(new ItemStack(plasmaLeather, 1), new Object[] {
 			"N", "J", Character.valueOf('N'), goopAcid, Character.valueOf('J'), Item.leather
 		});
-		ModLoader.addRecipe(new ItemStack(plasmagunsplit, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(plasmagunsplit, 1), new Object[] {
 			"YB", Character.valueOf('B'), plasmagun, Character.valueOf('Y'), beamSplitter
 		});
-		ModLoader.addRecipe(new ItemStack(lasergunsplit, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(lasergunsplit, 1), new Object[] {
 			"YB", Character.valueOf('B'), lasergun, Character.valueOf('Y'), beamSplitter
 		});
-		ModLoader.addRecipe(new ItemStack(cryoblaster, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(cryoblaster, 1), new Object[] {
 			"  A", "CBX", " DE", Character.valueOf('A'), ingotUranium, Character.valueOf('B'), goopCryonite, Character.valueOf('C'), ingotCryonite, Character.valueOf('D'), 
 			ingotObsidium, Character.valueOf('X'), batteryCryo, Character.valueOf('E'), ingotPlutonium
 		});
-		ModLoader.addRecipe(new ItemStack(energyCell, 5), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(lasershotgun, 1), new Object[] {
+			"  A", "BCD", " EF", Character.valueOf('A'), Item.redstoneRepeater, Character.valueOf('B'), beamSplitter, Character.valueOf('C'), ingotNetherflow, Character.valueOf('D'), 
+			batteryCharged, Character.valueOf('E'), ingotRadionite, Character.valueOf('F'), ingotPlutonium
+		});
+		GameRegistry.addRecipe(new ItemStack(lasergun, 1), new Object[] {
+			"ABC", " BD", Character.valueOf('A'), ingotNetherflow, Character.valueOf('B'), ingotObsidium, Character.valueOf('C'), goopNetherflow, Character.valueOf('D'), ingotPlutonium,
+		});
+		GameRegistry.addRecipe(new ItemStack(plasmagun, 1), new Object[] {
+			"ABC", " DC", Character.valueOf('A'), Item.diamond, Character.valueOf('B'), plasma, Character.valueOf('C'), ingotPlutonium, Character.valueOf('D'), ingotObsidium,
+		});
+		GameRegistry.addRecipe(new ItemStack(energyCell, 5), new Object[] {
 			" R ", "RXR", " R ", Character.valueOf('R'), ingotNeptunium, Character.valueOf('X'), goopAcid
 		});
-		ModLoader.addRecipe(new ItemStack(batteryEmpty, 8), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(batteryEmpty, 8), new Object[] {
 			"IRI", "I I", "IRI", Character.valueOf('R'), ingotRadionite, Character.valueOf('I'), Item.ingotIron
 		});
-		ModLoader.addRecipe(new ItemStack(batteryCryo, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(batteryCryo, 1), new Object[] {
 			"R", "X", Character.valueOf('R'), goopCryonite, Character.valueOf('X'), batteryEmpty
 		});
-		ModLoader.addRecipe(new ItemStack(batteryPlasma, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(batteryPlasma, 1), new Object[] {
 			"R", "X", Character.valueOf('R'), plasma, Character.valueOf('X'), batteryEmpty
 		});
-		ModLoader.addRecipe(new ItemStack(batteryCharged, 1), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(batteryCharged, 1), new Object[] {
 			"R", "X", Character.valueOf('R'), goopPlutonium, Character.valueOf('X'), batteryEmpty
 		});
 		
