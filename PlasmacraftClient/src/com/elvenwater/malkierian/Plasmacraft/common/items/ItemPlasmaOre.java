@@ -27,7 +27,7 @@ public class ItemPlasmaOre extends ItemBlock
 	@Override
 	public Icon getIconFromDamage(int i)
 	{
-		return PlasmaCraft.orePlasma.getBlockTextureFromSideAndMetadata(0, i);
+		return PlasmaCraft.orePlasma.getIcon(0, i);
 	}
 	
 	@Override

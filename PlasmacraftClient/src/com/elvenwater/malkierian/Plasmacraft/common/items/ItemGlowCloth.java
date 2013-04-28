@@ -29,7 +29,7 @@ public class ItemGlowCloth extends ItemBlock
 	@Override
 	public Icon getIconFromDamage(int i)
 	{
-		return PlasmaCraft.glowCloth.getBlockTextureFromSideAndMetadata(0, i);
+		return PlasmaCraft.glowCloth.getIcon(0, i);
 	}
 	
 	@Override

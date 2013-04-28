@@ -49,7 +49,7 @@ public class BlockGlowCloth extends Block
 		return i;
 	}
 	
-	public Icon getBlockTextureFromSideAndMetadata(int i, int j)
+	public Icon getIcon(int i, int j)
 	{
 		return icons[j];
 	}

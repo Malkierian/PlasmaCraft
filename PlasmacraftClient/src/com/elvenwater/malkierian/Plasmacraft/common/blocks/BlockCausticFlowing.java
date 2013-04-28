@@ -348,7 +348,7 @@ public class BlockCausticFlowing extends BlockCausticFluids
     {
         int l = par1World.getBlockId(par2, par3, par4);
 
-        if (l != Block.doorWood.blockID && l != Block.doorSteel.blockID && l != Block.signPost.blockID && l != Block.ladder.blockID && l != Block.reed.blockID)
+        if (l != Block.doorWood.blockID && l != Block.doorIron.blockID && l != Block.signPost.blockID && l != Block.ladder.blockID && l != Block.reed.blockID)
         {
             if (l == 0)
             {

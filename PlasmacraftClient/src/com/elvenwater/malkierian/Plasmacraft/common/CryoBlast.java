@@ -145,7 +145,7 @@ label0:
 
 	private boolean isFlowable(int i)
 	{
-		return i == 0 || i == Block.doorWood.blockID || i == Block.doorSteel.blockID || i == Block.signPost.blockID || i == Block.ladder.blockID || i == Block.reed.blockID || i == Block.redstoneWire.blockID;
+		return i == 0 || i == Block.doorWood.blockID || i == Block.doorIron.blockID || i == Block.signPost.blockID || i == Block.ladder.blockID || i == Block.reed.blockID || i == Block.redstoneWire.blockID;
 	}
 
 	public void doExplosionB()

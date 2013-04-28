@@ -32,7 +32,7 @@ public class BlockAcidTNT extends BlockTNT
 		itemList.add(new ItemStack(this, 1));
 	}
 
-	public Icon getBlockTextureFromSideAndMetadata(int i, int j)
+	public Icon getIcon(int i, int j)
 	{
 		if(i == 0)
 		{
