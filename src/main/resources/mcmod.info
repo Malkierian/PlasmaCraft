@@ -1,0 +1,22 @@
+﻿[
+{
+"modid": "plasmacraft",
+"name": "PlasmaCraft",
+"description": "Mod that adds caustic liquids and ores, among other wonderful things.",
+"version": "${version}",
+"mcversion": "$mcversion",
+"url": "",
+"updateUrl": "",
+"authorList": [
+"Malkierian"
+],
+"credits": "Thanks to the previous devs for getting it this far, and those who helped along the way.",
+"logoFile": "logo.png",
+"screenshots": [
+],
+"parent":"",
+"dependencies": [
+],
+"requiredMods": [ "Forge" ]
+}
+]
