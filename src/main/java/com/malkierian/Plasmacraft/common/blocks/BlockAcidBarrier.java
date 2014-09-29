@@ -1,5 +1,7 @@
 package com.malkierian.Plasmacraft.common.blocks;
 
+import com.malkierian.Plasmacraft.common.PlasmaCraft;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -65,6 +67,6 @@ public class BlockAcidBarrier extends Block
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister)
 	{
-		this.blockIcon = par1IconRegister.registerIcon("plasmacraft:" + getUnlocalizedName());
+		this.blockIcon = par1IconRegister.registerIcon(PlasmaCraft.MOD_ID + ":acidBarrier");
 	}
 }

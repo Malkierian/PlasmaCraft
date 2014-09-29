@@ -21,7 +21,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockPlasmaOre extends BlockOre
 {
-	public static final String[] filenames = new String[] {"ore_plutonium", "ore_radionite", "ore_neptunium", "ore_obsidium", "ore_uranium"};
+	public static final String[] filenames = new String[] {"ore_plutonium", "ore_radionite", "ore_neptunium", "ore_obsidium", "ore_uranium", "ore_lead"};
 	@SideOnly(Side.CLIENT)
 	private IIcon[] icons;
 	
@@ -56,7 +56,7 @@ public class BlockPlasmaOre extends BlockOre
 
 		for (int i = 0; i < icons.length; ++i)
 		{
-			icons[i] = par1IconRegister.registerIcon(filenames[i]);
+			icons[i] = par1IconRegister.registerIcon(PlasmaCraft.MOD_ID + ":" + filenames[i]);
 		}
 	}
 
@@ -133,7 +133,7 @@ public class BlockPlasmaOre extends BlockOre
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item par1, CreativeTabs tab, List subItems)
 	{
-		for (int ix = 0; ix < 5; ix++)
+		for (int ix = 0; ix < filenames.length; ix++)
 		{
 			subItems.add(new ItemStack(this, 1, ix));
 		}

@@ -66,32 +66,31 @@ public class BlockPlasmaBench extends BlockContainer
 
 	private void setDefaultDirection(World world, int i, int j, int k)
 	{
-//		if(!world.isRemote)
-//		{
-//			return;
-//		}
-//		Block l = world.getBlock(i, j, k - 1);
-//		Block i1 = world.getBlock(i, j, k + 1);
-//		Block j1 = world.getBlock(i - 1, j, k);
-//		Block k1 = world.getBlock(i + 1, j, k);
-//		byte byte0 = 3;
-//		if(Blocks.opaqueCubeLookup[l] && !Block.opaqueCubeLookup[i1])
-//		{
-//			byte0 = 3;
-//		}
-//		if(Block.opaqueCubeLookup[i1] && !Block.opaqueCubeLookup[l])
-//		{
-//			byte0 = 2;
-//		}
-//		if(Block.opaqueCubeLookup[j1] && !Block.opaqueCubeLookup[k1])
-//		{
-//			byte0 = 5;
-//		}
-//		if(Block.opaqueCubeLookup[k1] && !Block.opaqueCubeLookup[j1])
-//		{
-//			byte0 = 4;
-//		}
-//		world.setBlockMetadataWithNotify(i, j, k, byte0, 0x02);
+		if(!world.isRemote)
+		{
+			Block l = world.getBlock(i, j, k - 1);
+			Block i1 = world.getBlock(i, j, k + 1);
+			Block j1 = world.getBlock(i - 1, j, k);
+			Block k1 = world.getBlock(i + 1, j, k);
+			byte byte0 = 3;
+			if(l.isOpaqueCube() && !i1.isOpaqueCube())
+			{
+				byte0 = 3;
+			}
+			if(i1.isOpaqueCube() && !l.isOpaqueCube())
+			{
+				byte0 = 2;
+			}
+			if(j1.isOpaqueCube() && !k1.isOpaqueCube())
+			{
+				byte0 = 5;
+			}
+			if(k1.isOpaqueCube() && !j1.isOpaqueCube())
+			{
+				byte0 = 4;
+			}
+			world.setBlockMetadataWithNotify(i, j, k, byte0, 2);
+		}
 	}
 
 	public void randomDisplayTick(World world, int i, int j, int k, Random random)
@@ -238,7 +237,7 @@ label0:
     {
         frontActiveIcon = par1IconRegister.registerIcon("plasmacraft:plasmaBench_active");
         frontIdleIcon = par1IconRegister.registerIcon("plasmacraft:plasmaBench_idle");
-        blockIcon = par1IconRegister.registerIcon("plasmacraft:bench_side");
+        blockIcon = par1IconRegister.registerIcon("plasmacraft:plasmaBench_side");
     }
 
 	@Override

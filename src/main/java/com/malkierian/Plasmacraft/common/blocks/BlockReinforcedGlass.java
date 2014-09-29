@@ -1,22 +1,22 @@
 package com.malkierian.Plasmacraft.common.blocks;
 
-import java.util.ArrayList;
 import java.util.Random;
 
-import com.malkierian.Plasmacraft.common.CommonProxy;
-import com.malkierian.Plasmacraft.common.PlasmaCraft;
-
-import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
+import com.malkierian.Plasmacraft.common.PlasmaCraft;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockReinforcedGlass extends BlockBreakable
 {
-	public BlockReinforcedGlass(int i, String filename, Material material, boolean flag, float resistance)
+	public BlockReinforcedGlass(String filename, Material material, boolean flag, float resistance)
 	{
 		super(filename, material, flag);
 		setHardness(1.0F);
@@ -25,11 +25,6 @@ public class BlockReinforcedGlass extends BlockBreakable
 		setTickRandomly(true);
 		setCreativeTab(CreativeTabs.tabBlock);
 	}
-	
-//	public void addCreativeItems(ArrayList itemList)
-//	{		
-//		itemList.add(new ItemStack(this, 1));
-//	}
 
 	public int quantityDropped(Random random)
 	{
@@ -43,11 +38,21 @@ public class BlockReinforcedGlass extends BlockBreakable
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
 	{
 		///TODO Re-enable liquid replacement
-//		if(this == PlasmaCraft.frozenCryonite)
-//		{
+		if(this == PlasmaCraft.frozenCryonite)
+		{
 //			par1World.setBlock(par2, par3, par4, PlasmaCraft.cryoniteMoving);
-//		}
-//		else
+		}
+		else
 			super.breakBlock(par1World, par2, par3, par4, par5, par6);
+	}
+	
+	@Override
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister)
+	{
+		if(this == PlasmaCraft.frozenCryonite)
+			blockIcon = iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":frozenCryonite");
+		else
+			blockIcon = iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":reinforcedGlass");
 	}
 }

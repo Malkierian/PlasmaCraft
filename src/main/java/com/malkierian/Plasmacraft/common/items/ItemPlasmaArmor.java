@@ -1,15 +1,24 @@
 package com.malkierian.Plasmacraft.common.items;
 
-import net.minecraft.item.ItemArmor;
-import net.minecraft.item.ItemStack;
-
 import com.malkierian.Plasmacraft.common.PlasmaCraft;
+
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.item.ItemArmor;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemPlasmaArmor extends ItemArmor
 {
-	public ItemPlasmaArmor(int i, ArmorMaterial armormaterial, int j, int k)
+	public ItemPlasmaArmor(ArmorMaterial armormaterial, int j, int k)
 	{
 		super(armormaterial, j, k);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister iconRegister)
+	{
+		itemIcon = iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":" + getUnlocalizedName().substring(getUnlocalizedName().indexOf(".")));
 	}
 
 //	@Override

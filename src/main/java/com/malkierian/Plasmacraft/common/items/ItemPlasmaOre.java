@@ -14,7 +14,8 @@ public class ItemPlasmaOre extends ItemBlock
 		"radionite",
 		"neptunium",
 		"obsidium",
-		"uranium"
+		"uranium",
+		"lead"
 		};
 
 	public ItemPlasmaOre(Block block)

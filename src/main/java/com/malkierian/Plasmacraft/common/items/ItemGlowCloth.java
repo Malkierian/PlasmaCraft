@@ -37,12 +37,5 @@ public class ItemGlowCloth extends ItemBlock
 	public int getMetadata(int damage)
 	{
 		return damage;
-	}
-	
-	@Override
-	public String getUnlocalizedName(ItemStack itemstack)
-	{
-		return super.getUnlocalizedName() + "." + blockNames[itemstack.getItemDamage()];
-	}
-	
+	}	
 }

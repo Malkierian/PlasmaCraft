@@ -1,6 +1,7 @@
 package com.malkierian.Plasmacraft.common.items;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -26,7 +27,8 @@ public class ItemVial extends ItemPlasma
 		isFull = j;
 		contents = liquid;
 	}
-
+	
+	@Override
 	public ItemStack onItemRightClick(ItemStack itemstack, World world, EntityPlayer entityplayer)
 	{
 		float f = 1.0F;
