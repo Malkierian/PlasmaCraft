@@ -205,7 +205,7 @@ public class PlasmaCraft
 //	private GuiHandler guiHandler = new GuiHandler();
 	
 	// Says where the client and server 'proxy' code is loaded.
-	@SidedProxy(clientSide="com.malkierian.Plasmacraft.client.ClientProxy", serverSide="com.malkierian.Plasmacraft.common.CommonProxy")
+	@SidedProxy(clientSide="com.malkierian.plasmacraft.client.ClientProxy", serverSide="com.malkierian.plasmacraft.common.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@EventHandler
