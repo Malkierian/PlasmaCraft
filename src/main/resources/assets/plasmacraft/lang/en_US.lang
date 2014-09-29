@@ -1,0 +1,75 @@
+tile.orePlasma.plutonium.name=Plutonium Ore
+tile.orePlasma.radionite.name=Radionite Ore
+tile.orePlasma.neptunium.name=Neptunium Ore
+tile.orePlasma.obsidium.name=Obsidium Ore
+tile.orePlasma.uranium.name=Uranium Ore
+tile.orePlasma.lead.name=Lead Ore
+
+tile.glowCloth.acid.name=Acid Glowcloth
+tile.glowCloth.radionite.name=Radionite Glowcloth
+tile.glowCloth.netherflow.name=Netherflow Glowcloth
+tile.glowCloth.neptunium.name=Neptunium Glowcloth
+tile.glowCloth.uranium.name=Uranium Glowcloth
+tile.glowCloth.plutonium.name=Plutonium Glowcloth
+tile.glowCloth.cryonite.name=Cryonite Glowcloth
+tile.glowCloth.obsidium.name=Obsidium Glowcloth
+
+tile.reinforcedGlass.name=Reinforced Glass
+tile.plasmaBench.name=Plasmificator
+tile.acidBarrier.name=Acid Barrier
+tile.frozenCryonite.name=Frozen Cryonite
+
+
+item.goopAcid.name=Acid Goop
+item.goopCryonite.name=Cryonite Goop
+item.goopNeptunium.name=Neptunium Goop
+item.goopNetherflow.name=Netherflow Goop
+item.goopObsidium.name=Obsidium Goop
+item.goopPlutonium.name=Plutonium Goop
+item.goopRadionite.name=Radionite Goop
+item.goopUranium.name=Uranium Goop
+
+item.ingotCryonite.name=Cryonite Ingot
+item.ingotLead.name=Lead Ingot
+item.ingotNeptunium.name=Neptunium Ingot
+item.ingotNetherflow.name=Netherflow Ingot
+item.ingotObsidium.name=Obsidium Ingot
+item.ingotPlutonium.name=Plutonium Ingot
+item.ingotRadionite.name=Radionite Ingot
+item.ingotUranium.name=Uranium Ingot
+
+item.plasma.name=Plasma
+item.batteryEmpty.name=Dead Caustic Battery
+item.batteryCryonite.name=Cryonite Battery
+item.batteryCharged.name=Charged Caustic Battery
+item.batteryOverCharged.name=Overcharged Caustic Battery
+item.batteryPlasma.name=Plasma Battery
+item.energyCell.name=Energy Cell
+item.thermopellet.name=Thermopellet
+
+item.vial_empty.name=Empty Vial
+item.vial_cryonite.name=Cryonite Vial
+item.vial_neptunium.name=Neptunium Vial
+item.vial_netherflow.name=Netherflow Vial
+item.vial_obsidium.name=Obsidium Vial
+item.vial_plutonium.name=Plutonium Vial
+item.vial_radionite.name=Radionite Vial
+item.vial_uranium.name=Uranium Vial
+
+item.beamSplitter.name=Beam Splitter
+item.acidGun.name=Acid Launcher
+item.laserShotgun.name=Laser Shotgun
+item.laserGun.name=Laser Rifle
+item.laserGunSplit.name=Split Beam Laser Rifle
+item.plasmaGun.name=Plasma Rifle
+item.plasmaGunSplit.name=Split Beam Plasma Rifle
+item.railGun.name=Railgun
+
+item.acidGrenade.name=Acid Grenade
+item.hazmatBoots.name=Hazmat Boots
+item.hazmatHood.name=Hazmat Hood
+item.hazmatJacket.name=Hazmat Jacket
+item.hazmatPants.name=Hazmat Pants
+
+
+item.plasmaLeather.name=Plasma Leather
