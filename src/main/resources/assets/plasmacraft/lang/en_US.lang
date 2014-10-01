@@ -5,6 +5,15 @@ tile.orePlasma.obsidium.name=Obsidium Ore
 tile.orePlasma.uranium.name=Uranium Ore
 tile.orePlasma.lead.name=Lead Ore
 
+tile.acid.name=Acid
+tile.cryonite.name=Cryonite
+tile.neptunium.name=Neptunium
+tile.netherflow.name=Netherflow
+tile.obsidium.name=Obsidium
+tile.plutonium.name=Plutonium
+tile.radionite.name=Radionite
+tile.uranium.name=Uranium
+
 tile.glowCloth.acid.name=Acid Glowcloth
 tile.glowCloth.radionite.name=Radionite Glowcloth
 tile.glowCloth.netherflow.name=Netherflow Glowcloth
@@ -42,7 +51,7 @@ item.plasma.name=Plasma
 item.batteryEmpty.name=Dead Caustic Battery
 item.batteryCryonite.name=Cryonite Battery
 item.batteryCharged.name=Charged Caustic Battery
-item.batteryOverCharged.name=Overcharged Caustic Battery
+item.batteryOvercharged.name=Overcharged Caustic Battery
 item.batteryPlasma.name=Plasma Battery
 item.energyCell.name=Energy Cell
 item.thermopellet.name=Thermopellet
@@ -58,6 +67,7 @@ item.vial_uranium.name=Uranium Vial
 
 item.beamSplitter.name=Beam Splitter
 item.acidGun.name=Acid Launcher
+item.cryoBlaster.name=Cryo Blaster
 item.laserShotgun.name=Laser Shotgun
 item.laserGun.name=Laser Rifle
 item.laserGunSplit.name=Split Beam Laser Rifle

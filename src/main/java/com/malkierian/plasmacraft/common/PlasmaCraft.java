@@ -2,10 +2,7 @@ package com.malkierian.plasmacraft.common;
 
 import java.io.File;
 
-import javax.swing.Icon;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockOre;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.init.Blocks;
@@ -13,6 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -24,6 +22,7 @@ import com.malkierian.plasmacraft.common.Entities.EntityPlasma;
 import com.malkierian.plasmacraft.common.Entities.EntityRailGun;
 import com.malkierian.plasmacraft.common.blocks.BlockAcidBarrier;
 import com.malkierian.plasmacraft.common.blocks.BlockAcidTNT;
+import com.malkierian.plasmacraft.common.blocks.BlockCausticFluids;
 import com.malkierian.plasmacraft.common.blocks.BlockGlowCloth;
 import com.malkierian.plasmacraft.common.blocks.BlockPlasmaBench;
 import com.malkierian.plasmacraft.common.blocks.BlockPlasmaOre;
@@ -61,24 +60,24 @@ public class PlasmaCraft
 	
 	public static int causticID = 180;
 	
-//	public static BlockCausticFluids acidMoving;
+	public static BlockCausticFluids acidMoving;
 	public static Block acidStill;
 	public static Block acidTnt;
-//	public static BlockCausticFluids cryoniteMoving;
+	public static BlockCausticFluids cryoniteMoving;
 	public static Block cryoniteStill;
 	public static Block frozenCryonite;
-//	public static BlockCausticFluids neptuniumMoving;
+	public static BlockCausticFluids neptuniumMoving;
 	public static Block neptuniumStill;
-//	public static BlockCausticFluids netherflowMoving;
+	public static BlockCausticFluids netherflowMoving;
 	public static Block netherflowStill;
-//	public static BlockCausticFluids obsidiumMoving;
+	public static BlockCausticFluids obsidiumMoving;
 	public static Block obsidiumStill;
-//	public static BlockCausticFluids plutoniumMoving;
+	public static BlockCausticFluids plutoniumMoving;
 	public static Block plutoniumStill;
-//	public static BlockCausticFluids radioniteMoving;
+	public static BlockCausticFluids radioniteMoving;
 	public static Block radioniteStill;
 	public static Block reinforcedGlass;
-//	public static BlockCausticFluids uraniumMoving;
+	public static BlockCausticFluids uraniumMoving;
 	public static Block uraniumStill;
 
 	public static Item goopAcid;
@@ -254,71 +253,31 @@ public class PlasmaCraft
 	{
 		orePlasma = new BlockPlasmaOre().setLightLevel(0.5334f).setBlockName("orePlasma");
 		GameRegistry.registerBlock(orePlasma, com.malkierian.plasmacraft.common.items.ItemPlasmaOre.class, "orePlasma");
-//		LanguageRegistry.addName(new ItemStack(orePlasma, 1, plutoniumMeta), 	"Plutonium Ore");
-//		LanguageRegistry.addName(new ItemStack(orePlasma, 1, radioniteMeta), 	"Radionite Ore");
-//		LanguageRegistry.addName(new ItemStack(orePlasma, 1, uraniumMeta), 		"Uranium Ore");
-//		LanguageRegistry.addName(new ItemStack(orePlasma, 1, neptuniumMeta), 	"Neptunium Ore");
-//		LanguageRegistry.addName(new ItemStack(orePlasma, 1, obsidiumMeta), 	"Obsidium Ore");
-		
-//		oreLeadBlock = new BlockPlasmaOre().setLightLevel(0.0f).setBlockName("oreLead");
-//		GameRegistry.registerBlock(oreLeadBlock, "oreLead");
-//		LanguageRegistry.addName(oreLeadBlock, "Lead Ore");
-		
-//		MinecraftForge.setBlockHarvestLevel(orePlasma, obsidiumMeta, 	"pickaxe", 3);
-//		MinecraftForge.setBlockHarvestLevel(orePlasma, uraniumMeta, 	"pickaxe", 2);
-//		MinecraftForge.setBlockHarvestLevel(orePlasma, radioniteMeta, 	"pickaxe", 2);
-//		MinecraftForge.setBlockHarvestLevel(orePlasma, plutoniumMeta, 	"pickaxe", 2);
-//		MinecraftForge.setBlockHarvestLevel(orePlasma, neptuniumMeta, 	"pickaxe", 1);
-//		MinecraftForge.setBlockHarvestLevel(oreLeadBlock, "pickaxe", 1);
 		
 //		acidMoving =		(BlockCausticFluids)(new BlockCausticFlowing	(acidFlowingBlockID, 		acidStillBlockID, 	   	acidFlowingBlockID))				
 //				.setPlasmaLiquid(PlasmaLiquid.ACID)
 //				.setBlockName("acidMoving");
-//		acidStill = 							(new BlockCausticStationary		(acidStillBlockID, 			acidStillBlockID, 	   	acidFlowingBlockID, 		1.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.ACID)
-//				.setBlockName("acidStill");
 //		cryoniteMoving = 	(BlockCausticFluids)(new BlockCausticFlowing	(cryoniteFlowingBlockID, 	cryoniteStillBlockID,   cryoniteFlowingBlockID))
 //				.setPlasmaLiquid(PlasmaLiquid.CRYONITE)
 //				.setBlockName("cryoniteMoving");
-//		cryoniteStill = 						(new BlockCausticStationary		(cryoniteStillBlockID, 		cryoniteStillBlockID,   cryoniteFlowingBlockID,   	0.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.CRYONITE)
-//				.setBlockName("cryoniteStill");
 //		neptuniumMoving = 	(BlockCausticFluids)(new BlockCausticFlowing	(neptuniumFlowingBlockID, 	neptuniumStillBlockID,  neptuniumFlowingBlockID))
 //				.setPlasmaLiquid(PlasmaLiquid.NEPTUNIUM)
 //				.setBlockName("neptuniumMoving");
-//		neptuniumStill = 						(new BlockCausticStationary		(neptuniumStillBlockID, 	neptuniumStillBlockID,  neptuniumFlowingBlockID,  	1.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.NEPTUNIUM)
-//				.setBlockName("neptuniumStill");
 //		netherflowMoving = 	(BlockCausticFluids)(new BlockCausticFlowing	(netherflowFlowingBlockID, 	netherflowStillBlockID, netherflowFlowingBlockID))
 //				.setPlasmaLiquid(PlasmaLiquid.NETHERFLOW)
 //				.setBlockName("netherflowMoving");
-//		netherflowStill = 						(new BlockCausticStationary		(netherflowStillBlockID, 	netherflowStillBlockID, netherflowFlowingBlockID, 	1.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.NETHERFLOW)
-//				.setBlockName("netherflowStill");
 //		obsidiumMoving = 	(BlockCausticFluids)(new BlockCausticFlowing	(obsidiumFlowingBlockID, 	obsidiumStillBlockID,   obsidiumFlowingBlockID))
 //				.setPlasmaLiquid(PlasmaLiquid.OBSIDIUM)
 //				.setBlockName("obsidiumMoving");
-//		obsidiumStill = 						(new BlockCausticStationary		(obsidiumStillBlockID, 		obsidiumStillBlockID,   obsidiumFlowingBlockID,   	1.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.OBSIDIUM)
-//				.setBlockName("obsidiumStill");
 //		plutoniumMoving = 	(BlockCausticFluids)(new BlockCausticFlowing	(plutoniumFlowingBlockID, 	plutoniumStillBlockID,  plutoniumFlowingBlockID))
 //				.setPlasmaLiquid(PlasmaLiquid.PLUTONIUM)
 //				.setBlockName("plutoniumMoving");
-//		plutoniumStill = 						(new BlockCausticStationary		(plutoniumStillBlockID, 	plutoniumStillBlockID,  plutoniumFlowingBlockID,  	1.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.PLUTONIUM)
-//				.setBlockName("plutoniumStill");
 //		radioniteMoving = 	(BlockCausticFluids)(new BlockCausticFlowing	(radioniteFlowingBlockID, 	radioniteStillBlockID,  radioniteFlowingBlockID))
 //				.setPlasmaLiquid(PlasmaLiquid.RADIONITE)
 //				.setBlockName("radioniteMoving");
-//		radioniteStill = 						(new BlockCausticStationary		(radioniteStillBlockID, 	radioniteStillBlockID,  radioniteFlowingBlockID,  	1.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.RADIONITE)
-//				.setBlockName("radioniteStill");
 //		uraniumMoving = 	(BlockCausticFluids)(new BlockCausticFlowing	(uraniumFlowingBlockID, 	uraniumStillBlockID,	uraniumFlowingBlockID))
 //				.setPlasmaLiquid(PlasmaLiquid.URANIUM)
 //				.setBlockName("uraniumMoving");
-//		uraniumStill = 							(new BlockCausticStationary		(uraniumStillBlockID, 		uraniumStillBlockID,	uraniumFlowingBlockID,		1.0F))
-//				.setPlasmaLiquid(PlasmaLiquid.URANIUM)
-//				.setBlockName("uraniumStill");
 //		GameRegistry.registerBlock(acidMoving, "Acid");
 //		GameRegistry.registerBlock(cryoniteMoving, "Cryonite");
 //		GameRegistry.registerBlock(neptuniumMoving, "Neptunium");
@@ -327,44 +286,23 @@ public class PlasmaCraft
 //		GameRegistry.registerBlock(plutoniumMoving, "Plutonium");
 //		GameRegistry.registerBlock(radioniteMoving, "Radionite");
 //		GameRegistry.registerBlock(uraniumMoving, "Uranium");
-//		LanguageRegistry.addName(acidMoving, "Acid");
-//		LanguageRegistry.addName(cryoniteMoving, "Cryonite");
-//		LanguageRegistry.addName(neptuniumMoving, "Neptunium");
-//		LanguageRegistry.addName(netherflowMoving, "Netherflow");
-//		LanguageRegistry.addName(obsidiumMoving, "Obsidium");
-//		LanguageRegistry.addName(plutoniumMoving, "Plutonium");
-//		LanguageRegistry.addName(radioniteMoving, "Radionite");
-//		LanguageRegistry.addName(uraniumMoving, "Uranium");
 		
 		glowCloth = new BlockGlowCloth().setBlockName("glowCloth");
 		GameRegistry.registerBlock(glowCloth, com.malkierian.plasmacraft.common.items.ItemGlowCloth.class, "glowCloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothAcidMeta),		"Acid Glowcloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothRadioniteMeta),	"Radionite Glowcloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothNetherflowMeta),	"Netherflow Glowcloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothNeptuniumMeta),	"Neptunium Glowcloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothUraniumMeta),		"Uranium Glowcloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothPlutoniumMeta),	"Plutonium Glowcloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothCryoniteMeta),	"Cryonite Glowcloth");
-//		LanguageRegistry.addName(new ItemStack(glowCloth, 1, glowClothObsidiumMeta),	"Obsidium Glowcloth");
 		
 		frozenCryonite = (new BlockReinforcedGlass("frozenCryonite", Material.glass, false, 1.0F)).setBlockName("frozenCryonite");
 		reinforcedGlass = (new BlockReinforcedGlass("reinforcedGlass", Material.glass, false, 500.0F)).setBlockName("reinforcedGlass");
 		GameRegistry.registerBlock(frozenCryonite, "Frozen Cryonite");
 		GameRegistry.registerBlock(reinforcedGlass, "Reinforced Glass");
-//		LanguageRegistry.addName(frozenCryonite, "Frozen Cryonite");
-//		LanguageRegistry.addName(reinforcedGlass, "Reinforced Glass");
 		
 		plasmaBench = (new BlockPlasmaBench()).setBlockName("plasmaBench");
 		GameRegistry.registerBlock(plasmaBench, "plasmaBench");
-//		LanguageRegistry.addName(plasmaBench, "Plasmificator");
 		
 		acidBarrier = (new BlockAcidBarrier()).setBlockName("acidBarrier");
 		GameRegistry.registerBlock(acidBarrier, "acidBarrier");
-//		LanguageRegistry.addName(acidBarrier, "Acid Barrier");
 		
 		acidTnt = (new BlockAcidTNT()).setBlockName("acidTnt");
 		GameRegistry.registerBlock(acidTnt, "acidTnt");
-//		LanguageRegistry.addName(acidTnt, "Acid TNT");
 	}
 	
 	private void registerEntities()
@@ -432,14 +370,6 @@ public class PlasmaCraft
 		GameRegistry.registerItem(goopPlutonium, "goopPlutonium");
 		GameRegistry.registerItem(goopRadionite, "goopRadionite");
 		GameRegistry.registerItem(goopUranium, "goopUranium");
-//		LanguageRegistry.addName(goopAcid, "Acid Goop");
-//		LanguageRegistry.addName(goopCryonite, "Cryonite Goop");
-//		LanguageRegistry.addName(goopNeptunium, "Neptunium Goop");
-//		LanguageRegistry.addName(goopNetherflow, "Netherflow Goop");
-//		LanguageRegistry.addName(goopObsidium, "Obsidium Goop");
-//		LanguageRegistry.addName(goopPlutonium, "Plutonium Goop");
-//		LanguageRegistry.addName(goopRadionite, "Radionite Goop");
-//		LanguageRegistry.addName(goopUranium, "Uranium Goop");
 		
 		ingotCryonite = (new ItemPlasma()).setUnlocalizedName("ingotCryonite");
 		ingotLead = (new ItemPlasma()).setUnlocalizedName("ingotLead");
@@ -459,39 +389,28 @@ public class PlasmaCraft
 		GameRegistry.registerItem(ingotRadionite, "ingotRadionite");
 		GameRegistry.registerItem(ingotUranium, "ingotUranium");
 		GameRegistry.registerItem(plasma, "plasma");
-//		LanguageRegistry.addName(ingotCryonite, "Cryonite Ingot");
-//		LanguageRegistry.addName(ingotLead, "Lead Ingot");
-//		LanguageRegistry.addName(ingotNeptunium, "Neptunium Ingot");
-//		LanguageRegistry.addName(ingotNetherflow, "Netherflow Ingot");
-//		LanguageRegistry.addName(ingotObsidium, "Obsidium Ingot");
-//		LanguageRegistry.addName(ingotPlutonium, "Plutonium Ingot");
-//		LanguageRegistry.addName(ingotRadionite, "Radionite Ingot");
-//		LanguageRegistry.addName(ingotUranium, "Uranium Ingot");
-//		LanguageRegistry.addName(plasma, "Plasma");
 
-//		acidVial = (new ItemVial(acidMoving.blockID, PlasmaLiquid.ACID)).setUnlocalizedName("vial_acid");
+//		acidVial = (new ItemVial(acidMoving, PlasmaLiquid.ACID)).setUnlocalizedName("vial_acid");
 		causticVial = (new ItemVial(0, PlasmaLiquid.EMPTY)).setUnlocalizedName("vial_empty");
+//		cryoniteVial = (new ItemVial(cryoniteMoving, PlasmaLiquid.CRYONITE)).setUnlocalizedName("vial_cryonite");
+//		neptuniumVial = (new ItemVial(neptuniumMoving, PlasmaLiquid.NEPTUNIUM)).setUnlocalizedName("vial_neptunium");
+//		netherflowVial = (new ItemVial(netherflowMoving, PlasmaLiquid.NETHERFLOW)).setUnlocalizedName("vial_netherflow");
+//		obsidiumVial = (new ItemVial(obsidiumMoving, PlasmaLiquid.OBSIDIUM)).setUnlocalizedName("vial_obsidium");
+//		plutoniumVial = (new ItemVial(plutoniumMoving, PlasmaLiquid.PLUTONIUM)).setUnlocalizedName("vial_plutonium");
+//		radioniteVial = (new ItemVial(radioniteMoving, PlasmaLiquid.RADIONITE)).setUnlocalizedName("vial_radionite");
+//		uraniumVial = (new ItemVial(uraniumMoving, PlasmaLiquid.URANIUM)).setUnlocalizedName("vial_uranium");
+		GameRegistry.registerItem(acidVial, "acidVial");
 		GameRegistry.registerItem(causticVial, "causticVial");
-//		cryoniteVial = (new ItemVial(cryoniteMoving.blockID, PlasmaLiquid.CRYONITE)).setUnlocalizedName("vial_cryonite");
-//		neptuniumVial = (new ItemVial(neptuniumMoving.blockID, PlasmaLiquid.NEPTUNIUM)).setUnlocalizedName("vial_neptunium");
-//		netherflowVial = (new ItemVial(netherflowMoving.blockID, PlasmaLiquid.NETHERFLOW)).setUnlocalizedName("vial_netherflow");
-//		obsidiumVial = (new ItemVial(obsidiumMoving.blockID, PlasmaLiquid.OBSIDIUM)).setUnlocalizedName("vial_obsidium");
-//		plutoniumVial = (new ItemVial(plutoniumMoving.blockID, PlasmaLiquid.PLUTONIUM)).setUnlocalizedName("vial_plutonium");
-//		radioniteVial = (new ItemVial(radioniteMoving.blockID, PlasmaLiquid.RADIONITE)).setUnlocalizedName("vial_radionite");
-//		uraniumVial = (new ItemVial(uraniumMoving.blockID, PlasmaLiquid.URANIUM)).setUnlocalizedName("vial_uranium");
-//		LanguageRegistry.addName(acidVial, "Acid Vial");
-//		LanguageRegistry.addName(causticVial, "Empty Vial");
-//		LanguageRegistry.addName(cryoniteVial, "Cryonite Vial");
-//		LanguageRegistry.addName(neptuniumVial, "Neptunium Vial");
-//		LanguageRegistry.addName(netherflowVial, "Netherflow Vial");
-//		LanguageRegistry.addName(obsidiumVial, "Obsidium Vial");
-//		LanguageRegistry.addName(plutoniumVial, "Plutonium Vial");
-//		LanguageRegistry.addName(radioniteVial, "Radionite Vial");
-//		LanguageRegistry.addName(uraniumVial, "Uranium Vial");
+		GameRegistry.registerItem(cryoniteVial, "cryoniteVial");
+		GameRegistry.registerItem(neptuniumVial, "neptuniumVial");
+		GameRegistry.registerItem(netherflowVial, "netherflowVial");
+		GameRegistry.registerItem(obsidiumVial, "obsidiumVial");
+		GameRegistry.registerItem(plutoniumVial, "plutoniumVial");
+		GameRegistry.registerItem(radioniteVial, "radioniteVial");
+		GameRegistry.registerItem(uraniumVial, "uraniumVial");
 		
 		causticBoat = (new ItemCausticBoat()).setUnlocalizedName("causticBoat");
 		GameRegistry.registerItem(causticBoat, "causticBoat");
-//		LanguageRegistry.addName(causticBoat, "Radionite Boat");
 
 		batteryEmpty = (new ItemPlasma()).setUnlocalizedName("batteryEmpty");
 		batteryCryo = (new ItemPlasma()).setUnlocalizedName("batteryCryonite");
@@ -509,14 +428,6 @@ public class PlasmaCraft
 		GameRegistry.registerItem(beamSplitter, "beamSplitter");
 		GameRegistry.registerItem(energyCell, "energyCell");
 		GameRegistry.registerItem(thermoPellet, "thermopellet");
-//		LanguageRegistry.addName(batteryCharged, "Caustic Battery: Charged");
-//		LanguageRegistry.addName(batteryCryo, "Cryo Battery");
-//		LanguageRegistry.addName(batteryEmpty, "Caustic Battery: Empty");
-//		LanguageRegistry.addName(batteryOverCharged, "Caustic Battery: Overcharged");
-//		LanguageRegistry.addName(batteryPlasma, "Caustic Battery: Plasma");
-//		LanguageRegistry.addName(beamSplitter, "Rifle Beam Splitter");
-//		LanguageRegistry.addName(energyCell, "Energy Cell");
-//		LanguageRegistry.addName(thermoPellet, "Thermopellet");
 		
 		acidgun = (new ItemEnergyWeapon(200)).setUnlocalizedName("acidGun");
 		cryoblaster = (new ItemEnergyWeapon(100)).setUnlocalizedName("cryoBlaster");
@@ -534,18 +445,9 @@ public class PlasmaCraft
 		GameRegistry.registerItem(plasmagun, "plasmaGun");
 		GameRegistry.registerItem(plasmagunsplit, "plasmaGunSplit");
 		GameRegistry.registerItem(railgun, "railgun");
-//		LanguageRegistry.addName(acidgun, "Acid Launcher");
-//		LanguageRegistry.addName(cryoblaster, "Cryo Blaster");
-//		LanguageRegistry.addName(lasergun, "Laser Rifle");
-//		LanguageRegistry.addName(lasergunsplit, "Split Beam Laser Rifle");
-//		LanguageRegistry.addName(lasershotgun, "Laser Shotgun");
-//		LanguageRegistry.addName(plasmagun, "Plasma Rifle");
-//		LanguageRegistry.addName(plasmagunsplit, "Split Beam Plasma Rifle");
-//		LanguageRegistry.addName(railgun, "Rail Gun");
 		
 		acidGrenade = new ItemAcidGrenade().setUnlocalizedName("acidGrenade");
 		GameRegistry.registerItem(acidGrenade, "acidGrenade");
-//		LanguageRegistry.addName(acidGrenade, "Acid Grenade");
 
 		hazmatBoots = (new ItemPlasmaArmor(ArmorMaterial.GOLD, proxy.addArmor("hazmat"), 3)).setUnlocalizedName("hazmatBoots");
 		hazmatHood = (new ItemPlasmaArmor(ArmorMaterial.GOLD, proxy.addArmor("hazmat"), 0)).setUnlocalizedName("hazmatHelmet");
@@ -555,14 +457,9 @@ public class PlasmaCraft
 		GameRegistry.registerItem(hazmatHood, "hazmatHood");
 		GameRegistry.registerItem(hazmatJacket, "hazmatJacket");
 		GameRegistry.registerItem(hazmatPants, "");
-//		LanguageRegistry.addName(hazmatBoots,	"Hazmat Boots");
-//		LanguageRegistry.addName(hazmatHood,	"Hazmat Hood");
-//		LanguageRegistry.addName(hazmatJacket,	"Hazmat Jacket");
-//		LanguageRegistry.addName(hazmatPants,	"Hazmat Pants");
 		
 		plasmaLeather = (new ItemPlasma()).setUnlocalizedName("plasmaLeather");
 		GameRegistry.registerItem(plasmaLeather, "plasmaLeather");
-//		LanguageRegistry.addName(plasmaLeather,	"Plasma Leather");
 	}
 	
 	private void registerOres()
