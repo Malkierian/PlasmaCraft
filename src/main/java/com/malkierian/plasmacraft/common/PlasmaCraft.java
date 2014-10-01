@@ -390,15 +390,15 @@ public class PlasmaCraft
 		GameRegistry.registerItem(ingotUranium, "ingotUranium");
 		GameRegistry.registerItem(plasma, "plasma");
 
-//		acidVial = (new ItemVial(acidMoving, PlasmaLiquid.ACID)).setUnlocalizedName("vial_acid");
-		causticVial = (new ItemVial(0, PlasmaLiquid.EMPTY)).setUnlocalizedName("vial_empty");
-//		cryoniteVial = (new ItemVial(cryoniteMoving, PlasmaLiquid.CRYONITE)).setUnlocalizedName("vial_cryonite");
-//		neptuniumVial = (new ItemVial(neptuniumMoving, PlasmaLiquid.NEPTUNIUM)).setUnlocalizedName("vial_neptunium");
-//		netherflowVial = (new ItemVial(netherflowMoving, PlasmaLiquid.NETHERFLOW)).setUnlocalizedName("vial_netherflow");
-//		obsidiumVial = (new ItemVial(obsidiumMoving, PlasmaLiquid.OBSIDIUM)).setUnlocalizedName("vial_obsidium");
-//		plutoniumVial = (new ItemVial(plutoniumMoving, PlasmaLiquid.PLUTONIUM)).setUnlocalizedName("vial_plutonium");
-//		radioniteVial = (new ItemVial(radioniteMoving, PlasmaLiquid.RADIONITE)).setUnlocalizedName("vial_radionite");
-//		uraniumVial = (new ItemVial(uraniumMoving, PlasmaLiquid.URANIUM)).setUnlocalizedName("vial_uranium");
+//		acidVial = (new ItemVial(acidMoving)).setUnlocalizedName("vial_acid");
+		causticVial = (new ItemVial(null)).setUnlocalizedName("vial_empty");
+//		cryoniteVial = (new ItemVial(cryoniteMoving)).setUnlocalizedName("vial_cryonite");
+//		neptuniumVial = (new ItemVial(neptuniumMoving)).setUnlocalizedName("vial_neptunium");
+//		netherflowVial = (new ItemVial(netherflowMoving)).setUnlocalizedName("vial_netherflow");
+//		obsidiumVial = (new ItemVial(obsidiumMoving)).setUnlocalizedName("vial_obsidium");
+//		plutoniumVial = (new ItemVial(plutoniumMoving)).setUnlocalizedName("vial_plutonium");
+//		radioniteVial = (new ItemVial(radioniteMoving)).setUnlocalizedName("vial_radionite");
+//		uraniumVial = (new ItemVial(uraniumMoving)).setUnlocalizedName("vial_uranium");
 		GameRegistry.registerItem(acidVial, "acidVial");
 		GameRegistry.registerItem(causticVial, "causticVial");
 		GameRegistry.registerItem(cryoniteVial, "cryoniteVial");
