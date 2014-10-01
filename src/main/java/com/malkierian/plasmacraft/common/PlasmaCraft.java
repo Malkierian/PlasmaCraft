@@ -390,15 +390,15 @@ public class PlasmaCraft
 		GameRegistry.registerItem(ingotUranium, "ingotUranium");
 		GameRegistry.registerItem(plasma, "plasma");
 
-//		acidVial = (new ItemVial(acidMoving)).setUnlocalizedName("vial_acid");
+		acidVial = (new ItemVial(acidMoving)).setUnlocalizedName("vial_acid");
 		causticVial = (new ItemVial(null)).setUnlocalizedName("vial_empty");
-//		cryoniteVial = (new ItemVial(cryoniteMoving)).setUnlocalizedName("vial_cryonite");
-//		neptuniumVial = (new ItemVial(neptuniumMoving)).setUnlocalizedName("vial_neptunium");
-//		netherflowVial = (new ItemVial(netherflowMoving)).setUnlocalizedName("vial_netherflow");
-//		obsidiumVial = (new ItemVial(obsidiumMoving)).setUnlocalizedName("vial_obsidium");
-//		plutoniumVial = (new ItemVial(plutoniumMoving)).setUnlocalizedName("vial_plutonium");
-//		radioniteVial = (new ItemVial(radioniteMoving)).setUnlocalizedName("vial_radionite");
-//		uraniumVial = (new ItemVial(uraniumMoving)).setUnlocalizedName("vial_uranium");
+		cryoniteVial = (new ItemVial(cryoniteMoving)).setUnlocalizedName("vial_cryonite");
+		neptuniumVial = (new ItemVial(neptuniumMoving)).setUnlocalizedName("vial_neptunium");
+		netherflowVial = (new ItemVial(netherflowMoving)).setUnlocalizedName("vial_netherflow");
+		obsidiumVial = (new ItemVial(obsidiumMoving)).setUnlocalizedName("vial_obsidium");
+		plutoniumVial = (new ItemVial(plutoniumMoving)).setUnlocalizedName("vial_plutonium");
+		radioniteVial = (new ItemVial(radioniteMoving)).setUnlocalizedName("vial_radionite");
+		uraniumVial = (new ItemVial(uraniumMoving)).setUnlocalizedName("vial_uranium");
 		GameRegistry.registerItem(acidVial, "acidVial");
 		GameRegistry.registerItem(causticVial, "causticVial");
 		GameRegistry.registerItem(cryoniteVial, "cryoniteVial");
