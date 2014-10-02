@@ -1,7 +1,7 @@
 package com.malkierian.plasmacraft.common.blocks;
 
 
-public class BlockCausticStationary extends BlockCausticFluids
+public class BlockCausticStationary //extends BlockCausticFluids
 {
 //	private int[] neighbors;
 //	public BlockCausticStationary(int i, int j, int k, float lightvalue)

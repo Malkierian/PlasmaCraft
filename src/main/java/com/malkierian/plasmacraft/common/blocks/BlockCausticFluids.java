@@ -1,73 +1,55 @@
 package com.malkierian.plasmacraft.common.blocks;
 
-import net.minecraftforge.fluids.BlockFluidBase;
+import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.World;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
 
+import com.malkierian.plasmacraft.common.EntityCausticBoat;
+import com.malkierian.plasmacraft.common.PlasmaCraft;
 
-public class BlockCausticFluids //extends BlockFluidBase
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
+public class BlockCausticFluids extends BlockFluidClassic
 {
-//	public int stillBlockID;
-//	public int flowingBlockID;
-//	public int armorTick;
-//	private PlasmaLiquid liquid;
-//
-//	protected Icon[] icons;
-//	private static String[] names = {""};
-//
-//	public BlockCausticFluids(int blockid, int stillBlockId, int flowingBlockId)
-//	{
-//		super(blockid, Material.water);
-//		float f = 0.0F;
-//		float f1 = 0.0F;
-//		stillBlockID = stillBlockId;
-//		flowingBlockID = flowingBlockId;
-//		armorTick = 0;
-//	}
-//	
-//	public BlockCausticFluids setPlasmaLiquid(PlasmaLiquid liquid)
-//	{
-//		this.liquid = liquid;
-//		return this;
-//	}
-//	
-//	@SideOnly(value = Side.CLIENT)
+	@SideOnly(Side.CLIENT)
+	protected IIcon[] icons;
+	private int armorTick;
+	
+	public BlockCausticFluids(Fluid fluid, Material material)
+	{
+		super(fluid, material);
+		setCreativeTab(CreativeTabs.tabBlock);
+		setLightLevel(0.8f);
+	}
+	
+	@Override
+	public IIcon getIcon(int side, int meta)
+	{
+		return side!= 0 && side != 1 ? icons[1] : icons[0];
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerBlockIcons(IIconRegister iconRegister)
+	{
+		icons = new IIcon[] {iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":" + fluidName),
+				iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":" + fluidName + "_flow")};
+	}
+
 //	@Override
-//	public int getBlockColor()
-//	{
-//		return 0xffffff;
-//	}
-//
-//	@SideOnly(value = Side.CLIENT)
-//	@Override
-//	public int colorMultiplier(IBlockAccess iblockaccess, int i, int j, int k)
-//	{
-//		return 0xffffff;
-//	}
-//	
-//	@Override
-//	public Icon getIcon(int par1, int par2)
-//	{
-//		return par1 != 0 && par1 != 1 ? icons[1] : icons[0];
-//	}
-//
-//	@Override
-//	public void onBlockDestroyedByExplosion(World world, int i, int j, int k, Explosion explosion)
-//	{
-//		if((blockID == PlasmaCraft.acidMoving.blockID) | (blockID == PlasmaCraft.acidStill.blockID))
-//		{
-//			return;
-//		}
-//		if(PlasmaCraft.liquidSourceExplodesAfterCausticExplosion)
-//		{
-//			world.setBlockToAir(i, j, k);
-//			world.createExplosion(null, i, j, k, 4F, false);
-//		}
-//		else
-//		{
-//			return;
-//		}
-//	}
-//
-//	public int tickRate(World par1World)
+//	public int tickRate(World world)
 //	{
 //		if(this.liquid == PlasmaLiquid.ACID)
 //		{
@@ -100,142 +82,103 @@ public class BlockCausticFluids //extends BlockFluidBase
 //		return this.liquid != PlasmaLiquid.OBSIDIUM ? 5 : 25;
 //	}
 //
-//    @SideOnly(Side.CLIENT)
-//    public void registerIcons(IconRegister par1IconRegister)
-//    {
-//        if (this.blockID == PlasmaCraft.acidMoving.blockID || blockID == PlasmaCraft.acidStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("acid"), par1IconRegister.registerIcon("acid_flow")};
-//        }
-//        else if (this.blockID == PlasmaCraft.cryoniteMoving.blockID || blockID == PlasmaCraft.cryoniteStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("cryonite"), par1IconRegister.registerIcon("cryonite_flow")};
-//        }
-//        else if (this.blockID == PlasmaCraft.neptuniumMoving.blockID || blockID == PlasmaCraft.neptuniumStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("neptunium"), par1IconRegister.registerIcon("neptunium_flow")};
-//        }
-//        else if (this.blockID == PlasmaCraft.netherflowMoving.blockID || blockID == PlasmaCraft.netherflowStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("netherflow"), par1IconRegister.registerIcon("netherflow_flow")};
-//        }
-//        else if (this.blockID == PlasmaCraft.obsidiumMoving.blockID || blockID == PlasmaCraft.obsidiumStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("obsidium"), par1IconRegister.registerIcon("obsidium_flow")};
-//        }
-//        else if (this.blockID == PlasmaCraft.plutoniumMoving.blockID || blockID == PlasmaCraft.plutoniumStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("plutonium"), par1IconRegister.registerIcon("plutonium_flow")};
-//        }
-//        else if (this.blockID == PlasmaCraft.radioniteMoving.blockID || blockID == PlasmaCraft.radioniteStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("radionite"), par1IconRegister.registerIcon("radionite_flow")};
-//        }
-//        else if (this.blockID == PlasmaCraft.uraniumMoving.blockID || blockID == PlasmaCraft.uraniumStill.blockID)
-//        {
-//            this.icons = new Icon[] {par1IconRegister.registerIcon("uranium"), par1IconRegister.registerIcon("uranium_flow")};
-//        }
-//    }
-//
-//    @SideOnly(Side.CLIENT)
-//    public static Icon func_94424_b(String par0Str)
-//    {
-//        return par0Str == "acid" ? PlasmaCraft.acidMoving.icons[0] :
-//        	(par0Str == "acid_flow" ? PlasmaCraft.acidMoving.icons[1] :
-//        		(par0Str == "cryonite" ? PlasmaCraft.cryoniteMoving.icons[0] :
-//        			(par0Str == "cryonite_flow" ? PlasmaCraft.cryoniteMoving.icons[1] : 
-//        				(par0Str == "neptunium" ? PlasmaCraft.neptuniumMoving.icons[0] :
-//                			(par0Str == "neptunium_flow" ? PlasmaCraft.neptuniumMoving.icons[1] :
-//                				(par0Str == "netherflow" ? PlasmaCraft.netherflowMoving.icons[0] :
-//                        			(par0Str == "netherflow_flow" ? PlasmaCraft.netherflowMoving.icons[1] :
-//                        				(par0Str == "obsidium" ? PlasmaCraft.obsidiumMoving.icons[0] :
-//                                			(par0Str == "obsidium_flow" ? PlasmaCraft.obsidiumMoving.icons[1] :
-//                                				(par0Str == "plutonium" ? PlasmaCraft.plutoniumMoving.icons[0] :
-//                                        			(par0Str == "plutonium_flow" ? PlasmaCraft.cryoniteMoving.icons[1] :
-//                                        				(par0Str == "radionite" ? PlasmaCraft.radioniteMoving.icons[0] :
-//                                                			(par0Str == "radionite_flow" ? PlasmaCraft.radioniteMoving.icons[1] :
-//                                                				(par0Str == "uranium" ? PlasmaCraft.uraniumMoving.icons[0] :
-//                                                        			(par0Str == "uranium_flow" ? PlasmaCraft.uraniumMoving.icons[1] : null)))))))))))))));
-//    }
-//
-//	public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
-//	{
-//		onEntityWalking(world, i, j, k, entity);
-//	}
-//
-//	public void onEntityWalking(World world, int i, int j, int k, Entity entity)
-//	{
-//		if((entity instanceof EntityPlayer) || PlasmaCraft.proxy.getEntityInstanceOf(entity))
-//		{
-//			EntityPlayer entityplayer = (EntityPlayer)entity;
-//			if(entityplayer.capabilities.isCreativeMode)
-//			{
-//				return;
-//			}
-//			if(entityplayer.hurtTime > 0)
-//			{
-//				return;
-//			}
-//			ItemStack itemstack[] = entityplayer.inventory.armorInventory;
-//			if(itemstack[0] == null || itemstack[1] == null || itemstack[2] == null || itemstack[3] == null)
-//			{
-//				if(entityplayer.ridingEntity != null && (entityplayer.ridingEntity instanceof EntityCausticBoat))
-//				{
-//					return;
-//				}
-//				else
-//				{
-//					entity.setFire(3);
-//					entityplayer.attackEntityFrom(DamageSource.inFire, 3);
-//					return;
-//				}
-//			}
-//			boolean flag = itemstack[3].itemID == PlasmaCraft.hazmatHood.itemID;
-//			boolean flag1 = itemstack[2].itemID == PlasmaCraft.hazmatJacket.itemID;
-//			boolean flag2 = itemstack[1].itemID == PlasmaCraft.hazmatPants.itemID;
-//			boolean flag3 = itemstack[0].itemID == PlasmaCraft.hazmatBoots.itemID;
-//			if(flag && flag1 && flag2 && flag3)
-//			{
-//				if(armorTick > 0)
-//				{
-//					armorTick--;
-//				}
-//				if(armorTick == 0)
-//				{
-//					entityplayer.inventory.damageArmor(1);
-//					armorTick = 100;
-//				}
-//			}
-//			else
-//			{
-//				entity.setFire(3);
-//				entityplayer.attackEntityFrom(DamageSource.inFire, 3);
-//			}
-//		}
-//		else if(entity instanceof EntityLiving)
-//		{
-//			EntityLiving entityliving = (EntityLiving)entity;
-//			if(entityliving.hurtTime > 0)
-//			{
-//				return;
-//			}
-//			entity.setFire(3);
-//			entityliving.attackEntityFrom(DamageSource.inFire, 3);
-//		}
-//		else if(!(entity instanceof EntityCausticBoat))
-//		{
-//			if(entity instanceof EntityItem)
-//			{
-//				EntityItem ent = (EntityItem) entity;
-//				if(ent.getEntityItem().itemID == PlasmaCraft.ingotRadionite.itemID)
-//				{
-//					return;
-//				}
-//			}
-//			entity.setFire(3);
-//			entity.attackEntityFrom(DamageSource.inFire, 10);
-//		}
-//	}
+	@Override
+	public void onBlockDestroyedByExplosion(World world, int i, int j, int k, Explosion explosion)
+	{
+		if(this.fluidName == "acid")
+		{
+			return;
+		}
+		if(PlasmaCraft.liquidSourceExplodesAfterCausticExplosion)
+		{
+			world.setBlockToAir(i, j, k);
+			world.createExplosion(null, i, j, k, 4F, false);
+		}
+		else
+		{
+			return;
+		}
+	}
+	
+	@Override
+	public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
+	{
+		onEntityWalking(world, i, j, k, entity);
+	}
+
+	public void onEntityWalking(World world, int i, int j, int k, Entity entity)
+	{
+		if((entity instanceof EntityPlayer) || PlasmaCraft.proxy.getEntityInstanceOf(entity))
+		{
+			EntityPlayer entityplayer = (EntityPlayer)entity;
+			if(entityplayer.capabilities.isCreativeMode)
+			{
+				return;
+			}
+			if(entityplayer.hurtTime > 0)
+			{
+				return;
+			}
+			ItemStack itemstack[] = entityplayer.inventory.armorInventory;
+			if(itemstack[0] == null || itemstack[1] == null || itemstack[2] == null || itemstack[3] == null)
+			{
+				if(entityplayer.ridingEntity != null && (entityplayer.ridingEntity instanceof EntityCausticBoat))
+				{
+					return;
+				}
+				else
+				{
+					entity.setFire(3);
+					entityplayer.attackEntityFrom(DamageSource.inFire, 3);
+					return;
+				}
+			}
+			boolean flag = itemstack[3].getItem() == PlasmaCraft.hazmatHood;
+			boolean flag1 = itemstack[2].getItem() == PlasmaCraft.hazmatJacket;
+			boolean flag2 = itemstack[1].getItem() == PlasmaCraft.hazmatPants;
+			boolean flag3 = itemstack[0].getItem() == PlasmaCraft.hazmatBoots;
+			if(flag && flag1 && flag2 && flag3)
+			{
+				if(armorTick > 0)
+				{
+					armorTick--;
+				}
+				if(armorTick == 0)
+				{
+					entityplayer.inventory.damageArmor(1);
+					armorTick = 100;
+				}
+			}
+			else
+			{
+				entity.setFire(3);
+				entityplayer.attackEntityFrom(DamageSource.inFire, 3);
+			}
+		}
+		else if(entity instanceof EntityLiving)
+		{
+			EntityLiving entityliving = (EntityLiving)entity;
+			if(entityliving.hurtTime > 0)
+			{
+				return;
+			}
+			entity.setFire(3);
+			entityliving.attackEntityFrom(DamageSource.inFire, 3);
+		}
+		else if(!(entity instanceof EntityCausticBoat))
+		{
+			if(entity instanceof EntityItem)
+			{
+				EntityItem ent = (EntityItem) entity;
+				if(ent.getEntityItem().getItem() == PlasmaCraft.ingotRadionite)
+				{
+					return;
+				}
+			}
+			entity.setFire(3);
+			entity.attackEntityFrom(DamageSource.inFire, 10);
+		}
+	}
 //    
 //    @Override
 //    public void onBlockAdded(World par1World, int par2, int par3, int par4)
@@ -875,23 +818,5 @@ public class BlockCausticFluids //extends BlockFluidBase
 //				return;
 //			}
 //		}
-//	}
-//
-//	@Override
-//	public int stillLiquidId()
-//	{
-//		return stillBlockID;
-//	}
-//
-//	@Override
-//	public boolean isMetaSensitive()
-//	{
-//		return false;
-//	}
-//
-//	@Override
-//	public int stillLiquidMeta()
-//	{
-//		return 0;
 //	}
 }

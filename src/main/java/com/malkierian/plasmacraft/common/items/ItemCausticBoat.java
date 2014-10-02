@@ -2,6 +2,7 @@ package com.malkierian.plasmacraft.common.items;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -14,12 +15,24 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import com.malkierian.plasmacraft.common.EntityCausticBoat;
+import com.malkierian.plasmacraft.common.PlasmaCraft;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemCausticBoat extends ItemBoat
 {
 	public ItemCausticBoat()
 	{
 		super();
+		setCreativeTab(PlasmaCraft.plasmaTab);
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public void registerIcons(IIconRegister iconRegister)
+	{
+		itemIcon = iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":causticBoat");
 	}
 
 	@SuppressWarnings("rawtypes")

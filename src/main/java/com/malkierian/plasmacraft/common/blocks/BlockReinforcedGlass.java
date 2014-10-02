@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockBreakable;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.World;
 
 import com.malkierian.plasmacraft.common.PlasmaCraft;
@@ -23,7 +22,7 @@ public class BlockReinforcedGlass extends BlockBreakable
 		setResistance(resistance);
 		setStepSound(Block.soundTypeGlass);
 		setTickRandomly(true);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
 
 	public int quantityDropped(Random random)

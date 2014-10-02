@@ -12,17 +12,16 @@ import net.minecraft.world.World;
 
 import com.malkierian.plasmacraft.common.PlasmaCraft;
 import com.malkierian.plasmacraft.common.Entities.EntityMutantCow;
-import com.malkierian.plasmacraft.common.blocks.BlockCausticFluids;
 
 public class ItemVial extends ItemPlasma
 {
-	private boolean isFull;
+	private Block isFull;
 
-	public ItemVial(BlockCausticFluids block)
+	public ItemVial(Block block)
 	{
 		super();
 		maxStackSize = 8;
-		isFull = block != null;
+		isFull = block;
 	}
 	
 	@Override
@@ -45,7 +44,7 @@ public class ItemVial extends ItemPlasma
 		double d3 = 5D;
 		ItemStack returnStack = null;
 		Vec3 vec31 = vec3.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
-		MovingObjectPosition movingobjectposition = world.rayTraceBlocks(vec3, vec31, isFull);
+		MovingObjectPosition movingobjectposition = world.rayTraceBlocks(vec3, vec31, isFull == Blocks.air);
 		if(movingobjectposition == null)
 		{
 			return itemstack;
@@ -59,10 +58,10 @@ public class ItemVial extends ItemPlasma
 			{
 				return itemstack;
 			}
-			if(isFull)
+			if(isFull == Blocks.air)
 			{
 				Block l = world.getBlock(i, j, k);
-				if(l == PlasmaCraft.acidStill && world.getBlockMetadata(i, j, k) == 0)
+				if(l == PlasmaCraft.acidBlock && world.getBlockMetadata(i, j, k) == 0)
 				{
 					if(world.setBlockToAir(i, j, k))
 					{
@@ -71,48 +70,48 @@ public class ItemVial extends ItemPlasma
 				}
 				else
 				{
-					if(l == PlasmaCraft.plutoniumStill && world.getBlockMetadata(i, j, k) == 0)
+					if(l == PlasmaCraft.plutoniumBlock && world.getBlockMetadata(i, j, k) == 0)
 					{
 						world.setBlockToAir(i, j, k);
 						returnStack = new ItemStack(PlasmaCraft.plutoniumVial);
 					}
-					if(l == PlasmaCraft.radioniteStill && world.getBlockMetadata(i, j, k) == 0)
+					if(l == PlasmaCraft.radioniteBlock && world.getBlockMetadata(i, j, k) == 0)
 					{
 						world.setBlockToAir(i, j, k);
 						returnStack = new ItemStack(PlasmaCraft.radioniteVial);
 					}
-					if(l == PlasmaCraft.uraniumStill && world.getBlockMetadata(i, j, k) == 0)
+					if(l == PlasmaCraft.uraniumBlock && world.getBlockMetadata(i, j, k) == 0)
 					{
 						world.setBlockToAir(i, j, k);
 						returnStack = new ItemStack(PlasmaCraft.uraniumVial);
 					}
-					if(l == PlasmaCraft.neptuniumStill && world.getBlockMetadata(i, j, k) == 0)
+					if(l == PlasmaCraft.neptuniumBlock && world.getBlockMetadata(i, j, k) == 0)
 					{
 						world.setBlockToAir(i, j, k);
 						returnStack = new ItemStack(PlasmaCraft.neptuniumVial);
 					}
-					if(l == PlasmaCraft.netherflowStill && world.getBlockMetadata(i, j, k) == 0)
+					if(l == PlasmaCraft.netherflowBlock && world.getBlockMetadata(i, j, k) == 0)
 					{
 						world.setBlockToAir(i, j, k);
 						returnStack = new ItemStack(PlasmaCraft.netherflowVial);
 					}
-					if(l == PlasmaCraft.obsidiumStill && world.getBlockMetadata(i, j, k) == 0)
+					if(l == PlasmaCraft.obsidiumBlock && world.getBlockMetadata(i, j, k) == 0)
 					{
 						world.setBlockToAir(i, j, k);
 						returnStack = new ItemStack(PlasmaCraft.obsidiumVial);
 					}
-					if(l == PlasmaCraft.cryoniteStill && world.getBlockMetadata(i, j, k) == 0)
+					if(l == PlasmaCraft.cryoniteBlock && world.getBlockMetadata(i, j, k) == 0)
 					{
 						world.setBlockToAir(i, j, k);
 						returnStack = new ItemStack(PlasmaCraft.cryoniteVial);
 					}
 				}
-					if(returnStack != null)
-					{
-						itemstack.stackSize--;
-						entityplayer.inventory.addItemStackToInventory(returnStack);
-						return itemstack;
-					}
+				if(returnStack != null)
+				{
+					itemstack.stackSize--;
+					entityplayer.inventory.addItemStackToInventory(returnStack);
+					return itemstack;
+				}
 			} else
 			{
 				if(movingobjectposition.sideHit == 0)
@@ -141,14 +140,14 @@ public class ItemVial extends ItemPlasma
 				}
 				if(world.isAirBlock(i, j, k) || !world.getBlock(i, j, k).getMaterial().isSolid())
 				{
-					world.setBlockToAir(i, j, k);
+					world.setBlock(i, j, k, isFull);
 					itemstack.stackSize--;
 					entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.causticVial));
 					return itemstack;
 				}
 			}
 		}
-		if(isFull && (movingobjectposition.entityHit instanceof EntityMutantCow))
+		if(isFull == Blocks.air && (movingobjectposition.entityHit instanceof EntityMutantCow))
 		{
 			itemstack.stackSize--;
 			entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.acidVial));

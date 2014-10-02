@@ -1,17 +1,16 @@
 package com.malkierian.plasmacraft.common.items;
 
-import com.malkierian.plasmacraft.common.PlasmaCraft;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+
+import com.malkierian.plasmacraft.common.PlasmaCraft;
 
 public class ItemPlasma extends Item
 {
 	public ItemPlasma()
 	{
 		super();
-		setCreativeTab(CreativeTabs.tabMisc);
+		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
 	
 	@Override

@@ -2,7 +2,7 @@ package com.malkierian.plasmacraft.common.blocks;
 
 
 
-public class BlockCausticFlowing extends BlockCausticFluids
+public class BlockCausticFlowing //extends BlockCausticFluids
 {
 //    int numAdjacentSources = 0;
 //	boolean[] isOptimalFlowDirection = new boolean[4];

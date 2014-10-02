@@ -30,7 +30,7 @@ public class BlockPlasmaOre extends BlockOre
 		super();
 		setTickRandomly(true);
 		setStepSound(Block.soundTypeStone);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
 
 //	@Override

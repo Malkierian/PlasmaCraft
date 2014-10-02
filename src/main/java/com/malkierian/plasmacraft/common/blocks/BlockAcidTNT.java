@@ -3,12 +3,12 @@ package com.malkierian.plasmacraft.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockTNT;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 
 import com.malkierian.plasmacraft.common.EntityAcidTNTPrimed;
+import com.malkierian.plasmacraft.common.PlasmaCraft;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -23,7 +23,7 @@ public class BlockAcidTNT extends BlockTNT
 		super();
 		setHardness(0.0F);
 		setStepSound(Block.soundTypeGrass);
-		setCreativeTab(CreativeTabs.tabRedstone);
+		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
 	
 //	public void addCreativeItems(ArrayList itemList)
@@ -77,8 +77,8 @@ public class BlockAcidTNT extends BlockTNT
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister par1IconRegister)
     {
-        blockIcon = par1IconRegister.registerIcon("plasmacraft:" + getUnlocalizedName());
-        topIcon = par1IconRegister.registerIcon("plasmacraft:" + getUnlocalizedName() + "_top");
-        bottomIcon = par1IconRegister.registerIcon("plasmacraft:" + getUnlocalizedName() + "_bottom");
+        blockIcon = par1IconRegister.registerIcon("plasmacraft:acidTnt");
+        topIcon = par1IconRegister.registerIcon("plasmacraft:acidTnt_top");
+        bottomIcon = par1IconRegister.registerIcon("plasmacraft:acidTnt_bottom");
     }
 }

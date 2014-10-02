@@ -27,6 +27,7 @@ tile.reinforcedGlass.name=Reinforced Glass
 tile.plasmaBench.name=Plasmificator
 tile.acidBarrier.name=Acid Barrier
 tile.frozenCryonite.name=Frozen Cryonite
+tile.acidTnt.name=Acid TNT
 
 
 item.goopAcid.name=Acid Goop
@@ -81,5 +82,5 @@ item.hazmatHood.name=Hazmat Hood
 item.hazmatJacket.name=Hazmat Jacket
 item.hazmatPants.name=Hazmat Pants
 
-
+item.causticBoat.name=Caustic Boat
 item.plasmaLeather.name=Plasma Leather

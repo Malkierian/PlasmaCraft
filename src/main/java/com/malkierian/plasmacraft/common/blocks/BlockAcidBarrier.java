@@ -1,15 +1,15 @@
 package com.malkierian.plasmacraft.common.blocks;
 
-import com.malkierian.plasmacraft.common.PlasmaCraft;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+
+import com.malkierian.plasmacraft.common.PlasmaCraft;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -23,7 +23,7 @@ public class BlockAcidBarrier extends Block
 		setLightOpacity(2);
 		setLightLevel(1.0F);
 		setStepSound(Block.soundTypeGlass);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
 	
 //	public void addCreativeItems(ArrayList itemList)

@@ -6,7 +6,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,7 +38,7 @@ public class BlockPlasmaBench extends BlockContainer
 		setHardness(3F);
 		setStepSound(Block.soundTypeStone);
 		setLightLevel(0.0f);
-		setCreativeTab(CreativeTabs.tabBlock);
+		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
 
 //	@Override
@@ -73,19 +72,19 @@ public class BlockPlasmaBench extends BlockContainer
 			Block j1 = world.getBlock(i - 1, j, k);
 			Block k1 = world.getBlock(i + 1, j, k);
 			byte byte0 = 3;
-			if(l.isOpaqueCube() && !i1.isOpaqueCube())
+			if(l.func_149730_j() && !i1.func_149730_j())
 			{
 				byte0 = 3;
 			}
-			if(i1.isOpaqueCube() && !l.isOpaqueCube())
+			if(i1.func_149730_j() && !l.func_149730_j())
 			{
 				byte0 = 2;
 			}
-			if(j1.isOpaqueCube() && !k1.isOpaqueCube())
+			if(j1.func_149730_j() && !k1.func_149730_j())
 			{
 				byte0 = 5;
 			}
-			if(k1.isOpaqueCube() && !j1.isOpaqueCube())
+			if(k1.func_149730_j() && !j1.func_149730_j())
 			{
 				byte0 = 4;
 			}
