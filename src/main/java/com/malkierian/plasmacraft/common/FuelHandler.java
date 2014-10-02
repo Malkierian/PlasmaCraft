@@ -12,7 +12,7 @@ public class FuelHandler implements IFuelHandler {
 		{
 			return 0x7a120;
 		}
-		return fuel.getItem() != PlasmaCraft.thermoPellet ? 0 : 0xf4240;
+		return fuel.getItem() != PlasmaCraft.thermopellet ? 0 : 0xf4240;
 	}
 
 }

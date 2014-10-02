@@ -1,6 +1,9 @@
 package com.malkierian.plasmacraft.common;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -15,6 +18,8 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
+import com.google.common.base.Function;
+import com.google.common.collect.Ordering;
 import com.malkierian.plasmacraft.common.Entities.EntityAcid;
 import com.malkierian.plasmacraft.common.Entities.EntityCryoBlast;
 import com.malkierian.plasmacraft.common.Entities.EntityLaser;
@@ -96,7 +101,7 @@ public class PlasmaCraft
 	public static Item plasma;
 	public static Item acidGrenade;
 	public static Item causticBoat;
-	public static Item thermoPellet;
+	public static Item thermopellet;
 
 	public static Item ingotCryonite;
 	public static Item ingotLead;
@@ -127,7 +132,7 @@ public class PlasmaCraft
 	public static Item batteryCharged;
 	public static Item batteryCryo;
 	public static Item batteryEmpty;
-	public static Item batteryOverCharged;
+	public static Item batteryOvercharged;
 	public static Item batteryPlasma;
 	public static Item beamSplitter;
 	public static Item cryoblaster;
@@ -202,6 +207,8 @@ public class PlasmaCraft
 
 	public static int plasmaBenchFrontAnim;
 	
+	public static Comparator<ItemStack> tabSorter;
+	
 	// The instance of your mod that Forge uses.
 	@Instance("PlasmaCraft")
 	public static PlasmaCraft instance;
@@ -237,6 +244,26 @@ public class PlasmaCraft
 		
 		registerItems();
 		
+		List<Item> order = Arrays.asList(Item.getItemFromBlock(orePlasma), Item.getItemFromBlock(glowCloth), Item.getItemFromBlock(frozenCryonite), Item.getItemFromBlock(reinforcedGlass),
+				Item.getItemFromBlock(acidTnt), Item.getItemFromBlock(acidBarrier), Item.getItemFromBlock(plasmaBench),
+				goopAcid, goopCryonite, goopNeptunium, goopNetherflow, goopObsidium, goopPlutonium, goopRadionite, goopUranium,
+				ingotCryonite, ingotLead, ingotNeptunium, ingotNetherflow, ingotObsidium, ingotPlutonium, ingotRadionite, ingotUranium, plasma,
+				acidVial, causticVial, cryoniteVial, neptuniumVial, netherflowVial, obsidiumVial, plutoniumVial, radioniteVial, uraniumVial,
+				causticBoat,
+				batteryEmpty, batteryCryo, batteryCharged, batteryOvercharged, batteryPlasma, beamSplitter, energyCell, thermopellet,
+				acidgun, cryoblaster, lasershotgun, lasergun, lasergunsplit, plasmagun, plasmagunsplit, railgun,
+				acidGrenade,
+				hazmatBoots, hazmatHood, hazmatJacket, hazmatPants,
+				plasmaLeather);
+
+		tabSorter = Ordering.explicit(order).onResultOf(new Function<ItemStack, Item>(){
+			@Override
+			public Item apply(ItemStack input)
+			{
+				return input.getItem();
+			}
+		});
+		
 		registerRecipes();
 		
 		registerOres();
@@ -261,14 +288,14 @@ public class PlasmaCraft
 		orePlasma = new BlockPlasmaOre().setLightLevel(0.5334f).setBlockName("orePlasma");
 		GameRegistry.registerBlock(orePlasma, com.malkierian.plasmacraft.common.items.ItemPlasmaOre.class, "orePlasma");
 		
-		acidFluid = new Fluid("acid").setDensity(80).setViscosity(100);
-		cryoniteFluid = new Fluid("cryonite").setDensity(80).setViscosity(200);
+		acidFluid = new Fluid("acid").setDensity(80).setViscosity(400);
+		cryoniteFluid = new Fluid("cryonite").setDensity(80).setViscosity(600);
 		neptuniumFluid = new Fluid("neptunium").setDensity(80).setViscosity(300);
-		netherflowFluid = new Fluid("netherflow").setDensity(80).setViscosity(400);
-		obsidiumFluid = new Fluid("obsidium").setDensity(80).setViscosity(600);
+		netherflowFluid = new Fluid("netherflow").setDensity(80).setViscosity(450);
+		obsidiumFluid = new Fluid("obsidium").setDensity(80).setViscosity(1200);
 		plutoniumFluid = new Fluid("plutonium").setDensity(80).setViscosity(800);
 		radioniteFluid = new Fluid("radionite").setDensity(80).setViscosity(1000);
-		uraniumFluid = new Fluid("uranium").setDensity(80).setViscosity(1200);
+		uraniumFluid = new Fluid("uranium").setDensity(150).setViscosity(800);
 		FluidRegistry.registerFluid(acidFluid);
 		FluidRegistry.registerFluid(cryoniteFluid);
 		FluidRegistry.registerFluid(neptuniumFluid);
@@ -396,11 +423,11 @@ public class PlasmaCraft
 		batteryEmpty = (new ItemPlasma()).setUnlocalizedName("batteryEmpty");
 		batteryCryo = (new ItemPlasma()).setUnlocalizedName("batteryCryonite");
 		batteryCharged = (new ItemPlasma()).setUnlocalizedName("batteryCharged");
-		batteryOverCharged = (new ItemPlasma()).setUnlocalizedName("batteryOvercharged");
+		batteryOvercharged = (new ItemPlasma()).setUnlocalizedName("batteryOvercharged");
 		batteryPlasma = (new ItemPlasma()).setUnlocalizedName("batteryPlasma");
 		beamSplitter = (new ItemPlasma()).setUnlocalizedName("beamSplitter");
 		energyCell = (new ItemPlasma()).setUnlocalizedName("energyCell");
-		thermoPellet = (new ItemPlasma()).setUnlocalizedName("thermopellet");
+		thermopellet = (new ItemPlasma()).setUnlocalizedName("thermopellet");
 		
 		acidgun = (new ItemEnergyWeapon(200)).setUnlocalizedName("acidGun");
 		cryoblaster = (new ItemEnergyWeapon(100)).setUnlocalizedName("cryoBlaster");
@@ -454,11 +481,11 @@ public class PlasmaCraft
 		GameRegistry.registerItem(batteryEmpty, "Empty Battery");
 		GameRegistry.registerItem(batteryCryo, "Cryo Battery");
 		GameRegistry.registerItem(batteryCharged, "Charged Caustic Battery");
-		GameRegistry.registerItem(batteryOverCharged, "Overcharged Caustic Battery");
+		GameRegistry.registerItem(batteryOvercharged, "Overcharged Caustic Battery");
 		GameRegistry.registerItem(batteryPlasma, "Plasma Battery");
 		GameRegistry.registerItem(beamSplitter, "Beam Splitter");
 		GameRegistry.registerItem(energyCell, "Energy Cell");
-		GameRegistry.registerItem(thermoPellet, "Thermopellet");
+		GameRegistry.registerItem(thermopellet, "Thermopellet");
 
 		GameRegistry.registerItem(acidgun, "Acid Launcher");
 		GameRegistry.registerItem(cryoblaster, "Cryo Blaster");

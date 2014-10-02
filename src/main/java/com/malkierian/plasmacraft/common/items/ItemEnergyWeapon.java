@@ -92,7 +92,7 @@ public class ItemEnergyWeapon extends ItemPlasma
 				world.spawnEntityInWorld(new EntityAcid(world, entityplayer));
 			}
 		}
-		if(this == PlasmaCraft.railgun && entityplayer.inventory.consumeInventoryItem(PlasmaCraft.batteryOverCharged))
+		if(this == PlasmaCraft.railgun && entityplayer.inventory.consumeInventoryItem(PlasmaCraft.batteryOvercharged))
 		{
 			int l = random.nextInt(3);
 			if(l == 1)
