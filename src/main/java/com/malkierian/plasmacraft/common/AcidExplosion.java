@@ -218,7 +218,7 @@ label0:
 			double d = (double)i2 - posY;
 			if(d < -2D && j3 == Blocks.air)
 			{
-//				worldObj.setBlock(j1, i2, l2, PlasmaCraft.acidMoving.blockID);
+				worldObj.setBlock(j1, i2, l2, PlasmaCraft.acidBlock);
 			}
 		}
 
@@ -229,10 +229,10 @@ label0:
 				for(int k1 = (int)(posZ - (double)(radius + 1.0F)); k1 <= (int)(posZ + (double)(radius + 1.0F)); k1++)
 				{
 					Block j2 = worldObj.getBlock(k, l, k1);
-//					if(j2 != PlasmaCraft.acidMoving.blockID && j2 != PlasmaCraft.acidStill.blockID)
-//					{
-//						continue;
-//					}
+					if(j2 != PlasmaCraft.acidBlock)
+					{
+						continue;
+					}
 					boolean flag = isFlowable(worldObj.getBlock(k - 1, l, k1));
 					boolean flag1 = isFlowable(worldObj.getBlock(k + 1, l, k1));
 					boolean flag2 = isFlowable(worldObj.getBlock(k, l, k1 + 1));

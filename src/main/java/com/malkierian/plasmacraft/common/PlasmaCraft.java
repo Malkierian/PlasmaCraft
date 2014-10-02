@@ -534,21 +534,21 @@ public class PlasmaCraft
 		GameRegistry.addRecipe(new ItemStack(causticVial, 1), new Object[] {
 			"X#X", "Y Y", "X#X", Character.valueOf('#'), Items.iron_ingot, Character.valueOf('Y'), reinforcedGlass, Character.valueOf('X'), Blocks.glass
 		});
-//		GameRegistry.addRecipe(new ItemStack(plasmaBench, 1), new Object[] {
-//			"X#X", "# #", "X#X", Character.valueOf('#'), Items.iron_ingot, Character.valueOf('X'), acidVial
-//		});
+		GameRegistry.addRecipe(new ItemStack(plasmaBench, 1), new Object[] {
+			"X#X", "# #", "X#X", Character.valueOf('#'), Items.iron_ingot, Character.valueOf('X'), acidVial
+		});
 		GameRegistry.addRecipe(new ItemStack(acidBarrier, 1), new Object[] {
 			" X ", "XZX", " X ", Character.valueOf('Z'), reinforcedGlass, Character.valueOf('X'), goopAcid
 		});
 		GameRegistry.addRecipe(new ItemStack(causticBoat, 1), new Object[] {
 			"R R", "RRR", Character.valueOf('R'), ingotRadionite
 		});
-//		GameRegistry.addRecipe(new ItemStack(acidTnt, 4), new Object[] {
-//			"APA", "GAG", "APA", Character.valueOf('A'), acidVial, Character.valueOf('G'), Items.gunpowder, Character.valueOf('P'), plasma
-//		});
-//		GameRegistry.addRecipe(new ItemStack(acidGrenade, 4), new Object[] {
-//			"X", "Y", "Z", Character.valueOf('X'), Items.iron_ingot, Character.valueOf('Y'), acidVial, Character.valueOf('Z'), plasma
-//		});
+		GameRegistry.addRecipe(new ItemStack(acidTnt, 4), new Object[] {
+			"APA", "GAG", "APA", Character.valueOf('A'), acidVial, Character.valueOf('G'), Items.gunpowder, Character.valueOf('P'), plasma
+		});
+		GameRegistry.addRecipe(new ItemStack(acidGrenade, 4), new Object[] {
+			"X", "Y", "Z", Character.valueOf('X'), Items.iron_ingot, Character.valueOf('Y'), acidVial, Character.valueOf('Z'), plasma
+		});
 		GameRegistry.addRecipe(new ItemStack(hazmatHood, 1), new Object[] {
 			"LLL", "L L", Character.valueOf('L'), plasmaLeather
 		});
