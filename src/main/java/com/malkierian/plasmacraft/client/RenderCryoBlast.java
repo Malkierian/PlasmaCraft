@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.Entities.EntityCryoBlast;
+import com.malkierian.plasmacraft.common.entities.EntityCryoBlast;
 
 public class RenderCryoBlast extends Render
 {

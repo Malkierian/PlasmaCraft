@@ -1,11 +1,11 @@
-package com.malkierian.plasmacraft.common.Entities;
+package com.malkierian.plasmacraft.common.entities;
 
 import java.util.List;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,53 +17,39 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import com.malkierian.plasmacraft.common.PlasmaCraft;
+import com.malkierian.plasmacraft.common.CryoBlast;
 
-public class EntityLaser extends Entity
+public class EntityCryoBlast extends Entity
 {
 	private int xTile;
 	private int yTile;
 	private int zTile;
-//	private Block inTile;
+	private Block inTile;
 	private boolean inGround;
 	public int arrowShake;
 	public EntityLivingBase owner;
 	private int ticksInAir;
-	int damg;
-	
-	public EntityLaser(World world)
+
+	public EntityCryoBlast(World world)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-//		inTile = null;
-		inGround = false;
-		arrowShake = 0;
-		ticksInAir = 0;
-		setSize(0.5f, 0.5f);
-	}
-	
-	public EntityLaser(World world, EntityLivingBase entityplayer)
-	{
-		super(world);
-		xTile = -1;
-		yTile = -1;
-		zTile = -1;
-//		inTile = null;
+		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
 	}
 
-	public EntityLaser(World world, double d, double d1, double d2)
+	public EntityCryoBlast(World world, double d, double d1, double d2)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-//		inTile = null;
+		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -72,14 +58,13 @@ public class EntityLaser extends Entity
 		yOffset = 0.0F;
 	}
 
-	public EntityLaser(World world, EntityLivingBase entityliving, int dmg)
+	public EntityCryoBlast(World world, EntityLivingBase entityliving)
 	{
 		super(world);
-		damg = dmg;
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-//		inTile = null;
+		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -143,7 +128,6 @@ public class EntityLaser extends Entity
 	public void onUpdate()
 	{
 		super.onUpdate();
-		
 		if(prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
 		{
 			float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
@@ -207,115 +191,26 @@ public class EntityLaser extends Entity
 				{
 					return;
 				}
-				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), damg))
+				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 1))
 				{
-					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
-					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
-					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-					entity.setFire(1);
+					CryoBlast smcryoblast = new CryoBlast(worldObj, this, posX, posY, posZ, 2F);
+					smcryoblast.isFlaming = false;
+					smcryoblast.doExplosionA();
+					smcryoblast.doExplosionB();
 					setDead();
-					worldObj.setBlock(j, l, j1, Blocks.fire);
 				}
 			}
 			else
 			{
-				int k = movingobjectposition.blockX;
-				int i1 = movingobjectposition.blockY;
-				int k1 = movingobjectposition.blockZ;
-				boolean flag = true;
-				if(!worldObj.isRemote)
-				{
-					if(worldObj.getBlock(k, i1, k1) == PlasmaCraft.frozenCryonite)
-					{
-						worldObj.setBlockToAir(k, i1, k1);
-						setDead();
-//						worldObj.setBlock(k, i1, k1, PlasmaCraft.cryoniteMoving);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == Blocks.iron_ore)
-					{
-						worldObj.setBlockToAir(k, i1, k1);
-						setDead();
-						dropItem(Items.iron_ingot, 1);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == Blocks.gold_ore)
-					{
-						worldObj.setBlockToAir(k, i1, k1);
-						setDead();
-						dropItem(Items.gold_ingot, 1);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == PlasmaCraft.orePlasma)
-					{
-						int meta = worldObj.getBlockMetadata(k, i1, k1);
-						Item index;
-						switch(meta)
-						{
-						case PlasmaCraft.radioniteMeta:
-							index = PlasmaCraft.goopRadionite;
-						case PlasmaCraft.plutoniumMeta:
-							index = PlasmaCraft.goopPlutonium;
-						case PlasmaCraft.uraniumMeta:
-							index = PlasmaCraft.goopUranium;
-						default:
-							index = PlasmaCraft.goopPlutonium;
-						}
-						worldObj.setBlockToAir(k, i1, k1);
-						setDead();
-						dropItem(index, 1);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == Blocks.ice)
-					{
-						worldObj.setBlock(k, i1, k1, Blocks.water);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == Blocks.tallgrass)
-					{
-						worldObj.setBlock(k, i1, k1, Blocks.fire);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == Blocks.snow)
-					{
-						worldObj.setBlock(k, i1, k1, Blocks.fire);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == Blocks.red_flower)
-					{
-						worldObj.setBlock(k, i1, k1, Blocks.fire);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1, k1) == Blocks.yellow_flower)
-					{
-						worldObj.setBlock(k, i1, k1, Blocks.fire);
-						flag = false;
-					}
-					if(worldObj.getBlock(k, i1 + 1, k1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
-					{
-						worldObj.setBlock(k, i1 + 1, k1, Blocks.fire);
-					}
-					if(worldObj.getBlock(k, i1, k1 + 1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
-					{
-						worldObj.setBlock(k, i1, k1 + 1, Blocks.fire);
-					}
-					if(worldObj.getBlock(k, i1, k1 - 1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
-					{
-						worldObj.setBlock(k, i1, k1 - 1, Blocks.fire);
-					}
-					if(worldObj.getBlock(k + 1, i1, k1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
-					{
-						worldObj.setBlock(k + 1, i1, k1, Blocks.fire);
-					}
-					if(worldObj.getBlock(k - 1, i1, k1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
-					{
-						worldObj.setBlock(k - 1, i1, k1, Blocks.fire);
-					}
-				}
+				CryoBlast smcryoblast1 = new CryoBlast(worldObj, this, posX, posY, posZ, 2F);
+				smcryoblast1.isFlaming = false;
+				smcryoblast1.doExplosionA();
+				smcryoblast1.doExplosionB();
+				setDead();
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;
 				zTile = movingobjectposition.blockZ;
-//				inTile = worldObj.getBlock(xTile, yTile, zTile);
+				inTile = worldObj.getBlock(xTile, yTile, zTile);
 				motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
 				motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
 				motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
@@ -342,7 +237,7 @@ public class EntityLaser extends Entity
 		//float f4 = 0.03F;
 		if(isInWater())
 		{
-			for(int l1 = 0; l1 < 4; l1++)
+			for(int i1 = 0; i1 < 4; i1++)
 			{
 				float f6 = 0.25F;
 				worldObj.spawnParticle("bubble", posX - motionX * (double)f6, posY - motionY * (double)f6, posZ - motionZ * (double)f6, motionX, motionY, motionZ);
@@ -361,7 +256,7 @@ public class EntityLaser extends Entity
 		nbttagcompound.setShort("xTile", (short)xTile);
 		nbttagcompound.setShort("yTile", (short)yTile);
 		nbttagcompound.setShort("zTile", (short)zTile);
-//		nbttagcompound.setString("inTile", inTile.getUnlocalizedName());
+		nbttagcompound.setString("inTile", inTile.getUnlocalizedName());
 		nbttagcompound.setByte("shake", (byte)arrowShake);
 		nbttagcompound.setByte("inGround", (byte)(inGround ? 1 : 0));
 	}
@@ -371,14 +266,14 @@ public class EntityLaser extends Entity
 		xTile = nbttagcompound.getShort("xTile");
 		yTile = nbttagcompound.getShort("yTile");
 		zTile = nbttagcompound.getShort("zTile");
-//		inTile = (Block)Item.itemRegistry.getObject(nbttagcompound.getString("inTile"));
+		inTile = (Block)Item.itemRegistry.getObject(nbttagcompound.getString("inTile"));
 		arrowShake = nbttagcompound.getByte("shake") & 0xff;
 		inGround = nbttagcompound.getByte("inGround") == 1;
 	}
 
 	public void onCollideWithPlayer(EntityPlayer entityplayer)
 	{
-		if(!worldObj.isRemote)
+		if(worldObj.isRemote)
 		{
 			return;
 		}

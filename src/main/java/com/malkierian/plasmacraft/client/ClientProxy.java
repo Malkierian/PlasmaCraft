@@ -7,13 +7,13 @@ import com.malkierian.plasmacraft.common.CommonProxy;
 import com.malkierian.plasmacraft.common.EntityAcidTNTPrimed;
 import com.malkierian.plasmacraft.common.EntityCausticBoat;
 import com.malkierian.plasmacraft.common.PlasmaCraft;
-import com.malkierian.plasmacraft.common.Entities.EntityAcid;
-import com.malkierian.plasmacraft.common.Entities.EntityCryoBlast;
-import com.malkierian.plasmacraft.common.Entities.EntityLaser;
-import com.malkierian.plasmacraft.common.Entities.EntityLaserShotgun;
-import com.malkierian.plasmacraft.common.Entities.EntityMutantCow;
-import com.malkierian.plasmacraft.common.Entities.EntityPlasma;
-import com.malkierian.plasmacraft.common.Entities.EntityRailGun;
+import com.malkierian.plasmacraft.common.entities.EntityAcid;
+import com.malkierian.plasmacraft.common.entities.EntityCryoBlast;
+import com.malkierian.plasmacraft.common.entities.EntityLaser;
+import com.malkierian.plasmacraft.common.entities.EntityLaserShotgun;
+import com.malkierian.plasmacraft.common.entities.EntityMutantCow;
+import com.malkierian.plasmacraft.common.entities.EntityPlasma;
+import com.malkierian.plasmacraft.common.entities.EntityRailGun;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 
@@ -22,10 +22,6 @@ public class ClientProxy extends CommonProxy
 	@Override
 	public void registerRenderers()
 	{
-//		MinecraftForgeClient.preloadTexture(ITEMS_PNG);
-//		MinecraftForgeClient.preloadTexture(BLOCK_PNG);
-//		MinecraftForgeClient.preloadTexture(LIQUID_PNG);
-		
 		PlasmaCraft.causticID = RenderingRegistry.getNextAvailableRenderId();
 		RenderingRegistry.registerEntityRenderingHandler(EntityCausticBoat.class, new RenderCausticBoat());
 		RenderingRegistry.registerEntityRenderingHandler(EntityAcidTNTPrimed.class, new RenderAcidTNTPrimed());
@@ -43,12 +39,6 @@ public class ClientProxy extends CommonProxy
 	public boolean getEntityInstanceOf(Entity entity)
 	{
 		return entity instanceof EntityPlayerSP;
-	}
-	
-	@Override
-	public void registerTextureFX()
-	{
-
 	}
 	
 	@Override

@@ -16,9 +16,12 @@ public class GuiHandler implements IGuiHandler
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z)
 	{
+		if (!world.blockExists(x, y, z))
+			return null;
+		
 		TileEntity tile = world.getTileEntity(x, y, z);
 		
-		if(tile == null)
+		if(!(tile instanceof TilePlasmaBench))
 			return null;
 		
 		switch(ID)
@@ -34,9 +37,12 @@ public class GuiHandler implements IGuiHandler
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world,
 			int x, int y, int z)
 	{
-		TileEntity tile = world.getTileEntity(x, y, z);
+		if (!world.blockExists(x, y, z))
+			return null;
 		
-		if(tile == null)
+		TileEntity tile = world.getTileEntity(x, y, z);
+
+		if(!(tile instanceof TilePlasmaBench))
 			return null;
 		
 		switch(ID)

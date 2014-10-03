@@ -2,14 +2,17 @@ package com.malkierian.plasmacraft.client;
 
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
 import com.malkierian.plasmacraft.common.ContainerPlasmaBench;
+import com.malkierian.plasmacraft.common.PlasmaCraft;
 import com.malkierian.plasmacraft.common.TilePlasmaBench;
 
 public class GuiPlasmaBench extends GuiContainer
 {
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID, "textures/gui/plasmabench.png");
 
 	private TilePlasmaBench bench;
 
@@ -23,15 +26,15 @@ public class GuiPlasmaBench extends GuiContainer
 
 	protected void drawGuiContainerForegroundLayer()
 	{
-//		fontRenderer.drawString("Plasmificator", 60, 10, 32768 /*GL_ABGR_EXT*/);
-//		fontRenderer.drawString("Queue", 10, 75, 32768 /*GL_ABGR_EXT*/);
-//		fontRenderer.drawString("Inventory", 10, 106, 32768 /*GL_ABGR_EXT*/);
+		fontRendererObj.drawString("Plasmificator", 60, 10, 32768 /*GL_ABGR_EXT*/);
+		fontRendererObj.drawString("Queue", 10, 75, 32768 /*GL_ABGR_EXT*/);
+		fontRendererObj.drawString("Inventory", 10, 106, 32768 /*GL_ABGR_EXT*/);
 	}
 
 	protected void drawGuiContainerBackgroundLayer(float f, int i, int j)
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-//		mc.renderEngine.bindTexture("/PlasmaCraftSprites/gui/plasmabench.png");
+		mc.renderEngine.bindTexture(TEXTURE);
 		int l = (width - xSize) / 2;
 		int i1 = (height - ySize) / 2;
 		drawTexturedModalRect(l, i1, 0, 0, xSize, ySize);

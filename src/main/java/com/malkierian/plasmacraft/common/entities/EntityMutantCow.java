@@ -1,4 +1,4 @@
-package com.malkierian.plasmacraft.common.Entities;
+package com.malkierian.plasmacraft.common.entities;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityAnimal;

@@ -7,12 +7,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 import com.malkierian.plasmacraft.common.PlasmaCraft;
-import com.malkierian.plasmacraft.common.Entities.EntityAcid;
-import com.malkierian.plasmacraft.common.Entities.EntityCryoBlast;
-import com.malkierian.plasmacraft.common.Entities.EntityLaser;
-import com.malkierian.plasmacraft.common.Entities.EntityLaserShotgun;
-import com.malkierian.plasmacraft.common.Entities.EntityPlasma;
-import com.malkierian.plasmacraft.common.Entities.EntityRailGun;
+import com.malkierian.plasmacraft.common.entities.EntityAcid;
+import com.malkierian.plasmacraft.common.entities.EntityCryoBlast;
+import com.malkierian.plasmacraft.common.entities.EntityLaser;
+import com.malkierian.plasmacraft.common.entities.EntityLaserShotgun;
+import com.malkierian.plasmacraft.common.entities.EntityPlasma;
+import com.malkierian.plasmacraft.common.entities.EntityRailGun;
 
 public class ItemEnergyWeapon extends ItemPlasma
 {

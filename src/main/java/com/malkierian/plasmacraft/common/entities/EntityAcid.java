@@ -1,4 +1,4 @@
-package com.malkierian.plasmacraft.common.Entities;
+package com.malkierian.plasmacraft.common.entities;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,9 +18,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import com.malkierian.plasmacraft.common.CryoBlast;
-
-public class EntityCryoBlast extends Entity
+public class EntityAcid extends Entity
 {
 	private int xTile;
 	private int yTile;
@@ -30,7 +29,7 @@ public class EntityCryoBlast extends Entity
 	public EntityLivingBase owner;
 	private int ticksInAir;
 
-	public EntityCryoBlast(World world)
+	public EntityAcid(World world)
 	{
 		super(world);
 		xTile = -1;
@@ -43,7 +42,7 @@ public class EntityCryoBlast extends Entity
 		setSize(0.5F, 0.5F);
 	}
 
-	public EntityCryoBlast(World world, double d, double d1, double d2)
+	public EntityAcid(World world, double d, double d1, double d2)
 	{
 		super(world);
 		xTile = -1;
@@ -58,7 +57,7 @@ public class EntityCryoBlast extends Entity
 		yOffset = 0.0F;
 	}
 
-	public EntityCryoBlast(World world, EntityLivingBase entityliving)
+	public EntityAcid(World world, EntityLivingBase entityliving)
 	{
 		super(world);
 		xTile = -1;
@@ -79,7 +78,7 @@ public class EntityCryoBlast extends Entity
 		motionX = -MathHelper.sin((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionZ = MathHelper.cos((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionY = -MathHelper.sin((rotationPitch / 180F) * 3.141593F);
-		setArrowHeading(motionX, motionY, motionZ, 5F, 1.0F);
+		setArrowHeading(motionX, motionY, motionZ, 1.0F, 1.0F);
 	}
 
 	protected void entityInit()
@@ -191,26 +190,65 @@ public class EntityCryoBlast extends Entity
 				{
 					return;
 				}
-				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 1))
+				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 6))
 				{
-					CryoBlast smcryoblast = new CryoBlast(worldObj, this, posX, posY, posZ, 2F);
-					smcryoblast.isFlaming = false;
-					smcryoblast.doExplosionA();
-					smcryoblast.doExplosionB();
+					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
+					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
+					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
+//					worldObj.setBlock(j, l, j1, PlasmaCraft.acidMoving);
 					setDead();
 				}
 			}
 			else
 			{
-				CryoBlast smcryoblast1 = new CryoBlast(worldObj, this, posX, posY, posZ, 2F);
-				smcryoblast1.isFlaming = false;
-				smcryoblast1.doExplosionA();
-				smcryoblast1.doExplosionB();
-				setDead();
+				int k = movingobjectposition.blockX;
+				int i1 = movingobjectposition.blockY;
+				int k1 = movingobjectposition.blockZ;
+				boolean flag = true;
+				if(worldObj.getBlock(k, i1, k1) == Blocks.tallgrass)
+				{
+					worldObj.setBlock(k, i1, k1, Blocks.fire);
+					flag = false;
+				}
+				if(worldObj.getBlock(k, i1, k1) == Blocks.snow)
+				{
+					worldObj.setBlock(k, i1, k1, Blocks.fire);
+					flag = false;
+				}
+				if(worldObj.getBlock(k, i1, k1) == Blocks.red_flower)
+				{
+					worldObj.setBlock(k, i1, k1, Blocks.fire);
+					flag = false;
+				}
+				if(worldObj.getBlock(k, i1, k1) == Blocks.yellow_flower)
+				{
+					worldObj.setBlock(k, i1, k1, Blocks.fire);
+					flag = false;
+				}
+//				if(worldObj.isAirBlock(k, i1 + 1, k1) && flag)
+//				{
+//					worldObj.setBlock(k, i1 + 1, k1, PlasmaCraft.acidMoving.blockID);
+//				}
+//				if(worldObj.isAirBlock(k, i1, k1 + 1) && flag)
+//				{
+//					worldObj.setBlock(k, i1, k1 + 1, PlasmaCraft.acidMoving.blockID);
+//				}
+//				if(worldObj.isAirBlock(k, i1, k1 - 1) && flag)
+//				{
+//					worldObj.setBlock(k, i1, k1 - 1, PlasmaCraft.acidMoving.blockID);
+//				}
+//				if(worldObj.isAirBlock(k + 1, i1, k1) && flag)
+//				{
+//					worldObj.setBlock(k + 1, i1, k1, PlasmaCraft.acidMoving.blockID);
+//				}
+//				if(worldObj.isAirBlock(k - 1, i1, k1) && flag)
+//				{
+//					worldObj.setBlock(k - 1, i1, k1, PlasmaCraft.acidMoving.blockID);
+//				}
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;
 				zTile = movingobjectposition.blockZ;
-				inTile = worldObj.getBlock(xTile, yTile, zTile);
+//				inTile = worldObj.getBlock(xTile, yTile, zTile);
 				motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
 				motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
 				motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
@@ -234,10 +272,10 @@ public class EntityCryoBlast extends Entity
 		rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 		rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 		float f2 = 0.99F;
-		//float f4 = 0.03F;
+		float f4 = 0.03F;
 		if(isInWater())
 		{
-			for(int i1 = 0; i1 < 4; i1++)
+			for(int l1 = 0; l1 < 4; l1++)
 			{
 				float f6 = 0.25F;
 				worldObj.spawnParticle("bubble", posX - motionX * (double)f6, posY - motionY * (double)f6, posZ - motionZ * (double)f6, motionX, motionY, motionZ);
@@ -248,6 +286,7 @@ public class EntityCryoBlast extends Entity
 		motionX *= f2;
 		motionY *= f2;
 		motionZ *= f2;
+		motionY -= f4;
 		setPosition(posX, posY, posZ);
 	}
 

@@ -20,12 +20,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
-import com.malkierian.plasmacraft.common.Entities.EntityAcid;
-import com.malkierian.plasmacraft.common.Entities.EntityCryoBlast;
-import com.malkierian.plasmacraft.common.Entities.EntityLaser;
-import com.malkierian.plasmacraft.common.Entities.EntityLaserShotgun;
-import com.malkierian.plasmacraft.common.Entities.EntityPlasma;
-import com.malkierian.plasmacraft.common.Entities.EntityRailGun;
+import com.malkierian.plasmacraft.client.GuiHandler;
 import com.malkierian.plasmacraft.common.blocks.BlockAcidBarrier;
 import com.malkierian.plasmacraft.common.blocks.BlockAcidTNT;
 import com.malkierian.plasmacraft.common.blocks.BlockCausticFluids;
@@ -33,6 +28,12 @@ import com.malkierian.plasmacraft.common.blocks.BlockGlowCloth;
 import com.malkierian.plasmacraft.common.blocks.BlockPlasmaBench;
 import com.malkierian.plasmacraft.common.blocks.BlockPlasmaOre;
 import com.malkierian.plasmacraft.common.blocks.BlockReinforcedGlass;
+import com.malkierian.plasmacraft.common.entities.EntityAcid;
+import com.malkierian.plasmacraft.common.entities.EntityCryoBlast;
+import com.malkierian.plasmacraft.common.entities.EntityLaser;
+import com.malkierian.plasmacraft.common.entities.EntityLaserShotgun;
+import com.malkierian.plasmacraft.common.entities.EntityPlasma;
+import com.malkierian.plasmacraft.common.entities.EntityRailGun;
 import com.malkierian.plasmacraft.common.items.ItemAcidGrenade;
 import com.malkierian.plasmacraft.common.items.ItemCausticBoat;
 import com.malkierian.plasmacraft.common.items.ItemEnergyWeapon;
@@ -48,6 +49,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
@@ -213,7 +215,7 @@ public class PlasmaCraft
 	@Instance("PlasmaCraft")
 	public static PlasmaCraft instance;
 	
-//	private GuiHandler guiHandler = new GuiHandler();
+	private GuiHandler guiHandler = new GuiHandler();
 	
 	// Says where the client and server 'proxy' code is loaded.
 	@SidedProxy(clientSide="com.malkierian.plasmacraft.client.ClientProxy", serverSide="com.malkierian.plasmacraft.common.CommonProxy")
@@ -230,7 +232,7 @@ public class PlasmaCraft
 	{
 		loadConfig();
 		
-//		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
+		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
 		
 		proxy.registerRenderers();
 		
@@ -466,6 +468,7 @@ public class PlasmaCraft
 		GameRegistry.registerItem(ingotUranium, "Uranium Ingot");
 		GameRegistry.registerItem(plasma, "Plasma");
 
+		
 		GameRegistry.registerItem(acidVial, "Acid Vial");
 		GameRegistry.registerItem(causticVial, "Caustic Vial");
 		GameRegistry.registerItem(cryoniteVial, "Cryonite Vial");

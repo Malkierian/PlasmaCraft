@@ -1,6 +1,7 @@
-package com.malkierian.plasmacraft.common.Entities;
+package com.malkierian.plasmacraft.common.entities;
 
 import java.util.List;
+import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -18,7 +19,9 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityLaserShotgun extends Entity
+import com.malkierian.plasmacraft.common.AcidExplosion;
+
+public class EntityPlasma extends Entity
 {
 	private int xTile;
 	private int yTile;
@@ -28,8 +31,8 @@ public class EntityLaserShotgun extends Entity
 	public int arrowShake;
 	public EntityLivingBase owner;
 	private int ticksInAir;
-
-	public EntityLaserShotgun(World world)
+	int damg;
+	public EntityPlasma(World world)
 	{
 		super(world);
 		xTile = -1;
@@ -42,7 +45,7 @@ public class EntityLaserShotgun extends Entity
 		setSize(0.5F, 0.5F);
 	}
 
-	public EntityLaserShotgun(World world, double d, double d1, double d2)
+	public EntityPlasma(World world, double d, double d1, double d2)
 	{
 		super(world);
 		xTile = -1;
@@ -57,9 +60,10 @@ public class EntityLaserShotgun extends Entity
 		yOffset = 0.0F;
 	}
 
-	public EntityLaserShotgun(World world, EntityLivingBase entityliving)
+	public EntityPlasma(World world, EntityLivingBase entityliving, int dmg)
 	{
 		super(world);
+		damg = dmg;
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
@@ -78,7 +82,7 @@ public class EntityLaserShotgun extends Entity
 		motionX = -MathHelper.sin((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionZ = MathHelper.cos((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionY = -MathHelper.sin((rotationPitch / 180F) * 3.141593F);
-		setArrowHeading(motionX, motionY, motionZ, 5F, 1.0F);
+		setArrowHeading(motionX, motionY, motionZ, 2.0F, 1.0F);
 	}
 
 	protected void entityInit()
@@ -92,9 +96,9 @@ public class EntityLaserShotgun extends Entity
 		d /= f2;
 		d1 /= f2;
 		d2 /= f2;
-		d += rand.nextGaussian() * 0.017499999832361935D * (double)f1;
-		d1 += rand.nextGaussian() * 0.027499999832361937D * (double)f1;
-		d2 += rand.nextGaussian() * 0.097499999832361933D * (double)f1;
+		d += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
+		d1 += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
+		d2 += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
 		d *= f;
 		d1 *= f;
 		d2 *= f;
@@ -190,13 +194,22 @@ public class EntityLaserShotgun extends Entity
 				{
 					return;
 				}
-				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 4))
+				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), damg))
 				{
 					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
 					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
 					worldObj.setBlock(j, l, j1, Blocks.fire);
-					entity.setFire(1);
+					Random random = new Random();
+					int i2 = random.nextInt(10);
+					if(i2 == 1)
+					{
+						AcidExplosion smacidexplosion1 = new AcidExplosion(worldObj, this, posX, posY, posZ, 3F);
+						smacidexplosion1.isFlaming = false;
+						smacidexplosion1.doExplosionA();
+						smacidexplosion1.doExplosionB();
+						setDead();
+					}
 					setDead();
 				}
 			} else
@@ -250,10 +263,19 @@ public class EntityLaserShotgun extends Entity
 				{
 					worldObj.setBlock(k - 1, i1, k1, Blocks.fire);
 				}
+				Random random1 = new Random();
+				if(random1.nextInt(10) == 1)
+				{
+					AcidExplosion smacidexplosion = new AcidExplosion(worldObj, this, posX, posY, posZ, 2F);
+					smacidexplosion.isFlaming = false;
+					smacidexplosion.doExplosionA();
+					smacidexplosion.doExplosionB();
+					setDead();
+				}
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;
 				zTile = movingobjectposition.blockZ;
-				inTile = worldObj.getBlock(xTile, yTile, zTile);
+//				inTile = worldObj.getBlock(xTile, yTile, zTile);
 				motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
 				motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
 				motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);

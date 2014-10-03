@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.Entities.EntityLaser;
+import com.malkierian.plasmacraft.common.entities.EntityLaser;
 
 public class RenderLaser extends Render
 {

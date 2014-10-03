@@ -11,7 +11,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import com.malkierian.plasmacraft.common.PlasmaCraft;
-import com.malkierian.plasmacraft.common.Entities.EntityMutantCow;
+import com.malkierian.plasmacraft.common.entities.EntityMutantCow;
 
 public class ItemVial extends ItemPlasma
 {

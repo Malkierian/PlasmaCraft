@@ -9,11 +9,12 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.CommonProxy;
 import com.malkierian.plasmacraft.common.EntityCausticBoat;
+import com.malkierian.plasmacraft.common.PlasmaCraft;
 
 public class RenderCausticBoat extends Render
 {
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID, "textures/misc/causticBoat.png");
 	protected ModelBase modelBoat;
 
 	public RenderCausticBoat()
@@ -40,11 +41,10 @@ public class RenderCausticBoat extends Render
 			GL11.glRotatef(MathHelper.sin(var10) * var10 * var11 / 10.0F * (float)par1EntityBoat.getForwardDirection(), 1.0F, 0.0F, 0.0F);
 		}
 
-//		this.loadTexture(CommonProxy.BLOCK_PNG);
 		float var12 = 0.75F;
 		GL11.glScalef(var12, var12, var12);
 		GL11.glScalef(1.0F / var12, 1.0F / var12, 1.0F / var12);
-//		this.loadTexture("/PlasmaCraftSprites/misc/boat_caustic.png");
+		this.bindTexture(TEXTURE);
 		GL11.glScalef(-1.0F, -1.0F, 1.0F);
 		this.modelBoat.render(par1EntityBoat, 0.0F, 0.0F, -0.1F, 0.0F, 0.0F, 0.0625F);
 		GL11.glPopMatrix();

@@ -40,12 +40,6 @@ public class BlockPlasmaBench extends BlockContainer
 		setLightLevel(0.0f);
 		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
-
-//	@Override
-//	public void addCreativeItems(ArrayList itemList)
-//	{		
-//		itemList.add(new ItemStack(this, 1));
-//	}
 	
 	@Override
 	public int getLightValue(IBlockAccess world, int x, int y, int z)
@@ -117,11 +111,6 @@ public class BlockPlasmaBench extends BlockContainer
 	{
 		// Drop through if the player is sneaking
 		if(entityplayer.isSneaking())
-			return false;
-		
-		TileEntity tileentity = world.getTileEntity(i, j, k);
-		
-		if(tileentity == null)
 			return false;
 		
 		if(world.isRemote)
