@@ -54,7 +54,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 
-@Mod(modid = "plasmacraft", name = "PlasmaCraft", version = "0.3.4")
+@Mod(modid = "plasmacraft")
 public class PlasmaCraft
 {
 	public static String MOD_ID = "plasmacraft";
@@ -346,11 +346,11 @@ public class PlasmaCraft
 	{
 		int entityID = EntityRegistry.findGlobalUniqueEntityId();
 		EntityRegistry.registerGlobalEntityID(EntityCausticBoat.class, "causticBoat", entityID);
-		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", entityID, this, 64, 5, true);
+		EntityRegistry.registerModEntity(EntityCausticBoat.class, "causticBoat", entityID, this, 32, 100, true);
 		
 		entityID = EntityRegistry.findGlobalUniqueEntityId();
 		EntityRegistry.registerGlobalEntityID(EntityAcidTNTPrimed.class, "acidTntPrimed", entityID);
-		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTntPrimed", entityID, this, 64, 100, false);
+		EntityRegistry.registerModEntity(EntityAcidTNTPrimed.class, "acidTntPrimed", entityID, this, 32, 100, false);
 		
 		entityID = EntityRegistry.findGlobalUniqueEntityId();
 		EntityRegistry.registerGlobalEntityID(EntityAcidGrenade.class, "acidGrenade", entityID);

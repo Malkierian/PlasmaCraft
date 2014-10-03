@@ -4,11 +4,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.world.IBlockAccess;
 
 public class CommonProxy
-{
-	public static String ITEMS_PNG = "/PlasmaCraftSprites/items0.png";
-	public static String BLOCK_PNG = "/PlasmaCraftSprites/terrain0.png";
-	public static String LIQUID_PNG = "/PlasmaCraftSprites/terrain1.png";
-	
+{	
 	// Client stuff
 	public void registerRenderers()
 	{
