@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.3.4"
+version = "0.3.5b"
 group= "com.malkierian.PlasmaCraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "PlasmaCraft"
 
@@ -45,7 +45,7 @@ dependencies {
 processResources
 {
     // this will ensure that this task is redone when the versions change.
-    inputs.property "${version}", project.version
+    inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
     // replace stuff in mcmod.info, nothing else
