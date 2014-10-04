@@ -47,41 +47,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 		icons = new IIcon[] {iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":" + fluidName),
 				iconRegister.registerIcon(PlasmaCraft.MOD_ID + ":" + fluidName + "_flow")};
 	}
-
-//	@Override
-//	public int tickRate(World world)
-//	{
-//		if(this.liquid == PlasmaLiquid.ACID)
-//		{
-//			return 3;
-//		}
-//		if(this.liquid == PlasmaLiquid.RADIONITE)
-//		{
-//			return 20;
-//		}
-//		if(this.liquid == PlasmaLiquid.PLUTONIUM)
-//		{
-//			return 8;
-//		}
-//		if(this.liquid == PlasmaLiquid.NETHERFLOW)
-//		{
-//			return 5;
-//		}
-//		if(this.liquid == PlasmaLiquid.CRYONITE)
-//		{
-//			return 6;
-//		}
-//		if(this.liquid == PlasmaLiquid.NEPTUNIUM)
-//		{
-//			return 10;
-//		}
-//		if(this.liquid == PlasmaLiquid.URANIUM)
-//		{
-//			return 15;
-//		}
-//		return this.liquid != PlasmaLiquid.OBSIDIUM ? 5 : 25;
-//	}
-//
+	
 	@Override
 	public void onBlockDestroyedByExplosion(World world, int i, int j, int k, Explosion explosion)
 	{

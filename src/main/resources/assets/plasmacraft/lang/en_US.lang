@@ -57,6 +57,7 @@ item.batteryPlasma.name=Plasma Battery
 item.energyCell.name=Energy Cell
 item.thermopellet.name=Thermopellet
 
+item.vial_acid.name=Acid Vial
 item.vial_empty.name=Empty Vial
 item.vial_cryonite.name=Cryonite Vial
 item.vial_neptunium.name=Neptunium Vial
@@ -84,3 +85,6 @@ item.hazmatPants.name=Hazmat Pants
 
 item.causticBoat.name=Caustic Boat
 item.plasmaLeather.name=Plasma Leather
+
+
+itemGroup.PlasmaCraft=PlasmaCraft
