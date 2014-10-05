@@ -1,4 +1,4 @@
-package com.malkierian.plasmacraft.client;
+package com.malkierian.plasmacraft.client.renderers;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
@@ -8,22 +8,22 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.core.entities.EntityLaserShotgun;
+import com.malkierian.plasmacraft.core.entities.EntityAcid;
 
-public class RenderLaserShotgun extends Render
+public class RenderAcid extends Render
 {
-	public RenderLaserShotgun()
+	public RenderAcid()
 	{
 	}
 
-	public void renderArrow(EntityLaserShotgun smentitylasershotgun, double d, double d1, double d2, 
+	public void renderArrow(EntityAcid smentityacid, double d, double d1, double d2, 
 			float f, float f1)
 	{
-//		loadTexture("/PlasmaCraftSprites/misc/laser.png");
+//		loadTexture("/PlasmaCraftSprites/misc/plasmaball.png");
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)d, (float)d1, (float)d2);
-		GL11.glRotatef((smentitylasershotgun.prevRotationYaw + (smentitylasershotgun.rotationYaw - smentitylasershotgun.prevRotationYaw) * f1) - 90F, 0.0F, 1.0F, 0.0F);
-		GL11.glRotatef(smentitylasershotgun.prevRotationPitch + (smentitylasershotgun.rotationPitch - smentitylasershotgun.prevRotationPitch) * f1, 0.0F, 0.0F, 1.0F);
+		GL11.glRotatef((smentityacid.prevRotationYaw + (smentityacid.rotationYaw - smentityacid.prevRotationYaw) * f1) - 90F, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(smentityacid.prevRotationPitch + (smentityacid.rotationPitch - smentityacid.prevRotationPitch) * f1, 0.0F, 0.0F, 1.0F);
 		Tessellator tessellator = Tessellator.instance;
 		int i = 0;
 		float f2 = 0.0F;
@@ -36,7 +36,7 @@ public class RenderLaserShotgun extends Render
 		float f9 = (float)(10 + i * 10) / 32F;
 		float f10 = 0.05625F;
 		GL11.glEnable(32826 /*GL_RESCALE_NORMAL_EXT*/);
-		float f11 = (float)smentitylasershotgun.arrowShake - f1;
+		float f11 = (float)smentityacid.arrowShake - f1;
 		if(f11 > 0.0F)
 		{
 			float f12 = -MathHelper.sin(f11 * 3F) * f11;
@@ -78,7 +78,7 @@ public class RenderLaserShotgun extends Render
 	public void doRender(Entity entity, double d, double d1, double d2, 
 			float f, float f1)
 	{
-		renderArrow((EntityLaserShotgun)entity, d, d1, d2, f, f1);
+		renderArrow((EntityAcid)entity, d, d1, d2, f, f1);
 	}
 
 	@Override

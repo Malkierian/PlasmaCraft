@@ -1,11 +1,10 @@
-package com.malkierian.plasmacraft.client;
+package com.malkierian.plasmacraft.client.gui;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.malkierian.plasmacraft.core.ContainerPlasmaBench;
-import com.malkierian.plasmacraft.core.GuiIds;
 import com.malkierian.plasmacraft.core.TilePlasmaBench;
 
 import cpw.mods.fml.common.network.IGuiHandler;

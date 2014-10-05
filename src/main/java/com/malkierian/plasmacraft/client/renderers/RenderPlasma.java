@@ -1,4 +1,4 @@
-package com.malkierian.plasmacraft.client;
+package com.malkierian.plasmacraft.client.renderers;
 
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;

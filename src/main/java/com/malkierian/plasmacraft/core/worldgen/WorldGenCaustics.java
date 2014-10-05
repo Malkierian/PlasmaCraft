@@ -1,4 +1,4 @@
-package com.malkierian.plasmacraft.core;
+package com.malkierian.plasmacraft.core.worldgen;
 
 import java.util.Random;
 

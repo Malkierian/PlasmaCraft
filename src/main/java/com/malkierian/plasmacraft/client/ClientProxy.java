@@ -3,6 +3,16 @@ package com.malkierian.plasmacraft.client;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 
+import com.malkierian.plasmacraft.client.renderers.ModelMutantCow;
+import com.malkierian.plasmacraft.client.renderers.RenderAcid;
+import com.malkierian.plasmacraft.client.renderers.RenderAcidTNTPrimed;
+import com.malkierian.plasmacraft.client.renderers.RenderCausticBoat;
+import com.malkierian.plasmacraft.client.renderers.RenderCryoBlast;
+import com.malkierian.plasmacraft.client.renderers.RenderLaser;
+import com.malkierian.plasmacraft.client.renderers.RenderLaserShotgun;
+import com.malkierian.plasmacraft.client.renderers.RenderMutantCow;
+import com.malkierian.plasmacraft.client.renderers.RenderPlasma;
+import com.malkierian.plasmacraft.client.renderers.RenderRailGun;
 import com.malkierian.plasmacraft.core.CommonProxy;
 import com.malkierian.plasmacraft.core.PlasmaCraft;
 import com.malkierian.plasmacraft.core.entities.EntityAcid;

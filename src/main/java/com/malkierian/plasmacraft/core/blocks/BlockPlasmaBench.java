@@ -17,7 +17,7 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.malkierian.plasmacraft.core.GuiIds;
+import com.malkierian.plasmacraft.client.gui.GuiIds;
 import com.malkierian.plasmacraft.core.PlasmaCraft;
 import com.malkierian.plasmacraft.core.TilePlasmaBench;
 

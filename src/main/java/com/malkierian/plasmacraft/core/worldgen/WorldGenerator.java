@@ -1,6 +1,9 @@
-package com.malkierian.plasmacraft.core;
+package com.malkierian.plasmacraft.core.worldgen;
 
 import java.util.Random;
+
+import com.malkierian.plasmacraft.core.CausticLakes;
+import com.malkierian.plasmacraft.core.PlasmaCraft;
 
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;

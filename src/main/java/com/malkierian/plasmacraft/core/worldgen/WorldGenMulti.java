@@ -1,4 +1,8 @@
-package com.malkierian.plasmacraft.core;
+// Decompiled by Jad v1.5.8g. Copyright 2001 Pavel Kouznetsov.
+// Jad home page: http://www.kpdus.com/jad.html
+// Decompiler options: packimports(3) braces deadcode fieldsfirst 
+
+package com.malkierian.plasmacraft.core.worldgen;
 
 import java.util.Random;
 
@@ -7,13 +11,16 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class WorldGenNetherMinable extends WorldGenerator
+// Referenced classes of package net.minecraft.src:
+//			WorldGenerator, MathHelper, World, Block
+
+public class WorldGenMulti extends WorldGenerator
 {
 	private Block minableBlock;
 	private int numberOfBlocks;
 	private int meta;
 
-	public WorldGenNetherMinable(Block i, int j, int k)
+	public WorldGenMulti(Block i, int j, int k)
 	{
 		minableBlock = i;
 		numberOfBlocks = j;
@@ -27,8 +34,8 @@ public class WorldGenNetherMinable extends WorldGenerator
 		double d1 = (float)(i + 8) - (MathHelper.sin(f) * (float)numberOfBlocks) / 8F;
 		double d2 = (float)(k + 8) + (MathHelper.cos(f) * (float)numberOfBlocks) / 8F;
 		double d3 = (float)(k + 8) - (MathHelper.cos(f) * (float)numberOfBlocks) / 8F;
-		double d4 = j + random.nextInt(3) + 2;
-		double d5 = j + random.nextInt(3) + 2;
+		double d4 = (j + random.nextInt(3)) - 2;
+		double d5 = (j + random.nextInt(3)) - 2;
 		for(int l = 0; l <= numberOfBlocks; l++)
 		{
 			double d6 = d + ((d1 - d) * (double)l) / (double)numberOfBlocks;
@@ -37,12 +44,12 @@ public class WorldGenNetherMinable extends WorldGenerator
 			double d9 = (random.nextDouble() * (double)numberOfBlocks) / 16D;
 			double d10 = (double)(MathHelper.sin(((float)l * 3.141593F) / (float)numberOfBlocks) + 1.0F) * d9 + 1.0D;
 			double d11 = (double)(MathHelper.sin(((float)l * 3.141593F) / (float)numberOfBlocks) + 1.0F) * d9 + 1.0D;
-			int i1 = (int)(d6 - d10 / 2D);
-			int j1 = (int)(d7 - d11 / 2D);
-			int k1 = (int)(d8 - d10 / 2D);
-			int l1 = (int)(d6 + d10 / 2D);
-			int i2 = (int)(d7 + d11 / 2D);
-			int j2 = (int)(d8 + d10 / 2D);
+			int i1 = MathHelper.floor_double(d6 - d10 / 2D);
+			int j1 = MathHelper.floor_double(d7 - d11 / 2D);
+			int k1 = MathHelper.floor_double(d8 - d10 / 2D);
+			int l1 = MathHelper.floor_double(d6 + d10 / 2D);
+			int i2 = MathHelper.floor_double(d7 + d11 / 2D);
+			int j2 = MathHelper.floor_double(d8 + d10 / 2D);
 			for(int k2 = i1; k2 <= l1; k2++)
 			{
 				double d12 = (((double)k2 + 0.5D) - d6) / (d10 / 2D);
@@ -60,9 +67,9 @@ public class WorldGenNetherMinable extends WorldGenerator
 					for(int i3 = k1; i3 <= j2; i3++)
 					{
 						double d14 = (((double)i3 + 0.5D) - d8) / (d10 / 2D);
-						if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.getBlock(k2, l2, i3) == Blocks.netherrack)
+						if(d12 * d12 + d13 * d13 + d14 * d14 < 1.0D && world.getBlock(k2, l2, i3) == Blocks.stone)
 						{
-							world.setBlock(k2, l2, i3, minableBlock, meta, 0x03);
+							world.setBlock(k2, l2, i3, minableBlock, meta, 0x02);
 						}
 					}
 

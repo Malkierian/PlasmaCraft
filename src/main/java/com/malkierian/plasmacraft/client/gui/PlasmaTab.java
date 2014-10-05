@@ -1,7 +1,9 @@
-package com.malkierian.plasmacraft.core;
+package com.malkierian.plasmacraft.client.gui;
 
 import java.util.Collections;
 import java.util.List;
+
+import com.malkierian.plasmacraft.core.PlasmaCraft;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;

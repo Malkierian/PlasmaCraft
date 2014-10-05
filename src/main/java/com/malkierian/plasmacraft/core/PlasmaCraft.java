@@ -20,7 +20,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
-import com.malkierian.plasmacraft.client.GuiHandler;
+import com.malkierian.plasmacraft.client.gui.GuiHandler;
+import com.malkierian.plasmacraft.client.gui.PlasmaTab;
 import com.malkierian.plasmacraft.core.blocks.BlockAcidBarrier;
 import com.malkierian.plasmacraft.core.blocks.BlockAcidTNT;
 import com.malkierian.plasmacraft.core.blocks.BlockCausticFluids;
