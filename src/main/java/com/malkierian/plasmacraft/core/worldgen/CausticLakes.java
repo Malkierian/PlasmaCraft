@@ -1,6 +1,8 @@
-package com.malkierian.plasmacraft.core;
+package com.malkierian.plasmacraft.core.worldgen;
 
 import java.util.Random;
+
+import com.malkierian.plasmacraft.core.PlasmaCraft;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
