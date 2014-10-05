@@ -3,17 +3,17 @@ package com.malkierian.plasmacraft.client;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 
-import com.malkierian.plasmacraft.common.CommonProxy;
-import com.malkierian.plasmacraft.common.EntityAcidTNTPrimed;
-import com.malkierian.plasmacraft.common.EntityCausticBoat;
-import com.malkierian.plasmacraft.common.PlasmaCraft;
-import com.malkierian.plasmacraft.common.entities.EntityAcid;
-import com.malkierian.plasmacraft.common.entities.EntityCryoBlast;
-import com.malkierian.plasmacraft.common.entities.EntityLaser;
-import com.malkierian.plasmacraft.common.entities.EntityLaserShotgun;
-import com.malkierian.plasmacraft.common.entities.EntityMutantCow;
-import com.malkierian.plasmacraft.common.entities.EntityPlasma;
-import com.malkierian.plasmacraft.common.entities.EntityRailGun;
+import com.malkierian.plasmacraft.core.CommonProxy;
+import com.malkierian.plasmacraft.core.PlasmaCraft;
+import com.malkierian.plasmacraft.core.entities.EntityAcid;
+import com.malkierian.plasmacraft.core.entities.EntityAcidTNTPrimed;
+import com.malkierian.plasmacraft.core.entities.EntityCausticBoat;
+import com.malkierian.plasmacraft.core.entities.EntityCryoBlast;
+import com.malkierian.plasmacraft.core.entities.EntityLaser;
+import com.malkierian.plasmacraft.core.entities.EntityLaserShotgun;
+import com.malkierian.plasmacraft.core.entities.EntityMutantCow;
+import com.malkierian.plasmacraft.core.entities.EntityPlasma;
+import com.malkierian.plasmacraft.core.entities.EntityRailGun;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

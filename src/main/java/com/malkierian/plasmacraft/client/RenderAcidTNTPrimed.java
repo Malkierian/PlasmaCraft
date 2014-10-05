@@ -7,9 +7,9 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.CommonProxy;
-import com.malkierian.plasmacraft.common.EntityAcidTNTPrimed;
-import com.malkierian.plasmacraft.common.PlasmaCraft;
+import com.malkierian.plasmacraft.core.CommonProxy;
+import com.malkierian.plasmacraft.core.PlasmaCraft;
+import com.malkierian.plasmacraft.core.entities.EntityAcidTNTPrimed;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

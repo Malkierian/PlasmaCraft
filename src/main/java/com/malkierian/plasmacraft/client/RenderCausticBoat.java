@@ -9,8 +9,8 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.EntityCausticBoat;
-import com.malkierian.plasmacraft.common.PlasmaCraft;
+import com.malkierian.plasmacraft.core.PlasmaCraft;
+import com.malkierian.plasmacraft.core.entities.EntityCausticBoat;
 
 public class RenderCausticBoat extends Render
 {

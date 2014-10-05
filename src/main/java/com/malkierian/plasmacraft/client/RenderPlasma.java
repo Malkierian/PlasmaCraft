@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.entities.EntityPlasma;
+import com.malkierian.plasmacraft.core.entities.EntityPlasma;
 
 public class RenderPlasma extends Render
 {

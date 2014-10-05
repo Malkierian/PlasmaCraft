@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.entities.EntityRailGun;
+import com.malkierian.plasmacraft.core.entities.EntityRailGun;
 
 public class RenderRailGun extends Render
 {

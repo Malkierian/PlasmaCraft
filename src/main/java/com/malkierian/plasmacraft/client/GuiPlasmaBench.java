@@ -6,9 +6,9 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.ContainerPlasmaBench;
-import com.malkierian.plasmacraft.common.PlasmaCraft;
-import com.malkierian.plasmacraft.common.TilePlasmaBench;
+import com.malkierian.plasmacraft.core.ContainerPlasmaBench;
+import com.malkierian.plasmacraft.core.PlasmaCraft;
+import com.malkierian.plasmacraft.core.TilePlasmaBench;
 
 public class GuiPlasmaBench extends GuiContainer
 {

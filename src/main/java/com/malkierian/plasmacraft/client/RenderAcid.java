@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.common.entities.EntityAcid;
+import com.malkierian.plasmacraft.core.entities.EntityAcid;
 
 public class RenderAcid extends Render
 {

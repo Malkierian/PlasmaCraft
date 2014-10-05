@@ -4,9 +4,9 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-import com.malkierian.plasmacraft.common.ContainerPlasmaBench;
-import com.malkierian.plasmacraft.common.GuiIds;
-import com.malkierian.plasmacraft.common.TilePlasmaBench;
+import com.malkierian.plasmacraft.core.ContainerPlasmaBench;
+import com.malkierian.plasmacraft.core.GuiIds;
+import com.malkierian.plasmacraft.core.TilePlasmaBench;
 
 import cpw.mods.fml.common.network.IGuiHandler;
 
