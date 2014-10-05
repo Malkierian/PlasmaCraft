@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.ChunkPosition;
@@ -131,8 +132,7 @@ label0:
 				d10 /= d11;
 				double d12 = worldObj.getBlockDensity(vec3d, entity.boundingBox);
 				double d13 = (1.0D - d4) * d12;
-				// TODO entity damage
-//				entity.attackEntityFrom(DamageSource.explosion, (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
+				entity.attackEntityFrom(DamageSource.setExplosionSource(this), (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
 				double d14 = d13;
 				entity.motionX += d6 * d14;
 				entity.motionY += d8 * d14;

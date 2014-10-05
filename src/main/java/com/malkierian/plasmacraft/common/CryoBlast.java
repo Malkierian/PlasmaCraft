@@ -13,6 +13,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.ChunkPosition;
@@ -125,8 +126,7 @@ label0:
 				d10 /= d11;
 				double d12 = worldObj.getBlockDensity(vec3d, entity.boundingBox);
 				double d13 = (1.0D - d4) * d12;
-				// TODO entity damage
-//				entity.attackEntityFrom(DamageSource.explosion, (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
+				entity.attackEntityFrom(DamageSource.setExplosionSource(this), (int)(((d13 * d13 + d13) / 2D) * 8D * (double)radius + 1.0D));
 				if(entity instanceof EntityLiving)
 				{
 					EntityLiving el = (EntityLiving)entity;
@@ -219,10 +219,10 @@ label0:
 				for(int k1 = (int)(posZ - (double)(radius + 1.0F)); k1 <= (int)(posZ + (double)(radius + 1.0F)); k1++)
 				{
 					Block j2 = worldObj.getBlock(k, l, k1);
-//					if(j2 != PlasmaCraft.acidMoving && j2 != PlasmaCraft.acidStill)
-//					{
-//						continue;
-//					}
+					if(j2 != PlasmaCraft.acidBlock)
+					{
+						continue;
+					}
 					boolean flag = isFlowable(worldObj.getBlock(k - 1, l, k1));
 					boolean flag1 = isFlowable(worldObj.getBlock(k + 1, l, k1));
 					boolean flag2 = isFlowable(worldObj.getBlock(k, l, k1 + 1));
