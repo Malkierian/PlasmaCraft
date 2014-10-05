@@ -230,7 +230,7 @@ label0:
 					boolean flag4 = isFlowable(worldObj.getBlock(k, l - 1, k1));
 					if(flag || flag1 || flag2 || flag3 || flag4)
 					{
-						worldObj.setBlock(k, l, k1, Blocks.cobblestone);
+//						worldObj.setBlock(k, l, k1, Blocks.cobblestone);
 					}
 				}
 
