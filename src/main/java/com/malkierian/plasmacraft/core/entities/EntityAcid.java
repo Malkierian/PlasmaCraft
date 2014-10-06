@@ -18,6 +18,8 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
+import com.malkierian.plasmacraft.core.PlasmaCraft;
+
 public class EntityAcid extends Entity
 {
 	private int xTile;
@@ -195,7 +197,7 @@ public class EntityAcid extends Entity
 					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
 					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-//					worldObj.setBlock(j, l, j1, PlasmaCraft.acidMoving);
+					worldObj.setBlock(j, l, j1, PlasmaCraft.acidBlock);
 					setDead();
 				}
 			}
@@ -225,30 +227,30 @@ public class EntityAcid extends Entity
 					worldObj.setBlock(k, i1, k1, Blocks.fire);
 					flag = false;
 				}
-//				if(worldObj.isAirBlock(k, i1 + 1, k1) && flag)
-//				{
-//					worldObj.setBlock(k, i1 + 1, k1, PlasmaCraft.acidMoving.blockID);
-//				}
-//				if(worldObj.isAirBlock(k, i1, k1 + 1) && flag)
-//				{
-//					worldObj.setBlock(k, i1, k1 + 1, PlasmaCraft.acidMoving.blockID);
-//				}
-//				if(worldObj.isAirBlock(k, i1, k1 - 1) && flag)
-//				{
-//					worldObj.setBlock(k, i1, k1 - 1, PlasmaCraft.acidMoving.blockID);
-//				}
-//				if(worldObj.isAirBlock(k + 1, i1, k1) && flag)
-//				{
-//					worldObj.setBlock(k + 1, i1, k1, PlasmaCraft.acidMoving.blockID);
-//				}
-//				if(worldObj.isAirBlock(k - 1, i1, k1) && flag)
-//				{
-//					worldObj.setBlock(k - 1, i1, k1, PlasmaCraft.acidMoving.blockID);
-//				}
+				if(worldObj.isAirBlock(k, i1 + 1, k1) && flag)
+				{
+					worldObj.setBlock(k, i1 + 1, k1, PlasmaCraft.acidBlock);
+				}
+				if(worldObj.isAirBlock(k, i1, k1 + 1) && flag)
+				{
+					worldObj.setBlock(k, i1, k1 + 1, PlasmaCraft.acidBlock);
+				}
+				if(worldObj.isAirBlock(k, i1, k1 - 1) && flag)
+				{
+					worldObj.setBlock(k, i1, k1 - 1, PlasmaCraft.acidBlock);
+				}
+				if(worldObj.isAirBlock(k + 1, i1, k1) && flag)
+				{
+					worldObj.setBlock(k + 1, i1, k1, PlasmaCraft.acidBlock);
+				}
+				if(worldObj.isAirBlock(k - 1, i1, k1) && flag)
+				{
+					worldObj.setBlock(k - 1, i1, k1, PlasmaCraft.acidBlock);
+				}
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;
 				zTile = movingobjectposition.blockZ;
-//				inTile = worldObj.getBlock(xTile, yTile, zTile);
+				inTile = worldObj.getBlock(xTile, yTile, zTile);
 				motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
 				motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
 				motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
