@@ -45,7 +45,7 @@ public class WorldGenerator implements IWorldGenerator {
 			int k3 = random.nextInt(16) + 8;
 			if(j2 < PlasmaCraft.netherflowLakeYCutoff)
 			{
-//				(new WorldGenCaustics(PlasmaCraft.netherflowMoving)).generate(world, random, i1, j2, k3);
+				(new WorldGenCaustics(PlasmaCraft.netherflowBlock)).generate(world, random, i1, j2, k3);
 			}
 		}
 		for(int j1 = 0; j1 < PlasmaCraft.netherflowSpoutCount; j1++)
@@ -53,7 +53,7 @@ public class WorldGenerator implements IWorldGenerator {
 			int k2 = i + random.nextInt(16) + 8;
 			int l3 = random.nextInt(random.nextInt(PlasmaCraft.netherflowSpoutYRange) + PlasmaCraft.netherflowSpoutYStart);
 			int l4 = j + random.nextInt(16) + 8;
-//			(new WorldGenNetherCaustics(PlasmaCraft.netherflowMoving)).generate(world, random, k2, l3, l4);
+			(new WorldGenNetherCaustics(PlasmaCraft.netherflowBlock)).generate(world, random, k2, l3, l4);
 		}
 
 		for(int k1 = 0; k1 < PlasmaCraft.neptuniumSpoutCount; k1++)
@@ -61,7 +61,7 @@ public class WorldGenerator implements IWorldGenerator {
 			int l2 = i + random.nextInt(16) + 8;
 			int i4 = random.nextInt(random.nextInt(PlasmaCraft.neptuniumSpoutYRange) + PlasmaCraft.neptuniumSpoutYStart);
 			int i5 = j + random.nextInt(16) + 8;
-//			(new WorldGenNetherCaustics(PlasmaCraft.neptuniumMoving)).generate(world, random, l2, i4, i5);
+			(new WorldGenNetherCaustics(PlasmaCraft.neptuniumBlock)).generate(world, random, l2, i4, i5);
 		}
 	}
 	

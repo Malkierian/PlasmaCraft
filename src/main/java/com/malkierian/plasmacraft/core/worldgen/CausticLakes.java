@@ -11,7 +11,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 
 public class CausticLakes
 {
-	private static int acidLakeYCutoff = 48;
+//	private static int acidLakeYCutoff = 48;
 	private static int acidSpoutCount = 20;
 	private static int acidSpoutYRange = 30;
 	private static int acidSpoutYStart = 8;
@@ -29,7 +29,9 @@ public class CausticLakes
 			int startZ = z + rand.nextInt(8);
 			int rad = 4 + rand.nextInt(4);
 			BiomeGenBase biomegenbase = world.getWorldChunkManager().getBiomeGenAt(x, z);
-			if(biomegenbase == BiomeGenBase.forest
+			if(biomegenbase == BiomeGenBase.birchForest
+					|| biomegenbase == BiomeGenBase.birchForestHills
+					|| biomegenbase == BiomeGenBase.forest
 					|| biomegenbase == BiomeGenBase.forestHills
 					|| biomegenbase == BiomeGenBase.jungle
 					|| biomegenbase == BiomeGenBase.jungleHills
@@ -43,13 +45,11 @@ public class CausticLakes
 				{
 					if(id == Blocks.grass)
 					{
-//						createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.acidStill, PlasmaCraft.acidMoving);
-//						createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.acidStill, PlasmaCraft.blockID);
+						createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.acidBlock);
+						createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.acidBlock);
 						break;
 					}
-					else if(id == Blocks.dirt || //id == Blocks.waterStill ||
-							id == Blocks.stone || id == Blocks.cobblestone ||
-							id == Blocks.water)
+					else if(id == Blocks.dirt || id == Blocks.stone || id == Blocks.cobblestone || id == Blocks.water)
 					{
 						break;
 					}
@@ -61,7 +61,7 @@ public class CausticLakes
 			int i3 = x + rand.nextInt(16) + 8;
 			int k4 = rand.nextInt(rand.nextInt(acidSpoutYRange) + acidSpoutYStart);
 			int l5 = z + rand.nextInt(16) + 8;
-//			(new WorldGenCaustics(PlasmaCraft.acidMoving.blockID)).generate(world, rand, i3, k4, l5);
+			(new WorldGenCaustics(PlasmaCraft.acidBlock)).generate(world, rand, i3, k4, l5);
 		}
 		if(rand.nextFloat() >= 0.95f)
 		{
@@ -83,8 +83,8 @@ public class CausticLakes
 					{
 						if(id == Blocks.grass)
 						{
-							createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.frozenCryonite, PlasmaCraft.frozenCryonite);
-							createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.frozenCryonite, PlasmaCraft.frozenCryonite);
+							createSurfacePool(world, startX, i, startZ, rad, PlasmaCraft.frozenCryonite);
+							createSurfacePool(world, startX, i - 1, startZ, rad / 2, PlasmaCraft.frozenCryonite);
 							break;
 						}
 						else if(id == Blocks.dirt || id == Blocks.water ||
@@ -99,41 +99,41 @@ public class CausticLakes
 		}
 	}
 	
-	public void createSurfacePool(World world, int x, int y, int z, int rad, Block stillId, Block movingId)
+	public void createSurfacePool(World world, int x, int y, int z, int rad, Block block)
 	{
-			setWithChance(world, x, y, z, stillId, movingId, 1F, true);
+			setWithChance(world, x, y, z, block, 1F, true);
 			
 			for (int w = 1; w <= rad; ++w) {
 				float chance = (float) (rad - w + 6)
 						/ (float) (rad + 6);
 				
 				for (int d = -w; d <= w; ++d) {			
-					setWithChance(world, x + d, y, z + w, stillId, movingId, chance, false);
-					setWithChance(world, x + d, y, z - w, stillId, movingId, chance, false);
-					setWithChance(world, x + w, y, z + d, stillId, movingId, chance, false);
-					setWithChance(world, x - w, y, z + d, stillId, movingId, chance, false);							
+					setWithChance(world, x + d, y, z + w, block, chance, false);
+					setWithChance(world, x + d, y, z - w, block, chance, false);
+					setWithChance(world, x + w, y, z + d, block, chance, false);
+					setWithChance(world, x - w, y, z + d, block, chance, false);							
 				}
 			}
 			
 			for (int dx = x - rad; dx <= x + rad; ++dx) {
 				for (int dz = z - rad; dz <= z + rad; ++dz) {
 
-					if (world.getBlock(dx, y - 1, dz) != stillId) {
-						if (bordersCaustic(world, dx, y - 1, dz, stillId, movingId))
+					if (world.getBlock(dx, y - 1, dz) != block) {
+						if (bordersCaustic(world, dx, y - 1, dz, block))
 						{
-							setWithChance(world, dx, y, dz, stillId, movingId, 1.0F, true);
+							setWithChance(world, dx, y, dz, block, 1.0F, true);
 						}
 					}
 				}
 			}
 	}
 
-	private boolean bordersCaustic(World world, int x, int y, int z, Block stillId, Block movingId)
+	private boolean bordersCaustic(World world, int x, int y, int z, Block block)
 	{
-		boolean x1 = isCaustic(world, x - 1, y, z, stillId, movingId);
-		boolean x2 = isCaustic(world, x + 1, y, z, stillId, movingId);
-		boolean z1 = isCaustic(world, x, y, z - 1, stillId, movingId);
-		boolean z2 = isCaustic(world, x, y, z + 1, stillId, movingId);
+		boolean x1 = isCaustic(world, x - 1, y, z, block);
+		boolean x2 = isCaustic(world, x + 1, y, z, block);
+		boolean z1 = isCaustic(world, x, y, z - 1, block);
+		boolean z2 = isCaustic(world, x, y, z + 1, block);
 		if((x1 && x2) || (z1 && z2) || (x1 && z1) || (x1 && z2) || (x2 && z1) || (x2 && z2))
 			return true;
 		else
@@ -145,12 +145,12 @@ public class CausticLakes
 		rand = random;
 	}
 	
-	public boolean isCaustic(World world, int x, int y, int z, Block stillId, Block movingId)
+	public boolean isCaustic(World world, int x, int y, int z, Block block)
 	{
-		return (world.getBlock(x, y, z) == stillId || world.getBlock(x, y, z) == movingId);
+		return (world.getBlock(x, y, z) == block);
 	}
 	
-	public void setWithChance(World world, int x, int y, int z, Block stillId, Block movingId, float chance, boolean force)
+	public void setWithChance(World world, int x, int y, int z, Block stillId, float chance, boolean force)
 	{
 		if((rand.nextFloat() <= chance && world.getBlock(x, y - 2, z) != Blocks.air) || force)
 		{
@@ -158,10 +158,10 @@ public class CausticLakes
 			if(bordersAirOrLiquid(world, x, y - 1, z))
 				return;
 			
-			if(isCaustic(world, x + 1, y - 1, z, stillId, movingId) ||
-					isCaustic(world, x - 1, y - 1, z, stillId, movingId) ||
-					isCaustic(world, x, y - 1, z + 1, stillId, movingId) ||
-					isCaustic(world, x, y - 1, z - 1, stillId, movingId))
+			if(isCaustic(world, x + 1, y - 1, z, stillId) ||
+					isCaustic(world, x - 1, y - 1, z, stillId) ||
+					isCaustic(world, x, y - 1, z + 1, stillId) ||
+					isCaustic(world, x, y - 1, z - 1, stillId))
 			{
 				adjacentCaustic = true;
 			}
@@ -169,7 +169,7 @@ public class CausticLakes
 			if(adjacentCaustic || force && !bordersAirOrLiquid(world, x, y - 1, z))
 			{
 				if(world.getBlock(x, y, z) == Blocks.water || 
-						isCaustic(world, x, y, z, stillId, movingId))
+						isCaustic(world, x, y, z, stillId))
 				{
 					world.setBlock(x, y, z, stillId);
 				}
