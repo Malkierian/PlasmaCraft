@@ -1,11 +1,5 @@
 package com.malkierian.plasmacraft.core.listeners;
 
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.FillBucketEvent;
-
-import com.malkierian.plasmacraft.core.PlasmaCraft;
-
-import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class PCBucketFillEvent
 {

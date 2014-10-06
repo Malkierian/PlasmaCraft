@@ -7,7 +7,6 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import com.malkierian.plasmacraft.core.CommonProxy;
 import com.malkierian.plasmacraft.core.PlasmaCraft;
 import com.malkierian.plasmacraft.core.entities.EntityAcidTNTPrimed;
 
@@ -51,7 +50,6 @@ public class RenderAcidTNTPrimed extends Render
 		}
 
 		var10 = (1.0F - ((float)par1EntityTNTPrimed.fuse - par9 + 1.0F) / 100.0F) * 0.8F;
-//		this.loadTexture(CommonProxy.BLOCK_PNG);
 		this.blockRenderer.renderBlockAsItem(PlasmaCraft.acidTnt, 0, par1EntityTNTPrimed.getBrightness(par9));
 
 		if (par1EntityTNTPrimed.fuse / 5 % 2 == 0)
