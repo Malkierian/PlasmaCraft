@@ -2,10 +2,11 @@ package com.malkierian.plasmacraft.core.worldgen;
 
 import java.util.Random;
 
-import com.malkierian.plasmacraft.core.PlasmaCraft;
-
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
+
+import com.malkierian.plasmacraft.core.PlasmaCraft;
+
 import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGenerator implements IWorldGenerator {
@@ -14,10 +15,13 @@ public class WorldGenerator implements IWorldGenerator {
 	public void generate(Random random, int chunkX, int chunkZ, World world,
 			IChunkProvider chunkGenerator, IChunkProvider chunkProvider)
 	{
-		if(world.provider.isHellWorld)
+		switch(world.provider.dimensionId)
+		{
+		case -1:
 			generateNether(world, random, chunkX*16, chunkZ*16);
-		else
-		   generateSurface(world, random, chunkX*16, chunkZ*16);
+		case 0:
+			generateSurface(world, random, chunkX*16, chunkZ*16);
+		}
 	}
 	
 	private void generateNether(World world, Random random, int i, int j)
@@ -104,7 +108,7 @@ public class WorldGenerator implements IWorldGenerator {
 				int k2 = i + random.nextInt(16);
 				int i4 = random.nextInt(PlasmaCraft.leadOreYRange) + PlasmaCraft.leadOreYStart;
 				int k5 = j + random.nextInt(16);
-				(new WorldGenMulti(PlasmaCraft.oreLeadBlock, PlasmaCraft.leadOreVeinSize, 0)).generate(world, random, k2, i4, k5);
+				(new WorldGenMulti(PlasmaCraft.orePlasma, PlasmaCraft.leadOreVeinSize, PlasmaCraft.leadMeta)).generate(world, random, k2, i4, k5);
 			}
 		}
 		

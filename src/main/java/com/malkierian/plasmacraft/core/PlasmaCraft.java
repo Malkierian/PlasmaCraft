@@ -44,6 +44,7 @@ import com.malkierian.plasmacraft.core.items.ItemEnergyWeapon;
 import com.malkierian.plasmacraft.core.items.ItemPlasma;
 import com.malkierian.plasmacraft.core.items.ItemPlasmaArmor;
 import com.malkierian.plasmacraft.core.items.ItemVial;
+import com.malkierian.plasmacraft.core.worldgen.WorldGenerator;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
@@ -280,7 +281,7 @@ public class PlasmaCraft
 		
 		registerEntities();
 		
-//		GameRegistry.registerWorldGenerator(new WorldGenerator());
+		GameRegistry.registerWorldGenerator(new WorldGenerator(), 20);
 	}
 
 	@EventHandler
