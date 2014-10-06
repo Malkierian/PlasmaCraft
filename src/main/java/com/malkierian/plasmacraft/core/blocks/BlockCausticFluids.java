@@ -34,7 +34,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 	public BlockCausticFluids(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		setLightLevel(0.8f);
+		setLightLevel(0.6F);
 	}
 	
 	@Override
@@ -61,7 +61,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 		if(PlasmaCraft.liquidSourceExplodesAfterCausticExplosion)
 		{
 			world.setBlockToAir(i, j, k);
-			world.createExplosion(null, i, j, k, 4F, false);
+			world.createExplosion(null, i, j, k, 3F, true);
 		}
 		else
 		{
@@ -210,27 +210,27 @@ public class BlockCausticFluids extends BlockFluidClassic
 		{
 			if(blockList.contains(PlasmaCraft.radioniteBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.plutoniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.neptuniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.netherflowBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.uraniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.obsidiumBlock))
@@ -268,17 +268,17 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.acidBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.plutoniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.neptuniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.netherflowBlock))
@@ -288,7 +288,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.uraniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.obsidiumBlock))
@@ -311,17 +311,17 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.acidBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.radioniteBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.neptuniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.netherflowBlock))
@@ -331,7 +331,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.uraniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.obsidiumBlock))
@@ -341,7 +341,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.cryoniteBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 		}
@@ -359,17 +359,17 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.acidBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.radioniteBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.plutoniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.netherflowBlock))
@@ -389,7 +389,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.cryoniteBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 		}
@@ -407,7 +407,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.acidBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.radioniteBlock))
@@ -455,17 +455,17 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.acidBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.radioniteBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.plutoniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.neptuniumBlock))
@@ -485,7 +485,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.cryoniteBlock))
 			{
-				world.createExplosion(null, i, j, k, 8F, false);
+				world.createExplosion(null, i, j, k, 6F, true);
 				return;
 			}
 		}
@@ -556,12 +556,12 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.plutoniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.neptuniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 4F, false);
+				world.createExplosion(null, i, j, k, 3F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.netherflowBlock))
@@ -571,7 +571,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 			if(blockList.contains(PlasmaCraft.uraniumBlock))
 			{
-				world.createExplosion(null, i, j, k, 8F, false);
+				world.createExplosion(null, i, j, k, 6F, true);
 				return;
 			}
 			if(blockList.contains(PlasmaCraft.obsidiumBlock))

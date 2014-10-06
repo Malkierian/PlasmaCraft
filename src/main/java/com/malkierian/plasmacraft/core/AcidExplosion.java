@@ -83,15 +83,7 @@ label0:
 						Block i5 = worldObj.getBlock(j4, k4, l4);
 						if(i5 != Blocks.air)
 						{
-//							if (Block.blocksList[i5] instanceof ISpecialResistance)
-//							{
-//								ISpecialResistance isr = (ISpecialResistance)Block.blocksList[i5];
-//								f1 -= (isr.getSpecialExplosionResistance(worldObj, j4, k4, l4, posX, posY, posZ, exploder) + 0.3F) * f2;
-//							} 
-//							else 
-//							{
-								f1 -= (i5.getExplosionResistance(exploder) + 0.3F) * f2;
-//							}
+							f1 -= (i5.getExplosionResistance(exploder) + 0.3F) * f2;
 						}
 						if(f1 > 0.0F)
 						{
