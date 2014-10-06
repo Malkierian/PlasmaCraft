@@ -1,12 +1,16 @@
 package com.malkierian.plasmacraft.core.blocks;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.IIcon;
@@ -30,7 +34,6 @@ public class BlockCausticFluids extends BlockFluidClassic
 	public BlockCausticFluids(Fluid fluid, Material material)
 	{
 		super(fluid, material);
-		setCreativeTab(CreativeTabs.tabBlock);
 		setLightLevel(0.8f);
 	}
 	
@@ -145,644 +148,437 @@ public class BlockCausticFluids extends BlockFluidClassic
 			entity.attackEntityFrom(DamageSource.inFire, 10);
 		}
 	}
-//    
-//    @Override
-//    public void onBlockAdded(World par1World, int par2, int par3, int par4)
-//    {
-//        this.checkForHarden(par1World, par2, par3, par4);
-//    }
-//
-//    @Override
-//    public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, int par5)
-//    {
-//        this.checkForHarden(par1World, par2, par3, par4);
-//    }
-//    
-//    private int blockAdjoinsMaterial(Object[] blocks, Material material)
-//	{
-//    	int flag = 0;
-//    	int stillID = material == Material.water ? Block.waterStill.blockID : Block.lavaStill.blockID;
-//    	int movingID = material == Material.water ? Blocks.water : Block.lavaMoving.blockID;
-//    	int back = -1, front = -1, down = -1, left = -1, right = -1;
-//    	if(blocks[0] != null && !(blocks[0] instanceof BlockCausticFluids))
-//    	{
-//    		back = (Integer)blocks[0];
-//    	}
-//    	if(blocks[1] != null && !(blocks[1] instanceof BlockCausticFluids))
-//    	{
-//    		front = (Integer)blocks[1];
-//    	}
-//    	if(blocks[2] != null && !(blocks[2] instanceof BlockCausticFluids))
-//    	{
-//    		down = (Integer)blocks[2];
-//    	}
-//    	if(blocks[3] != null && !(blocks[3] instanceof BlockCausticFluids))
-//    	{
-//    		left = (Integer)blocks[3];
-//    	}
-//    	if(blocks[4] != null && !(blocks[4] instanceof BlockCausticFluids))
-//    	{
-//    		right = (Integer)blocks[4];
-//    	}
-//    	
-//		if(back != -1 && (back == stillID || back == movingID))
-//		{
-//			flag |= 1;
-//		}
-//		if(front != -1 && (front == stillID || front == movingID))
-//		{
-//			flag |= 2;
-//		}
-//		if(down != -1 && (down == stillID || down == movingID))
-//		{
-//			flag |= 4;
-//		}
-//		if(left != -1 && (left == stillID || left == movingID))
-//		{
-//			flag |= 8;
-//		}
-//		if(right != -1 && (right == stillID || right == movingID))
-//		{
-//			flag |= 16;
-//		}
-//		return flag;
-//	}
-//    
-//    private int blockAdjoinsBlock(Object[] blocks, BlockCausticFluids block)
-//	{
-//    	int flag = 0;
-//    	int stillID = block.stillBlockID;
-//    	int flowingID = block.flowingBlockID;
-//    	BlockCausticFluids back = null, front = null, down = null, left = null, right = null;
-//    	if(blocks[0] instanceof BlockCausticFluids)
-//    	{
-//    		back = (BlockCausticFluids)blocks[0];
-//    	}
-//    	if(blocks[1] instanceof BlockCausticFluids)
-//    	{
-//    		front = (BlockCausticFluids)blocks[1];
-//    	}
-//    	if(blocks[2] instanceof BlockCausticFluids)
-//    	{
-//    		down = (BlockCausticFluids)blocks[2];
-//    	}
-//    	if(blocks[3] instanceof BlockCausticFluids)
-//    	{
-//    		left = (BlockCausticFluids)blocks[3];
-//    	}
-//    	if(blocks[4] instanceof BlockCausticFluids)
-//    	{
-//    		right = (BlockCausticFluids)blocks[4];
-//    	}
-//    	
-//		if(back != null && (back.blockID == stillID || back.blockID == flowingID))
-//		{
-//			flag |= 1;
-//		}
-//		if(front != null && (front.blockID == stillID || front.blockID == flowingID))
-//		{
-//			flag |= 2;
-//		}
-//		if(down != null && (down.blockID == stillID || down.blockID == flowingID))
-//		{
-//			flag |= 4;
-//		}
-//		if(left != null && (left.blockID == stillID || left.blockID == flowingID))
-//		{
-//			flag |= 8;
-//		}
-//		if(right != null && (right.blockID == stillID || right.blockID == flowingID))
-//		{
-//			flag |= 16;
-//		}
-//		return flag;
-//	}
-//
-//	private void setAdjoiningIDs(World world, int i, int j, int k, int l, int flags)
-//	{
-//		if((flags & 1) == 1)
-//		{
-//			world.setBlock(i - 1, j, k, l);
-//		}
-//		if((flags & 2) == 2)
-//		{
-//			world.setBlock(i + 1, j, k, l);
-//		}
-//		if((flags & 4) == 4)
-//		{
-//			world.setBlock(i, j - 1, k, l);
-//		}
-//		if((flags & 8) == 8)
-//		{
-//			world.setBlock(i, j, k - 1, l);
-//		}
-//		if((flags & 16) == 16)
-//		{
-//			world.setBlock(i, j, k + 1, l);
-//		}
-//	}
-//	
-//	private Object[] getAdjoiningBlocks(World world, int i, int j, int k)
-//	{
-//		Object[] object = new Object[5];
-//		int back = world.getBlock(i - 1, j, k);
-//    	int front = world.getBlock(i + 1, j, k);
-//    	int down = world.getBlock(i, j - 1, k);
-//    	int left = world.getBlock(i, j, k - 1);
-//    	int right = world.getBlock(i - 1, j, k + 1);
-//    	if(Block.blocksList[back] instanceof BlockCausticFluids)
-//    	{
-//    		object[0] = Block.blocksList[back];
-//    	}
-//    	else
-//    	{
-//    		object[0] = back;
-//    	}
-//    	if(Block.blocksList[front] instanceof BlockCausticFluids)
-//    	{
-//    		object[1] = Block.blocksList[front];
-//    	}
-//    	else
-//    	{
-//    		object[1] = front;
-//    	}
-//    	if(Block.blocksList[down] instanceof BlockCausticFluids)
-//    	{
-//    		object[2] = Block.blocksList[down];
-//    	}
-//    	else
-//    	{
-//    		object[2] = down;
-//    	}
-//    	if(Block.blocksList[left] instanceof BlockCausticFluids)
-//    	{
-//    		object[3] = Block.blocksList[left];
-//    	}
-//    	else
-//    	{
-//    		object[3] = left;
-//    	}
-//    	if(Block.blocksList[right] instanceof BlockCausticFluids)
-//    	{
-//    		object[4] = Block.blocksList[right];
-//    	}
-//    	else
-//    	{
-//    		object[4] = right;
-//    	}
-//    	return object;
-//	}
-//
-//	private void checkForHarden(World world, int i, int j, int k)
-//	{
-//		if(world.getBlock(i, j, k) != blockID)
-//		{
-//			return;
-//		}
-//		Object[] blocks = getAdjoiningBlocks(world, i, j, k);
-//		if(liquid == PlasmaLiquid.ACID)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.blockClay.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.radioniteMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.plutoniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.neptuniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.netherflowMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.uraniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.obsidiumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.cryoniteMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.cobblestone.blockID, flags);
-//				return;
-//			}
-//		}
-//		else if(liquid == PlasmaLiquid.RADIONITE)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.blockClay.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.acidMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.plutoniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.neptuniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.netherflowMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.glowStone.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.uraniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.obsidiumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//		}
-//		else if(liquid == PlasmaLiquid.PLUTONIUM)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.blockClay.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.acidMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.radioniteMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.neptuniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.netherflowMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.uraniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.obsidiumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.cryoniteMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//		}
-//		else if(liquid == PlasmaLiquid.NEPTUNIUM)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.blockClay.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.acidMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.radioniteMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.plutoniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.netherflowMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.uraniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.obsidiumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.cryoniteMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//		}
-//		else if(liquid == PlasmaLiquid.NETHERFLOW)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.blockClay.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.acidMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.radioniteMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.glowStone.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.plutoniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.neptuniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.uraniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.slowSand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.obsidiumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.cryoniteMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.glowStone.blockID, flags);
-//				return;
-//			}
-//		}
-//		else if(liquid == PlasmaLiquid.URANIUM)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.blockClay.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.acidMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.radioniteMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.plutoniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.neptuniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.netherflowMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.slowSand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.obsidiumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.cryoniteMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 8F, false);
-//				return;
-//			}
-//		}
-//		else if(liquid == PlasmaLiquid.OBSIDIUM)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.sand.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.blockClay.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.acidMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.radioniteMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.plutoniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.neptuniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.netherflowMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.uraniumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.cryoniteMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//		}
-//		else if(liquid == PlasmaLiquid.CRYONITE)
-//		{
-//			int flags = blockAdjoinsMaterial(blocks, Material.lava);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.cobblestone.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsMaterial(blocks, Material.water);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Blocks.ice, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.acidMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.cobblestone.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.plutoniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.neptuniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 4F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.netherflowMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.glowStone.blockID, flags);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.uraniumMoving);
-//			if(flags != 0)
-//			{
-//				world.createExplosion(null, i, j, k, 8F, false);
-//				return;
-//			}
-//			flags = blockAdjoinsBlock(blocks, PlasmaCraft.obsidiumMoving);
-//			if(flags != 0)
-//			{
-//				setAdjoiningIDs(world, i, j, k, Block.obsidian.blockID, flags);
-//				return;
-//			}
-//		}
-//	}
+    
+    @Override
+    public void onBlockAdded(World world, int x, int y, int z)
+    {
+    	super.onBlockAdded(world, x, y, z);
+        this.checkForHarden(world, x, y, z);
+    }
+
+    @Override
+    public void onNeighborBlockChange(World world, int x, int y, int z, Block block)
+    {
+    	super.onNeighborBlockChange(world, x, y, z, block);
+        this.checkForHarden(world, x, y, z);
+    }
+	
+	
+	private void setAdjoiningIDs(World world, int i, int j, int k, Block setTo, Block replace)
+	{
+		if(world.getBlock(i - 1, j, k) == replace)
+		{
+			world.setBlock(i - 1, j, k, setTo);
+		}
+		if(world.getBlock(i + 1, j, k) == replace)
+		{
+			world.setBlock(i + 1, j, k, setTo);
+		}
+		if(world.getBlock(i, j - 1, k) == replace)
+		{
+			world.setBlock(i, j - 1, k, setTo);
+		}
+		if(world.getBlock(i, j, k - 1) == replace)
+		{
+			world.setBlock(i, j, k - 1, setTo);
+		}
+		if(world.getBlock(i, j, k + 1) == replace)
+		{
+			world.setBlock(i, j, k + 1, setTo);
+		}
+	}
+	
+	private List<Block> getAdjoiningBlocks(World world, int i, int j, int k)
+	{
+		List<Block> list = new ArrayList<Block>();
+		list.add(world.getBlock(i - 1, j, k));
+    	list.add(world.getBlock(i + 1, j, k));
+    	list.add(world.getBlock(i, j - 1, k));
+    	list.add(world.getBlock(i, j, k - 1));
+    	list.add(world.getBlock(i - 1, j, k + 1));
+    	return list;
+	}
+
+	private void checkForHarden(World world, int i, int j, int k)
+	{
+		if(world.getBlock(i, j, k) != this)
+		{
+			return;
+		}
+		List<Block> blockList = getAdjoiningBlocks(world, i, j, k);
+		if(this == PlasmaCraft.acidBlock)
+		{
+			if(blockList.contains(PlasmaCraft.radioniteBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.plutoniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.neptuniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.netherflowBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.uraniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.obsidiumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.obsidiumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.cryoniteBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.cobblestone, PlasmaCraft.cryoniteBlock);
+				return;
+			}
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.clay, Blocks.water);
+				return;
+			}
+		}
+		else if(this == PlasmaCraft.radioniteBlock)
+		{
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.clay, Blocks.water);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.acidBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.plutoniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.neptuniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.netherflowBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.glowstone, PlasmaCraft.netherflowBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.uraniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.obsidiumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.obsidiumBlock);
+				return;
+			}
+		}
+		else if(this == PlasmaCraft.plutoniumBlock)
+		{
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.clay, Blocks.water);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.acidBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.radioniteBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.neptuniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.netherflowBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, PlasmaCraft.netherflowBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.uraniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.obsidiumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.obsidiumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.cryoniteBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+		}
+		else if(this == PlasmaCraft.neptuniumBlock)
+		{
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.clay, Blocks.water);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.acidBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.radioniteBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.plutoniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.netherflowBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, PlasmaCraft.netherflowBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.uraniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, PlasmaCraft.uraniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.obsidiumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.obsidiumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.cryoniteBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+		}
+		else if(this == PlasmaCraft.netherflowBlock)
+		{
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.clay, Blocks.water);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.acidBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.radioniteBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.glowstone, PlasmaCraft.radioniteBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.plutoniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, PlasmaCraft.plutoniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.neptuniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.netherrack, PlasmaCraft.neptuniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.uraniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.soul_sand, PlasmaCraft.uraniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.obsidiumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.obsidiumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.cryoniteBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.glowstone, PlasmaCraft.cryoniteBlock);
+				return;
+			}
+		}
+		else if(this == PlasmaCraft.uraniumBlock)
+		{
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.clay, Blocks.water);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.acidBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.radioniteBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.plutoniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.neptuniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, PlasmaCraft.neptuniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.netherflowBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.soul_sand, PlasmaCraft.netherflowBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.obsidiumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.obsidiumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.cryoniteBlock))
+			{
+				world.createExplosion(null, i, j, k, 8F, false);
+				return;
+			}
+		}
+		else if(this == PlasmaCraft.obsidiumBlock)
+		{
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.sand, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.clay, Blocks.water);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.acidBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.acidBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.radioniteBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.radioniteBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.plutoniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.plutoniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.neptuniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.neptuniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.netherflowBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.netherflowBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.uraniumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.uraniumBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.cryoniteBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.cryoniteBlock);
+				return;
+			}
+		}
+		else if(this == PlasmaCraft.cryoniteBlock)
+		{
+			if(blockList.contains(Blocks.lava))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.cobblestone, Blocks.lava);
+				return;
+			}
+			if(blockList.contains(Blocks.water))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.ice, Blocks.water);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.acidBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.cobblestone, PlasmaCraft.acidBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.plutoniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.neptuniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 4F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.netherflowBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.glowstone, PlasmaCraft.netherflowBlock);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.uraniumBlock))
+			{
+				world.createExplosion(null, i, j, k, 8F, false);
+				return;
+			}
+			if(blockList.contains(PlasmaCraft.obsidiumBlock))
+			{
+				setAdjoiningIDs(world, i, j, k, Blocks.obsidian, PlasmaCraft.obsidiumBlock);
+				return;
+			}
+		}
+	}
 }
