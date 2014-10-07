@@ -37,7 +37,7 @@ public class EntityAcid extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -50,7 +50,7 @@ public class EntityAcid extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -65,7 +65,7 @@ public class EntityAcid extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;

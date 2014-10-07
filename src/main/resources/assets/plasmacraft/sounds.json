@@ -1,0 +1,18 @@
+{
+    "weapon.lasergun":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "weapon/lasergun"
+        ]
+    },
+    "weapon.railgun":
+    {
+        "category": "neutral",
+        "sounds":
+        [
+            "weapon/railgun"
+        ]
+    }
+}

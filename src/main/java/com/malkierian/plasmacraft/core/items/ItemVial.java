@@ -108,7 +108,8 @@ public class ItemVial extends ItemPlasma
 				}
 				if(returnStack != null)
 				{
-					itemstack.stackSize--;
+					if(!entityplayer.capabilities.isCreativeMode)
+						itemstack.stackSize--;
 					entityplayer.inventory.addItemStackToInventory(returnStack);
 					return itemstack;
 				}
@@ -141,15 +142,19 @@ public class ItemVial extends ItemPlasma
 				if(world.isAirBlock(i, j, k) || !world.getBlock(i, j, k).getMaterial().isSolid())
 				{
 					world.setBlock(i, j, k, isFull);
-					itemstack.stackSize--;
-					entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.causticVial));
+					if(!entityplayer.capabilities.isCreativeMode)
+					{
+						itemstack.stackSize--;
+						entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.causticVial));
+					}
 					return itemstack;
 				}
 			}
 		}
 		if(isFull == Blocks.air && (movingobjectposition.entityHit instanceof EntityMutantCow))
 		{
-			itemstack.stackSize--;
+			if(!entityplayer.capabilities.isCreativeMode)
+				itemstack.stackSize--;
 			entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.acidVial));
 			return itemstack;
 		} else

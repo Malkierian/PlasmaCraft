@@ -32,7 +32,7 @@ public class EntityRailGun extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
@@ -44,7 +44,7 @@ public class EntityRailGun extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
@@ -58,7 +58,7 @@ public class EntityRailGun extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		ticksInAir = 0;
 		owner = entityliving;
