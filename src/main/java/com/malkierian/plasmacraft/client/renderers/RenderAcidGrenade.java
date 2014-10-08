@@ -7,20 +7,22 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.malkierian.plasmacraft.core.PlasmaCraft;
+
 public class RenderAcidGrenade extends Render
 {
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID, "textures/misc/acidnade.png");
 	public RenderAcidGrenade(int i)
 	{
 	}
 
-	public void doRender(Entity entity, double d, double d1, double d2, 
-			float f, float f1)
+	public void doRender(Entity entity, double d, double d1, double d2, float f, float f1)
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)d, (float)d1, (float)d2);
 		GL11.glEnable(32826 /*GL_RESCALE_NORMAL_EXT*/);
 		GL11.glScalef(0.5F, 0.5F, 0.5F);
-//		loadTexture("/PlasmaCraftSprites/misc/acidnade.png");
+//		bindTexture(TEXTURE);
 		Tessellator tessellator = Tessellator.instance;
 		float f2 = 1.0F;
 		float f3 = 0.5F;
@@ -41,6 +43,6 @@ public class RenderAcidGrenade extends Render
 	@Override
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_)
 	{
-		return null;
+		return TEXTURE;
 	}
 }

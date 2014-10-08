@@ -8,18 +8,19 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.malkierian.plasmacraft.core.PlasmaCraft;
 import com.malkierian.plasmacraft.core.entities.EntityLaser;
 
 public class RenderLaser extends Render
 {
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID, "textures/misc/laser.png");
 	public RenderLaser()
 	{
 	}
 
-	public void renderArrow(EntityLaser smentitylaser, double d, double d1, double d2, 
-			float f, float f1)
+	public void renderArrow(EntityLaser smentitylaser, double d, double d1, double d2, float f, float f1)
 	{
-//		loadTexture("/PlasmaCraftSprites/misc/laser.png");
+		bindTexture(TEXTURE);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)d, (float)d1, (float)d2);
 		GL11.glRotatef((smentitylaser.prevRotationYaw + (smentitylaser.rotationYaw - smentitylaser.prevRotationYaw) * f1) - 90F, 0.0F, 1.0F, 0.0F);
@@ -84,6 +85,6 @@ public class RenderLaser extends Render
 	@Override
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_)
 	{
-		return null;
+		return TEXTURE;
 	}
 }

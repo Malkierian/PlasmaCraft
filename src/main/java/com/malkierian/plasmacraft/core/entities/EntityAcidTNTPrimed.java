@@ -1,11 +1,11 @@
 package com.malkierian.plasmacraft.core.entities;
 
-import com.malkierian.plasmacraft.core.AcidExplosion;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import com.malkierian.plasmacraft.core.AcidExplosion;
 
 public class EntityAcidTNTPrimed extends Entity
 {
@@ -38,11 +38,13 @@ public class EntityAcidTNTPrimed extends Entity
 	{
 	}
 
+	@Override
 	public boolean canBeCollidedWith()
 	{
 		return !isDead;
 	}
 
+	@Override
 	public void onUpdate()
 	{
 		prevPosX = posX;

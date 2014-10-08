@@ -8,18 +8,19 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.malkierian.plasmacraft.core.PlasmaCraft;
 import com.malkierian.plasmacraft.core.entities.EntityCryoBlast;
 
 public class RenderCryoBlast extends Render
 {
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID, "textures/misc/railgunbolt.png");
 	public RenderCryoBlast()
 	{
 	}
 
-	public void renderArrow(EntityCryoBlast smentitycryoblast, double d, double d1, double d2, 
-			float f, float f1)
+	public void renderArrow(EntityCryoBlast smentitycryoblast, double d, double d1, double d2, float f, float f1)
 	{
-//		loadTexture("/PlasmaCraftSprites/misc/railgunbolt.png");
+		bindTexture(TEXTURE);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)d, (float)d1, (float)d2);
 		GL11.glRotatef((smentitycryoblast.prevRotationYaw + (smentitycryoblast.rotationYaw - smentitycryoblast.prevRotationYaw) * f1) - 90F, 0.0F, 1.0F, 0.0F);
@@ -84,6 +85,6 @@ public class RenderCryoBlast extends Render
 	@Override
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_)
 	{
-		return null;
+		return TEXTURE;
 	}
 }

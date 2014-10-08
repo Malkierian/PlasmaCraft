@@ -8,18 +8,19 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
+import com.malkierian.plasmacraft.core.PlasmaCraft;
 import com.malkierian.plasmacraft.core.entities.EntityPlasma;
 
 public class RenderPlasma extends Render
 {
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.MOD_ID, "textures/misc/plasmaball.png");
 	public RenderPlasma()
 	{
 	}
 
-	public void renderArrow(EntityPlasma smentityplasma, double d, double d1, double d2, 
-			float f, float f1)
+	public void renderArrow(EntityPlasma smentityplasma, double d, double d1, double d2, float f, float f1)
 	{
-//		loadTexture("/PlasmaCraftSprites/misc/plasmaball.png");
+		bindTexture(TEXTURE);
 		GL11.glPushMatrix();
 		GL11.glTranslatef((float)d, (float)d1, (float)d2);
 		GL11.glRotatef((smentityplasma.prevRotationYaw + (smentityplasma.rotationYaw - smentityplasma.prevRotationYaw) * f1) - 90F, 0.0F, 1.0F, 0.0F);
@@ -84,6 +85,6 @@ public class RenderPlasma extends Render
 	@Override
 	protected ResourceLocation getEntityTexture(Entity p_110775_1_)
 	{
-		return null;
+		return TEXTURE;
 	}
 }
