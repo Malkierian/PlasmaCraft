@@ -36,10 +36,9 @@ public class BlockReinforcedGlass extends BlockBreakable
 	@Override
 	public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6)
 	{
-		///TODO Re-enable liquid replacement
 		if(this == PlasmaCraft.frozenCryonite)
 		{
-//			par1World.setBlock(par2, par3, par4, PlasmaCraft.cryoniteMoving);
+			par1World.setBlock(par2, par3, par4, PlasmaCraft.cryoniteBlock);
 		}
 		else
 			super.breakBlock(par1World, par2, par3, par4, par5, par6);
