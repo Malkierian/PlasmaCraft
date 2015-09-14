@@ -1,0 +1,55 @@
+package untouchedwagons.minecraft.plasmacraft.items;
+
+import net.minecraft.item.Item;
+
+public class PCItems {
+    public Item goopAcid;
+    public Item goopCryonite;
+    public Item goopNeptunium;
+    public Item goopNetherflow;
+    public Item goopObsidium;
+    public Item goopPlutonium;
+    public Item goopRadionite;
+    public Item goopUranium;
+    public Item plasma;
+    public Item acidGrenade;
+    public Item causticBoat;
+    public Item thermopellet;
+    public Item ingotCryonite;
+    public Item ingotLead;
+    public Item ingotNeptunium;
+    public Item ingotNetherflow;
+    public Item ingotObsidium;
+    public Item ingotPlutonium;
+    public Item ingotRadionite;
+    public Item ingotUranium;
+    public Item hazmatBoots;
+    public Item hazmatHood;
+    public Item hazmatJacket;
+    public Item hazmatPants;
+    public Item plasmaLeather;
+    public Item acidVial;
+    public Item causticVial;
+    public Item cryoniteVial;
+    public Item neptuniumVial;
+    public Item netherflowVial;
+    public Item obsidiumVial;
+    public Item plutoniumVial;
+    public Item radioniteVial;
+    public Item uraniumVial;
+    public Item acidgun;
+    public Item batteryCharged;
+    public Item batteryCryo;
+    public Item batteryEmpty;
+    public Item batteryOvercharged;
+    public Item batteryPlasma;
+    public Item beamSplitter;
+    public Item cryoblaster;
+    public Item energyCell;
+    public Item lasergun;
+    public Item lasergunsplit;
+    public Item lasershotgun;
+    public Item plasmagun;
+    public Item plasmagunsplit;
+    public Item railgun;
+}

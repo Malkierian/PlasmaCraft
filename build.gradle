@@ -17,8 +17,8 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "0.3.5-beta2"
-group= "com.malkierian.PlasmaCraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "0.4.0-beta1"
+group = "untouchedwagons.minecraft.plasmacraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "PlasmaCraft"
 
 minecraft {
