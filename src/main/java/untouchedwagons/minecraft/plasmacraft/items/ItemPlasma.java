@@ -9,7 +9,6 @@ public class ItemPlasma extends Item
 {
 	public ItemPlasma()
 	{
-		super();
 		setCreativeTab(PlasmaCraft.plasmaTab);
 	}
 	

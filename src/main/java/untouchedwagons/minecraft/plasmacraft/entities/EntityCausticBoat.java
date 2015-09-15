@@ -9,11 +9,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
+import untouchedwagons.minecraft.plasmacraft.items.ItemIngot;
 import untouchedwagons.minecraft.plasmacraft.items.PCItems;
 
 public class EntityCausticBoat extends EntityBoat
@@ -268,11 +270,7 @@ public class EntityCausticBoat extends EntityBoat
                 if (!this.worldObj.isRemote && !this.isDead)
                 {
                     this.setDead();
-
-                    for (l = 0; l < 3; ++l)
-                    {
-                        this.func_145778_a(PlasmaCraft.items.ingotRadionite, 1, 0.0F);
-                    }
+                    this.entityDropItem(new ItemStack(PlasmaCraft.items.ingots, 3, ItemIngot.RADIONITE_DAMAGE), 0.0F);
                 }
             }
             else
@@ -347,12 +345,7 @@ public class EntityCausticBoat extends EntityBoat
                 if (!this.worldObj.isRemote && !this.isDead)
                 {
                     this.setDead();
-                    int l;
-
-                    for (l = 0; l < 3; ++l)
-                    {
-                        this.func_145778_a(PlasmaCraft.items.ingotRadionite, 1, 0.0F);
-                    }
+                    this.entityDropItem(new ItemStack(PlasmaCraft.items.ingots, 3, ItemIngot.RADIONITE_DAMAGE), 0.0F);
                 }
 
                 this.fallDistance = 0.0F;

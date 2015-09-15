@@ -18,8 +18,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockGlowCloth extends Block
 {
-	private IIcon[] icons;
-	
+    private IIcon[] icons;
+
+    public static final int glowClothAcidMeta = 0;
+    public static final int glowClothRadioniteMeta = 1;
+    public static final int glowClothNetherflowMeta = 2;
+    public static final int glowClothNeptuniumMeta = 3;
+    public static final int glowClothUraniumMeta = 4;
+    public static final int glowClothPlutoniumMeta = 5;
+    public static final int glowClothCryoniteMeta = 6;
+    public static final int glowClothObsidiumMeta = 7;
+
 	public BlockGlowCloth()
 	{
 		super(Material.cloth);

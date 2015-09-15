@@ -24,6 +24,7 @@ import untouchedwagons.minecraft.plasmacraft.entities.EntityCausticBoat;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import untouchedwagons.minecraft.plasmacraft.items.ItemIngot;
 
 public class BlockCausticFluids extends BlockFluidClassic
 {
@@ -59,7 +60,7 @@ public class BlockCausticFluids extends BlockFluidClassic
 			return;
 		}
 
-		if(PlasmaCraft.liquidSourceExplodesAfterCausticExplosion)
+		if(PlasmaCraft.config.destroy_source_blocks)
 		{
 			world.setBlockToAir(x, y, z);
 			world.createExplosion(null, x, y, z, 3F, true);
@@ -143,8 +144,9 @@ public class BlockCausticFluids extends BlockFluidClassic
 			if(entity instanceof EntityItem)
 			{
 				EntityItem ent = (EntityItem) entity;
+                ItemStack itemStack = ent.getEntityItem();
 
-				if(ent.getEntityItem().getItem() == PlasmaCraft.items.ingotRadionite)
+				if (itemStack.getItem() == PlasmaCraft.items.ingots && itemStack.getItemDamage() == ItemIngot.RADIONITE_DAMAGE)
 				{
 					return;
 				}

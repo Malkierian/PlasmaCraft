@@ -20,7 +20,6 @@ import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.World;
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.blocks.PCBlocks;
 
 public class CryoBlast extends Explosion
 {
@@ -54,18 +53,18 @@ public class CryoBlast extends Explosion
 		int i = 16;
 		for(int j = 0; j < i; j++)
 		{
-			for(int l = 0; l < i; l++)
+			for(int k = 0; k < i; k++)
 			{
 label0:
-				for(int j1 = 0; j1 < i; j1++)
+				for(int l = 0; l < i; l++)
 				{
-					if(j != 0 && j != i - 1 && l != 0 && l != i - 1 && j1 != 0 && j1 != i - 1)
+					if(j != 0 && j != i - 1 && k != 0 && k != i - 1 && l != 0 && l != i - 1)
 					{
 						continue;
 					}
 					double d = ((float)j / ((float)i - 1.0F)) * 2.0F - 1.0F;
-					double d1 = ((float)l / ((float)i - 1.0F)) * 2.0F - 1.0F;
-					double d2 = ((float)j1 / ((float)i - 1.0F)) * 2.0F - 1.0F;
+					double d1 = ((float)k / ((float)i - 1.0F)) * 2.0F - 1.0F;
+					double d2 = ((float)l / ((float)i - 1.0F)) * 2.0F - 1.0F;
 					double d3 = Math.sqrt(d * d + d1 * d1 + d2 * d2);
 					d /= d3;
 					d1 /= d3;
@@ -99,9 +98,7 @@ label0:
 						f1 -= f2 * 0.75F;
 					} while(true);
 				}
-
 			}
-
 		}
 
 		radius *= 2.0F;

@@ -1,55 +1,35 @@
 package untouchedwagons.minecraft.plasmacraft.items;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor;
+import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
 
 public class PCItems {
-    public Item goopAcid;
-    public Item goopCryonite;
-    public Item goopNeptunium;
-    public Item goopNetherflow;
-    public Item goopObsidium;
-    public Item goopPlutonium;
-    public Item goopRadionite;
-    public Item goopUranium;
-    public Item plasma;
-    public Item acidGrenade;
-    public Item causticBoat;
-    public Item thermopellet;
-    public Item ingotCryonite;
-    public Item ingotLead;
-    public Item ingotNeptunium;
-    public Item ingotNetherflow;
-    public Item ingotObsidium;
-    public Item ingotPlutonium;
-    public Item ingotRadionite;
-    public Item ingotUranium;
-    public Item hazmatBoots;
-    public Item hazmatHood;
-    public Item hazmatJacket;
-    public Item hazmatPants;
-    public Item plasmaLeather;
-    public Item acidVial;
-    public Item causticVial;
-    public Item cryoniteVial;
-    public Item neptuniumVial;
-    public Item netherflowVial;
-    public Item obsidiumVial;
-    public Item plutoniumVial;
-    public Item radioniteVial;
-    public Item uraniumVial;
-    public Item acidgun;
-    public Item batteryCharged;
-    public Item batteryCryo;
-    public Item batteryEmpty;
-    public Item batteryOvercharged;
-    public Item batteryPlasma;
-    public Item beamSplitter;
-    public Item cryoblaster;
-    public Item energyCell;
-    public Item lasergun;
-    public Item lasergunsplit;
-    public Item lasershotgun;
-    public Item plasmagun;
-    public Item plasmagunsplit;
-    public Item railgun;
+    public ItemGoop goop = new ItemGoop();
+    public ItemIngot ingots = new ItemIngot();
+    public ItemBattery battery = new ItemBattery();
+    public ItemVial vial = new ItemVial();
+    
+    public Item acidGrenade = new ItemAcidGrenade().setUnlocalizedName("acidGrenade");
+    public Item causticBoat = (new ItemCausticBoat()).setUnlocalizedName("causticBoat");
+    public Item thermopellet = (new ItemPlasma()).setUnlocalizedName("thermopellet");
+
+    public Item hazmatHood = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 0)).setUnlocalizedName("hazmatHood");
+    public Item hazmatJacket = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 1)).setUnlocalizedName("hazmatJacket");
+    public Item hazmatPants = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 2)).setUnlocalizedName("hazmatPants");
+    public Item hazmatBoots = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 3)).setUnlocalizedName("hazmatBoots");
+    
+    public Item plasmaLeather = (new ItemPlasma()).setUnlocalizedName("plasmaLeather");
+
+    public Item beamSplitter = (new ItemPlasma()).setUnlocalizedName("beamSplitter");
+    public Item energyCell = (new ItemPlasma()).setUnlocalizedName("energyCell");
+    
+    public Item acidgun = (new ItemEnergyWeapon(200)).setUnlocalizedName("acidGun");
+    public Item cryoblaster = (new ItemEnergyWeapon(100)).setUnlocalizedName("cryoBlaster");
+    public Item lasergun = (new ItemEnergyWeapon(200)).setUnlocalizedName("laserGun");
+    public Item lasergunsplit = (new ItemEnergyWeapon(300)).setUnlocalizedName("laserGunSplit");
+    public Item lasershotgun = (new ItemEnergyWeapon(200)).setUnlocalizedName("laserShotgun");
+    public Item plasmagun = (new ItemEnergyWeapon(200)).setUnlocalizedName("plasmaGun");
+    public Item plasmagunsplit = (new ItemEnergyWeapon(300)).setUnlocalizedName("plasmaGunSplit");
+    public Item railgun = (new ItemEnergyWeapon(200)).setUnlocalizedName("railGun");
 }

@@ -9,7 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.items.PCItems;
+import untouchedwagons.minecraft.plasmacraft.items.ItemVial;
 
 public class EntityMutantCow extends EntityAnimal
 {
@@ -63,9 +63,9 @@ public class EntityMutantCow extends EntityAnimal
 	public boolean interact(EntityPlayer entityplayer)
 	{
 		ItemStack itemstack = entityplayer.inventory.getCurrentItem();
-		if(itemstack != null && itemstack.getItem() == PlasmaCraft.items.causticVial)
+		if(itemstack != null && itemstack.getItem() == PlasmaCraft.items.vial)
 		{
-			entityplayer.inventory.setInventorySlotContents(entityplayer.inventory.currentItem, new ItemStack(PlasmaCraft.items.acidVial));
+			entityplayer.inventory.setInventorySlotContents(entityplayer.inventory.currentItem, new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.ACID_DAMAGE));
 			return true;
 		}
 		else

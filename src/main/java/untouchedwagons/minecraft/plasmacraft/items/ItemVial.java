@@ -1,9 +1,13 @@
 package untouchedwagons.minecraft.plasmacraft.items;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
@@ -11,18 +15,45 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.blocks.PCBlocks;
 import untouchedwagons.minecraft.plasmacraft.entities.EntityMutantCow;
 
-public class ItemVial extends ItemPlasma
-{
-	private Block isFull;
+import java.util.List;
 
-	public ItemVial(Block block)
+public class ItemVial extends Item
+{
+    private IIcon[] icons;
+
+    public static final int EMPTY_DAMAGE = 0;
+    public static final int ACID_DAMAGE = 1;
+    public static final int CRYONITE_DAMAGE = 2;
+    public static final int NEPTUNIUM_DAMAGE = 3;
+    public static final int NETHERFLOW_DAMAGE = 4;
+    public static final int OBSIDIUM_DAMAGE = 5;
+    public static final int PLUTONIUM_DAMAGE = 6;
+    public static final int RADIONITE_DAMAGE = 7;
+    public static final int URANIUM_DAMAGE = 8;
+
+    public final Block[] blocks;
+
+    public ItemVial()
 	{
 		super();
-		maxStackSize = 8;
-		isFull = block;
+
+        this.setUnlocalizedName("pc-vial");
+		this.maxStackSize = 8;
+
+        this.blocks = new Block[]
+                {
+                        Blocks.air,
+                        PlasmaCraft.blocks.acidBlock,
+                        PlasmaCraft.blocks.cryoniteBlock,
+                        PlasmaCraft.blocks.neptuniumBlock,
+                        PlasmaCraft.blocks.netherflowBlock,
+                        PlasmaCraft.blocks.obsidiumBlock,
+                        PlasmaCraft.blocks.plutoniumBlock,
+                        PlasmaCraft.blocks.radioniteBlock,
+                        PlasmaCraft.blocks.uraniumBlock
+                };
 	}
 	
 	@Override
@@ -45,7 +76,7 @@ public class ItemVial extends ItemPlasma
 		double d3 = 5D;
 		ItemStack returnStack = null;
 		Vec3 vec31 = vec3.addVector((double)f7 * d3, (double)f8 * d3, (double)f9 * d3);
-		MovingObjectPosition movingobjectposition = world.rayTraceBlocks(vec3, vec31, isFull == Blocks.air);
+		MovingObjectPosition movingobjectposition = world.rayTraceBlocks(vec3, vec31, itemstack.getItemDamage() == EMPTY_DAMAGE);
 		if(movingobjectposition == null)
 		{
 			return itemstack;
@@ -60,14 +91,15 @@ public class ItemVial extends ItemPlasma
 			{
 				return itemstack;
 			}
-			if(isFull == Blocks.air)
+
+			if(itemstack.getItemDamage() != EMPTY_DAMAGE)
 			{
 				Block l = world.getBlock(x, y, z);
 				if(l == PlasmaCraft.blocks.acidBlock && world.getBlockMetadata(x, y, z) == 0)
 				{
 					if(world.setBlockToAir(x, y, z))
 					{
-						returnStack = new ItemStack(PlasmaCraft.items.acidVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial);
 					}
 				}
 				else
@@ -75,37 +107,37 @@ public class ItemVial extends ItemPlasma
 					if(l == PlasmaCraft.blocks.plutoniumBlock && world.getBlockMetadata(x, y, z) == 0)
 					{
 						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.plutoniumVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, PLUTONIUM_DAMAGE);
 					}
 					if(l == PlasmaCraft.blocks.radioniteBlock && world.getBlockMetadata(x, y, z) == 0)
 					{
 						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.radioniteVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, RADIONITE_DAMAGE);
 					}
 					if(l == PlasmaCraft.blocks.uraniumBlock && world.getBlockMetadata(x, y, z) == 0)
 					{
 						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.uraniumVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, URANIUM_DAMAGE);
 					}
 					if(l == PlasmaCraft.blocks.neptuniumBlock && world.getBlockMetadata(x, y, z) == 0)
 					{
 						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.neptuniumVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, NEPTUNIUM_DAMAGE);
 					}
 					if(l == PlasmaCraft.blocks.netherflowBlock && world.getBlockMetadata(x, y, z) == 0)
 					{
 						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.netherflowVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, NETHERFLOW_DAMAGE);
 					}
 					if(l == PlasmaCraft.blocks.obsidiumBlock && world.getBlockMetadata(x, y, z) == 0)
 					{
 						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.obsidiumVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, OBSIDIUM_DAMAGE);
 					}
 					if(l == PlasmaCraft.blocks.cryoniteBlock && world.getBlockMetadata(x, y, z) == 0)
 					{
 						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.cryoniteVial);
+						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, CRYONITE_DAMAGE);
 					}
 				}
 				if(returnStack != null)
@@ -143,23 +175,64 @@ public class ItemVial extends ItemPlasma
 				}
 				if(world.isAirBlock(x, y, z) || !world.getBlock(x, y, z).getMaterial().isSolid())
 				{
-					world.setBlock(x, y, z, isFull);
+					world.setBlock(x, y, z, this.blocks[itemstack.getItemDamage()]);
 					if(!entityplayer.capabilities.isCreativeMode)
 					{
 						itemstack.stackSize--;
-						entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.items.causticVial));
+						entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.items.vial));
 					}
 					return itemstack;
 				}
 			}
 		}
-		if(isFull == Blocks.air && (movingobjectposition.entityHit instanceof EntityMutantCow)) {
+		if(itemstack.getItemDamage() == EMPTY_DAMAGE && (movingobjectposition.entityHit instanceof EntityMutantCow)) {
             if (!entityplayer.capabilities.isCreativeMode)
                 itemstack.stackSize--;
 
-            entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.items.acidVial));
+            entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.items.vial, 1, ACID_DAMAGE));
         }
 
         return itemstack;
 	}
+
+    @Override
+    public String getUnlocalizedName(ItemStack p_77667_1_) {
+        return String.format("%s.%d", super.getUnlocalizedName(p_77667_1_), p_77667_1_.getItemDamage());
+    }
+
+    @Override
+    public IIcon getIconFromDamage(int meta)
+    {
+        return this.icons[meta];
+    }
+
+    @SuppressWarnings("unchecked")
+    @Override
+    public void getSubItems(Item item, CreativeTabs tab, List item_list)
+    {
+        item_list.add(new ItemStack(item, 1, EMPTY_DAMAGE));
+        item_list.add(new ItemStack(item, 1, ACID_DAMAGE));
+        item_list.add(new ItemStack(item, 1, CRYONITE_DAMAGE));
+        item_list.add(new ItemStack(item, 1, NEPTUNIUM_DAMAGE));
+        item_list.add(new ItemStack(item, 1, NETHERFLOW_DAMAGE));
+        item_list.add(new ItemStack(item, 1, OBSIDIUM_DAMAGE));
+        item_list.add(new ItemStack(item, 1, PLUTONIUM_DAMAGE));
+        item_list.add(new ItemStack(item, 1, RADIONITE_DAMAGE));
+        item_list.add(new ItemStack(item, 1, URANIUM_DAMAGE));
+    }
+
+    @Override
+    public void registerIcons(IIconRegister icon_registrar)
+    {
+        this.icons = new IIcon[9];
+        this.icons[EMPTY_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_empty");
+        this.icons[ACID_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_acid");
+        this.icons[CRYONITE_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_cryonite");
+        this.icons[NEPTUNIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_neptunium");
+        this.icons[NETHERFLOW_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_netherflow");
+        this.icons[OBSIDIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_obsidium");
+        this.icons[PLUTONIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_plutonium");
+        this.icons[RADIONITE_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_radionite");
+        this.icons[URANIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:vial_uranium");
+    }
 }

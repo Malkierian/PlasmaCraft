@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
 import untouchedwagons.minecraft.plasmacraft.blocks.BlockPlasmaOre;
 import untouchedwagons.minecraft.plasmacraft.blocks.PCBlocks;
+import untouchedwagons.minecraft.plasmacraft.items.ItemGoop;
 import untouchedwagons.minecraft.plasmacraft.items.PCItems;
 
 public class EntityLaser extends Entity
@@ -27,7 +28,6 @@ public class EntityLaser extends Entity
 	private int xTile;
 	private int yTile;
 	private int zTile;
-//	private Block inTile;
 	private boolean inGround;
 	public int arrowShake;
 	public EntityLivingBase owner;
@@ -40,7 +40,6 @@ public class EntityLaser extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-//		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -53,7 +52,6 @@ public class EntityLaser extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-//		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -66,7 +64,6 @@ public class EntityLaser extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-//		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -82,7 +79,6 @@ public class EntityLaser extends Entity
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-//		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -104,8 +100,7 @@ public class EntityLaser extends Entity
 	{
 	}
 
-	public void setArrowHeading(double d, double d1, double d2, float f, 
-			float f1)
+	public void setArrowHeading(double d, double d1, double d2, float f, float f1)
 	{
 		float f2 = MathHelper.sqrt_double(d * d + d1 * d1 + d2 * d2);
 		d /= f2;
@@ -252,21 +247,20 @@ public class EntityLaser extends Entity
 					if(worldObj.getBlock(k, i1, k1) == PlasmaCraft.blocks.orePlasma)
 					{
 						int meta = worldObj.getBlockMetadata(k, i1, k1);
-						Item index;
+						ItemStack index;
 						switch(meta)
 						{
                             case BlockPlasmaOre.radioniteMeta:
-                                index = PlasmaCraft.items.goopRadionite;
-                            case BlockPlasmaOre.plutoniumMeta:
-                                index = PlasmaCraft.items.goopPlutonium;
+                                index = new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.RADIONITE_DAMAGE);
                             case BlockPlasmaOre.uraniumMeta:
-                                index = PlasmaCraft.items.goopUranium;
+                                index = new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.URANIUM_DAMAGE);
+                            case BlockPlasmaOre.plutoniumMeta:
                             default:
-                                index = PlasmaCraft.items.goopPlutonium;
+                                index = new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.PLUTONIUM_DAMAGE);
 						}
 						worldObj.setBlockToAir(k, i1, k1);
 						setDead();
-						dropItem(index, 1);
+                        entityDropItem(index, 1);
 						flag = false;
 					}
 					if(worldObj.getBlock(k, i1, k1) == Blocks.ice)

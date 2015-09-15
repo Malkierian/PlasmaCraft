@@ -7,7 +7,6 @@ import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import untouchedwagons.minecraft.plasmacraft.items.PCItems;
 
 public class PlasmaTab extends CreativeTabs
 {
@@ -19,7 +18,7 @@ public class PlasmaTab extends CreativeTabs
 	@Override
 	public Item getTabIconItem()
 	{
-		return PlasmaCraft.items.plasma;
+		return PlasmaCraft.items.ingots;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })

@@ -16,7 +16,6 @@ public class PCBlocks {
 
     public Block acidBarrier = new BlockAcidBarrier().setBlockName("acidBarrier");
     public Block orePlasma = new BlockPlasmaOre().setLightLevel(0.5334f).setBlockName("orePlasma");
-    public Block oreLeadBlock;
     public Block glowCloth = new BlockGlowCloth().setBlockName("glowCloth");
     public Block plasmaBench = (new BlockPlasmaBench()).setBlockName("plasmaBench");
     public Block acidTnt = new BlockAcidTNT().setBlockName("acidTnt");

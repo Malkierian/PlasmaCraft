@@ -5,11 +5,14 @@ import java.util.Map;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import untouchedwagons.minecraft.plasmacraft.items.ItemGoop;
+import untouchedwagons.minecraft.plasmacraft.items.ItemIngot;
+import untouchedwagons.minecraft.plasmacraft.items.ItemVial;
 
 public class PlasmaRecipes
 {
 	private static final PlasmaRecipes instance = new PlasmaRecipes();
-	private Map<Object, ItemStack> recipeDictionary;
+	private Map<ItemStack, ItemStack> recipeDictionary;
 
 	public static final PlasmaRecipes getInstance()
 	{
@@ -18,36 +21,34 @@ public class PlasmaRecipes
 
 	private PlasmaRecipes()
 	{
-		recipeDictionary = new HashMap<Object, ItemStack>();
+		recipeDictionary = new HashMap<ItemStack, ItemStack>();
 
-		addPlasmaRecipe(PlasmaCraft.blocks.frozenCryonite, new ItemStack(PlasmaCraft.items.goopCryonite));
-		addPlasmaRecipe(PlasmaCraft.items.goopNetherflow, new ItemStack(PlasmaCraft.items.ingotNetherflow));
-		addPlasmaRecipe(PlasmaCraft.items.goopPlutonium, new ItemStack(PlasmaCraft.items.ingotPlutonium));
-		addPlasmaRecipe(PlasmaCraft.items.goopRadionite, new ItemStack(PlasmaCraft.items.ingotRadionite));
-		addPlasmaRecipe(PlasmaCraft.items.goopNeptunium, new ItemStack(PlasmaCraft.items.ingotNeptunium));
-		addPlasmaRecipe(PlasmaCraft.items.goopObsidium, new ItemStack(PlasmaCraft.items.ingotObsidium));
-		addPlasmaRecipe(PlasmaCraft.items.goopUranium, new ItemStack(PlasmaCraft.items.ingotUranium));
-		addPlasmaRecipe(PlasmaCraft.items.goopCryonite, new ItemStack(PlasmaCraft.items.ingotCryonite));
-		addPlasmaRecipe(PlasmaCraft.items.acidVial, new ItemStack(PlasmaCraft.items.goopAcid));
-		addPlasmaRecipe(PlasmaCraft.items.netherflowVial, new ItemStack(PlasmaCraft.items.goopNetherflow));
-		addPlasmaRecipe(PlasmaCraft.items.plutoniumVial, new ItemStack(PlasmaCraft.items.goopPlutonium));
-		addPlasmaRecipe(PlasmaCraft.items.radioniteVial, new ItemStack(PlasmaCraft.items.goopRadionite));
-		addPlasmaRecipe(PlasmaCraft.items.neptuniumVial, new ItemStack(PlasmaCraft.items.goopNeptunium));
-		addPlasmaRecipe(PlasmaCraft.items.obsidiumVial, new ItemStack(PlasmaCraft.items.goopObsidium));
-		addPlasmaRecipe(PlasmaCraft.items.uraniumVial, new ItemStack(PlasmaCraft.items.goopUranium));
-		addPlasmaRecipe(PlasmaCraft.items.cryoniteVial, new ItemStack(PlasmaCraft.items.goopCryonite));
-		addPlasmaRecipe(PlasmaCraft.items.goopAcid, new ItemStack(PlasmaCraft.items.plasma));
-		addPlasmaRecipe(Items.slime_ball, new ItemStack(PlasmaCraft.items.goopAcid));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.blocks.frozenCryonite), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.CRYONITE_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.RADIONITE_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.RADIONITE_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.NEPTUNIUM_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.NEPTUNIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.OBSIDIUM_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.URANIUM_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.URANIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.CRYONITE_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.CRYONITE_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.goop));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.NETHERFLOW_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop. NETHERFLOW_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.PLUTONIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop. PLUTONIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.RADIONITE_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop. RADIONITE_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.NEPTUNIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop. NEPTUNIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.OBSIDIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop. OBSIDIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.URANIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop. URANIUM_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.CRYONITE_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop. CRYONITE_DAMAGE));
+		addPlasmaRecipe(new ItemStack(PlasmaCraft.items.goop), new ItemStack(PlasmaCraft.items.ingots));
+		addPlasmaRecipe(new ItemStack(Items.slime_ball), new ItemStack(PlasmaCraft.items.goop));
 	}
 
-	public void addPlasmaRecipe(Object object, ItemStack itemstack)
+	public void addPlasmaRecipe(ItemStack input, ItemStack output)
 	{
-		recipeDictionary.put(object, itemstack);
+		recipeDictionary.put(input, output);
 	}
 
-	public ItemStack getPlasmaRecipe(Object i, int meta)
-	{
-		return recipeDictionary.get(i);
-	}
-
+    public ItemStack getPlasmaRecipe(ItemStack furnaceItemStack) {
+        return recipeDictionary.get(furnaceItemStack);
+    }
 }

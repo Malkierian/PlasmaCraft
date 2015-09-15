@@ -9,7 +9,6 @@ import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
 
 import cpw.mods.fml.common.IWorldGenerator;
 import untouchedwagons.minecraft.plasmacraft.blocks.BlockPlasmaOre;
-import untouchedwagons.minecraft.plasmacraft.blocks.PCBlocks;
 
 public class WorldGenerator implements IWorldGenerator
 {
@@ -28,20 +27,20 @@ public class WorldGenerator implements IWorldGenerator
 	
 	private void generateNether(World world, Random random, int i, int j)
 	{
-		for(int k = 0; k < PlasmaCraft.neptuniumOreVeinCount; k++)
+		for(int k = 0; k < PlasmaCraft.config.neptunium.getVeinCount(); k++)
 		{
 			int l1 = i + random.nextInt(16);
-			int i3 = random.nextInt(PlasmaCraft.neptuniumOreYRange) + PlasmaCraft.neptuniumOreYStart;
+			int i3 = random.nextInt(PlasmaCraft.config.neptunium.getVeinYRange()) + PlasmaCraft.config.neptunium.getVeinYStart();
 			int j4 = j + random.nextInt(16);
-			(new WorldGenNetherMinable(PlasmaCraft.blocks.orePlasma, PlasmaCraft.neptuniumOreVeinSize, BlockPlasmaOre.neptuniumMeta)).generate(world, random, l1, i3, j4);
+			(new WorldGenNetherMinable(PlasmaCraft.blocks.orePlasma, PlasmaCraft.config.neptunium.getVeinSize(), BlockPlasmaOre.neptuniumMeta)).generate(world, random, l1, i3, j4);
 		}
 
-		for(int l = 0; l < PlasmaCraft.obsidiumOreVeinCount; l++)
+		for(int l = 0; l < PlasmaCraft.config.obsidium.getVeinCount(); l++)
 		{
 			int i2 = i + random.nextInt(16);
-			int j3 = random.nextInt(PlasmaCraft.obsidiumOreYRange) + PlasmaCraft.obsidiumOreYStart;
+			int j3 = random.nextInt(PlasmaCraft.config.obsidium.getVeinYRange()) + PlasmaCraft.config.obsidium.getVeinYStart();
 			int k4 = j + random.nextInt(16);
-			(new WorldGenNetherMinable(PlasmaCraft.blocks.orePlasma, PlasmaCraft.obsidiumOreVeinSize, BlockPlasmaOre.obsidiumMeta)).generate(world, random, i2, j3, k4);
+			(new WorldGenNetherMinable(PlasmaCraft.blocks.orePlasma, PlasmaCraft.config.obsidium.getVeinSize(), BlockPlasmaOre.obsidiumMeta)).generate(world, random, i2, j3, k4);
 		}
 
 		if(random.nextInt(PlasmaCraft.netherflowLakeChance) == 0)
@@ -73,44 +72,44 @@ public class WorldGenerator implements IWorldGenerator
 	
 	private void generateSurface(World world, Random random, int i, int j)
 	{
-		if(PlasmaCraft.generatePlutonium)
+		if(PlasmaCraft.config.plutonium.doVeinGeneration())
 		{
-			for(int k = 0; k < PlasmaCraft.plutoniumOreVeinCount; k++)
+			for(int k = 0; k < PlasmaCraft.config.plutonium.getVeinCount(); k++)
 			{
 				int i2 = i + random.nextInt(16);
-				int k3 = random.nextInt(PlasmaCraft.plutoniumOreYRange) + PlasmaCraft.plutoniumOreYStart;
+				int k3 = random.nextInt(PlasmaCraft.config.plutonium.getVeinYRange()) + PlasmaCraft.config.plutonium.getVeinYStart();
 				int i5 = j + random.nextInt(16);
-				(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.plutoniumOreVeinSize, BlockPlasmaOre.plutoniumMeta)).generate(world, random, i2, k3, i5);
+				(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.config.plutonium.getVeinSize(), BlockPlasmaOre.plutoniumMeta)).generate(world, random, i2, k3, i5);
 			}
 		}
 
-		if(PlasmaCraft.generateUranium)
+		if(PlasmaCraft.config.uranium.doVeinGeneration())
 		{
-			for(int l = 0; l < PlasmaCraft.uraniumOreVeinCount; l++)
+			for(int l = 0; l < PlasmaCraft.config.uranium.getVeinCount(); l++)
 			{
 				int j2 = i + random.nextInt(16);
-				int l3 = random.nextInt(PlasmaCraft.uraniumOreYRange) + PlasmaCraft.uraniumOreYStart;
+				int l3 = random.nextInt(PlasmaCraft.config.uranium.getVeinYRange()) + PlasmaCraft.config.uranium.getVeinYStart();
 				int j5 = j + random.nextInt(16);
-				(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.uraniumOreVeinSize, BlockPlasmaOre.uraniumMeta)).generate(world, random, j2, l3, j5);
+				(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.config.uranium.getVeinSize(), BlockPlasmaOre.uraniumMeta)).generate(world, random, j2, l3, j5);
 			}
 		}
 		
-		for(int i1 = 0; i1 < PlasmaCraft.radioniteOreVeinCount; i1++)
+		for(int i1 = 0; i1 < PlasmaCraft.config.radionite.getVeinCount(); i1++)
 		{
 			int k2 = i + random.nextInt(16);
-			int i4 = random.nextInt(PlasmaCraft.radioniteOreYRange) + PlasmaCraft.radioniteOreYStart;
+			int i4 = random.nextInt(PlasmaCraft.config.radionite.getVeinYRange()) + PlasmaCraft.config.radionite.getVeinYStart();
 			int k5 = j + random.nextInt(16);
-			(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.radioniteOreVeinSize, BlockPlasmaOre.radioniteMeta)).generate(world, random, k2, i4, k5);
+			(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.config.radionite.getVeinSize(), BlockPlasmaOre.radioniteMeta)).generate(world, random, k2, i4, k5);
 		}
 		
-		if(PlasmaCraft.generateLead)
+		if(PlasmaCraft.config.lead.doVeinGeneration())
 		{
-			for(int i1 = 0; i1 < PlasmaCraft.leadOreVeinCount; i1++)
+			for(int i1 = 0; i1 < PlasmaCraft.config.lead.getVeinCount(); i1++)
 			{
 				int k2 = i + random.nextInt(16);
-				int i4 = random.nextInt(PlasmaCraft.leadOreYRange) + PlasmaCraft.leadOreYStart;
+				int i4 = random.nextInt(PlasmaCraft.config.lead.getVeinYRange()) + PlasmaCraft.config.lead.getVeinYStart();
 				int k5 = j + random.nextInt(16);
-				(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.leadOreVeinSize, BlockPlasmaOre.leadMeta)).generate(world, random, k2, i4, k5);
+				(new WorldGenMulti(PlasmaCraft.blocks.orePlasma, PlasmaCraft.config.lead.getVeinSize(), BlockPlasmaOre.leadMeta)).generate(world, random, k2, i4, k5);
 			}
 		}
 

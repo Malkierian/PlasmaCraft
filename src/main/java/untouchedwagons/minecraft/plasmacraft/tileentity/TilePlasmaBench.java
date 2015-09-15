@@ -16,7 +16,6 @@ import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
 import untouchedwagons.minecraft.plasmacraft.PlasmaRecipes;
 import untouchedwagons.minecraft.plasmacraft.blocks.BlockPlasmaBench;
 import untouchedwagons.minecraft.plasmacraft.items.ItemVial;
-import untouchedwagons.minecraft.plasmacraft.items.PCItems;
 
 public class TilePlasmaBench extends TileEntity	implements IInventory
 {
@@ -216,7 +215,7 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 			{
 				continue;
 			}
-			ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem(), furnaceItemStacks[k].getItemDamage());
+			ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k]);
 			if(itemstack != null)
 			{
 				ai[i] = k;
@@ -267,7 +266,7 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 		for(int j = 0; j < i; j++)
 		{
 			int k = ai[j];
-			ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem(), furnaceItemStacks[k].getItemDamage());
+			ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k]);
 //			Item item = furnaceItemStacks[k].getItem();
 			int l = getAvailableDestIndex(itemstack);
 			if(l != -1)
@@ -301,7 +300,7 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 				break;
 			}
 			int i1 = ai[l];
-			ItemStack itemstack1 = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[i1].getItem(), furnaceItemStacks[i1].getItemDamage());
+			ItemStack itemstack1 = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[i1]);
 			j = getAvailableDestIndex(itemstack1);
 			if(j != -1)
 			{
@@ -310,7 +309,7 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 			}
 			l++;
 		} while(true);
-		ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k].getItem(), furnaceItemStacks[k].getItemDamage());
+		ItemStack itemstack = PlasmaRecipes.getInstance().getPlasmaRecipe(furnaceItemStacks[k]);
 		if(furnaceItemStacks[j] == null)
 		{
 			furnaceItemStacks[j] = itemstack.copy();
@@ -336,7 +335,7 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 				{
 					break;
 				}
-				ItemStack itemstack1 = new ItemStack(PlasmaCraft.items.causticVial);
+				ItemStack itemstack1 = new ItemStack(PlasmaCraft.items.vial);
 				j = getAvailableDestIndex(itemstack1);
 				if(j != -1)
 				{
@@ -344,7 +343,7 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 				}
 				l++;
 			} while(true);
-			ItemStack itemstack2 = new ItemStack(PlasmaCraft.items.causticVial);
+			ItemStack itemstack2 = new ItemStack(PlasmaCraft.items.vial);
 			if(j == -1)
 			{
 				Random rand = new Random();
@@ -352,7 +351,7 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 				float f1 = rand.nextFloat() * 0.8F + 0.1F;
 				float f2 = rand.nextFloat() * 0.8F + 0.1F;
 				float f3 = 0.05F;
-				EntityItem entityitem = new EntityItem(worldObj, (float)xCoord + f, (float)yCoord + f1, (float)zCoord + f2, new ItemStack(PlasmaCraft.items.causticVial));
+				EntityItem entityitem = new EntityItem(worldObj, (float)xCoord + f, (float)yCoord + f1, (float)zCoord + f2, new ItemStack(PlasmaCraft.items.vial));
 				entityitem.motionX = (float)rand.nextGaussian() * f3;
 				entityitem.motionY = (float)rand.nextGaussian() * f3 + 0.2F;
 				entityitem.motionZ = (float)rand.nextGaussian() * f3;
@@ -375,32 +374,30 @@ public class TilePlasmaBench extends TileEntity	implements IInventory
 		{
 			return 0;
 		}
+
 		Item i = itemstack.getItem();
+
 		if(i == Items.redstone)
 		{
 			return 250;
 		}
-		if(i == PlasmaCraft.items.goopAcid)
+		if(i == PlasmaCraft.items.goop)
 		{
 			return 1000;
 		}
-		if(i == PlasmaCraft.items.plasma)
+		if(i == PlasmaCraft.items.ingots)
 		{
 			return 4000;
 		}
-//		if(i == PlasmaCraft.batteryCharged.itemID)
-//		{
-//			return 4000;
-//		}
-		if(i == PlasmaCraft.items.radioniteVial)
+		if(itemstack.getItem() == PlasmaCraft.items.vial && itemstack.getItemDamage() == ItemVial.RADIONITE_DAMAGE)
 		{
 			return 8000;
 		}
-//		if(i == PlasmaCraft.batteryPlasma.itemID)
-//		{
-//			return 8000;
-//		}
-		return i != PlasmaCraft.items.plutoniumVial ? 0 : 20000;
+        if(itemstack.getItem() == PlasmaCraft.items.vial && itemstack.getItemDamage() == ItemVial.PLUTONIUM_DAMAGE)
+        {
+            return 20000;
+        }
+		return 0;
 	}
 
 	@Override

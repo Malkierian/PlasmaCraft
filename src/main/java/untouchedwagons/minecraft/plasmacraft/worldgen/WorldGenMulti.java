@@ -11,9 +11,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-// Referenced classes of package net.minecraft.src:
-//			WorldGenerator, MathHelper, World, Block
-
 public class WorldGenMulti extends WorldGenerator
 {
 	private Block minableBlock;
