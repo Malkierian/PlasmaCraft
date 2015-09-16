@@ -4,7 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import untouchedwagons.minecraft.plasmacraft.entities.EntityAcidGrenade;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityAcidGrenade;
 
 public class ItemAcidGrenade extends ItemPlasma
 {

@@ -1,4 +1,4 @@
-package untouchedwagons.minecraft.plasmacraft.entities;
+package untouchedwagons.minecraft.plasmacraft.entity;
 
 import java.util.List;
 
@@ -17,10 +17,8 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
-import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.blocks.PCBlocks;
 
-public class EntityAcid extends Entity
+public class EntityLaserShotgun extends Entity
 {
 	private int xTile;
 	private int yTile;
@@ -31,26 +29,26 @@ public class EntityAcid extends Entity
 	public EntityLivingBase owner;
 	private int ticksInAir;
 
-	public EntityAcid(World world)
+	public EntityLaserShotgun(World world)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = Blocks.air;
+		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
 	}
 
-	public EntityAcid(World world, double d, double d1, double d2)
+	public EntityLaserShotgun(World world, double d, double d1, double d2)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = Blocks.air;
+		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -59,13 +57,13 @@ public class EntityAcid extends Entity
 		yOffset = 0.0F;
 	}
 
-	public EntityAcid(World world, EntityLivingBase entityliving)
+	public EntityLaserShotgun(World world, EntityLivingBase entityliving)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = Blocks.air;
+		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -80,7 +78,7 @@ public class EntityAcid extends Entity
 		motionX = -MathHelper.sin((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionZ = MathHelper.cos((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionY = -MathHelper.sin((rotationPitch / 180F) * 3.141593F);
-		setArrowHeading(motionX, motionY, motionZ, 1.0F, 1.0F);
+		setArrowHeading(motionX, motionY, motionZ, 5F, 1.0F);
 	}
 
 	protected void entityInit()
@@ -94,9 +92,9 @@ public class EntityAcid extends Entity
 		d /= f2;
 		d1 /= f2;
 		d2 /= f2;
-		d += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
-		d1 += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
-		d2 += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
+		d += rand.nextGaussian() * 0.017499999832361935D * (double)f1;
+		d1 += rand.nextGaussian() * 0.027499999832361937D * (double)f1;
+		d2 += rand.nextGaussian() * 0.097499999832361933D * (double)f1;
 		d *= f;
 		d1 *= f;
 		d2 *= f;
@@ -192,21 +190,26 @@ public class EntityAcid extends Entity
 				{
 					return;
 				}
-				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 6))
+				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 4))
 				{
 					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
 					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-					worldObj.setBlock(j, l, j1, PlasmaCraft.blocks.acidBlock);
+					worldObj.setBlock(j, l, j1, Blocks.fire);
+					entity.setFire(1);
 					setDead();
 				}
-			}
-			else
+			} else
 			{
 				int k = movingobjectposition.blockX;
 				int i1 = movingobjectposition.blockY;
 				int k1 = movingobjectposition.blockZ;
 				boolean flag = true;
+				if(worldObj.getBlock(k, i1, k1) == Blocks.ice)
+				{
+					worldObj.setBlock(k, i1, k1, Blocks.water);
+					flag = false;
+				}
 				if(worldObj.getBlock(k, i1, k1) == Blocks.tallgrass)
 				{
 					worldObj.setBlock(k, i1, k1, Blocks.fire);
@@ -227,25 +230,25 @@ public class EntityAcid extends Entity
 					worldObj.setBlock(k, i1, k1, Blocks.fire);
 					flag = false;
 				}
-				if(worldObj.isAirBlock(k, i1 + 1, k1) && flag)
+				if(worldObj.isAirBlock(k, i1 + 1, k1)&& flag)
 				{
-					worldObj.setBlock(k, i1 + 1, k1, PlasmaCraft.blocks.acidBlock);
+					worldObj.setBlock(k, i1 + 1, k1, Blocks.fire);
 				}
-				if(worldObj.isAirBlock(k, i1, k1 + 1) && flag)
+				if(worldObj.isAirBlock(k, i1, k1 + 1)&& flag)
 				{
-					worldObj.setBlock(k, i1, k1 + 1, PlasmaCraft.blocks.acidBlock);
+					worldObj.setBlock(k, i1, k1 + 1, Blocks.fire);
 				}
-				if(worldObj.isAirBlock(k, i1, k1 - 1) && flag)
+				if(worldObj.isAirBlock(k, i1, k1 - 1)&& flag)
 				{
-					worldObj.setBlock(k, i1, k1 - 1, PlasmaCraft.blocks.acidBlock);
+					worldObj.setBlock(k, i1, k1 - 1, Blocks.fire);
 				}
-				if(worldObj.isAirBlock(k + 1, i1, k1) && flag)
+				if(worldObj.isAirBlock(k + 1, i1, k1)&& flag)
 				{
-					worldObj.setBlock(k + 1, i1, k1, PlasmaCraft.blocks.acidBlock);
+					worldObj.setBlock(k + 1, i1, k1, Blocks.fire);
 				}
-				if(worldObj.isAirBlock(k - 1, i1, k1) && flag)
+				if(worldObj.isAirBlock(k - 1, i1, k1)&& flag)
 				{
-					worldObj.setBlock(k - 1, i1, k1, PlasmaCraft.blocks.acidBlock);
+					worldObj.setBlock(k - 1, i1, k1, Blocks.fire);
 				}
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;
@@ -274,7 +277,7 @@ public class EntityAcid extends Entity
 		rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 		rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 		float f2 = 0.99F;
-		float f4 = 0.03F;
+		//float f4 = 0.03F;
 		if(isInWater())
 		{
 			for(int l1 = 0; l1 < 4; l1++)
@@ -288,7 +291,6 @@ public class EntityAcid extends Entity
 		motionX *= f2;
 		motionY *= f2;
 		motionZ *= f2;
-		motionY -= f4;
 		setPosition(posX, posY, posZ);
 	}
 

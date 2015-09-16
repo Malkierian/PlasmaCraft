@@ -20,19 +20,20 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCausticBoat;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCausticBoat;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import untouchedwagons.minecraft.plasmacraft.items.ItemIngot;
 
-public class BlockCausticFluids extends BlockFluidClassic
+public class BlockCausticFluid extends BlockFluidClassic
 {
 	@SideOnly(Side.CLIENT)
 	protected IIcon[] icons;
 	private int armorTick;
-	
-	public BlockCausticFluids(Fluid fluid, Material material)
+	private int fluidId;
+
+	public BlockCausticFluid(Fluid fluid, Material material)
 	{
 		super(fluid, material);
 		setLightLevel(0.6F);
@@ -583,4 +584,14 @@ public class BlockCausticFluids extends BlockFluidClassic
 			}
 		}
 	}
+
+	public BlockCausticFluid setFluidId(int fluidId) {
+		this.fluidId = fluidId;
+
+		return this;
+	}
+
+    public int getFluidId() {
+        return fluidId;
+    }
 }

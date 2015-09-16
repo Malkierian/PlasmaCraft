@@ -1,4 +1,4 @@
-package untouchedwagons.minecraft.plasmacraft.entities;
+package untouchedwagons.minecraft.plasmacraft.entity;
 
 import java.util.List;
 
@@ -16,7 +16,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
 import untouchedwagons.minecraft.plasmacraft.items.ItemIngot;
-import untouchedwagons.minecraft.plasmacraft.items.PCItems;
 
 public class EntityCausticBoat extends EntityBoat
 {

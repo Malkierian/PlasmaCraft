@@ -1,4 +1,4 @@
-package untouchedwagons.minecraft.plasmacraft.entities;
+package untouchedwagons.minecraft.plasmacraft.entity;
 
 import java.util.List;
 
@@ -288,20 +288,20 @@ public class EntityRailGun extends Entity
 
 	public void writeEntityToNBT(NBTTagCompound nbttagcompound)
 	{
-		nbttagcompound.setShort("xTile", (short)xTile);
-		nbttagcompound.setShort("yTile", (short)yTile);
-		nbttagcompound.setShort("zTile", (short)zTile);
+		nbttagcompound.setInteger("xTile", xTile);
+		nbttagcompound.setInteger("yTile", yTile);
+		nbttagcompound.setInteger("zTile", zTile);
 		nbttagcompound.setString("inTile", inTile.getUnlocalizedName());
-		nbttagcompound.setByte("inGround", (byte)(inGround ? 1 : 0));
+		nbttagcompound.setBoolean("inGround", inGround);
 	}
 
 	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
 	{
-		xTile = nbttagcompound.getShort("xTile");
-		yTile = nbttagcompound.getShort("yTile");
-		zTile = nbttagcompound.getShort("zTile");
+		xTile = nbttagcompound.getInteger("xTile");
+		yTile = nbttagcompound.getInteger("yTile");
+		zTile = nbttagcompound.getInteger("zTile");
 		inTile = (Block)Item.itemRegistry.getObject(nbttagcompound.getString("inTile"));
-		inGround = nbttagcompound.getByte("inGround") == 1;
+		inGround = nbttagcompound.getBoolean("inGround");
 	}
 
 	public void onCollideWithPlayer(EntityPlayer entityplayer)

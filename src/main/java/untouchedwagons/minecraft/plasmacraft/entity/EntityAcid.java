@@ -1,7 +1,6 @@
-package untouchedwagons.minecraft.plasmacraft.entities;
+package untouchedwagons.minecraft.plasmacraft.entity;
 
 import java.util.List;
-import java.util.Random;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
@@ -18,10 +17,9 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
 
-import untouchedwagons.minecraft.plasmacraft.world.AcidExplosion;
-
-public class EntityPlasma extends Entity
+public class EntityAcid extends Entity
 {
 	private int xTile;
 	private int yTile;
@@ -31,27 +29,27 @@ public class EntityPlasma extends Entity
 	public int arrowShake;
 	public EntityLivingBase owner;
 	private int ticksInAir;
-	int damg;
-	public EntityPlasma(World world)
+
+	public EntityAcid(World world)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
 	}
 
-	public EntityPlasma(World world, double d, double d1, double d2)
+	public EntityAcid(World world, double d, double d1, double d2)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -60,14 +58,13 @@ public class EntityPlasma extends Entity
 		yOffset = 0.0F;
 	}
 
-	public EntityPlasma(World world, EntityLivingBase entityliving, int dmg)
+	public EntityAcid(World world, EntityLivingBase entityliving)
 	{
 		super(world);
-		damg = dmg;
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inTile = Blocks.air;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -82,7 +79,7 @@ public class EntityPlasma extends Entity
 		motionX = -MathHelper.sin((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionZ = MathHelper.cos((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionY = -MathHelper.sin((rotationPitch / 180F) * 3.141593F);
-		setArrowHeading(motionX, motionY, motionZ, 2.0F, 1.0F);
+		setArrowHeading(motionX, motionY, motionZ, 1.0F, 1.0F);
 	}
 
 	protected void entityInit()
@@ -194,35 +191,21 @@ public class EntityPlasma extends Entity
 				{
 					return;
 				}
-				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), damg))
+				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 6))
 				{
 					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
 					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-					worldObj.setBlock(j, l, j1, Blocks.fire);
-					Random random = new Random();
-					int i2 = random.nextInt(10);
-					if(i2 == 1)
-					{
-						AcidExplosion smacidexplosion1 = new AcidExplosion(worldObj, this, posX, posY, posZ, 3F);
-						smacidexplosion1.isFlaming = false;
-						smacidexplosion1.doExplosionA();
-						smacidexplosion1.doExplosionB();
-						setDead();
-					}
+					worldObj.setBlock(j, l, j1, PlasmaCraft.blocks.acidBlock);
 					setDead();
 				}
-			} else
+			}
+			else
 			{
 				int k = movingobjectposition.blockX;
 				int i1 = movingobjectposition.blockY;
 				int k1 = movingobjectposition.blockZ;
 				boolean flag = true;
-				if(worldObj.getBlock(k, i1, k1) == Blocks.ice)
-				{
-					worldObj.setBlock(k, i1, k1, Blocks.water);
-					flag = false;
-				}
 				if(worldObj.getBlock(k, i1, k1) == Blocks.tallgrass)
 				{
 					worldObj.setBlock(k, i1, k1, Blocks.fire);
@@ -243,39 +226,30 @@ public class EntityPlasma extends Entity
 					worldObj.setBlock(k, i1, k1, Blocks.fire);
 					flag = false;
 				}
-				if(worldObj.isAirBlock(k, i1 + 1, k1)&& flag)
+				if(worldObj.isAirBlock(k, i1 + 1, k1) && flag)
 				{
-					worldObj.setBlock(k, i1 + 1, k1, Blocks.fire);
+					worldObj.setBlock(k, i1 + 1, k1, PlasmaCraft.blocks.acidBlock);
 				}
-				if(worldObj.isAirBlock(k, i1, k1 + 1)&& flag)
+				if(worldObj.isAirBlock(k, i1, k1 + 1) && flag)
 				{
-					worldObj.setBlock(k, i1, k1 + 1, Blocks.fire);
+					worldObj.setBlock(k, i1, k1 + 1, PlasmaCraft.blocks.acidBlock);
 				}
-				if(worldObj.isAirBlock(k, i1, k1 - 1)&& flag)
+				if(worldObj.isAirBlock(k, i1, k1 - 1) && flag)
 				{
-					worldObj.setBlock(k, i1, k1 - 1, Blocks.fire);
+					worldObj.setBlock(k, i1, k1 - 1, PlasmaCraft.blocks.acidBlock);
 				}
-				if(worldObj.isAirBlock(k + 1, i1, k1)&& flag)
+				if(worldObj.isAirBlock(k + 1, i1, k1) && flag)
 				{
-					worldObj.setBlock(k + 1, i1, k1, Blocks.fire);
+					worldObj.setBlock(k + 1, i1, k1, PlasmaCraft.blocks.acidBlock);
 				}
-				if(worldObj.isAirBlock(k - 1, i1, k1)&& flag)
+				if(worldObj.isAirBlock(k - 1, i1, k1) && flag)
 				{
-					worldObj.setBlock(k - 1, i1, k1, Blocks.fire);
-				}
-				Random random1 = new Random();
-				if(random1.nextInt(10) == 1)
-				{
-					AcidExplosion smacidexplosion = new AcidExplosion(worldObj, this, posX, posY, posZ, 2F);
-					smacidexplosion.isFlaming = false;
-					smacidexplosion.doExplosionA();
-					smacidexplosion.doExplosionB();
-					setDead();
+					worldObj.setBlock(k - 1, i1, k1, PlasmaCraft.blocks.acidBlock);
 				}
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;
 				zTile = movingobjectposition.blockZ;
-//				inTile = worldObj.getBlock(xTile, yTile, zTile);
+				inTile = worldObj.getBlock(xTile, yTile, zTile);
 				motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
 				motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
 				motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
@@ -299,7 +273,7 @@ public class EntityPlasma extends Entity
 		rotationPitch = prevRotationPitch + (rotationPitch - prevRotationPitch) * 0.2F;
 		rotationYaw = prevRotationYaw + (rotationYaw - prevRotationYaw) * 0.2F;
 		float f2 = 0.99F;
-		//float f4 = 0.03F;
+		float f4 = 0.03F;
 		if(isInWater())
 		{
 			for(int l1 = 0; l1 < 4; l1++)
@@ -313,6 +287,7 @@ public class EntityPlasma extends Entity
 		motionX *= f2;
 		motionY *= f2;
 		motionZ *= f2;
+		motionY -= f4;
 		setPosition(posX, posY, posZ);
 	}
 

@@ -49,7 +49,7 @@ public class ItemBattery extends Item {
     public void registerIcons(IIconRegister icon_registrar)
     {
         this.icons = new IIcon[5];
-        this.icons[EMPTY_DAMAGE] = icon_registrar.registerIcon("plasmacraft:battery");
+        this.icons[EMPTY_DAMAGE] = icon_registrar.registerIcon("plasmacraft:batteryEmpty");
         this.icons[CHARGED_DAMAGE] = icon_registrar.registerIcon("plasmacraft:batteryCharged");
         this.icons[CRYO_DAMAGE] = icon_registrar.registerIcon("plasmacraft:batteryCryonite");
         this.icons[PLASMA_DAMAGE] = icon_registrar.registerIcon("plasmacraft:batteryPlasma");

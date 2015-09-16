@@ -1,4 +1,4 @@
-package untouchedwagons.minecraft.plasmacraft.entities;
+package untouchedwagons.minecraft.plasmacraft.entity;
 
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.passive.EntityAnimal;

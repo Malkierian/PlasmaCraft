@@ -13,16 +13,15 @@ import untouchedwagons.minecraft.plasmacraft.client.renderers.RenderLaserShotgun
 import untouchedwagons.minecraft.plasmacraft.client.renderers.RenderMutantCow;
 import untouchedwagons.minecraft.plasmacraft.client.renderers.RenderPlasma;
 import untouchedwagons.minecraft.plasmacraft.client.renderers.RenderRailGun;
-import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityAcid;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityAcidTNTPrimed;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCausticBoat;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCryoBlast;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityLaser;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityLaserShotgun;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityMutantCow;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityPlasma;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityRailGun;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityAcid;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityAcidTNTPrimed;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCausticBoat;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCryoBlast;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityLaser;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityLaserShotgun;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityMutantCow;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityPlasma;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityRailGun;
 
 import cpw.mods.fml.client.registry.RenderingRegistry;
 

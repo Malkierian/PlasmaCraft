@@ -55,7 +55,7 @@ public class ItemGoop extends Item {
     public void registerIcons(IIconRegister icon_registrar)
     {
         this.icons = new IIcon[8];
-        this.icons[ACID_DAMAGE] = icon_registrar.registerIcon("plasmacraft:goop");
+        this.icons[ACID_DAMAGE] = icon_registrar.registerIcon("plasmacraft:goopAcid");
         this.icons[CRYONITE_DAMAGE] = icon_registrar.registerIcon("plasmacraft:goopCryonite");
         this.icons[NEPTUNIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:goopNeptunium");
         this.icons[NETHERFLOW_DAMAGE] = icon_registrar.registerIcon("plasmacraft:goopNetherflow");

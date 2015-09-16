@@ -1,14 +1,12 @@
-package untouchedwagons.minecraft.plasmacraft.entities;
+package untouchedwagons.minecraft.plasmacraft.entity;
 
 import java.util.List;
 
-import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.AxisAlignedBB;
@@ -18,37 +16,51 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-public class EntityLaserShotgun extends Entity
+import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
+import untouchedwagons.minecraft.plasmacraft.blocks.BlockPlasmaOre;
+import untouchedwagons.minecraft.plasmacraft.items.ItemGoop;
+
+public class EntityLaser extends Entity
 {
 	private int xTile;
 	private int yTile;
 	private int zTile;
-	private Block inTile;
 	private boolean inGround;
 	public int arrowShake;
 	public EntityLivingBase owner;
 	private int ticksInAir;
-
-	public EntityLaserShotgun(World world)
+	int damg;
+	
+	public EntityLaser(World world)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
+		inGround = false;
+		arrowShake = 0;
+		ticksInAir = 0;
+		setSize(0.5f, 0.5f);
+	}
+	
+	public EntityLaser(World world, EntityLivingBase entityplayer)
+	{
+		super(world);
+		xTile = -1;
+		yTile = -1;
+		zTile = -1;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
 	}
 
-	public EntityLaserShotgun(World world, double d, double d1, double d2)
+	public EntityLaser(World world, double d, double d1, double d2)
 	{
 		super(world);
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -57,13 +69,13 @@ public class EntityLaserShotgun extends Entity
 		yOffset = 0.0F;
 	}
 
-	public EntityLaserShotgun(World world, EntityLivingBase entityliving)
+	public EntityLaser(World world, EntityLivingBase entityliving, int dmg)
 	{
 		super(world);
+		damg = dmg;
 		xTile = -1;
 		yTile = -1;
 		zTile = -1;
-		inTile = null;
 		inGround = false;
 		arrowShake = 0;
 		ticksInAir = 0;
@@ -85,16 +97,15 @@ public class EntityLaserShotgun extends Entity
 	{
 	}
 
-	public void setArrowHeading(double d, double d1, double d2, float f, 
-			float f1)
+	public void setArrowHeading(double d, double d1, double d2, float f, float f1)
 	{
 		float f2 = MathHelper.sqrt_double(d * d + d1 * d1 + d2 * d2);
 		d /= f2;
 		d1 /= f2;
 		d2 /= f2;
-		d += rand.nextGaussian() * 0.017499999832361935D * (double)f1;
-		d1 += rand.nextGaussian() * 0.027499999832361937D * (double)f1;
-		d2 += rand.nextGaussian() * 0.097499999832361933D * (double)f1;
+		d += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
+		d1 += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
+		d2 += rand.nextGaussian() * 0.0074999998323619366D * (double)f1;
 		d *= f;
 		d1 *= f;
 		d2 *= f;
@@ -127,6 +138,7 @@ public class EntityLaserShotgun extends Entity
 	public void onUpdate()
 	{
 		super.onUpdate();
+		
 		if(prevRotationPitch == 0.0F && prevRotationYaw == 0.0F)
 		{
 			float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
@@ -190,70 +202,114 @@ public class EntityLaserShotgun extends Entity
 				{
 					return;
 				}
-				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), 4))
+				if(movingobjectposition.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, owner), damg))
 				{
 					int j = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minX);
 					int l = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minY);
 					int j1 = MathHelper.floor_double(movingobjectposition.entityHit.boundingBox.minZ);
-					worldObj.setBlock(j, l, j1, Blocks.fire);
 					entity.setFire(1);
 					setDead();
+					worldObj.setBlock(j, l, j1, Blocks.fire);
 				}
-			} else
+			}
+			else
 			{
 				int k = movingobjectposition.blockX;
 				int i1 = movingobjectposition.blockY;
 				int k1 = movingobjectposition.blockZ;
 				boolean flag = true;
-				if(worldObj.getBlock(k, i1, k1) == Blocks.ice)
+				if(!worldObj.isRemote)
 				{
-					worldObj.setBlock(k, i1, k1, Blocks.water);
-					flag = false;
-				}
-				if(worldObj.getBlock(k, i1, k1) == Blocks.tallgrass)
-				{
-					worldObj.setBlock(k, i1, k1, Blocks.fire);
-					flag = false;
-				}
-				if(worldObj.getBlock(k, i1, k1) == Blocks.snow)
-				{
-					worldObj.setBlock(k, i1, k1, Blocks.fire);
-					flag = false;
-				}
-				if(worldObj.getBlock(k, i1, k1) == Blocks.red_flower)
-				{
-					worldObj.setBlock(k, i1, k1, Blocks.fire);
-					flag = false;
-				}
-				if(worldObj.getBlock(k, i1, k1) == Blocks.yellow_flower)
-				{
-					worldObj.setBlock(k, i1, k1, Blocks.fire);
-					flag = false;
-				}
-				if(worldObj.isAirBlock(k, i1 + 1, k1)&& flag)
-				{
-					worldObj.setBlock(k, i1 + 1, k1, Blocks.fire);
-				}
-				if(worldObj.isAirBlock(k, i1, k1 + 1)&& flag)
-				{
-					worldObj.setBlock(k, i1, k1 + 1, Blocks.fire);
-				}
-				if(worldObj.isAirBlock(k, i1, k1 - 1)&& flag)
-				{
-					worldObj.setBlock(k, i1, k1 - 1, Blocks.fire);
-				}
-				if(worldObj.isAirBlock(k + 1, i1, k1)&& flag)
-				{
-					worldObj.setBlock(k + 1, i1, k1, Blocks.fire);
-				}
-				if(worldObj.isAirBlock(k - 1, i1, k1)&& flag)
-				{
-					worldObj.setBlock(k - 1, i1, k1, Blocks.fire);
+					if(worldObj.getBlock(k, i1, k1) == PlasmaCraft.blocks.frozenCryonite)
+					{
+						worldObj.setBlockToAir(k, i1, k1);
+						setDead();
+
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == Blocks.iron_ore)
+					{
+						worldObj.setBlockToAir(k, i1, k1);
+						setDead();
+						dropItem(Items.iron_ingot, 1);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == Blocks.gold_ore)
+					{
+						worldObj.setBlockToAir(k, i1, k1);
+						setDead();
+						dropItem(Items.gold_ingot, 1);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == PlasmaCraft.blocks.orePlasma)
+					{
+						int meta = worldObj.getBlockMetadata(k, i1, k1);
+						ItemStack index;
+						switch(meta)
+						{
+                            case BlockPlasmaOre.radioniteMeta:
+                                index = new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.RADIONITE_DAMAGE);
+                            case BlockPlasmaOre.uraniumMeta:
+                                index = new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.URANIUM_DAMAGE);
+                            case BlockPlasmaOre.plutoniumMeta:
+                            default:
+                                index = new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.PLUTONIUM_DAMAGE);
+						}
+						worldObj.setBlockToAir(k, i1, k1);
+						setDead();
+                        entityDropItem(index, 1);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == Blocks.ice)
+					{
+						worldObj.setBlock(k, i1, k1, Blocks.water);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == Blocks.tallgrass)
+					{
+						worldObj.setBlock(k, i1, k1, Blocks.fire);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == Blocks.snow)
+					{
+						worldObj.setBlock(k, i1, k1, Blocks.fire);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == Blocks.red_flower)
+					{
+						worldObj.setBlock(k, i1, k1, Blocks.fire);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1, k1) == Blocks.yellow_flower)
+					{
+						worldObj.setBlock(k, i1, k1, Blocks.fire);
+						flag = false;
+					}
+					if(worldObj.getBlock(k, i1 + 1, k1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
+					{
+						worldObj.setBlock(k, i1 + 1, k1, Blocks.fire);
+					}
+					if(worldObj.getBlock(k, i1, k1 + 1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
+					{
+						worldObj.setBlock(k, i1, k1 + 1, Blocks.fire);
+					}
+					if(worldObj.getBlock(k, i1, k1 - 1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
+					{
+						worldObj.setBlock(k, i1, k1 - 1, Blocks.fire);
+					}
+					if(worldObj.getBlock(k + 1, i1, k1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
+					{
+						worldObj.setBlock(k + 1, i1, k1, Blocks.fire);
+					}
+					if(worldObj.getBlock(k - 1, i1, k1) == Blocks.air && Blocks.fire.canPlaceBlockAt(worldObj, k, i1, k1) && flag)
+					{
+						worldObj.setBlock(k - 1, i1, k1, Blocks.fire);
+					}
 				}
 				xTile = movingobjectposition.blockX;
 				yTile = movingobjectposition.blockY;
 				zTile = movingobjectposition.blockZ;
-				inTile = worldObj.getBlock(xTile, yTile, zTile);
+//				inTile = worldObj.getBlock(xTile, yTile, zTile);
 				motionX = (float)(movingobjectposition.hitVec.xCoord - posX);
 				motionY = (float)(movingobjectposition.hitVec.yCoord - posY);
 				motionZ = (float)(movingobjectposition.hitVec.zCoord - posZ);
@@ -299,7 +355,7 @@ public class EntityLaserShotgun extends Entity
 		nbttagcompound.setShort("xTile", (short)xTile);
 		nbttagcompound.setShort("yTile", (short)yTile);
 		nbttagcompound.setShort("zTile", (short)zTile);
-		nbttagcompound.setString("inTile", inTile.getUnlocalizedName());
+//		nbttagcompound.setString("inTile", inTile.getUnlocalizedName());
 		nbttagcompound.setByte("shake", (byte)arrowShake);
 		nbttagcompound.setByte("inGround", (byte)(inGround ? 1 : 0));
 	}
@@ -309,14 +365,14 @@ public class EntityLaserShotgun extends Entity
 		xTile = nbttagcompound.getShort("xTile");
 		yTile = nbttagcompound.getShort("yTile");
 		zTile = nbttagcompound.getShort("zTile");
-		inTile = (Block)Item.itemRegistry.getObject(nbttagcompound.getString("inTile"));
+//		inTile = (Block)Item.itemRegistry.getObject(nbttagcompound.getString("inTile"));
 		arrowShake = nbttagcompound.getByte("shake") & 0xff;
 		inGround = nbttagcompound.getByte("inGround") == 1;
 	}
 
 	public void onCollideWithPlayer(EntityPlayer entityplayer)
 	{
-		if(worldObj.isRemote)
+		if(!worldObj.isRemote)
 		{
 			return;
 		}

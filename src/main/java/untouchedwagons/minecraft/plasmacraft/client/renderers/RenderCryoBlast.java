@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCryoBlast;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCryoBlast;
 
 public class RenderCryoBlast extends Render
 {

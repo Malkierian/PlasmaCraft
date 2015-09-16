@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCausticBoat;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCausticBoat;
 
 public class RenderCausticBoat extends Render
 {

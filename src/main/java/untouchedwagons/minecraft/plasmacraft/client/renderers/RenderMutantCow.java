@@ -6,7 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
 
-import untouchedwagons.minecraft.plasmacraft.entities.EntityMutantCow;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityMutantCow;
 
 public class RenderMutantCow extends RenderLiving
 {

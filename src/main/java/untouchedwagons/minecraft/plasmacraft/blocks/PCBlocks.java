@@ -2,17 +2,10 @@ package untouchedwagons.minecraft.plasmacraft.blocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.fluids.Fluid;
+import untouchedwagons.minecraft.plasmacraft.fluids.PCFluids;
+import untouchedwagons.minecraft.plasmacraft.items.ItemVial;
 
 public class PCBlocks {
-    public final Fluid acidFluid = new Fluid("acid").setDensity(80).setViscosity(400);
-    public final Fluid cryoniteFluid = new Fluid("cryonite").setDensity(80).setViscosity(600);
-    public final Fluid neptuniumFluid = new Fluid("neptunium").setDensity(80).setViscosity(300);
-    public final Fluid netherflowFluid = new Fluid("netherflow").setDensity(80).setViscosity(450);
-    public final Fluid obsidiumFluid = new Fluid("obsidium").setDensity(80).setViscosity(1200);
-    public final Fluid plutoniumFluid = new Fluid("plutonium").setDensity(80).setViscosity(800);
-    public final Fluid radioniteFluid = new Fluid("radionite").setDensity(80).setViscosity(1000);
-    public final Fluid uraniumFluid = new Fluid("uranium").setDensity(150).setViscosity(800);
 
     public Block acidBarrier = new BlockAcidBarrier().setBlockName("acidBarrier");
     public Block orePlasma = new BlockPlasmaOre().setLightLevel(0.5334f).setBlockName("orePlasma");
@@ -22,12 +15,23 @@ public class PCBlocks {
     public Block frozenCryonite = new BlockReinforcedGlass("frozenCryonite", Material.glass, false, 1.0F).setBlockName("frozenCryonite");
     public Block reinforcedGlass = new BlockReinforcedGlass("reinforcedGlass", Material.glass, false, 500.0F).setBlockName("reinforcedGlass");
 
-    public final BlockCausticFluids acidBlock = (BlockCausticFluids) new BlockCausticFluids(acidFluid, Material.water).setBlockName("acid");
-    public final BlockCausticFluids cryoniteBlock = (BlockCausticFluids) new BlockCausticFluids(cryoniteFluid, Material.water).setBlockName("cryonite");
-    public final BlockCausticFluids neptuniumBlock = (BlockCausticFluids) new BlockCausticFluids(neptuniumFluid, Material.water).setBlockName("neptunium");
-    public final BlockCausticFluids netherflowBlock = (BlockCausticFluids) new BlockCausticFluids(netherflowFluid, Material.water).setBlockName("netherflow");
-    public final BlockCausticFluids obsidiumBlock = (BlockCausticFluids) new BlockCausticFluids(obsidiumFluid, Material.water).setBlockName("obsidium");
-    public final BlockCausticFluids plutoniumBlock = (BlockCausticFluids) new BlockCausticFluids(plutoniumFluid, Material.water).setBlockName("plutonium");
-    public final BlockCausticFluids radioniteBlock = (BlockCausticFluids) new BlockCausticFluids(radioniteFluid, Material.water).setBlockName("radionite");
-    public final BlockCausticFluids uraniumBlock = (BlockCausticFluids) new BlockCausticFluids(uraniumFluid, Material.water).setBlockName("uranium");
+    public final BlockCausticFluid acidBlock;
+    public final BlockCausticFluid cryoniteBlock;
+    public final BlockCausticFluid neptuniumBlock;
+    public final BlockCausticFluid netherflowBlock ;
+    public final BlockCausticFluid obsidiumBlock;
+    public final BlockCausticFluid plutoniumBlock;
+    public final BlockCausticFluid radioniteBlock;
+    public final BlockCausticFluid uraniumBlock;
+
+    public PCBlocks(PCFluids fluids) {
+        acidBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.acidFluid, Material.water).setFluidId(ItemVial.ACID_DAMAGE).setBlockName("acid");
+        cryoniteBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.cryoniteFluid, Material.water).setFluidId(ItemVial.CRYONITE_DAMAGE).setBlockName("cryonite");
+        neptuniumBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.neptuniumFluid, Material.water).setFluidId(ItemVial.NEPTUNIUM_DAMAGE).setBlockName("neptunium");
+        netherflowBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.netherflowFluid, Material.water).setFluidId(ItemVial.NETHERFLOW_DAMAGE).setBlockName("netherflow");
+        obsidiumBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.obsidiumFluid, Material.water).setFluidId(ItemVial.OBSIDIUM_DAMAGE).setBlockName("obsidium");
+        plutoniumBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.plutoniumFluid, Material.water).setFluidId(ItemVial.PLUTONIUM_DAMAGE).setBlockName("plutonium");
+        radioniteBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.radioniteFluid, Material.water).setFluidId(ItemVial.RADIONITE_DAMAGE).setBlockName("radionite");
+        uraniumBlock = (BlockCausticFluid) new BlockCausticFluid(fluids.uraniumFluid, Material.water).setFluidId(ItemVial.URANIUM_DAMAGE).setBlockName("uranium");
+    }
 }

@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityPlasma;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityPlasma;
 
 public class RenderPlasma extends Render
 {

@@ -19,15 +19,16 @@ import untouchedwagons.minecraft.plasmacraft.client.gui.GuiHandler;
 import untouchedwagons.minecraft.plasmacraft.client.gui.PlasmaTab;
 import untouchedwagons.minecraft.plasmacraft.common.FuelHandler;
 import untouchedwagons.minecraft.plasmacraft.config.PlasmaCraftConfig;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityAcid;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityAcidGrenade;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityAcidTNTPrimed;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCausticBoat;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCryoBlast;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityLaser;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityLaserShotgun;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityPlasma;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityRailGun;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityAcid;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityAcidGrenade;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityAcidTNTPrimed;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCausticBoat;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCryoBlast;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityLaser;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityLaserShotgun;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityPlasma;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityRailGun;
+import untouchedwagons.minecraft.plasmacraft.fluids.PCFluids;
 import untouchedwagons.minecraft.plasmacraft.proxy.CommonProxy;
 import untouchedwagons.minecraft.plasmacraft.tileentity.TilePlasmaBench;
 import untouchedwagons.minecraft.plasmacraft.worldgen.WorldGenerator;
@@ -48,10 +49,11 @@ public class PlasmaCraft
 {
 	public static String MOD_ID = "plasmacraft";
 
-    public static final PCBlocks blocks = new PCBlocks();
-    public static final PCItems items = new PCItems();
+    public static PCFluids fluids;
+    public static PCBlocks blocks;
+    public static PCItems items;
 
-	public static PlasmaTab plasmaTab;
+	public static PlasmaTab plasmaTab = new PlasmaTab("PlasmaCraft");
     public static PlasmaCraftConfig config;
 
 	public static int neptuniumSpoutCount = 20;
@@ -74,13 +76,19 @@ public class PlasmaCraft
 	private GuiHandler guiHandler = new GuiHandler();
 	
 	// Says where the client and server 'proxy' code is loaded.
-	@SidedProxy(clientSide="com.malkierian.plasmacraft.client.ClientProxy", serverSide="com.malkierian.plasmacraft.common.CommonProxy")
+	@SidedProxy(clientSide="untouchedwagons.minecraft.plasmacraft.proxy.ClientProxy", serverSide="untouchedwagons.minecraft.plasmacraft.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
         loadConfig(event);
+
+        PlasmaCraft.fluids = new PCFluids();
+        registerFluids();
+
+        PlasmaCraft.blocks = new PCBlocks(PlasmaCraft.fluids);
+        PlasmaCraft.items = new PCItems();
 
         registerBlocks();
         registerFuel();
@@ -93,8 +101,6 @@ public class PlasmaCraft
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
 		
 		proxy.registerRenderers();
-		
-		plasmaTab = new PlasmaTab("PlasmaCraft");
 		
 		List<Item> order = Arrays.asList(Item.getItemFromBlock(blocks.orePlasma), Item.getItemFromBlock(blocks.glowCloth), Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
 				Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier), Item.getItemFromBlock(PlasmaCraft.blocks.plasmaBench),
@@ -112,29 +118,29 @@ public class PlasmaCraft
 		});
 
         registerRecipes();
-		
 		registerOres();
-		
 		registerTileEntities();
-		
-		proxy.registerTextureFX();
-		
-		registerEntities();
+        registerEntities();
+
+        proxy.registerTextureFX();
 		
 		GameRegistry.registerWorldGenerator(new WorldGenerator(), 20);
 	}
+
+    private void registerFluids()
+    {
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.acidFluid);
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.cryoniteFluid);
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.neptuniumFluid);
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.netherflowFluid);
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.obsidiumFluid);
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.plutoniumFluid);
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.radioniteFluid);
+        FluidRegistry.registerFluid(PlasmaCraft.fluids.uraniumFluid);
+    }
 	
 	private void registerBlocks()
 	{
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.acidFluid);
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.cryoniteFluid);
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.neptuniumFluid);
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.netherflowFluid);
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.obsidiumFluid);
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.plutoniumFluid);
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.radioniteFluid);
-		FluidRegistry.registerFluid(PlasmaCraft.blocks.uraniumFluid);
-
         GameRegistry.registerBlock(blocks.orePlasma, ItemPlasmaOre.class, "orePlasma");
 		GameRegistry.registerBlock(blocks.acidBlock, "Acid");
 		GameRegistry.registerBlock(blocks.cryoniteBlock, "Cryonite");

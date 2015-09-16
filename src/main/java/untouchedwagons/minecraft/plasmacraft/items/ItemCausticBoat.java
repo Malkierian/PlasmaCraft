@@ -15,7 +15,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityCausticBoat;
+import untouchedwagons.minecraft.plasmacraft.entity.EntityCausticBoat;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;

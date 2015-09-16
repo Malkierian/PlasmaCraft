@@ -15,7 +15,7 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
 import untouchedwagons.minecraft.plasmacraft.PlasmaCraft;
-import untouchedwagons.minecraft.plasmacraft.entities.EntityMutantCow;
+import untouchedwagons.minecraft.plasmacraft.blocks.BlockCausticFluid;
 
 import java.util.List;
 
@@ -92,62 +92,25 @@ public class ItemVial extends Item
 				return itemstack;
 			}
 
-			if(itemstack.getItemDamage() != EMPTY_DAMAGE)
+			if(itemstack.getItemDamage() == EMPTY_DAMAGE)
 			{
-				Block l = world.getBlock(x, y, z);
-				if(l == PlasmaCraft.blocks.acidBlock && world.getBlockMetadata(x, y, z) == 0)
-				{
-					if(world.setBlockToAir(x, y, z))
-					{
-						returnStack = new ItemStack(PlasmaCraft.items.vial);
-					}
-				}
-				else
-				{
-					if(l == PlasmaCraft.blocks.plutoniumBlock && world.getBlockMetadata(x, y, z) == 0)
-					{
-						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, PLUTONIUM_DAMAGE);
-					}
-					if(l == PlasmaCraft.blocks.radioniteBlock && world.getBlockMetadata(x, y, z) == 0)
-					{
-						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, RADIONITE_DAMAGE);
-					}
-					if(l == PlasmaCraft.blocks.uraniumBlock && world.getBlockMetadata(x, y, z) == 0)
-					{
-						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, URANIUM_DAMAGE);
-					}
-					if(l == PlasmaCraft.blocks.neptuniumBlock && world.getBlockMetadata(x, y, z) == 0)
-					{
-						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, NEPTUNIUM_DAMAGE);
-					}
-					if(l == PlasmaCraft.blocks.netherflowBlock && world.getBlockMetadata(x, y, z) == 0)
-					{
-						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, NETHERFLOW_DAMAGE);
-					}
-					if(l == PlasmaCraft.blocks.obsidiumBlock && world.getBlockMetadata(x, y, z) == 0)
-					{
-						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, OBSIDIUM_DAMAGE);
-					}
-					if(l == PlasmaCraft.blocks.cryoniteBlock && world.getBlockMetadata(x, y, z) == 0)
-					{
-						world.setBlockToAir(x, y, z);
-						returnStack = new ItemStack(PlasmaCraft.items.vial, 1, CRYONITE_DAMAGE);
-					}
-				}
-				if(returnStack != null)
-				{
-					if(!entityplayer.capabilities.isCreativeMode)
-						itemstack.stackSize--;
-					entityplayer.inventory.addItemStackToInventory(returnStack);
-					return itemstack;
-				}
-			} else
+				Block block = world.getBlock(x, y, z);
+
+                if (!(block instanceof BlockCausticFluid))
+                    return itemstack;
+
+                BlockCausticFluid bcf = (BlockCausticFluid) block;
+
+				world.setBlockToAir(x, y, z);
+                returnStack = new ItemStack(PlasmaCraft.items.vial, 1, bcf.getFluidId());
+
+                if(!entityplayer.capabilities.isCreativeMode)
+                    itemstack.stackSize--;
+
+                entityplayer.inventory.addItemStackToInventory(returnStack);
+                return itemstack;
+			}
+            else
 			{
 				if(movingobjectposition.sideHit == 0)
 				{
@@ -185,12 +148,6 @@ public class ItemVial extends Item
 				}
 			}
 		}
-		if(itemstack.getItemDamage() == EMPTY_DAMAGE && (movingobjectposition.entityHit instanceof EntityMutantCow)) {
-            if (!entityplayer.capabilities.isCreativeMode)
-                itemstack.stackSize--;
-
-            entityplayer.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.items.vial, 1, ACID_DAMAGE));
-        }
 
         return itemstack;
 	}
