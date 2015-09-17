@@ -40,6 +40,7 @@ public class ItemVial extends Item
 		super();
 
         this.setUnlocalizedName("pc-vial");
+		this.setHasSubtypes(true);
 		this.maxStackSize = 8;
 
         this.blocks = new Block[]

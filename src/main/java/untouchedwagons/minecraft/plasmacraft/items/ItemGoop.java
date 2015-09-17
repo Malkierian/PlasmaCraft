@@ -24,6 +24,7 @@ public class ItemGoop extends Item {
     public ItemGoop() {
         this.setCreativeTab(PlasmaCraft.plasmaTab);
         this.setUnlocalizedName("pc-goop");
+        this.setHasSubtypes(true);
     }
 
     @Override

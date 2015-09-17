@@ -21,6 +21,7 @@ public class ItemBattery extends Item {
     public ItemBattery() {
         this.setCreativeTab(PlasmaCraft.plasmaTab);
         this.setUnlocalizedName("pc-battery");
+        this.setHasSubtypes(true);
     }
 
     @Override

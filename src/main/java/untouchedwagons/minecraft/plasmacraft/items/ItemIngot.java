@@ -24,6 +24,7 @@ public class ItemIngot extends Item {
     public ItemIngot() {
         this.setCreativeTab(PlasmaCraft.plasmaTab);
         this.setUnlocalizedName("pc-ingot");
+        this.setHasSubtypes(true);
     }
 
     @Override
