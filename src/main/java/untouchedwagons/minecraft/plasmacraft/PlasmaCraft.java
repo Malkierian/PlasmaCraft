@@ -70,7 +70,7 @@ public class PlasmaCraft
     public static Comparator<ItemStack> tabSorter;
 	
 	// The instance of your mod that Forge uses.
-	@Instance("PlasmaCraft")
+	@Instance("plasmacraft")
 	public static PlasmaCraft instance;
 	
 	private GuiHandler guiHandler = new GuiHandler();
