@@ -10,7 +10,6 @@ public class PCBlocks {
     public Block acidBarrier = new BlockAcidBarrier().setBlockName("acidBarrier");
     public Block orePlasma = new BlockPlasmaOre().setLightLevel(0.5334f).setBlockName("orePlasma");
     public Block glowCloth = new BlockGlowCloth().setBlockName("glowCloth");
-    public Block plasmaBench = (new BlockPlasmaBench()).setBlockName("plasmaBench");
     public Block acidTnt = new BlockAcidTNT().setBlockName("acidTnt");
     public Block frozenCryonite = new BlockReinforcedGlass("frozenCryonite", Material.glass, false, 1.0F).setBlockName("frozenCryonite");
     public Block reinforcedGlass = new BlockReinforcedGlass("reinforcedGlass", Material.glass, false, 500.0F).setBlockName("reinforcedGlass");

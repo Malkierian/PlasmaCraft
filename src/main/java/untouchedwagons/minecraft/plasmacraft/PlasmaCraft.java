@@ -14,8 +14,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import untouchedwagons.minecraft.plasmacraft.blocks.*;
-import untouchedwagons.minecraft.plasmacraft.client.gui.GuiHandler;
 import untouchedwagons.minecraft.plasmacraft.client.gui.PlasmaTab;
 import untouchedwagons.minecraft.plasmacraft.common.FuelHandler;
 import untouchedwagons.minecraft.plasmacraft.config.PlasmaCraftConfig;
@@ -30,7 +30,6 @@ import untouchedwagons.minecraft.plasmacraft.entity.EntityPlasma;
 import untouchedwagons.minecraft.plasmacraft.entity.EntityRailGun;
 import untouchedwagons.minecraft.plasmacraft.fluids.PCFluids;
 import untouchedwagons.minecraft.plasmacraft.proxy.CommonProxy;
-import untouchedwagons.minecraft.plasmacraft.tileentity.TilePlasmaBench;
 import untouchedwagons.minecraft.plasmacraft.worldgen.WorldGenerator;
 
 import cpw.mods.fml.common.Mod;
@@ -39,7 +38,6 @@ import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import untouchedwagons.minecraft.plasmacraft.items.*;
@@ -73,8 +71,6 @@ public class PlasmaCraft
 	@Instance("plasmacraft")
 	public static PlasmaCraft instance;
 	
-	private GuiHandler guiHandler = new GuiHandler();
-	
 	// Says where the client and server 'proxy' code is loaded.
 	@SidedProxy(clientSide="untouchedwagons.minecraft.plasmacraft.proxy.ClientProxy", serverSide="untouchedwagons.minecraft.plasmacraft.proxy.CommonProxy")
 	public static CommonProxy proxy;
@@ -98,12 +94,10 @@ public class PlasmaCraft
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		NetworkRegistry.INSTANCE.registerGuiHandler(this, guiHandler);
-		
 		proxy.registerRenderers();
 		
 		List<Item> order = Arrays.asList(Item.getItemFromBlock(blocks.orePlasma), Item.getItemFromBlock(blocks.glowCloth), Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
-				Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier), Item.getItemFromBlock(PlasmaCraft.blocks.plasmaBench),
+				Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier),
 				PlasmaCraft.items.goop, PlasmaCraft.items.ingots, PlasmaCraft.items.vial, PlasmaCraft.items.causticBoat,
 				PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell, PlasmaCraft.items.thermopellet,
 				PlasmaCraft.items.acidgun, PlasmaCraft.items.cryoblaster, PlasmaCraft.items.lasershotgun, PlasmaCraft.items.lasergun, PlasmaCraft.items.lasergunsplit, PlasmaCraft.items.plasmagun, PlasmaCraft.items.plasmagunsplit, PlasmaCraft.items.railgun,
@@ -119,7 +113,6 @@ public class PlasmaCraft
 
         registerRecipes();
 		registerOres();
-		registerTileEntities();
         registerEntities();
 
         proxy.registerTextureFX();
@@ -153,7 +146,6 @@ public class PlasmaCraft
 		GameRegistry.registerBlock(blocks.glowCloth, ItemGlowCloth.class, "glowCloth");
 		GameRegistry.registerBlock(blocks.frozenCryonite, "Frozen Cryonite");
 		GameRegistry.registerBlock(blocks.reinforcedGlass, "Reinforced Glass");
-		GameRegistry.registerBlock(blocks.plasmaBench, "Plasmificator");
 		GameRegistry.registerBlock(blocks.acidBarrier, "Acid Barrier");
 		GameRegistry.registerBlock(blocks.acidTnt, "Acid TNT");
 	}
@@ -258,7 +250,6 @@ public class PlasmaCraft
 		
 		GameRegistry.addRecipe(new ItemStack(blocks.reinforcedGlass, 4), " X ", "X#X", " X ", '#', Blocks.glass, 'X', Items.iron_ingot);
 		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.vial, 1), "X#X", "Y Y", "X#X", '#', Items.iron_ingot, 'Y', blocks.reinforcedGlass, 'X', Blocks.glass);
-		GameRegistry.addRecipe(new ItemStack(blocks.plasmaBench, 1), "X#X", "# #", "X#X", '#', Items.iron_ingot, 'X', new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.EMPTY_DAMAGE));
 		GameRegistry.addRecipe(new ItemStack(blocks.acidBarrier, 1), " X ", "XZX", " X ", 'Z', blocks.reinforcedGlass, 'X', PlasmaCraft.items.goop);
 		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.causticBoat, 1), "R R", "RRR", 'R', new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.RADIONITE_DAMAGE));
 		GameRegistry.addRecipe(new ItemStack(blocks.acidTnt, 4), "APA", "GAG", "APA", 'A', PlasmaCraft.items.vial, 'G', Items.gunpowder, 'P', PlasmaCraft.items.ingots);
@@ -276,19 +267,20 @@ public class PlasmaCraft
 		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.plasmagun, 1), "ABC", " DC", 'A', Items.diamond, 'B', PlasmaCraft.items.ingots, 'C', new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE), 'D', new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE));
 		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.energyCell, 5), " R ", "RXR", " R ", 'R', new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.NEPTUNIUM_DAMAGE), 'X', PlasmaCraft.items.goop);
 		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.battery, 8), "IRI", "I I", "IRI", 'R', new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.RADIONITE_DAMAGE), 'I', Items.iron_ingot);
-		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.CRYO_DAMAGE), "R", "X", 'R', new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.CRYONITE_DAMAGE), 'X', PlasmaCraft.items.battery);
-		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.PLASMA_DAMAGE), "R", "X", 'R', PlasmaCraft.items.ingots, 'X', PlasmaCraft.items.battery);
-		GameRegistry.addRecipe(new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.CHARGED_DAMAGE), "R", "X", 'R', new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), 'X', PlasmaCraft.items.battery);
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.CRYO_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.CRYONITE_DAMAGE), PlasmaCraft.items.battery);
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.PLASMA_DAMAGE), PlasmaCraft.items.ingots, PlasmaCraft.items.battery);
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.CHARGED_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), PlasmaCraft.items.battery);
+        GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.OVERCHARGED_DAMAGE), new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.CHARGED_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.URANIUM_DAMAGE));
 
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.CRYONITE_DAMAGE), PlasmaCraft.items.ingots, new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.CRYONITE_DAMAGE));
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.NEPTUNIUM_DAMAGE), PlasmaCraft.items.ingots, new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.NEPTUNIUM_DAMAGE));
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.NETHERFLOW_DAMAGE), PlasmaCraft.items.ingots, new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.NETHERFLOW_DAMAGE));
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.OBSIDIUM_DAMAGE), PlasmaCraft.items.ingots, new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.OBSIDIUM_DAMAGE));
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.PLUTONIUM_DAMAGE), PlasmaCraft.items.ingots, new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.PLUTONIUM_DAMAGE));
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.RADIONITE_DAMAGE), PlasmaCraft.items.ingots, new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.RADIONITE_DAMAGE));
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.URANIUM_DAMAGE), PlasmaCraft.items.ingots, new ItemStack(PlasmaCraft.items.goop, 4, ItemGoop.URANIUM_DAMAGE));
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.CRYONITE_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 4, ItemIngot.CRYONITE_DAMAGE));
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.NEPTUNIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 4, ItemGoop.NEPTUNIUM_DAMAGE));
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 4, ItemGoop.NETHERFLOW_DAMAGE));
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.OBSIDIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 4, ItemGoop.OBSIDIUM_DAMAGE));
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 4, ItemGoop.PLUTONIUM_DAMAGE));
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.RADIONITE_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 4, ItemGoop.RADIONITE_DAMAGE));
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.URANIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 4, ItemGoop.URANIUM_DAMAGE));
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.ACID_DAMAGE), PlasmaCraft.items.goop, PlasmaCraft.items.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.ACID_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), PlasmaCraft.items.vial);
 		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.CRYONITE_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.CRYONITE_DAMAGE), PlasmaCraft.items.vial);
 		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.NEPTUNIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.NEPTUNIUM_DAMAGE), PlasmaCraft.items.vial);
 		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.NETHERFLOW_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), PlasmaCraft.items.vial);
@@ -297,17 +289,20 @@ public class PlasmaCraft
 		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.RADIONITE_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.RADIONITE_DAMAGE), PlasmaCraft.items.vial);
 		GameRegistry.addShapelessRecipe(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.URANIUM_DAMAGE), new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.URANIUM_DAMAGE), PlasmaCraft.items.vial);
 
+        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.plutoniumMeta), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE), 0.1f);
+        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.radioniteMeta), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.RADIONITE_DAMAGE), 0.1f);
+        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.neptuniumMeta), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.NEPTUNIUM_DAMAGE), 0.1f );
+        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.obsidiumMeta), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE), 0.1f );
+        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.uraniumMeta), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.URANIUM_DAMAGE), 0.1f );
         GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.leadMeta), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.LEAD_DAMAGE), 0.1f );
+        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.CRYONITE_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.CRYONITE_DAMAGE), 0.0f);
+        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.items.vial, 1, ItemVial.NETHERFLOW_DAMAGE), new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE), 0.0f);
+		GameRegistry.addSmelting(Items.slime_ball, new ItemStack(PlasmaCraft.items.goop, 1, ItemGoop.ACID_DAMAGE), 0f);
 	}
 	
 	public static void loadConfig(FMLPreInitializationEvent event)
 	{
         PlasmaCraft.config = new PlasmaCraftConfig();
         PlasmaCraft.config.loadConfig(new Configuration(event.getSuggestedConfigurationFile()));
-	}
-
-	private void registerTileEntities()
-	{
-		GameRegistry.registerTileEntity(TilePlasmaBench.class,   "tilePlasmaBench");
 	}
 }

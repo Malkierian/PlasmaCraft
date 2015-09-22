@@ -24,7 +24,6 @@ tile.glowCloth.cryonite.name=Cryonite Glowcloth
 tile.glowCloth.obsidium.name=Obsidium Glowcloth
 
 tile.reinforcedGlass.name=Reinforced Glass
-tile.plasmaBench.name=Plasmificator
 tile.acidBarrier.name=Acid Barrier
 tile.frozenCryonite.name=Frozen Cryonite
 tile.acidTnt.name=Acid TNT
@@ -49,8 +48,8 @@ item.pc-ingot.7.name=Uranium Ingot
 
 item.plasma.name=Plasma
 item.pc-battery.0.name=Empty Battery
-item.pc-battery.1.name=Cryonite Battery
-item.pc-battery.2.name=Charged Caustic Battery
+item.pc-battery.1.name=Charged Caustic Battery
+item.pc-battery.2.name=Cryonite Battery
 item.pc-battery.3.name=Plasma Battery
 item.pc-battery.4.name=Overcharged Caustic Battery
 item.energyCell.name=Energy Cell
