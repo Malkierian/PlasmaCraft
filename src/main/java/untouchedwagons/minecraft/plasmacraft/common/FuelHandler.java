@@ -17,6 +17,12 @@ public class FuelHandler implements IFuelHandler
 		{
 			return 500000;
 		}
-		return fuel.getItem() != PlasmaCraft.items.thermopellet ? 0 : 1000000;
+
+		if (fuel.getItem() == PlasmaCraft.items.thermopellet)
+        {
+            return 1000000;
+        }
+
+		return 0;
 	}
 }
