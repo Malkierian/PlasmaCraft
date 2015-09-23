@@ -43,7 +43,7 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import untouchedwagons.minecraft.plasmacraft.items.*;
 
-@Mod(modid = "plasmacraft", name = "PlasmaCraft", version = "0.4.0-beta1")
+@Mod(modid = "plasmacraft", name = "PlasmaCraft", version = "0.4.0-beta2")
 public class PlasmaCraft
 {
 	public static String MOD_ID = "plasmacraft";
@@ -54,17 +54,6 @@ public class PlasmaCraft
 
 	public static PlasmaTab plasmaTab = new PlasmaTab("PlasmaCraft");
     public static PlasmaCraftConfig config;
-
-	public static int neptuniumSpoutCount = 20;
-	public static int neptuniumSpoutYRange = 64;
-	public static int neptuniumSpoutYStart = 8;
-	public static int netherflowLakeChance = 32;
-	public static int netherflowLakeYCutoff = 96;
-	public static int netherflowLakeYRange = 16;
-	public static int netherflowLakeYStart = 56;
-	public static int netherflowSpoutCount = 20;
-	public static int netherflowSpoutYRange = 96;
-	public static int netherflowSpoutYStart = 16;
 
     public static Comparator<ItemStack> tabSorter;
 	

@@ -18,10 +18,10 @@ public class WorldGenerator implements IWorldGenerator
 	{
 		switch(world.provider.dimensionId)
 		{
-		case -1:
-			generateNether(world, random, chunkX*16, chunkZ*16);
-		case 0:
-			generateSurface(world, random, chunkX*16, chunkZ*16);
+			case -1:
+				generateNether(world, random, chunkX*16, chunkZ*16);
+			case 0:
+				generateSurface(world, random, chunkX*16, chunkZ*16);
 		}
 	}
 	
@@ -43,28 +43,28 @@ public class WorldGenerator implements IWorldGenerator
 			(new WorldGenNetherMinable(PlasmaCraft.blocks.orePlasma, PlasmaCraft.config.obsidium.getVeinSize(), BlockPlasmaOre.obsidiumMeta)).generate(world, random, i2, j3, k4);
 		}
 
-		if(random.nextInt(PlasmaCraft.netherflowLakeChance) == 0)
+		if(random.nextInt(PlasmaCraft.config.netherflow_lake.getLakeChance()) == 0)
 		{
 			int i1 = random.nextInt(16) + 8;
-			int j2 = random.nextInt(random.nextInt(PlasmaCraft.netherflowLakeYRange) + PlasmaCraft.netherflowLakeYStart);
+			int j2 = random.nextInt(random.nextInt(PlasmaCraft.config.netherflow_lake.getLakeYSize()) + PlasmaCraft.config.netherflow_lake.getLakeYStart());
 			int k3 = random.nextInt(16) + 8;
-			if(j2 < PlasmaCraft.netherflowLakeYCutoff)
+			if(j2 < PlasmaCraft.config.netherflow_lake.getLakeCutoff())
 			{
 				(new WorldGenCaustics(PlasmaCraft.blocks.netherflowBlock)).generate(world, random, i1, j2, k3);
 			}
 		}
-		for(int j1 = 0; j1 < PlasmaCraft.netherflowSpoutCount; j1++)
+		for(int j1 = 0; j1 < PlasmaCraft.config.netherflow_spout.getSpoutCount(); j1++)
 		{
 			int k2 = i + random.nextInt(16) + 8;
-			int l3 = random.nextInt(random.nextInt(PlasmaCraft.netherflowSpoutYRange) + PlasmaCraft.netherflowSpoutYStart);
+			int l3 = random.nextInt(random.nextInt(PlasmaCraft.config.netherflow_spout.getSpoutYSize()) + PlasmaCraft.config.netherflow_spout.getSpoutYStart());
 			int l4 = j + random.nextInt(16) + 8;
 			(new WorldGenNetherCaustics(PlasmaCraft.blocks.netherflowBlock)).generate(world, random, k2, l3, l4);
 		}
 
-		for(int k1 = 0; k1 < PlasmaCraft.neptuniumSpoutCount; k1++)
+		for(int k1 = 0; k1 < PlasmaCraft.config.neptunium_spout.getSpoutCount(); k1++)
 		{
 			int l2 = i + random.nextInt(16) + 8;
-			int i4 = random.nextInt(random.nextInt(PlasmaCraft.neptuniumSpoutYRange) + PlasmaCraft.neptuniumSpoutYStart);
+			int i4 = random.nextInt(random.nextInt(PlasmaCraft.config.neptunium_spout.getSpoutYSize()) + PlasmaCraft.config.neptunium_spout.getSpoutYStart());
 			int i5 = j + random.nextInt(16) + 8;
 			(new WorldGenNetherCaustics(PlasmaCraft.blocks.neptuniumBlock)).generate(world, random, l2, i4, i5);
 		}

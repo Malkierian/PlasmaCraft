@@ -11,10 +11,6 @@ import untouchedwagons.minecraft.plasmacraft.blocks.PCBlocks;
 
 public class CausticLakes
 {
-//	private static int acidLakeYCutoff = 48;
-	private static int acidSpoutCount = 20;
-	private static int acidSpoutYRange = 30;
-	private static int acidSpoutYStart = 8;
 	private static Random rand = null;
 
 	public CausticLakes()
@@ -58,10 +54,10 @@ public class CausticLakes
 				}
 			}
 		}	   
-		for(int k1 = 0; k1 < acidSpoutCount; k1++)
+		for(int k1 = 0; k1 < PlasmaCraft.config.acid_spout.getSpoutCount(); k1++)
 		{
 			int i3 = x + rand.nextInt(16) + 8;
-			int k4 = rand.nextInt(rand.nextInt(acidSpoutYRange) + acidSpoutYStart);
+			int k4 = rand.nextInt(rand.nextInt(PlasmaCraft.config.acid_spout.getSpoutYSize()) + PlasmaCraft.config.acid_spout.getSpoutYStart());
 			int l5 = z + rand.nextInt(16) + 8;
 			(new WorldGenCaustics(PlasmaCraft.blocks.acidBlock)).generate(world, rand, i3, k4, l5);
 		}
