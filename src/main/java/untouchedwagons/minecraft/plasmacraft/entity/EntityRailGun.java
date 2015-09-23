@@ -22,7 +22,6 @@ public class EntityRailGun extends Entity
 	private int yTile;
 	private int zTile;
 	private Block inTile;
-	private boolean inGround;
 	public EntityLivingBase owner;
 	private int ticksInAir;
 
@@ -33,7 +32,6 @@ public class EntityRailGun extends Entity
 		yTile = -1;
 		zTile = -1;
 		inTile = Blocks.air;
-		inGround = false;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
 	}
@@ -45,7 +43,6 @@ public class EntityRailGun extends Entity
 		yTile = -1;
 		zTile = -1;
 		inTile = Blocks.air;
-		inGround = false;
 		ticksInAir = 0;
 		setSize(0.5F, 0.5F);
 		setPosition(d, d1, d2);
@@ -59,7 +56,6 @@ public class EntityRailGun extends Entity
 		yTile = -1;
 		zTile = -1;
 		inTile = Blocks.air;
-		inGround = false;
 		ticksInAir = 0;
 		owner = entityliving;
 		setSize(0.5F, 0.5F);
@@ -72,7 +68,7 @@ public class EntityRailGun extends Entity
 		motionX = -MathHelper.sin((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionZ = MathHelper.cos((rotationYaw / 180F) * 3.141593F) * MathHelper.cos((rotationPitch / 180F) * 3.141593F);
 		motionY = -MathHelper.sin((rotationPitch / 180F) * 3.141593F);
-		setArrowHeading(motionX, motionY, motionZ, 10F, 1.0F);
+		setArrowHeading(motionX, motionY, motionZ, 10F, 0);
 	}
 
 	protected void entityInit()
@@ -138,25 +134,22 @@ public class EntityRailGun extends Entity
 			vec3d1 = Vec3.createVectorHelper(movingobjectposition.hitVec.xCoord, movingobjectposition.hitVec.yCoord, movingobjectposition.hitVec.zCoord);
 		}
 		Entity entity = null;
-		List<?> list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
+
+		@SuppressWarnings("unchecked")
+		List<Entity> entities = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.addCoord(motionX, motionY, motionZ).expand(1.0D, 1.0D, 1.0D));
 		double d = 0.0D;
-		for(int i = 0; i < list.size(); i++)
-		{
-			Entity entity1 = (Entity)list.get(i);
-			if(!entity1.canBeCollidedWith() || entity1 == owner && ticksInAir < 5)
-			{
+		for (Entity entity1 : entities) {
+			if (!entity1.canBeCollidedWith() || entity1 == owner && ticksInAir < 5) {
 				continue;
 			}
 			float f3 = 0.3F;
 			AxisAlignedBB axisalignedbb = entity1.boundingBox.expand(f3, f3, f3);
 			MovingObjectPosition movingobjectposition1 = axisalignedbb.calculateIntercept(vec3d, vec3d1);
-			if(movingobjectposition1 == null)
-			{
+			if (movingobjectposition1 == null) {
 				continue;
 			}
 			double d1 = vec3d.distanceTo(movingobjectposition1.hitVec);
-			if(d1 < d || d == 0.0D)
-			{
+			if (d1 < d || d == 0.0D) {
 				entity = entity1;
 				d = d1;
 			}
@@ -254,7 +247,6 @@ public class EntityRailGun extends Entity
 					posX -= (motionX / (double)f5) * 0.05D;
 					posY -= (motionY / (double)f5) * 0.05D;
 					posZ -= (motionZ / (double)f5) * 0.05D;
-					inGround = true;
 				}
 			}
 		}
@@ -291,8 +283,6 @@ public class EntityRailGun extends Entity
 		nbttagcompound.setInteger("xTile", xTile);
 		nbttagcompound.setInteger("yTile", yTile);
 		nbttagcompound.setInteger("zTile", zTile);
-		nbttagcompound.setString("inTile", inTile.getUnlocalizedName());
-		nbttagcompound.setBoolean("inGround", inGround);
 	}
 
 	public void readEntityFromNBT(NBTTagCompound nbttagcompound)
@@ -300,8 +290,6 @@ public class EntityRailGun extends Entity
 		xTile = nbttagcompound.getInteger("xTile");
 		yTile = nbttagcompound.getInteger("yTile");
 		zTile = nbttagcompound.getInteger("zTile");
-		inTile = (Block)Item.itemRegistry.getObject(nbttagcompound.getString("inTile"));
-		inGround = nbttagcompound.getBoolean("inGround");
 	}
 
 	public void onCollideWithPlayer(EntityPlayer entityplayer)
