@@ -43,16 +43,14 @@ public class PCFluids
     
     public static void initFluids()
     {
-    	
-    	
-    	acidFluid = createFluid("acid", PlasmaCraft.modId + ":blocks/fluid/acid", true).setDensity(80).setViscosity(400);
-	    cryoniteFluid = createFluid("cryonite", PlasmaCraft.modId + ":blocks/fluid/cryonite", true).setDensity(80).setViscosity(600);
-	    neptuniumFluid = createFluid("neptunium", PlasmaCraft.modId + ":blocks/fluid/neptunium", true).setDensity(80).setViscosity(300);
-	    netherflowFluid = createFluid("netherflow", PlasmaCraft.modId + ":blocks/fluid/netherflow", true).setDensity(80).setViscosity(450);
-	    obsidiumFluid = createFluid("obsidium", PlasmaCraft.modId + ":blocks/fluid/obsidium", true).setDensity(80).setViscosity(1200);
-	    plutoniumFluid = createFluid("plutonium", PlasmaCraft.modId + ":blocks/fluid/plutonium", true).setDensity(80).setViscosity(800);
-	    radioniteFluid = createFluid("radionite", PlasmaCraft.modId + ":blocks/fluid/radionite", true).setDensity(80).setViscosity(1000);
-	    uraniumFluid = createFluid("uranium", PlasmaCraft.modId + ":blocks/fluid/uranium", true).setDensity(150).setViscosity(800);
+    	acidFluid = createFluid("acid", PlasmaCraft.modId + ":blocks/fluid/acid", true).setDensity(900).setViscosity(400);
+	    cryoniteFluid = createFluid("cryonite", PlasmaCraft.modId + ":blocks/fluid/cryonite", true).setDensity(1400).setViscosity(600);
+	    neptuniumFluid = createFluid("neptunium", PlasmaCraft.modId + ":blocks/fluid/neptunium", true).setDensity(800).setViscosity(300);
+	    netherflowFluid = createFluid("netherflow", PlasmaCraft.modId + ":blocks/fluid/netherflow", true).setDensity(1100).setViscosity(450);
+	    obsidiumFluid = createFluid("obsidium", PlasmaCraft.modId + ":blocks/fluid/obsidium", true).setDensity(2500).setViscosity(1200);
+	    plutoniumFluid = createFluid("plutonium", PlasmaCraft.modId + ":blocks/fluid/plutonium", true).setDensity(1500).setViscosity(800);
+	    radioniteFluid = createFluid("radionite", PlasmaCraft.modId + ":blocks/fluid/radionite", true).setDensity(1800).setViscosity(1000);
+	    uraniumFluid = createFluid("uranium", PlasmaCraft.modId + ":blocks/fluid/uranium", true).setDensity(1500).setViscosity(800);
 	    
 	    FluidRegistry.registerFluid(acidFluid);
 	    FluidRegistry.registerFluid(cryoniteFluid);
