@@ -3,20 +3,14 @@
     "modid": "plasmacraft",
     "name": "PlasmaCraft",
     "description": "Mod that adds caustic liquids and ores, among other wonderful things.",
-    "version": "$version",
-    "mcversion": "$mcversion",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
     "url": "http://minecraft.curseforge.com/mc-mods/224648-plasmacraft",
     "updateUrl": "",
-    "authorList": [
-      "Malkierian",
-      "UntouchedWagons
-    ],
+    "authorList": ["Malkierian"],
     "credits": "Thanks to all who helped along the way.",
     "logoFile": "logo.png",
-      "screenshots": [
-    ],
-    "parent":"",
-    "dependencies": [
-    ]
+    "screenshots": [],
+    "dependencies": []
   }
 ]

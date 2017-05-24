@@ -1,14 +1,22 @@
-/PlasmaCraft.iws
-/PlasmaCraft.iml
-/PlasmaCraft.ipr
-### Gradle template
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
 .gradle
-build/
 
-# Ignore Gradle GUI config
-gradle-app.setting
-
-# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
-!gradle-wrapper.jar
-
-# Created by .ignore support plugin (hsz.mobi)
+# other
+eclipse
+run
