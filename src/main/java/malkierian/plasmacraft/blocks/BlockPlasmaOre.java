@@ -25,18 +25,20 @@ public class BlockPlasmaOre extends BlockOre
     public static final int leadMeta = 5;
 
 	
-	public BlockPlasmaOre()
+	public BlockPlasmaOre(String name, float lightLevel, float hardness)
 	{
 		super();
+		setUnlocalizedName(name);
 		setTickRandomly(true);
+		setLightLevel(lightLevel);
 		setSoundType(SoundType.STONE);
 		setCreativeTab(PlasmaCraft.plasmaTab);
+		setHardness(hardness);
 	}
-
-	@Override
-	public int quantityDropped(Random random)
+	
+	public BlockPlasmaOre(String name, float lightLevel)
 	{
-		return 1;
+		this(name, lightLevel, 3F);
 	}
 
 //	@Override
@@ -55,46 +57,4 @@ public class BlockPlasmaOre extends BlockOre
 //			entity.attackEntityFrom(DamageSource.cactus, 5);
 //		}
 //	}
-
-//	@Override
-//	public float getExplosionResistance(Entity exploder, World world, int x, int y, int z, double src_x, double src_y, double src_z)
-//	{
-//		switch(world.getBlockMetadata(x, y, z))
-//		{
-//            case obsidiumMeta:
-//                return 1200F;
-//            case uraniumMeta:
-//                return 6F;
-//            case plutoniumMeta:
-//                return 8F;
-//            default:
-//                return 3F;
-//		}
-//	}
-	
-//	@Override
-//	public float getBlockHardness(World world, int x, int y, int z)
-//	{
-//		int md = world.getBlockMetadata(x, y, z);
-//		switch(md)
-//		{
-//            case obsidiumMeta:
-//                return 15F;
-//            case uraniumMeta:
-//            case plutoniumMeta:
-//                return 5F;
-//            default:
-//                return 3F;
-//		}
-//	}
-
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void getSubBlocks(Item par1, CreativeTabs tab, List subItems)
-	{
-		for (int ix = 0; ix < filenames.length; ix++)
-		{
-			subItems.add(new ItemStack(this, 1, ix));
-		}
-	}
 }

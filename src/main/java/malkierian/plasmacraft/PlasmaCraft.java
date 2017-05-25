@@ -69,10 +69,12 @@ public class PlasmaCraft
 //		proxy.registerRenderers();
 //		
 		List<Item> order = Arrays.asList(Item.getItemFromBlock(PCBlocks.glowClothAcid), Item.getItemFromBlock(PCBlocks.glowClothCryonite),
-				Item.getItemFromBlock(PCBlocks.glowClothNeptunium), Item.getItemFromBlock(PCBlocks.glowClothNetherflow),
-				Item.getItemFromBlock(PCBlocks.glowClothObsidium), Item.getItemFromBlock(PCBlocks.glowClothPlutonium),
-				Item.getItemFromBlock(PCBlocks.glowClothRadionite), Item.getItemFromBlock(PCBlocks.glowClothUranium), 
-				/*Item.getItemFromBlock(PlasmaCraft.blocks.glowCloth),*/ /*Item.getItemFromBlock(blocks.orePlasma), Item.getItemFromBlock(blocks.glowCloth), Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
+			Item.getItemFromBlock(PCBlocks.glowClothNeptunium), Item.getItemFromBlock(PCBlocks.glowClothNetherflow),
+			Item.getItemFromBlock(PCBlocks.glowClothObsidium), Item.getItemFromBlock(PCBlocks.glowClothPlutonium),
+			Item.getItemFromBlock(PCBlocks.glowClothRadionite), Item.getItemFromBlock(PCBlocks.glowClothUranium),
+			Item.getItemFromBlock(PCBlocks.oreLead), Item.getItemFromBlock(PCBlocks.oreNeptunium), Item.getItemFromBlock(PCBlocks.oreObsidium),
+			Item.getItemFromBlock(PCBlocks.orePlutonium), Item.getItemFromBlock(PCBlocks.oreRadionite), Item.getItemFromBlock(PCBlocks.oreUranium),
+				/*Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
 				Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier),*/
 				items.goop, /*PlasmaCraft.items.ingots,*/ items.vial /*PlasmaCraft.items.causticBoat,
 				PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell, PlasmaCraft.items.thermopellet,
