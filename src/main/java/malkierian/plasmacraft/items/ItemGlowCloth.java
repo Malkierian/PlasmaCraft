@@ -23,12 +23,6 @@ public class ItemGlowCloth extends ItemBlock
 		setMaxDamage(0);
 		setHasSubtypes(true);
 	}
-
-//	@Override
-//	public IIcon getIconFromDamage(int i)
-//	{
-//		return PlasmaCraft.blocks.glowCloth.getIcon(0, i);
-//	}
 	
 	@Override
 	public int getMetadata(int damage)

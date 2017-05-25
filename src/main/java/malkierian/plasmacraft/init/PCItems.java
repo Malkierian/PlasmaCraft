@@ -1,6 +1,9 @@
-package malkierian.plasmacraft.items;
+package malkierian.plasmacraft.init;
 
 import malkierian.plasmacraft.PlasmaCraft;
+import malkierian.plasmacraft.items.ItemGoop;
+import malkierian.plasmacraft.items.ItemPlasma;
+import malkierian.plasmacraft.items.ItemVial;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraftforge.fml.common.registry.GameRegistry;

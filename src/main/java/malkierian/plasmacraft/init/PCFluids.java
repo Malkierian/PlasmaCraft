@@ -1,4 +1,4 @@
-package malkierian.plasmacraft.fluids;
+package malkierian.plasmacraft.init;
 
 import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.blocks.BlockCausticFluid;
@@ -61,14 +61,14 @@ public class PCFluids
 	    FluidRegistry.registerFluid(radioniteFluid);
 	    FluidRegistry.registerFluid(uraniumFluid);
 
-	    acidBlock = registerFluidBlock(new BlockCausticFluid(acidFluid, new MaterialLiquid(MapColor.LIME), 0, 0.6F, 0), acidFluid.getStill());
-	    cryoniteBlock = registerFluidBlock(new BlockCausticFluid(cryoniteFluid, new MaterialLiquid(MapColor.CYAN), 1, 0.5F, 0.8F), cryoniteFluid.getStill());
-	    neptuniumBlock = registerFluidBlock(new BlockCausticFluid(neptuniumFluid, new MaterialLiquid(MapColor.GOLD), 2, 0.5F, 1.5F), neptuniumFluid.getStill());
-	    netherflowBlock = registerFluidBlock(new BlockCausticFluid(netherflowFluid, new MaterialLiquid(MapColor.RED), 3, 0.6F, 1.0F), netherflowFluid.getStill());
-	    obsidiumBlock = registerFluidBlock(new BlockCausticFluid(obsidiumFluid, new MaterialLiquid(MapColor.OBSIDIAN), 4, 0.4F, 1.0F), obsidiumFluid.getStill());
-	    plutoniumBlock = registerFluidBlock(new BlockCausticFluid(plutoniumFluid, new MaterialLiquid(MapColor.GREEN), 5, 0.6F, 3F), plutoniumFluid.getStill());
-	    radioniteBlock = registerFluidBlock(new BlockCausticFluid(radioniteFluid, new MaterialLiquid(MapColor.MAGENTA), 6, 0.6F, 2F), radioniteFluid.getStill());
-	    uraniumBlock = registerFluidBlock(new BlockCausticFluid(uraniumFluid, new MaterialLiquid(MapColor.YELLOW), 7, 0.6F, 3F), uraniumFluid.getStill());
+	    acidBlock = registerFluidBlock(new BlockCausticFluid(acidFluid, new MaterialLiquid(MapColor.LIME), 0, 1F, 0), acidFluid.getStill());
+	    cryoniteBlock = registerFluidBlock(new BlockCausticFluid(cryoniteFluid, new MaterialLiquid(MapColor.CYAN), 1, 0.8F, 0.8F), cryoniteFluid.getStill());
+	    neptuniumBlock = registerFluidBlock(new BlockCausticFluid(neptuniumFluid, new MaterialLiquid(MapColor.GOLD), 2, 0.74F, 1.5F), neptuniumFluid.getStill());
+	    netherflowBlock = registerFluidBlock(new BlockCausticFluid(netherflowFluid, new MaterialLiquid(MapColor.RED), 3, 0.8F, 1.0F), netherflowFluid.getStill());
+	    obsidiumBlock = registerFluidBlock(new BlockCausticFluid(obsidiumFluid, new MaterialLiquid(MapColor.OBSIDIAN), 4, 0.74F, 1.0F), obsidiumFluid.getStill());
+	    plutoniumBlock = registerFluidBlock(new BlockCausticFluid(plutoniumFluid, new MaterialLiquid(MapColor.GREEN), 5, 0.87F, 3F), plutoniumFluid.getStill());
+	    radioniteBlock = registerFluidBlock(new BlockCausticFluid(radioniteFluid, new MaterialLiquid(MapColor.MAGENTA), 6, 0.8F, 2F), radioniteFluid.getStill());
+	    uraniumBlock = registerFluidBlock(new BlockCausticFluid(uraniumFluid, new MaterialLiquid(MapColor.YELLOW), 7, 0.94F, 3F), uraniumFluid.getStill());
     }
     
     public static void registerRenders()
@@ -103,11 +103,11 @@ public class PCFluids
     public static void registerRender(IFluidBlock item)
     {
     	Item i = Item.getItemFromBlock((Block) item);
-        String loc = PlasmaCraft.modId + ":" + item.getFluid().getName();
+        String loc = PlasmaCraft.modId + ":fluid/" + item.getFluid().getName();
         
         ModelResourceLocation modelLoc = new ModelResourceLocation(loc, "fluid");
 
-        ModelLoader.setCustomMeshDefinition(i, stack -> modelLoc );
+//        ModelLoader.setCustomMeshDefinition(i, stack -> modelLoc );
         ModelLoader.setCustomStateMapper((Block) item, new StateMapperBase() {
             @Override
             protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
@@ -132,7 +132,7 @@ public class PCFluids
 		String fluidName = block.getFluid().getUnlocalizedName();
 		block.setUnlocalizedName(fluidName);
 		GameRegistry.register(block, still);
-		GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
+//		GameRegistry.register(new ItemBlock(block).setRegistryName(block.getRegistryName()));
 
 		return block;
 	}

@@ -6,8 +6,9 @@ import java.util.List;
 
 import malkierian.plasmacraft.client.gui.PlasmaTab;
 import malkierian.plasmacraft.config.PlasmaCraftConfig;
-import malkierian.plasmacraft.fluids.PCFluids;
-import malkierian.plasmacraft.items.PCItems;
+import malkierian.plasmacraft.init.PCBlocks;
+import malkierian.plasmacraft.init.PCFluids;
+import malkierian.plasmacraft.init.PCItems;
 import malkierian.plasmacraft.proxy.CommonProxy;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -26,8 +27,8 @@ import com.google.common.collect.Ordering;
 public class PlasmaCraft
 {
     public static PCFluids fluids;
-//    public static PCBlocks blocks;
-    public static PCItems items;
+    public static PCBlocks blocks = new PCBlocks();
+    public static PCItems items = new PCItems();
 //
 	public static PlasmaTab plasmaTab = new PlasmaTab("PlasmaCraft");
     public static PlasmaCraftConfig config;
@@ -59,6 +60,7 @@ public class PlasmaCraft
 //        registerBlocks();
 //        registerFuel();
         PCItems.init();
+        PCBlocks.init();
 	}
 
 	@EventHandler
@@ -66,9 +68,13 @@ public class PlasmaCraft
 	{
 //		proxy.registerRenderers();
 //		
-		List<Item> order = Arrays.asList(/*Item.getItemFromBlock(PlasmaCraft.fluids.acidBlock),*//*Item.getItemFromBlock(blocks.orePlasma), Item.getItemFromBlock(blocks.glowCloth), Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
+		List<Item> order = Arrays.asList(Item.getItemFromBlock(PCBlocks.glowClothAcid), Item.getItemFromBlock(PCBlocks.glowClothCryonite),
+				Item.getItemFromBlock(PCBlocks.glowClothNeptunium), Item.getItemFromBlock(PCBlocks.glowClothNetherflow),
+				Item.getItemFromBlock(PCBlocks.glowClothObsidium), Item.getItemFromBlock(PCBlocks.glowClothPlutonium),
+				Item.getItemFromBlock(PCBlocks.glowClothRadionite), Item.getItemFromBlock(PCBlocks.glowClothUranium), 
+				/*Item.getItemFromBlock(PlasmaCraft.blocks.glowCloth),*/ /*Item.getItemFromBlock(blocks.orePlasma), Item.getItemFromBlock(blocks.glowCloth), Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
 				Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier),*/
-				(Item)PlasmaCraft.items.goop, /*PlasmaCraft.items.ingots,*/ PlasmaCraft.items.vial /*PlasmaCraft.items.causticBoat,
+				items.goop, /*PlasmaCraft.items.ingots,*/ items.vial /*PlasmaCraft.items.causticBoat,
 				PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell, PlasmaCraft.items.thermopellet,
 				PlasmaCraft.items.acidgun, PlasmaCraft.items.cryoblaster, PlasmaCraft.items.lasershotgun, PlasmaCraft.items.lasergun, PlasmaCraft.items.lasergunsplit, PlasmaCraft.items.plasmagun, PlasmaCraft.items.plasmagunsplit, PlasmaCraft.items.railgun,
 				PlasmaCraft.items.acidGrenade, PlasmaCraft.items.hazmatBoots, PlasmaCraft.items.hazmatHood, PlasmaCraft.items.hazmatJacket, PlasmaCraft.items.hazmatPants, PlasmaCraft.items.plasmaLeather*/);

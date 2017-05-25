@@ -1,7 +1,8 @@
 package malkierian.plasmacraft.proxy;
 
 import malkierian.plasmacraft.PlasmaCraft;
-import malkierian.plasmacraft.fluids.PCFluids;
+import malkierian.plasmacraft.init.PCBlocks;
+import malkierian.plasmacraft.init.PCFluids;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.entity.Entity;

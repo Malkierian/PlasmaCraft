@@ -1,7 +1,8 @@
 package malkierian.plasmacraft.blocks;
 
 import malkierian.plasmacraft.PlasmaCraft;
-import malkierian.plasmacraft.items.PCItems;
+import malkierian.plasmacraft.init.PCItems;
+import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
@@ -69,6 +70,16 @@ public class BlockCausticFluid extends BlockFluidClassic
 	public void onEntityWalk(World world, BlockPos pos, Entity entity)
 	{
 		onEntityWalk(world, pos, world.getBlockState(pos), entity);
+	}
+	
+	public MapColor getMapColor()
+	{
+		return blockMapColor;
+	}
+	
+	public int getLightLevel()
+	{
+		return lightValue;
 	}
 	
 	public void onEntityWalk(World world, BlockPos pos, IBlockState state, Entity entity)

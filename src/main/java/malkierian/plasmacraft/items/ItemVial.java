@@ -4,7 +4,7 @@ import java.util.List;
 
 import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.blocks.BlockCausticFluid;
-import malkierian.plasmacraft.fluids.PCFluids;
+import malkierian.plasmacraft.init.PCFluids;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;

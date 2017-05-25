@@ -1,9 +1,9 @@
-tile.orePlasma.plutonium.name=Plutonium Ore
-tile.orePlasma.radionite.name=Radionite Ore
-tile.orePlasma.neptunium.name=Neptunium Ore
-tile.orePlasma.obsidium.name=Obsidium Ore
-tile.orePlasma.uranium.name=Uranium Ore
-tile.orePlasma.lead.name=Lead Ore
+tile.orePlutonium.name=Plutonium Ore
+tile.oreRadionite.name=Radionite Ore
+tile.oreNeptunium.name=Neptunium Ore
+tile.oreObsidium.name=Obsidium Ore
+tile.oreUranium.name=Uranium Ore
+tile.oreLead.name=Lead Ore
 
 tile.acid.name=Acid
 tile.cryonite.name=Cryonite
@@ -14,14 +14,14 @@ tile.plutonium.name=Plutonium
 tile.radionite.name=Radionite
 tile.uranium.name=Uranium
 
-tile.glowCloth.acid.name=Acid Glowcloth
-tile.glowCloth.radionite.name=Radionite Glowcloth
-tile.glowCloth.netherflow.name=Netherflow Glowcloth
-tile.glowCloth.neptunium.name=Neptunium Glowcloth
-tile.glowCloth.uranium.name=Uranium Glowcloth
-tile.glowCloth.plutonium.name=Plutonium Glowcloth
-tile.glowCloth.cryonite.name=Cryonite Glowcloth
-tile.glowCloth.obsidium.name=Obsidium Glowcloth
+tile.glowClothAcid.name=Acid Glowcloth
+tile.glowClothRadionite.name=Radionite Glowcloth
+tile.glowClothNetherflow.name=Netherflow Glowcloth
+tile.glowClothNeptunium.name=Neptunium Glowcloth
+tile.glowClothUranium.name=Uranium Glowcloth
+tile.glowClothPlutonium.name=Plutonium Glowcloth
+tile.glowClothCryonite.name=Cryonite Glowcloth
+tile.glowClothObsidium.name=Obsidium Glowcloth
 
 tile.reinforcedGlass.name=Reinforced Glass
 tile.acidBarrier.name=Acid Barrier
