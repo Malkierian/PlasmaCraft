@@ -35,19 +35,4 @@ public class BlockGlowCloth extends Block
 		setCreativeTab(PlasmaCraft.plasmaTab);
 		setHardness(0.8F);
 	}
-
-//	@Override
-//	@SideOnly(Side.CLIENT)
-//	public void getSubBlocks(Item par1, CreativeTabs tab, List subItems)
-//	{
-//		for (int i = 0; i < 8; i++) {
-//			subItems.add(new ItemStack(this, 1, i));
-//		}
-//	}
-
-	@Override
-	public int quantityDropped(Random random)
-	{
-		return 1;
-	}
 }
