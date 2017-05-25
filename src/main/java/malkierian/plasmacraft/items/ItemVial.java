@@ -5,6 +5,7 @@ import java.util.List;
 import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.blocks.BlockCausticFluid;
 import malkierian.plasmacraft.init.PCFluids;
+import malkierian.plasmacraft.init.PCItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -100,7 +101,7 @@ public class ItemVial extends ItemPlasma
                 BlockCausticFluid bcf = (BlockCausticFluid) block.getBlock();
 
 				world.setBlockToAir(pos);
-                returnStack = new ItemStack(PlasmaCraft.items.vial, 1, bcf.getFluidID() + 1);
+                returnStack = new ItemStack(PCItems.vial, 1, bcf.getFluidID() + 1);
 
                 if(!playerIn.capabilities.isCreativeMode)
                     itemstack.stackSize--;
@@ -143,7 +144,7 @@ public class ItemVial extends ItemPlasma
 					if(!playerIn.capabilities.isCreativeMode)
 					{
 						itemstack.stackSize--;
-						playerIn.inventory.addItemStackToInventory(new ItemStack(PlasmaCraft.items.vial, 1, 0));
+						playerIn.inventory.addItemStackToInventory(new ItemStack(PCItems.vial, 1, 0));
 					}
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
 				}

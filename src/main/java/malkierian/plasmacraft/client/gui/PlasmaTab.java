@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 import malkierian.plasmacraft.PlasmaCraft;
+import malkierian.plasmacraft.init.PCItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,7 @@ public class PlasmaTab extends CreativeTabs
 	@Override
 	public Item getTabIconItem()
 	{
-		return PlasmaCraft.items.vial;
+		return PCItems.vial;
 	}
 
 	@Override

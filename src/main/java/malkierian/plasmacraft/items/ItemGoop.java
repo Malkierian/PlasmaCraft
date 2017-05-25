@@ -29,7 +29,6 @@ public class ItemGoop extends ItemPlasma
         return String.format("%s.%d", super.getUnlocalizedName(itemStackIn), itemStackIn.getItemDamage());
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List item_list)
     {

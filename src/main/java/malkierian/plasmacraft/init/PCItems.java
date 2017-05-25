@@ -1,19 +1,23 @@
 package malkierian.plasmacraft.init;
 
-import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.items.ItemGoop;
+import malkierian.plasmacraft.items.ItemIngot;
 import malkierian.plasmacraft.items.ItemPlasma;
 import malkierian.plasmacraft.items.ItemVial;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemArmor;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class PCItems
 {
+    public static ItemGoop goop;
+    public static ItemVial vial;
+    public static ItemIngot ingots;
+    
 	public static void init()
 	{
 		vial = register(new ItemVial());
 		goop = register(new ItemGoop());
+		ingots = register(new ItemIngot());
 	}
 	
 	private static <T extends Item> T register(T item)
@@ -23,10 +27,7 @@ public class PCItems
 			((ItemPlasma)item).registerItemModel(item);
 		return item;
 	}
-    public static ItemGoop goop;
-//    public ItemIngot ingots = new ItemIngot();
 //    public ItemBattery battery = new ItemBattery();
-    public static ItemVial vial;
     
 //    public Item acidGrenade = new ItemAcidGrenade("acidGrenade");
 //    public Item causticBoat = (new ItemCausticBoat()).setUnlocalizedName("causticBoat");

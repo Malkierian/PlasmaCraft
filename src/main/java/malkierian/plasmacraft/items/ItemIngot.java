@@ -2,13 +2,13 @@ package malkierian.plasmacraft.items;
 
 import java.util.List;
 
+import malkierian.plasmacraft.PlasmaCraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemIngot extends ItemPlasma {
-//    private IIcon[] icons;
-
+public class ItemIngot extends ItemPlasma
+{
     public static final int CRYONITE_DAMAGE = 0;
     public static final int LEAD_DAMAGE = 1;
     public static final int NEPTUNIUM_DAMAGE = 2;
@@ -18,23 +18,17 @@ public class ItemIngot extends ItemPlasma {
     public static final int RADIONITE_DAMAGE = 6;
     public static final int URANIUM_DAMAGE = 7;
 
-    public ItemIngot(String name) {
-    	super(name);
+    public ItemIngot()
+    {
+    	super("pc-ingot");
         this.setHasSubtypes(true);
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack p_77667_1_) {
-        return String.format("%s.%d", super.getUnlocalizedName(p_77667_1_), p_77667_1_.getItemDamage());
+    public String getUnlocalizedName(ItemStack stack) {
+        return String.format("%s.%d", super.getUnlocalizedName(stack), stack.getItemDamage());
     }
 
-//    @Override
-//    public IIcon getIconFromDamage(int meta)
-//    {
-//        return this.icons[meta];
-//    }
-
-    @SuppressWarnings("unchecked")
     @Override
     public void getSubItems(Item item, CreativeTabs tab, List item_list)
     {
@@ -47,18 +41,17 @@ public class ItemIngot extends ItemPlasma {
         item_list.add(new ItemStack(item, 1, RADIONITE_DAMAGE));
         item_list.add(new ItemStack(item, 1, URANIUM_DAMAGE));
     }
-
-//    @Override
-//    public void registerIcons(IIconRegister icon_registrar)
-//    {
-//        this.icons = new IIcon[9];
-//        this.icons[CRYONITE_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotCryonite");
-//        this.icons[LEAD_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotLead");
-//        this.icons[NEPTUNIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotNeptunium");
-//        this.icons[NETHERFLOW_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotNetherflow");
-//        this.icons[OBSIDIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotObsidium");
-//        this.icons[PLUTONIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotPlutonium");
-//        this.icons[RADIONITE_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotRadionite");
-//        this.icons[URANIUM_DAMAGE] = icon_registrar.registerIcon("plasmacraft:ingotUranium");
-//    }
+    
+    @Override
+    public void registerItemModel(Item item)
+    {
+    	PlasmaCraft.proxy.registerItemRenderer(this, CRYONITE_DAMAGE, "ingot/ingot_" + CRYONITE_DAMAGE);
+    	PlasmaCraft.proxy.registerItemRenderer(this, LEAD_DAMAGE, "ingot/ingot_" + LEAD_DAMAGE);
+    	PlasmaCraft.proxy.registerItemRenderer(this, NEPTUNIUM_DAMAGE, "ingot/ingot_" + NEPTUNIUM_DAMAGE);
+    	PlasmaCraft.proxy.registerItemRenderer(this, NETHERFLOW_DAMAGE, "ingot/ingot_" + NETHERFLOW_DAMAGE);
+    	PlasmaCraft.proxy.registerItemRenderer(this, OBSIDIUM_DAMAGE, "ingot/ingot_" + OBSIDIUM_DAMAGE);
+    	PlasmaCraft.proxy.registerItemRenderer(this, PLUTONIUM_DAMAGE, "ingot/ingot_" + PLUTONIUM_DAMAGE);
+    	PlasmaCraft.proxy.registerItemRenderer(this, RADIONITE_DAMAGE, "ingot/ingot_" + RADIONITE_DAMAGE);
+    	PlasmaCraft.proxy.registerItemRenderer(this, URANIUM_DAMAGE, "ingot/ingot_" + URANIUM_DAMAGE);
+    }
 }

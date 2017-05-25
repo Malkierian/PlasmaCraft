@@ -9,6 +9,7 @@ import malkierian.plasmacraft.config.PlasmaCraftConfig;
 import malkierian.plasmacraft.init.PCBlocks;
 import malkierian.plasmacraft.init.PCFluids;
 import malkierian.plasmacraft.init.PCItems;
+import malkierian.plasmacraft.items.ItemIngot;
 import malkierian.plasmacraft.proxy.CommonProxy;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,7 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
@@ -26,10 +28,6 @@ import com.google.common.collect.Ordering;
 @Mod(modid = PlasmaCraft.modId, name = PlasmaCraft.name, version = PlasmaCraft.version, acceptedMinecraftVersions = "[1.10.2]")
 public class PlasmaCraft
 {
-    public static PCFluids fluids;
-    public static PCBlocks blocks = new PCBlocks();
-    public static PCItems items = new PCItems();
-//
 	public static PlasmaTab plasmaTab = new PlasmaTab("PlasmaCraft");
     public static PlasmaCraftConfig config;
     public static final String modId = "plasmacraft";
@@ -74,12 +72,12 @@ public class PlasmaCraft
 			Item.getItemFromBlock(PCBlocks.glowClothRadionite), Item.getItemFromBlock(PCBlocks.glowClothUranium),
 			Item.getItemFromBlock(PCBlocks.oreLead), Item.getItemFromBlock(PCBlocks.oreNeptunium), Item.getItemFromBlock(PCBlocks.oreObsidium),
 			Item.getItemFromBlock(PCBlocks.orePlutonium), Item.getItemFromBlock(PCBlocks.oreRadionite), Item.getItemFromBlock(PCBlocks.oreUranium),
-				/*Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
-				Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier),*/
-				items.goop, /*PlasmaCraft.items.ingots,*/ items.vial /*PlasmaCraft.items.causticBoat,
-				PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell, PlasmaCraft.items.thermopellet,
-				PlasmaCraft.items.acidgun, PlasmaCraft.items.cryoblaster, PlasmaCraft.items.lasershotgun, PlasmaCraft.items.lasergun, PlasmaCraft.items.lasergunsplit, PlasmaCraft.items.plasmagun, PlasmaCraft.items.plasmagunsplit, PlasmaCraft.items.railgun,
-				PlasmaCraft.items.acidGrenade, PlasmaCraft.items.hazmatBoots, PlasmaCraft.items.hazmatHood, PlasmaCraft.items.hazmatJacket, PlasmaCraft.items.hazmatPants, PlasmaCraft.items.plasmaLeather*/);
+			/*Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
+			Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier),*/
+			PCItems.goop, PCItems.ingots, PCItems.vial /*PlasmaCraft.items.causticBoat,
+			PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell, PlasmaCraft.items.thermopellet,
+			PlasmaCraft.items.acidgun, PlasmaCraft.items.cryoblaster, PlasmaCraft.items.lasershotgun, PlasmaCraft.items.lasergun, PlasmaCraft.items.lasergunsplit, PlasmaCraft.items.plasmagun, PlasmaCraft.items.plasmagunsplit, PlasmaCraft.items.railgun,
+			PlasmaCraft.items.acidGrenade, PlasmaCraft.items.hazmatBoots, PlasmaCraft.items.hazmatHood, PlasmaCraft.items.hazmatJacket, PlasmaCraft.items.hazmatPants, PlasmaCraft.items.plasmaLeather*/);
 
 		tabSorter = Ordering.explicit(order).onResultOf(new Function<ItemStack, Item>() {
 			@Override
@@ -206,13 +204,21 @@ public class PlasmaCraft
 	
 	private void registerOres()
 	{
-//		OreDictionary.registerOre("orePlutonium", new ItemStack(blocks.orePlasma, 1, BlockPlasmaOre.plutoniumMeta));
-//		OreDictionary.registerOre("oreUranium", new ItemStack(blocks.orePlasma, 1, BlockPlasmaOre.uraniumMeta));
-//		OreDictionary.registerOre("oreLead", new ItemStack(blocks.orePlasma, 1, BlockPlasmaOre.leadMeta));
-//		
-//		OreDictionary.registerOre("ingotPlutonium", new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE));
-//		OreDictionary.registerOre("ingotUranium", new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.URANIUM_DAMAGE));
-//		OreDictionary.registerOre("ingotLead", new ItemStack(PlasmaCraft.items.ingots, 1, ItemIngot.LEAD_DAMAGE));
+		OreDictionary.registerOre("orePlutonium", PCBlocks.oreItemPlutonium);
+		OreDictionary.registerOre("oreUranium", PCBlocks.oreItemUranium);
+		OreDictionary.registerOre("oreLead", PCBlocks.oreItemLead);
+		OreDictionary.registerOre("oreObsidium", PCBlocks.oreItemObsidium);
+		OreDictionary.registerOre("oreRadionite", PCBlocks.oreItemRadionite);
+		OreDictionary.registerOre("oreNeptunium", PCBlocks.oreItemNeptunium);
+		
+		OreDictionary.registerOre("ingotPlutonium", new ItemStack(PCItems.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE));
+		OreDictionary.registerOre("ingotUranium", new ItemStack(PCItems.ingots, 1, ItemIngot.URANIUM_DAMAGE));
+		OreDictionary.registerOre("ingotLead", new ItemStack(PCItems.ingots, 1, ItemIngot.LEAD_DAMAGE));
+		OreDictionary.registerOre("ingotCryonite", new ItemStack(PCItems.ingots, 1, ItemIngot.CRYONITE_DAMAGE));
+		OreDictionary.registerOre("ingotNeptunium", new ItemStack(PCItems.ingots, 1, ItemIngot.NEPTUNIUM_DAMAGE));
+		OreDictionary.registerOre("ingotNetherflow", new ItemStack(PCItems.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE));
+		OreDictionary.registerOre("ingotObsidium", new ItemStack(PCItems.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE));
+		OreDictionary.registerOre("ingotRadionite", new ItemStack(PCItems.ingots, 1, ItemIngot.RADIONITE_DAMAGE));
 	}
 	
 	private void registerRecipes()
