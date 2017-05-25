@@ -1,17 +1,18 @@
 package malkierian.plasmacraft.init;
 
 import malkierian.plasmacraft.PlasmaCraft;
+import malkierian.plasmacraft.blocks.BlockAcidBarrier;
 import malkierian.plasmacraft.blocks.BlockGlowCloth;
 import malkierian.plasmacraft.blocks.BlockPlasmaOre;
+import malkierian.plasmacraft.blocks.BlockReinforcedGlass;
 import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class PCBlocks
 {
-//    public Block acidBarrier = new BlockAcidBarrier().setBlockName("acidBarrier");
-//    public static Block orePlasma = new BlockPlasmaOre().setLightLevel(0.5334f).setBlockName("orePlasma");
     public static Block glowClothAcid;
     public static Block glowClothCryonite;
     public static Block glowClothNeptunium;
@@ -41,9 +42,16 @@ public class PCBlocks
     public static ItemBlock oreItemPlutonium;
     public static ItemBlock oreItemRadionite;
     public static ItemBlock oreItemUranium;
+    
 //    public Block acidTnt = new BlockAcidTNT().setBlockName("acidTnt");
-//    public Block frozenCryonite = new BlockReinforcedGlass("frozenCryonite", Material.glass, false, 1.0F).setBlockName("frozenCryonite");
-//    public Block reinforcedGlass = new BlockReinforcedGlass("reinforcedGlass", Material.glass, false, 500.0F).setBlockName("reinforcedGlass");
+    public static Block acidBarrier;
+    public static ItemBlock acidBarrierItem;
+    
+    public static Block frozenCryonite;
+    public static ItemBlock frozenCryoniteItem;
+    
+    public static Block reinforcedGlass;
+    public static ItemBlock reinforcedGlassItem;
 
     public PCBlocks()
     {
@@ -67,6 +75,10 @@ public class PCBlocks
         orePlutonium = registerBlock("orePlutonium", new BlockPlasmaOre("orePlutonium", 0.67f, 5).setResistance(8), oreItemPlutonium);
         oreRadionite = registerBlock("oreRadionite", new BlockPlasmaOre("oreRadionite", 0.5f).setResistance(3), oreItemRadionite);
         oreUranium = registerBlock("oreUranium", new BlockPlasmaOre("oreUranium", 0.6f, 5).setResistance(6), oreItemUranium);
+        
+        acidBarrier = registerBlock("acidBarrier", new BlockAcidBarrier(), acidBarrierItem);
+        frozenCryonite = registerBlock("frozenCryonite", new BlockReinforcedGlass(Material.GLASS, false, 1.0F).setUnlocalizedName("frozenCryonite"), frozenCryoniteItem);
+        reinforcedGlass = registerBlock("reinforcedGlass", new BlockReinforcedGlass(Material.GLASS, false, 500.0F).setUnlocalizedName("reinforcedGlass"), reinforcedGlassItem);
     }
 
 	private static <T extends Block> T registerBlock(String name, T block, ItemBlock item)

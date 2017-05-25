@@ -72,8 +72,8 @@ public class PlasmaCraft
 			Item.getItemFromBlock(PCBlocks.glowClothRadionite), Item.getItemFromBlock(PCBlocks.glowClothUranium),
 			Item.getItemFromBlock(PCBlocks.oreLead), Item.getItemFromBlock(PCBlocks.oreNeptunium), Item.getItemFromBlock(PCBlocks.oreObsidium),
 			Item.getItemFromBlock(PCBlocks.orePlutonium), Item.getItemFromBlock(PCBlocks.oreRadionite), Item.getItemFromBlock(PCBlocks.oreUranium),
-			/*Item.getItemFromBlock(blocks.frozenCryonite), Item.getItemFromBlock(blocks.reinforcedGlass),
-			Item.getItemFromBlock(PlasmaCraft.blocks.acidTnt), Item.getItemFromBlock(PlasmaCraft.blocks.acidBarrier),*/
+			Item.getItemFromBlock(PCBlocks.frozenCryonite), Item.getItemFromBlock(PCBlocks.reinforcedGlass),
+			/*Item.getItemFromBlock(PCBlocks.acidTnt),*/ Item.getItemFromBlock(PCBlocks.acidBarrier),
 			PCItems.goop, PCItems.ingots, PCItems.vial /*PlasmaCraft.items.causticBoat,
 			PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell, PlasmaCraft.items.thermopellet,
 			PlasmaCraft.items.acidgun, PlasmaCraft.items.cryoblaster, PlasmaCraft.items.lasershotgun, PlasmaCraft.items.lasergun, PlasmaCraft.items.lasergunsplit, PlasmaCraft.items.plasmagun, PlasmaCraft.items.plasmagunsplit, PlasmaCraft.items.railgun,
