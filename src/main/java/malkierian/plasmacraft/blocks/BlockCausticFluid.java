@@ -1,6 +1,5 @@
 package malkierian.plasmacraft.blocks;
 
-import scala.collection.concurrent.Debug;
 import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.init.PCItems;
 import net.minecraft.block.material.MapColor;
@@ -12,18 +11,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumBlockRenderType;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fml.common.FMLLog;
 
 public class BlockCausticFluid extends BlockFluidClassic
 {
 	private int fluidId;
 	private float explosionStrength;
+	public ResourceLocation undertex;
 	
 	public BlockCausticFluid(Fluid fluid, Material material, int damage, float luminosity, float explosiveness)
 	{
@@ -32,6 +32,7 @@ public class BlockCausticFluid extends BlockFluidClassic
 		setLightLevel(luminosity);
 		explosionStrength = explosiveness;
 		setUnlocalizedName(fluid.getUnlocalizedName());
+		undertex = new ResourceLocation(PlasmaCraft.modId + ":textures/misc/under" + fluid.getName() + ".png");
 	}
 
 	@Override

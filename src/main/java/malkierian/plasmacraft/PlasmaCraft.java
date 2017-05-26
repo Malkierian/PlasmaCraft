@@ -7,6 +7,7 @@ import java.util.List;
 import malkierian.plasmacraft.client.gui.PlasmaTab;
 import malkierian.plasmacraft.common.FuelHandler;
 import malkierian.plasmacraft.config.PlasmaCraftConfig;
+import malkierian.plasmacraft.init.OverlayHandler;
 import malkierian.plasmacraft.init.PCBlocks;
 import malkierian.plasmacraft.init.PCFluids;
 import malkierian.plasmacraft.init.PCItems;
@@ -14,6 +15,7 @@ import malkierian.plasmacraft.items.ItemIngot;
 import malkierian.plasmacraft.proxy.CommonProxy;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -61,6 +63,7 @@ public class PlasmaCraft
         registerFuel();
         PCItems.init();
         PCBlocks.init();
+		MinecraftForge.EVENT_BUS.register(new OverlayHandler());
 	}
 
 	@EventHandler
@@ -77,7 +80,7 @@ public class PlasmaCraft
 			Item.getItemFromBlock(PCBlocks.frozenCryonite), Item.getItemFromBlock(PCBlocks.reinforcedGlass),
 			/*Item.getItemFromBlock(PCBlocks.acidTnt),*/ Item.getItemFromBlock(PCBlocks.acidBarrier),
 			PCItems.goop, PCItems.ingots, PCItems.vial /*PlasmaCraft.items.causticBoat,
-			PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell, PlasmaCraft.items.thermopellet,
+			PlasmaCraft.items.battery, PlasmaCraft.items.beamSplitter, PlasmaCraft.items.energyCell*/, PCItems.thermopellet/*,
 			PlasmaCraft.items.acidgun, PlasmaCraft.items.cryoblaster, PlasmaCraft.items.lasershotgun, PlasmaCraft.items.lasergun, PlasmaCraft.items.lasergunsplit, PlasmaCraft.items.plasmagun, PlasmaCraft.items.plasmagunsplit, PlasmaCraft.items.railgun,
 			PlasmaCraft.items.acidGrenade, PlasmaCraft.items.hazmatBoots, PlasmaCraft.items.hazmatHood, PlasmaCraft.items.hazmatJacket, PlasmaCraft.items.hazmatPants, PlasmaCraft.items.plasmaLeather*/);
 
