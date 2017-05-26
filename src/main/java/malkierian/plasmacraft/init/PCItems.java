@@ -12,12 +12,14 @@ public class PCItems
     public static ItemGoop goop;
     public static ItemVial vial;
     public static ItemIngot ingots;
+    public static ItemPlasma thermopellet;
     
 	public static void init()
 	{
 		vial = register(new ItemVial());
 		goop = register(new ItemGoop());
 		ingots = register(new ItemIngot());
+		thermopellet = register(new ItemPlasma("thermopellet"));
 	}
 	
 	private static <T extends Item> T register(T item)
@@ -31,7 +33,6 @@ public class PCItems
     
 //    public Item acidGrenade = new ItemAcidGrenade("acidGrenade");
 //    public Item causticBoat = (new ItemCausticBoat()).setUnlocalizedName("causticBoat");
-//    public Item thermopellet = (new ItemPlasma()).setUnlocalizedName("thermopellet");
 //
 //    public Item hazmatHood = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 0)).setUnlocalizedName("hazmatHood");
 //    public Item hazmatJacket = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 1)).setUnlocalizedName("hazmatJacket");

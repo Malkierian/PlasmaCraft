@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import malkierian.plasmacraft.client.gui.PlasmaTab;
+import malkierian.plasmacraft.common.FuelHandler;
 import malkierian.plasmacraft.config.PlasmaCraftConfig;
 import malkierian.plasmacraft.init.PCBlocks;
 import malkierian.plasmacraft.init.PCFluids;
@@ -20,6 +21,7 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
 import com.google.common.base.Function;
@@ -56,7 +58,7 @@ public class PlasmaCraft
 //        PlasmaCraft.items = new PCItems();
 //
 //        registerBlocks();
-//        registerFuel();
+        registerFuel();
         PCItems.init();
         PCBlocks.init();
 	}
@@ -167,7 +169,7 @@ public class PlasmaCraft
 	
 	private void registerFuel()
 	{
-//		GameRegistry.registerFuelHandler(new FuelHandler());
+		GameRegistry.registerFuelHandler(new FuelHandler());
 	}
 	
 	private void registerItems()
