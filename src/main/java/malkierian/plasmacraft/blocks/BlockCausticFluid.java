@@ -1,5 +1,6 @@
 package malkierian.plasmacraft.blocks;
 
+import scala.collection.concurrent.Debug;
 import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.init.PCItems;
 import net.minecraft.block.material.MapColor;
@@ -13,9 +14,11 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fml.common.FMLLog;
 
 public class BlockCausticFluid extends BlockFluidClassic
 {
@@ -35,6 +38,27 @@ public class BlockCausticFluid extends BlockFluidClassic
 	public EnumBlockRenderType getRenderType(IBlockState state)
 	{
 		return EnumBlockRenderType.MODEL;
+	}
+	
+	@Override
+	public Boolean isEntityInsideMaterial(IBlockAccess world, BlockPos blockpos, IBlockState iblockstate, Entity entity, double yToTest, Material materialIn, boolean testingHead)
+	{
+		if(materialIn == Material.WATER)
+		{
+			if(testingHead)
+			{
+				if(iblockstate.getBlock() instanceof BlockCausticFluid)
+				{
+					BlockCausticFluid fluid = (BlockCausticFluid)iblockstate.getBlock();
+					if((yToTest % 1) <= fluid.getFluidHeightForRender(world, blockpos))
+						return true;
+				}
+				return false;
+			}
+			else
+				return true;
+		}
+		return false;
 	}
 	
 	@Override
