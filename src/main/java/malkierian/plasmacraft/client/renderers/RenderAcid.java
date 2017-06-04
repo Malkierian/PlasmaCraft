@@ -15,7 +15,7 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderAcid extends Render
 {
-	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.modId, "textures/misc/plasmaball.png");
+	private static final ResourceLocation TEXTURE = new ResourceLocation(PlasmaCraft.modId + ":textures/misc/plasmaball.png");
 	public RenderAcid(RenderManager renderManagerIn)
 	{
         super(renderManagerIn);

@@ -1,5 +1,6 @@
 package malkierian.plasmacraft.init;
 
+import malkierian.plasmacraft.items.ItemEnergyWeapon;
 import malkierian.plasmacraft.items.ItemGoop;
 import malkierian.plasmacraft.items.ItemIngot;
 import malkierian.plasmacraft.items.ItemPlasma;
@@ -13,6 +14,7 @@ public class PCItems
     public static ItemVial vial;
     public static ItemIngot ingots;
     public static ItemPlasma thermopellet;
+    public static Item acidgun;
     
 	public static void init()
 	{
@@ -20,6 +22,7 @@ public class PCItems
 		goop = register(new ItemGoop());
 		ingots = register(new ItemIngot());
 		thermopellet = register(new ItemPlasma("thermopellet"));
+	    acidgun = register(new ItemEnergyWeapon("acidGun", 200));
 	}
 	
 	private static <T extends Item> T register(T item)
@@ -38,13 +41,12 @@ public class PCItems
 //    public Item hazmatJacket = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 1)).setUnlocalizedName("hazmatJacket");
 //    public Item hazmatPants = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 2)).setUnlocalizedName("hazmatPants");
 //    public Item hazmatBoots = (new ItemPlasmaArmor(ItemArmor.ArmorMaterial.GOLD, PlasmaCraft.proxy.addArmor("hazmat"), 3)).setUnlocalizedName("hazmatBoots");
-//    
+    
 //    public Item plasmaLeather = (new ItemPlasma()).setUnlocalizedName("plasmaLeather");
-//
+
 //    public Item beamSplitter = (new ItemPlasma()).setUnlocalizedName("beamSplitter");
 //    public Item energyCell = (new ItemPlasma()).setUnlocalizedName("energyCell");
-//    
-//    public Item acidgun = (new ItemEnergyWeapon(200)).setUnlocalizedName("acidGun");
+    
 //    public Item cryoblaster = (new ItemEnergyWeapon(100)).setUnlocalizedName("cryoBlaster");
 //    public Item lasergun = (new ItemEnergyWeapon(200)).setUnlocalizedName("laserGun");
 //    public Item lasergunsplit = (new ItemEnergyWeapon(300)).setUnlocalizedName("laserGunSplit");
