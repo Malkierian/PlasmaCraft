@@ -45,6 +45,11 @@ public class BlockCausticFluid extends BlockFluidClassic
 		setUnlocalizedName(fluid.getUnlocalizedName());
 		undertex = new ResourceLocation(PlasmaCraft.modId + ":textures/misc/under" + fluid.getName() + ".png");
 	}
+	
+	public float getExplosionStrength()
+	{
+		return explosionStrength;
+	}
 
 	@Override
 	public EnumBlockRenderType getRenderType(IBlockState state)
@@ -227,324 +232,134 @@ public class BlockCausticFluid extends BlockFluidClassic
     	list.put(world.getBlockState(pos2).getBlock(), pos2);
     	return list;
 	}
-	
-	private void processBlockChange(World world, Block block, BlockPos pos)
-	{
-		if(block == Blocks.LAVA)
-		{
-			if(this == PCFluids.cryoniteBlock)
-				world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
-			else
-				world.setBlockState(pos, Blocks.SAND.getDefaultState());
-		}
-		else if(block == Blocks.WATER)
-		{
-			if(this == PCFluids.cryoniteBlock)
-				world.setBlockState(pos, Blocks.ICE.getDefaultState());
-			else
-				world.setBlockState(pos, Blocks.CLAY.getDefaultState());
-		}
-		else if(this == PCFluids.acidBlock)
-		{
-			if(block == PCFluids.radioniteBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.plutoniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.neptuniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.netherflowBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.uraniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.obsidiumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.cryoniteBlock)
-			{
-				world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
-				return;
-			}
-		}
-		else if(this == PCFluids.radioniteBlock)
-		{
-			if(block == PCFluids.acidBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.plutoniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.neptuniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.netherflowBlock)
-			{
-				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.uraniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.obsidiumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-			}
-		}
-		else if(this == PCFluids.plutoniumBlock)
-		{
-			if(block == PCFluids.acidBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.radioniteBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.neptuniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.netherflowBlock)
-			{
-				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.uraniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.obsidiumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.cryoniteBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-			}
-		}
-		else if(this == PCFluids.neptuniumBlock)
-		{
-			if(block == PCFluids.acidBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.radioniteBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.plutoniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.netherflowBlock)
-			{
-				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.uraniumBlock)
-			{
-				world.setBlockState(pos, Blocks.SAND.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.obsidiumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.cryoniteBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-			}
-		}
-		else if(this == PCFluids.netherflowBlock)
-		{
-			if(block == PCFluids.acidBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.radioniteBlock)
-			{
-				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.plutoniumBlock)
-			{
-				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.neptuniumBlock)
-			{
-				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.uraniumBlock)
-			{
-				world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.obsidiumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.cryoniteBlock)
-			{
-				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
-			}
-		}
-		else if(this == PCFluids.uraniumBlock)
-		{
-			if(block == PCFluids.acidBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.radioniteBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.plutoniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.neptuniumBlock)
-			{
-				world.setBlockState(pos, Blocks.SAND.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.netherflowBlock)
-			{
-				world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.obsidiumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.cryoniteBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 6F, true);
-			}
-		}
-		else if(this == PCFluids.obsidiumBlock)
-		{
-			if(block == PCFluids.acidBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.radioniteBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.plutoniumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.neptuniumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.netherflowBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.uraniumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.cryoniteBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-			}
-		}
-		else if(this == PCFluids.cryoniteBlock)
-		{
-			if(block == PCFluids.acidBlock)
-			{
-				world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.plutoniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.neptuniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 3F, true);
-				return;
-			}
-			if(block == PCFluids.netherflowBlock)
-			{
-				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
-				return;
-			}
-			if(block == PCFluids.uraniumBlock)
-			{
-				world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), 6F, true);
-				return;
-			}
-			if(block == PCFluids.obsidiumBlock)
-			{
-				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
-			}
-		}
-	}
 
 	private void checkForHarden(World world, BlockPos pos)
 	{
-		if(world.getBlockState(pos).getBlock() != this)
+		IBlockState blockState = world.getBlockState(pos);
+		Block block = blockState.getBlock();
+		if(block != this)
 		{
 			return;
 		}
 
 		Map<Block, BlockPos> blockList = getAdjoiningBlocks(world, pos);
 
-		for(Block block : blockList.keySet())
+		for(Block neighbor : blockList.keySet())
 		{
-			processBlockChange(world, block, blockList.get(block));
+			IBlockState neighborState = world.getBlockState(blockList.get(neighbor));
+			int blockMeta = blockState.getBlock().getMetaFromState(blockState);
+			int neighborMeta = neighborState.getBlock().getMetaFromState(neighborState);
+			if(neighborMeta > 0 && blockMeta > 0)
+				return;
+			if(neighbor != block)
+			{
+				BlockPos pos2 = blockList.get(neighbor);
+				if(blockMeta == 0)
+					pos2 = pos;
+				processBlockChange(world, neighbor, block, pos2);
+			}
+		}
+	}
+	
+	private void processBlockChange(World world, Block neighbor, Block block, BlockPos pos)
+	{
+		if(neighbor == Blocks.LAVA)
+		{
+			if(this == PCFluids.cryoniteBlock)
+				world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
+			else
+				world.setBlockState(pos, Blocks.SAND.getDefaultState());
+		}
+		else if(neighbor == Blocks.WATER)
+		{
+			if(this == PCFluids.cryoniteBlock)
+				world.setBlockState(pos, Blocks.ICE.getDefaultState());
+			else
+				world.setBlockState(pos, Blocks.CLAY.getDefaultState());
+		}
+		else if(neighbor == PCFluids.obsidiumBlock)
+		{
+			if(this instanceof BlockCausticFluid)
+				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
+		}
+		else if(block == PCFluids.obsidiumBlock)
+		{
+			if(this instanceof BlockCausticFluid)
+				world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
+		}
+		else if(neighbor == PCFluids.acidBlock)
+		{
+			if(this == PCFluids.cryoniteBlock)
+				world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
+			else
+				explodeBlock(world, pos, neighbor, block);
+		}
+		else if(neighbor == PCFluids.radioniteBlock)
+		{
+			if(this == PCFluids.netherflowBlock)
+				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
+			else
+				explodeBlock(world, pos, neighbor, block);
+		}
+		else if(neighbor == PCFluids.plutoniumBlock)
+		{
+			if(this == PCFluids.netherflowBlock)
+				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
+			else
+				explodeBlock(world, pos, neighbor, block);
+		}
+		else if(neighbor == PCFluids.neptuniumBlock)
+		{
+			if(this == PCFluids.netherflowBlock)
+				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
+			else if(this == PCFluids.uraniumBlock)
+				world.setBlockState(pos, Blocks.SAND.getDefaultState());
+			else
+				explodeBlock(world, pos, neighbor, block);
+		}
+		else if(neighbor == PCFluids.netherflowBlock)
+		{
+			if(this == PCFluids.radioniteBlock)
+				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
+			else if(this == PCFluids.plutoniumBlock)
+				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
+			else if(this == PCFluids.neptuniumBlock)
+				world.setBlockState(pos, Blocks.NETHERRACK.getDefaultState());
+			else if(this == PCFluids.uraniumBlock)
+				world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState());
+			else if(this == PCFluids.cryoniteBlock)
+				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
+			else
+				explodeBlock(world, pos, neighbor, block);
+		}
+		else if(neighbor == PCFluids.uraniumBlock)
+		{
+			if(this == PCFluids.neptuniumBlock)
+				world.setBlockState(pos, Blocks.SAND.getDefaultState());
+			else if(this == PCFluids.netherflowBlock)
+				world.setBlockState(pos, Blocks.SOUL_SAND.getDefaultState());
+			else
+				explodeBlock(world, pos, neighbor, block);
+		}
+		else if(neighbor == PCFluids.cryoniteBlock)
+		{
+			if(this == PCFluids.acidBlock)
+				world.setBlockState(pos, Blocks.COBBLESTONE.getDefaultState());
+			else if(this == PCFluids.netherflowBlock)
+				world.setBlockState(pos, Blocks.GLOWSTONE.getDefaultState());
+			else
+				explodeBlock(world, pos, neighbor, block);
+		}
+	}
+
+	private void explodeBlock(World world, BlockPos pos, Block neighbor, Block block)
+	{
+		if(neighbor instanceof BlockCausticFluid)
+		{
+			float explosionStrength = ((BlockCausticFluid)neighbor).getExplosionStrength();
+			if(((BlockCausticFluid)block).getExplosionStrength() > explosionStrength)
+				explosionStrength = ((BlockCausticFluid)block).getExplosionStrength();
+			world.createExplosion(null, pos.getX(), pos.getY(), pos.getZ(), explosionStrength, true);
 		}
 	}
 	
