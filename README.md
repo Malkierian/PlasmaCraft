@@ -6,8 +6,7 @@ PlasmaCraft is a Minecraft mod that has been around for several years now.  It h
 Setup
 ===========
 
-My first step in the revival process is going to be to set up the dev environment with ForgeGradle, hopefully with the help of Abrar to get it set up like ForgeEssentials.
-Once that is done, it will then be a huge mass of block and item updates, and I have no idea where that's going to start.
+Just copy the .jar into the mods folder, and you're good to go.
 
 Information
 ===========
