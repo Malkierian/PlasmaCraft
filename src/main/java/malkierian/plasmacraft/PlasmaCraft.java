@@ -12,9 +12,12 @@ import malkierian.plasmacraft.init.OverlayHandler;
 import malkierian.plasmacraft.init.PCBlocks;
 import malkierian.plasmacraft.init.PCFluids;
 import malkierian.plasmacraft.init.PCItems;
+import malkierian.plasmacraft.items.ItemGoop;
 import malkierian.plasmacraft.items.ItemIngot;
+import malkierian.plasmacraft.items.ItemVial;
 import malkierian.plasmacraft.proxy.CommonProxy;
 import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -28,6 +31,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
@@ -58,11 +62,6 @@ public class PlasmaCraft
 
         PCFluids.initFluids();
         proxy.preInit();
-//
-//        PlasmaCraft.blocks = new PCBlocks(PlasmaCraft.fluids);
-//        PCItems = new PCItems();
-//
-//        registerBlocks();
         registerFuel();
         PCItems.init();
         PCBlocks.init();
@@ -95,8 +94,8 @@ public class PlasmaCraft
 			}
 		});
 //
-//        registerRecipes();
-//		registerOres();
+        registerRecipes();
+		registerOres();
         registerEntities();
 //
 //        proxy.registerTextureFX();
@@ -178,8 +177,6 @@ public class PlasmaCraft
 	
 	private void registerItems()
 	{
-//		GameRegistry.registerItem(PCItems.goop, "pc-goop");
-//		GameRegistry.registerItem(PCItems.ingots, "pc-ingots");
 //		PCItems.(PCItems.vial, "pc-vial");
 //		GameRegistry.registerItem(PCItems.battery, "pc-battery");
 //
@@ -187,9 +184,7 @@ public class PlasmaCraft
 //
 //		GameRegistry.registerItem(PCItems.beamSplitter, "Beam Splitter");
 //		GameRegistry.registerItem(PCItems.energyCell, "Energy Cell");
-//		GameRegistry.registerItem(PCItems.thermopellet, "Thermopellet");
 //
-//		GameRegistry.registerItem(PCItems.acidgun, "Acid Launcher");
 //		GameRegistry.registerItem(PCItems.cryoblaster, "Cryo Blaster");
 //		GameRegistry.registerItem(PCItems.lasershotgun, "Laser Shotgun");
 //		GameRegistry.registerItem(PCItems.lasergun, "Laser Rifle");
@@ -210,12 +205,12 @@ public class PlasmaCraft
 	
 	private void registerOres()
 	{
-		OreDictionary.registerOre("orePlutonium", PCBlocks.oreItemPlutonium);
-		OreDictionary.registerOre("oreUranium", PCBlocks.oreItemUranium);
-		OreDictionary.registerOre("oreLead", PCBlocks.oreItemLead);
-		OreDictionary.registerOre("oreObsidium", PCBlocks.oreItemObsidium);
-		OreDictionary.registerOre("oreRadionite", PCBlocks.oreItemRadionite);
-		OreDictionary.registerOre("oreNeptunium", PCBlocks.oreItemNeptunium);
+		OreDictionary.registerOre("orePlutonium", new ItemStack(PCBlocks.orePlutonium));
+		OreDictionary.registerOre("oreUranium", new ItemStack(PCBlocks.oreUranium));
+		OreDictionary.registerOre("oreLead", new ItemStack(PCBlocks.oreLead));
+		OreDictionary.registerOre("oreObsidium", new ItemStack(PCBlocks.oreObsidium));
+		OreDictionary.registerOre("oreRadionite", new ItemStack(PCBlocks.oreRadionite));
+		OreDictionary.registerOre("oreNeptunium", new ItemStack(PCBlocks.oreNeptunium));
 		
 		OreDictionary.registerOre("ingotPlutonium", new ItemStack(PCItems.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE));
 		OreDictionary.registerOre("ingotUranium", new ItemStack(PCItems.ingots, 1, ItemIngot.URANIUM_DAMAGE));
@@ -229,21 +224,21 @@ public class PlasmaCraft
 	
 	private void registerRecipes()
 	{
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothAcidMeta), new ItemStack(PCItems.goop), new ItemStack(Blocks.wool, 1, 0));
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothPlutoniumMeta), new ItemStack(PCItems.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), new ItemStack(Blocks.wool, 1, 0));
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothRadioniteMeta), new ItemStack(PCItems.goop, 1, ItemGoop.RADIONITE_DAMAGE), new ItemStack(Blocks.wool, 1, 0));
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothNeptuniumMeta), new ItemStack(PCItems.goop, 1, ItemGoop.NEPTUNIUM_DAMAGE), new ItemStack(Blocks.wool, 1, 0));
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothNetherflowMeta), new ItemStack(PCItems.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), new ItemStack(Blocks.wool, 1, 0));
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothObsidiumMeta), new ItemStack(PCItems.goop, 1, ItemGoop.OBSIDIUM_DAMAGE), new ItemStack(Blocks.wool, 1, 0));
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothCryoniteMeta), new ItemStack(PCItems.goop, 1, ItemGoop.CRYONITE_DAMAGE), new ItemStack(Blocks.wool, 1, 0));
-//		GameRegistry.addShapelessRecipe(new ItemStack(blocks.glowCloth, 1, BlockGlowCloth.glowClothUraniumMeta), new ItemStack(PCItems.goop, 1, ItemGoop.URANIUM_DAMAGE), new ItemStack(Blocks.wool, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothAcid, 1), new ItemStack(PCItems.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothCryonite, 1), new ItemStack(PCItems.goop, 1, ItemGoop.CRYONITE_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothNeptunium, 1), new ItemStack(PCItems.goop, 1, ItemGoop.NEPTUNIUM_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothNetherflow, 1), new ItemStack(PCItems.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothObsidium, 1), new ItemStack(PCItems.goop, 1, ItemGoop.OBSIDIUM_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothPlutonium, 1), new ItemStack(PCItems.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothRadionite, 1), new ItemStack(PCItems.goop, 1, ItemGoop.RADIONITE_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
+		GameRegistry.addShapelessRecipe(new ItemStack(PCBlocks.glowClothUranium, 1), new ItemStack(PCItems.goop, 1, ItemGoop.URANIUM_DAMAGE), new ItemStack(Blocks.WOOL, 1, 0));
 //		
-//		GameRegistry.addRecipe(new ItemStack(blocks.reinforcedGlass, 4), " X ", "X#X", " X ", '#', Blocks.glass, 'X', Items.iron_ingot);
-//		GameRegistry.addRecipe(new ItemStack(PCItems.vial, 1), "X#X", "Y Y", "X#X", '#', Items.iron_ingot, 'Y', blocks.reinforcedGlass, 'X', Blocks.glass);
-//		GameRegistry.addRecipe(new ItemStack(blocks.acidBarrier, 1), " X ", "XZX", " X ", 'Z', blocks.reinforcedGlass, 'X', PCItems.goop);
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCBlocks.reinforcedGlass, 4), " X ", "X#X", " X ", '#', Blocks.GLASS, 'X', "ingotLead"));
+		GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.vial, 4), "X#X", "Y Y", "X#X", '#', "ingotLead", 'Y', PCBlocks.reinforcedGlass, 'X', Blocks.GLASS));
+		GameRegistry.addRecipe(new ItemStack(PCBlocks.acidBarrier, 1), " X ", "XZX", " X ", 'Z', PCBlocks.reinforcedGlass, 'X', PCItems.goop);
 //		GameRegistry.addRecipe(new ItemStack(PCItems.causticBoat, 1), "R R", "RRR", 'R', new ItemStack(PCItems.ingots, 1, ItemIngot.RADIONITE_DAMAGE));
 //		GameRegistry.addRecipe(new ItemStack(blocks.acidTnt, 4), "APA", "GAG", "APA", 'A', PCItems.vial, 'G', Items.gunpowder, 'P', PCItems.ingots);
-//		GameRegistry.addRecipe(new ItemStack(PCItems.acidGrenade, 4), "X", "Y", "Z", 'X', Items.iron_ingot, 'Y', PCItems.vial, 'Z', PCItems.ingots);
+//		GameRegistry.addRecipe(new ItemStack(PCItems.acidGrenade, 4), "X", "Y", "Z", 'X', Items.IRON_INGOT, 'Y', PCItems.vial, 'Z', PCItems.ingots);
 //		GameRegistry.addRecipe(new ItemStack(PCItems.hazmatHood, 1), "LLL", "L L", 'L', PCItems.plasmaLeather);
 //		GameRegistry.addRecipe(new ItemStack(PCItems.hazmatJacket, 1), "L L", "LLL", "LLL", 'L', PCItems.plasmaLeather);
 //		GameRegistry.addRecipe(new ItemStack(PCItems.hazmatPants, 1), "LLL", "L L", "L L", 'L', PCItems.plasmaLeather);
@@ -255,15 +250,15 @@ public class PlasmaCraft
 //        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.cryoblaster), "  A", "CBX", " DE", 'A', "ingotUranium", 'B', new ItemStack(PCItems.goop, 1, ItemGoop.CRYONITE_DAMAGE), 'C', new ItemStack(PCItems.ingots, 1, ItemIngot.CRYONITE_DAMAGE), 'D', new ItemStack(PCItems.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE), 'X', new ItemStack(PCItems.battery, 1, ItemBattery.CRYO_DAMAGE), 'E', "ingotPlutonium"));
 //        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.lasershotgun), "  A", "BCD", " EF", 'A', Items.repeater, 'B', PCItems.beamSplitter, 'C', new ItemStack(PCItems.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE), 'D', new ItemStack(PCItems.battery, 1, ItemBattery.CHARGED_DAMAGE), 'E', new ItemStack(PCItems.ingots, 1, ItemIngot.RADIONITE_DAMAGE), 'F', "ingotPlutonium"));
 //        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.lasergun), "ABC", " BD", 'A', new ItemStack(PCItems.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE), 'B', new ItemStack(PCItems.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE), 'C', new ItemStack(PCItems.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), 'D', "ingotPlutonium"));
-//        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.plasmagun), "ABC", " DC", 'A', Items.diamond, 'B', PCItems.ingots, 'C', "ingotPlutonium", 'D', new ItemStack(PCItems.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE)));
+//        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.plasmagun), "ABC", " DC", 'A', Items.DIAMOND, 'B', PCItems.ingots, 'C', "ingotPlutonium", 'D', new ItemStack(PCItems.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE)));
 //        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.railgun), "ABC", " DE", "AB ", 'A', "ingotLead", 'B', "ingotPlutonium", 'C', new ItemStack(PCItems.battery, 1, ItemBattery.PLASMA_DAMAGE), 'D', new ItemStack(PCItems.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), 'E', "ingotUranium"));
-//        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.acidgun), "  A", "BCD", " EF", 'A', new ItemStack(PCItems.vial), 'B', "ingotLead", 'C', "ingotUranium", 'D', new ItemStack(PlasmaCraft.blocks.reinforcedGlass), 'E', new ItemStack(PCItems.battery, 1, ItemBattery.PLASMA_DAMAGE), 'F', Items.iron_ingot));
-//        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.beamSplitter), " A ", "BCD", " A ", 'A', new ItemStack(PCItems.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE), 'B', Items.diamond, 'C', new ItemStack(PCItems.battery, 1, ItemBattery.PLASMA_DAMAGE), 'D', "ingotUranium"));
+//        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.acidgun), "  A", "BCD", " EF", 'A', new ItemStack(PCItems.vial), 'B', "ingotLead", 'C', "ingotUranium", 'D', new ItemStack(PlasmaCraft.blocks.reinforcedGlass), 'E', new ItemStack(PCItems.battery, 1, ItemBattery.PLASMA_DAMAGE), 'F', Items.IRON_INGOT));
+//        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.beamSplitter), " A ", "BCD", " A ", 'A', new ItemStack(PCItems.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE), 'B', Items.DIAMOND, 'C', new ItemStack(PCItems.battery, 1, ItemBattery.PLASMA_DAMAGE), 'D', "ingotUranium"));
 //        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(PCItems.thermopellet), "AAA", "ABA", "AAA", 'A', new ItemStack(PCItems.goop, 1, ItemGoop.URANIUM_DAMAGE), 'B', "ingotPlutonium"));
 //        GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(PCItems.battery, 1, ItemBattery.OVERCHARGED_DAMAGE), new ItemStack(PCItems.battery, 1, ItemBattery.CHARGED_DAMAGE), "ingotUranium"));
 //
 //		GameRegistry.addRecipe(new ItemStack(PCItems.energyCell, 5), " R ", "RXR", " R ", 'R', new ItemStack(PCItems.ingots, 1, ItemIngot.NEPTUNIUM_DAMAGE), 'X', PCItems.goop);
-//		GameRegistry.addRecipe(new ItemStack(PCItems.battery, 8), "IRI", "I I", "IRI", 'R', new ItemStack(PCItems.ingots, 1, ItemIngot.RADIONITE_DAMAGE), 'I', Items.iron_ingot);
+//		GameRegistry.addRecipe(new ItemStack(PCItems.battery, 8), "IRI", "I I", "IRI", 'R', new ItemStack(PCItems.ingots, 1, ItemIngot.RADIONITE_DAMAGE), 'I', Items.IRON_INGOT);
 //		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.battery, 1, ItemBattery.CRYO_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.CRYONITE_DAMAGE), PCItems.battery);
 //		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.battery, 1, ItemBattery.PLASMA_DAMAGE), PCItems.ingots, PCItems.battery);
 //		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.battery, 1, ItemBattery.CHARGED_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), PCItems.battery);
@@ -276,24 +271,24 @@ public class PlasmaCraft
 //		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.goop, 1, ItemGoop.RADIONITE_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PCItems.ingots, 4, ItemGoop.RADIONITE_DAMAGE));
 //		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.goop, 1, ItemGoop.URANIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.ACID_DAMAGE), new ItemStack(PCItems.ingots, 4, ItemGoop.URANIUM_DAMAGE));
 //		
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.ACID_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.ACID_DAMAGE), PCItems.vial);
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.CRYONITE_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.CRYONITE_DAMAGE), PCItems.vial);
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.NEPTUNIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.NEPTUNIUM_DAMAGE), PCItems.vial);
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.NETHERFLOW_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), PCItems.vial);
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.OBSIDIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.OBSIDIUM_DAMAGE), PCItems.vial);
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.PLUTONIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), PCItems.vial);
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.RADIONITE_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.RADIONITE_DAMAGE), PCItems.vial);
-//		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.URANIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.URANIUM_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.ACID_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.ACID_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.CRYONITE_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.CRYONITE_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.NEPTUNIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.NEPTUNIUM_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.NETHERFLOW_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.NETHERFLOW_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.OBSIDIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.OBSIDIUM_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.PLUTONIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.PLUTONIUM_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.RADIONITE_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.RADIONITE_DAMAGE), PCItems.vial);
+		GameRegistry.addShapelessRecipe(new ItemStack(PCItems.vial, 1, ItemVial.URANIUM_DAMAGE), new ItemStack(PCItems.goop, 1, ItemGoop.URANIUM_DAMAGE), PCItems.vial);
 //
-//        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.plutoniumMeta), new ItemStack(PCItems.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE), 0.1f);
-//        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.radioniteMeta), new ItemStack(PCItems.ingots, 1, ItemIngot.RADIONITE_DAMAGE), 0.1f);
-//        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.neptuniumMeta), new ItemStack(PCItems.ingots, 1, ItemIngot.NEPTUNIUM_DAMAGE), 0.1f );
-//        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.obsidiumMeta), new ItemStack(PCItems.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE), 0.1f );
-//        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.uraniumMeta), new ItemStack(PCItems.ingots, 1, ItemIngot.URANIUM_DAMAGE), 0.1f );
-//        GameRegistry.addSmelting(new ItemStack(PlasmaCraft.blocks.orePlasma, 1, BlockPlasmaOre.leadMeta), new ItemStack(PCItems.ingots, 1, ItemIngot.LEAD_DAMAGE), 0.1f );
+//        GameRegistry.addSmelting(new ItemStack(PCBlocks.orePlutonium, 1), new ItemStack(PCItems.ingots, 1, ItemIngot.PLUTONIUM_DAMAGE), 0.1f);
+//        GameRegistry.addSmelting(new ItemStack(PCBlocks.oreRadionite, 1), new ItemStack(PCItems.ingots, 1, ItemIngot.RADIONITE_DAMAGE), 0.1f);
+//        GameRegistry.addSmelting(new ItemStack(PCBlocks.oreNeptunium, 1), new ItemStack(PCItems.ingots, 1, ItemIngot.NEPTUNIUM_DAMAGE), 0.1f );
+//        GameRegistry.addSmelting(new ItemStack(PCBlocks.oreObsidium, 1), new ItemStack(PCItems.ingots, 1, ItemIngot.OBSIDIUM_DAMAGE), 0.1f );
+//        GameRegistry.addSmelting(new ItemStack(PCBlocks.oreUranium, 1), new ItemStack(PCItems.ingots, 1, ItemIngot.URANIUM_DAMAGE), 0.1f );
+        GameRegistry.addSmelting(new ItemStack(PCBlocks.oreLead, 1), new ItemStack(PCItems.ingots, 1, ItemIngot.LEAD_DAMAGE), 0.1f );
 //        GameRegistry.addSmelting(new ItemStack(PCItems.vial, 1, ItemVial.CRYONITE_DAMAGE), new ItemStack(PCItems.ingots, 1, ItemIngot.CRYONITE_DAMAGE), 0.0f);
 //        GameRegistry.addSmelting(new ItemStack(PCItems.vial, 1, ItemVial.NETHERFLOW_DAMAGE), new ItemStack(PCItems.ingots, 1, ItemIngot.NETHERFLOW_DAMAGE), 0.0f);
-//		GameRegistry.addSmelting(Items.slime_ball, new ItemStack(PCItems.goop, 1, ItemGoop.ACID_DAMAGE), 0f);
+//		GameRegistry.addSmelting(Items.SLIME_BALL, new ItemStack(PCItems.goop, 1, ItemGoop.ACID_DAMAGE), 0f);
 	}
 	
 	public static void loadConfig(FMLPreInitializationEvent event)
