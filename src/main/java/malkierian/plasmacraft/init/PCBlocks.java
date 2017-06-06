@@ -78,6 +78,7 @@ public class PCBlocks
         
         acidBarrier = registerBlock("acidBarrier", new BlockAcidBarrier(), acidBarrierItem);
         frozenCryonite = registerBlock("frozenCryonite", new BlockReinforcedGlass(Material.GLASS, false, 1.0F).setUnlocalizedName("frozenCryonite"), frozenCryoniteItem);
+        frozenCryonite.setTickRandomly(true);
         reinforcedGlass = registerBlock("reinforcedGlass", new BlockReinforcedGlass(Material.GLASS, false, 500.0F).setUnlocalizedName("reinforcedGlass"), reinforcedGlassItem);
     }
 

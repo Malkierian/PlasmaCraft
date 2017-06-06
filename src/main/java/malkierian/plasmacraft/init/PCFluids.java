@@ -76,6 +76,8 @@ public class PCFluids
 	    plutoniumBlock = registerFluidBlock(new BlockCausticFluid(plutoniumFluid, new MaterialLiquid(MapColor.GREEN), 5, 0.87F, 3F), plutoniumFluid.getStill());
 	    radioniteBlock = registerFluidBlock(new BlockCausticFluid(radioniteFluid, new MaterialLiquid(MapColor.MAGENTA), 6, 0.8F, 2F), radioniteFluid.getStill());
 	    uraniumBlock = registerFluidBlock(new BlockCausticFluid(uraniumFluid, new MaterialLiquid(MapColor.YELLOW), 7, 0.94F, 3F), uraniumFluid.getStill());
+	    
+	    cryoniteBlock.setTickRandomly(true);
     }
     
     public static void registerRenders()

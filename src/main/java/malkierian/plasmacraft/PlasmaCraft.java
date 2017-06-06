@@ -16,6 +16,7 @@ import malkierian.plasmacraft.items.ItemGoop;
 import malkierian.plasmacraft.items.ItemIngot;
 import malkierian.plasmacraft.items.ItemVial;
 import malkierian.plasmacraft.proxy.CommonProxy;
+import malkierian.plasmacraft.worldgen.WorldGenerator;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
@@ -72,7 +73,7 @@ public class PlasmaCraft
 	public void init(FMLInitializationEvent event)
 	{
 //		proxy.registerRenderers();
-//		
+		
 		List<Item> order = Arrays.asList(Item.getItemFromBlock(PCBlocks.glowClothAcid), Item.getItemFromBlock(PCBlocks.glowClothCryonite),
 			Item.getItemFromBlock(PCBlocks.glowClothNeptunium), Item.getItemFromBlock(PCBlocks.glowClothNetherflow),
 			Item.getItemFromBlock(PCBlocks.glowClothObsidium), Item.getItemFromBlock(PCBlocks.glowClothPlutonium),
@@ -93,14 +94,14 @@ public class PlasmaCraft
 				return input.getItem();
 			}
 		});
-//
+
         registerRecipes();
 		registerOres();
         registerEntities();
-//
+
 //        proxy.registerTextureFX();
-//		
-//		GameRegistry.registerWorldGenerator(new WorldGenerator(), 20);
+		
+		GameRegistry.registerWorldGenerator(new WorldGenerator(), 20);
 	}
 
     private void registerFluids()

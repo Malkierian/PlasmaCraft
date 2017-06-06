@@ -2,8 +2,10 @@ package malkierian.plasmacraft.blocks;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import malkierian.plasmacraft.PlasmaCraft;
+import malkierian.plasmacraft.init.PCBlocks;
 import malkierian.plasmacraft.init.PCFluids;
 import malkierian.plasmacraft.init.PCItems;
 import malkierian.plasmacraft.items.ItemIngot;
@@ -29,6 +31,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome.TempCategory;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
@@ -113,6 +116,27 @@ public class BlockCausticFluid extends BlockFluidClassic
 	public void onEntityWalk(World world, BlockPos pos, Entity entity)
 	{
 		onEntityWalk(world, pos, world.getBlockState(pos), entity);
+	}
+	
+	@Override
+	public void randomTick(World worldIn, BlockPos pos, IBlockState state, Random random)
+	{
+		updateTick(worldIn, pos, state, random);
+	}
+	
+	@Override
+	public void updateTick(World world, BlockPos pos, IBlockState state, Random rand)
+	{
+		super.updateTick(world, pos, state, rand);
+		if(this == PCFluids.cryoniteBlock)
+		{
+			if(world.getBiome(pos).getTempCategory() == TempCategory.COLD)
+			{
+				int random = rand.nextInt(20);
+				if(random > 18)
+					world.setBlockState(pos, PCBlocks.frozenCryonite.getDefaultState());
+			}
+		}
 	}
 	
 	public MapColor getMapColor()
