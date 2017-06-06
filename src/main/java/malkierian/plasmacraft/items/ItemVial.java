@@ -101,7 +101,7 @@ public class ItemVial extends ItemPlasma
                 BlockCausticFluid bcf = (BlockCausticFluid) block.getBlock();
 
 				world.setBlockToAir(pos);
-                returnStack = new ItemStack(PCItems.vial, 1, bcf.getFluidID() + 1);
+                returnStack = new ItemStack(PCItems.VIALS, 1, bcf.getFluidID() + 1);
 
                 if(!playerIn.capabilities.isCreativeMode)
                     itemstack.stackSize--;
@@ -144,7 +144,7 @@ public class ItemVial extends ItemPlasma
 					if(!playerIn.capabilities.isCreativeMode)
 					{
 						itemstack.stackSize--;
-						playerIn.inventory.addItemStackToInventory(new ItemStack(PCItems.vial, 1, 0));
+						playerIn.inventory.addItemStackToInventory(new ItemStack(PCItems.VIALS, 1, 0));
 					}
 					return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
 				}

@@ -6,32 +6,23 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class ItemBattery extends ItemPlasma {
-//    private IIcon[] icons;
-
+public class ItemBattery extends ItemPlasma
+{
     public static final int EMPTY_DAMAGE = 0;
     public static final int CHARGED_DAMAGE = 1;
     public static final int CRYO_DAMAGE = 2;
     public static final int PLASMA_DAMAGE = 3;
     public static final int OVERCHARGED_DAMAGE = 4;
 
-    public ItemBattery(String name) {
-//        this.setCreativeTab(PlasmaCraft.plasmaTab);
-    	super(name);
-//        this.setUnlocalizedName("pc-battery");
+    public ItemBattery() {
+    	super("pc-battery");
         this.setHasSubtypes(true);
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack p_77667_1_) {
-        return String.format("%s.%d", super.getUnlocalizedName(p_77667_1_), p_77667_1_.getItemDamage());
+    public String getUnlocalizedName(ItemStack itemStack) {
+        return String.format("%s.%d", super.getUnlocalizedName(itemStack), itemStack.getItemDamage());
     }
-
-//    @Override
-//    public IIcon getIconFromDamage(int meta)
-//    {
-//        return this.icons[meta];
-//    }
 
     @SuppressWarnings("unchecked")
     @Override

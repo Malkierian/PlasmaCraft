@@ -41,7 +41,7 @@ public class ItemEnergyWeapon extends ItemPlasma
 		EntityThrowable spawnEntity = null;
 		ItemStack costItem = null;
 		Item returnItem = null;
-		String sound = "plasmacraft:weapon.lasergun";
+		SoundEvent sound = new SoundEvent(new ResourceLocation("plasmacraft:weapon.lasergun"));
 		boolean isCreative = entityplayer.capabilities.isCreativeMode;
 		
 //		if(this == PlasmaCraft.items.lasergun)
@@ -66,11 +66,12 @@ public class ItemEnergyWeapon extends ItemPlasma
 //			costItem = new ItemStack(PlasmaCraft.items.battery, 1, ItemBattery.PLASMA_DAMAGE);
 //			returnItem = PlasmaCraft.items.battery;
 //		}
-		if(this == PCItems.acidgun)
+		if(this == PCItems.ACID_GUN)
 		{
 			spawnEntity = new EntityAcid(world, entityplayer);
-			costItem = new ItemStack(PCItems.vial, 1, ItemVial.ACID_DAMAGE); // TODO Acid charge/round for launcher
-			returnItem = PCItems.vial;
+			costItem = new ItemStack(PCItems.VIALS, 1, ItemVial.ACID_DAMAGE); // TODO Acid charge/round for launcher
+			returnItem = PCItems.VIALS;
+			sound = SoundEvents.ENTITY_BLAZE_SHOOT;
 			//TODO Mortar sound for plasma launcher
 		}
 //		if(this == PlasmaCraft.items.railgun)
@@ -113,7 +114,7 @@ public class ItemEnergyWeapon extends ItemPlasma
 						return new ActionResult<ItemStack>(EnumActionResult.SUCCESS, itemstack);
 
 				spawnEntity.setHeadingFromThrower(entityplayer, entityplayer.rotationPitch, entityplayer.rotationYaw, 0, 1.75f, 0.1f);
-				world.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, SoundEvents.ENTITY_BLAZE_SHOOT, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));;
+				world.playSound((EntityPlayer)null, entityplayer.posX, entityplayer.posY, entityplayer.posZ, sound, SoundCategory.NEUTRAL, 0.5F, 0.4F / (itemRand.nextFloat() * 0.4F + 0.8F));;
 				world.spawnEntityInWorld(spawnEntity);
 			}
 		}

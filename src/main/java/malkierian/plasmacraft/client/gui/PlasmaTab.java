@@ -19,7 +19,7 @@ public class PlasmaTab extends CreativeTabs
 	@Override
 	public Item getTabIconItem()
 	{
-		return PCItems.vial;
+		return PCItems.VIALS;
 	}
 
 	@Override

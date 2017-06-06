@@ -8,6 +8,7 @@ import malkierian.plasmacraft.init.PCFluids;
 import malkierian.plasmacraft.init.PCItems;
 import malkierian.plasmacraft.items.ItemIngot;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockStone;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -17,6 +18,7 @@ import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumBlockRenderType;
@@ -82,7 +84,7 @@ public class BlockCausticFluid extends BlockFluidClassic
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, 
 			ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ)
 	{
-		if(!(heldItem.getItem() == PCItems.vial))
+		if(!(heldItem.getItem() == PCItems.VIALS))
 			return false;
 		else
 			return true;
@@ -193,7 +195,7 @@ public class BlockCausticFluid extends BlockFluidClassic
 				EntityItem ent = (EntityItem) entity;
                 ItemStack itemStack = ent.getEntityItem();
 
-				if (itemStack.getItem() == PCItems.ingots && itemStack.getItemDamage() == ItemIngot.RADIONITE_DAMAGE)
+				if (itemStack.getItem() == PCItems.INGOTS && itemStack.getItemDamage() == ItemIngot.RADIONITE_DAMAGE)
 				{
 					return;
 				}

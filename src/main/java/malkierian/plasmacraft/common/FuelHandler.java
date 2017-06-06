@@ -8,7 +8,7 @@ import net.minecraftforge.fml.common.IFuelHandler;
 
 public class FuelHandler implements IFuelHandler
 {
-    private ItemStack nether_flow_vial = new ItemStack(PCItems.vial, 1, ItemVial.NETHERFLOW_DAMAGE);
+    private ItemStack nether_flow_vial = new ItemStack(PCItems.VIALS, 1, ItemVial.NETHERFLOW_DAMAGE);
 
 	@Override
 	public int getBurnTime(ItemStack fuel)
@@ -18,7 +18,7 @@ public class FuelHandler implements IFuelHandler
 			return 500000;
 		}
 
-		if (fuel.getItem() == PCItems.thermopellet)
+		if (fuel.getItem() == PCItems.THERMOPELLET)
         {
             return 1000000;
         }
