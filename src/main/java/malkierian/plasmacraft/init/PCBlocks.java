@@ -2,6 +2,7 @@ package malkierian.plasmacraft.init;
 
 import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.blocks.BlockAcidBarrier;
+import malkierian.plasmacraft.blocks.BlockAcidTNT;
 import malkierian.plasmacraft.blocks.BlockGlowCloth;
 import malkierian.plasmacraft.blocks.BlockPlasmaOre;
 import malkierian.plasmacraft.blocks.BlockReinforcedGlass;
@@ -52,6 +53,7 @@ public class PCBlocks
     
     public static Block reinforcedGlass;
     public static ItemBlock reinforcedGlassItem;
+    
 
     public PCBlocks()
     {
@@ -80,11 +82,12 @@ public class PCBlocks
         frozenCryonite = registerBlock("frozenCryonite", new BlockReinforcedGlass(Material.GLASS, false, 1.0F).setUnlocalizedName("frozenCryonite"), frozenCryoniteItem);
         frozenCryonite.setTickRandomly(true);
         reinforcedGlass = registerBlock("reinforcedGlass", new BlockReinforcedGlass(Material.GLASS, false, 500.0F).setUnlocalizedName("reinforcedGlass"), reinforcedGlassItem);
+        
     }
 
 	private static <T extends Block> T registerBlock(String name, T block, ItemBlock item)
 	{
-		ResourceLocation loc = new ResourceLocation(PlasmaCraft.modId + ":blocks/" + name);
+		ResourceLocation loc = new ResourceLocation(PlasmaCraft.modId, name);
 		block.setRegistryName(loc);
 		item = new ItemBlock(block);
 		item.setRegistryName(loc);
