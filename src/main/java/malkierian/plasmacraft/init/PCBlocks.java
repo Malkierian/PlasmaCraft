@@ -44,7 +44,6 @@ public class PCBlocks
     public static ItemBlock oreItemRadionite;
     public static ItemBlock oreItemUranium;
     
-//    public Block acidTnt = new BlockAcidTNT().setBlockName("acidTnt");
     public static Block acidBarrier;
     public static ItemBlock acidBarrierItem;
     
@@ -54,6 +53,8 @@ public class PCBlocks
     public static Block reinforcedGlass;
     public static ItemBlock reinforcedGlassItem;
     
+    public static Block acidTnt;
+    public static ItemBlock acidTntItem;
 
     public PCBlocks()
     {
@@ -83,6 +84,7 @@ public class PCBlocks
         frozenCryonite.setTickRandomly(true);
         reinforcedGlass = registerBlock("reinforcedGlass", new BlockReinforcedGlass(Material.GLASS, false, 500.0F).setUnlocalizedName("reinforcedGlass"), reinforcedGlassItem);
         
+        acidTnt = registerBlock("acid_tnt", new BlockAcidTNT(), acidTntItem);
     }
 
 	private static <T extends Block> T registerBlock(String name, T block, ItemBlock item)

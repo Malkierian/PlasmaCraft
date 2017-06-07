@@ -1,0 +1,24 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": {
+			"bottom": "plasmacraft:blocks/acid_tnt_bottom",
+			"top": "plasmacraft:blocks/acid_tnt_top",
+			"side": "plasmacraft:blocks/acid_tnt_side"
+		}
+	},
+	"variants": {
+		"normal": [{
+			"model": "cube_bottom_top"
+		}],
+		"explode=false": [{
+			"model": "cube_bottom_top"
+		}],
+		"explode=true": [{
+			"model": "cube_bottom_top"
+		}],
+		"inventory" : [{
+			"model": "cube_bottom_top"
+		}]
+	}
+}

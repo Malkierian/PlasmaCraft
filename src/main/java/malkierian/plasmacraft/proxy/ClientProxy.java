@@ -2,7 +2,9 @@ package malkierian.plasmacraft.proxy;
 
 import malkierian.plasmacraft.PlasmaCraft;
 import malkierian.plasmacraft.client.renderers.RenderAcid;
+import malkierian.plasmacraft.client.renderers.RenderAcidTNTPrimed;
 import malkierian.plasmacraft.entity.EntityAcid;
+import malkierian.plasmacraft.entity.EntityAcidTNTPrimed;
 import malkierian.plasmacraft.init.PCFluids;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -18,7 +20,7 @@ public class ClientProxy extends CommonProxy
 	public void registerRenderers()
 	{
 //		RenderingRegistry.registerEntityRenderingHandler(EntityCausticBoat.class, new RenderCausticBoat());
-//		RenderingRegistry.registerEntityRenderingHandler(EntityAcidTNTPrimed.class, new RenderAcidTNTPrimed());
+		RenderingRegistry.registerEntityRenderingHandler(EntityAcidTNTPrimed.class, new RenderAcidTNTPrimed(Minecraft.getMinecraft().getRenderManager()));
 //		
 		RenderingRegistry.registerEntityRenderingHandler(EntityAcid.class, new RenderAcid(Minecraft.getMinecraft().getRenderManager()));
 //		RenderingRegistry.registerEntityRenderingHandler(EntityCryoBlast.class, new RenderCryoBlast());
